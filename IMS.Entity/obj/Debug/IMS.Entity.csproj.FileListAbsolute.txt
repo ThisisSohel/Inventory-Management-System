@@ -1,0 +1,6 @@
+C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Entity\bin\Debug\IMS.Entity.dll
+C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Entity\bin\Debug\IMS.Entity.pdb
+C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Entity\obj\Debug\IMS.Entity.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Entity\obj\Debug\IMS.Entity.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Entity\obj\Debug\IMS.Entity.dll
+C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Entity\obj\Debug\IMS.Entity.pdb

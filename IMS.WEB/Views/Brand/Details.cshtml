@@ -1,0 +1,19 @@
+﻿@model IMS.Entity.Entities.Brand
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 style="text-align: justify">Details About the Brand</h2>
+
+<div>
+    <h4>Brand ID: @Model.Id</h4>
+    <h4>Brand Name: @Model.BrandName</h4>
+    <h4>Brand is Created by: @Model.CreatedBy</h4>
+    <h4>Brand is Created at: @Model.CreatedDate</h4>
+    <h4>Brand is Modyfied By: @Model.ModifyBy</h4>
+</div>
+
+<p>
+    @Html.ActionLink("Update", "Update", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

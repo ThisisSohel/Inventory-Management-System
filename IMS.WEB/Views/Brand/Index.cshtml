@@ -1,0 +1,40 @@
+﻿@model IEnumerable<IMS.Entity.Entities.Brand>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="text-align: center;">Product Brand List</h2>
+
+<table class="table table-striped, table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Brand Name</th>
+            <th>CreatedBy</th>
+            <th>CreateDate</th>
+            <th>ModifyBy</th>
+            <th>ModifyDate</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var brand in Model)
+        {
+            <tr>
+                <td>@brand.Id</td>
+                <td>@brand.BrandName</td>
+                <td>@brand.CreatedBy</td>
+                <td>@brand.CreatedDate</td>
+                <td>@brand.ModifyBy</td>
+                <td>@brand.ModifyDate</td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = brand.Id }, new { @class = "btn btn-info btn-sm" }) |
+                    @Html.ActionLink("Update", "Update", new { id = brand.Id }, new { @class = "btn btn-primary btn-sm" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = brand.Id }, new { @class = "btn btn-danger btn-sm", onclick = "return confirm('Are you sure you want to delete this Brand?');" })
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
