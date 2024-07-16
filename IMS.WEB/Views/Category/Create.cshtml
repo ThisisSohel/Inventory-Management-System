@@ -1,0 +1,57 @@
+﻿@model IMS.Entity.Entities.ProductCategory
+@{
+    ViewBag.Title = "Create";
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<h2>Create you new Product Category</h2>
+
+@using (Html.BeginForm(new { id = "addBrand" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "control-lable" })
+        @Html.TextBoxFor(model => model.CategoryName, new { @class = "form-control", placeholder = "enter the category name" })
+        @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.CategoryDescription, htmlAttributes: new { @class = "control-lable" })
+        @Html.TextBoxFor(model => model.CategoryDescription, new { @class = "form-control", placeholder = "enter the category description" })
+        @Html.ValidationMessageFor(model => model.CategoryDescription, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <button id ="btnsubmit" type="submit" class="btn btn-primary">Create</button>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#btnsubmit").click(function (e) {
+                //Serialize the form datas.
+                var newBrand = $("#addBrand").serialize();
+                //to get alert popup
+                alert(newBrand);
+                $.ajax({
+                    url: "/Category/Create",
+                    type: "POST",
+                    dataType: 'json',
+                    data: newBrand
+                });
+            });
+        });
+    </script>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    if (Model != null)
+    {
+        <script type="text/javascript">
+            $(function () {
+                alert("Your Brand : " + @Model.CategoryName + "is added");
+            });
+        </script>
+    }
+}

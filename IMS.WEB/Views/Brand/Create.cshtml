@@ -3,19 +3,42 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create you new Product Brand</h2>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<body style="font-family: Arial">
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class=" alert alert-danger">
+            <strong>Error !</strong>  @TempData["ErrorMessage"]
+        </div>
+    }
+</body>
+
+<h2>Create your new Product Brand</h2>
 
 @using (Html.BeginForm())
-{ 
+{
     @Html.AntiForgeryToken()
 
     <div class="form-group">
-        @Html.LabelFor(model => model.BrandName, htmlAttributes: new {@class = "control-lable"})
-        @Html.TextBoxFor(model => model.BrandName, new { @class = "form-control"})
+        @Html.LabelFor(model => model.BrandName, htmlAttributes: new { @class = "control-lable" })
+        @Html.TextBoxFor(model => model.BrandName, new { @class = "form-control", placeholder = "enter the brand name" })
         @Html.ValidationMessageFor(model => model.BrandName, "", new { @class = "text-danger" })
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Create</button>
     </div>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    if (Model != null)
+    {
+        <script type="text/javascript">
+            $(function () {
+                alert("Your Brand : " + @Model.BrandName + "is added");
+            });
+        </script>
+    }
+
 }
 

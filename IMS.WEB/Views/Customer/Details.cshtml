@@ -1,0 +1,23 @@
+﻿@model IMS.Entity.Entities.Customer
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details information about the customer with Id- @Model.Id</h2>
+
+<div style="text-align:justify-all">
+    <h4>Customer ID: @Model.Id</h4>
+    <h4>Customer Name: @Model.CustomerName</h4>
+    <h4>Customer Number: @Model.CustomerNumber</h4>
+    <h4>Customer EmailAddress: @Model.EmailAddress</h4>
+    <h4>Customer's Address': @Model.CustomerAddress</h4>
+    <h4>Customer is Created by: @Model.CreatedBy</h4>
+    <h4>Customer is Created at: @Model.CreatedDate</h4>
+    <h4>Customer is Modyfied By: @Model.ModifyBy</h4>
+    <h4>Customer is Modyfied By: @Model.ModifyDate</h4>
+</div>
+
+<p>
+    @Html.ActionLink("Update", "Update", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

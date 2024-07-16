@@ -7,6 +7,10 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Xml.Linq;
+using NHibernate;
+using IMS.Service;
+using System.Web.Mvc;
+
 
 namespace IMS.WEB.Database
 {
@@ -44,7 +48,26 @@ namespace IMS.WEB.Database
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, CustomRole, long, CustomUserLogin, CustomUserRole, CustomUserClaim>
     {
 
+        //public ApplicationDbContext()
+        //{
+        //    _sessionFactory = NHibernateConfig.GetSession();
+        //    _session = _sessionFactory.OpenSession();
+        //}
+        //private readonly IuserAccountService _accountService; //
+
+        ////
+        //public ApplicationDbContext()
+        //{
+        //    _accountService = new UserAccountService();
+        //}
+
+        //public async Task ControllerDbConnection()
+        //{
+        //    await _accountService.UserDbConnection();
+        //}
+
         public ApplicationDbContext()
+
             : base("DefaultConnection")
         {
         }

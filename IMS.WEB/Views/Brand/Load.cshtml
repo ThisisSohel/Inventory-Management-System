@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Load";
+}
+
+<h2>Brand List</h2>
+
+<table id="brandTable">
+    <thead>
+        <tr>
+            <th>Brand</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>BrandName</td>
+        </tr>
+    </tbody>
+</table>
+
+<link href="//cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css" rel="stylesheet" />
+
+@section scripts{
+    <script src="//cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.5/js/dataTables.bootstrap5.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#brandTable").DataTable(
+                {
+                    ajax: {
+                        url: "/Brand/Load"
+                    },
+                    "columns": [
+                        { "BrandDataList": "BrandName", "name": "BrandName" },
+                        {
+                            "Id": "Id", "render": function (data) {
+                                return ` <a> <button type = "submit" class="btn btn-primary btn-sm" onclick = "window.location.href='/Brand/Update/${data}'">
+                                            <i class="fas fa-pencil-alt">
+                                            </i>Update</button></a>
+                                            <a> <button type = "submit" class="btn btn-danger btn-sm" onclick = "window.location.href='/Brand/Delete/${data}'">
+                                            <i class="fas fa-pencil-alt">
+                                            </i>Delete</button></a>
+                                            <a> <button type = "submit" class="btn btn-info btn-sm" onclick = "window.location.href='/Brand/Details/${data}'">
+                                            <i class="fas fa-pencil-alt">
+                                            </i>Details</button></a>`
+                            }
+                        },
+                    ]
+                })
+        })
+    </script>
+}

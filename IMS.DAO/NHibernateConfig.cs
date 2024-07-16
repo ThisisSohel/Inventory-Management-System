@@ -1,10 +1,8 @@
-﻿using NHibernate;
-using FluentNHibernate.Cfg;
+﻿using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
-using NHibernate.Tool.hbm2ddl;
-using NHibernate.Cfg;
-using IMS.DAO.Mappings;
+using NHibernate;
 using System.Configuration;
+using System.Reflection;
 
 public static class NHibernateConfig
 {
@@ -14,7 +12,7 @@ public static class NHibernateConfig
         string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         var config = Fluently.Configure()
                              .Database(MsSqlConfiguration.MsSql2012.ConnectionString(connectionString))
-                             .Mappings(m => m.FluentMappings.AddFromAssemblyOf<BrandMapping>())
+                             .Mappings(m => m.FluentMappings.AddFromAssembly(Assembly.GetExecutingAssembly()))
                              .BuildConfiguration();
         _sessionFactory = config.BuildSessionFactory();
     }
@@ -29,4 +27,7 @@ public static class NHibernateConfig
     }
 
 }
+
+
+
 

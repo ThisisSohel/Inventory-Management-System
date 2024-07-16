@@ -19,9 +19,9 @@ namespace IMS.DAO.Mappings
             Map(x => x.EmailAddress);
             Map(x => x.CustomerAddress);
             Map(x => x.CreatedBy);
-            Map(x => x.CreatedAt);
-            Map(x => x.UpdatedBy);
-            Map(x => x.UpdatedAt);
+            Map(x => x.CreatedDate);
+            Map(x => x.ModifyBy);
+            Map(x => x.ModifyDate);
         }
     }
 }

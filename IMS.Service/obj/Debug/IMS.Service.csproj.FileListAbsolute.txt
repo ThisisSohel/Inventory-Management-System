@@ -24,6 +24,8 @@ D:\myLearning\MyIMSProject\IMS.WEB\IMS.Service\obj\Debug\IMS.Service.csproj.Core
 D:\myLearning\MyIMSProject\IMS.WEB\IMS.Service\obj\Debug\IMS.Serv.D8E2DD08.Up2Date
 D:\myLearning\MyIMSProject\IMS.WEB\IMS.Service\obj\Debug\IMS.Service.dll
 D:\myLearning\MyIMSProject\IMS.WEB\IMS.Service\obj\Debug\IMS.Service.pdb
+C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Service\obj\Debug\IMS.Service.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Service\obj\Debug\IMS.Service.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Service\bin\Debug\IMS.Service.dll.config
 C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Service\bin\Debug\IMS.Service.dll
 C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Service\bin\Debug\IMS.Service.pdb
@@ -47,8 +49,8 @@ C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Service\bin\Debug\log4net.xml
 C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Service\bin\Debug\NHibernate.xml
 C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Service\bin\Debug\Remotion.Linq.xml
 C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Service\bin\Debug\Remotion.Linq.EagerFetching.xml
-C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Service\obj\Debug\IMS.Service.csproj.AssemblyReference.cache
-C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Service\obj\Debug\IMS.Service.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Service\obj\Debug\IMS.Serv.D8E2DD08.Up2Date
 C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Service\obj\Debug\IMS.Service.dll
 C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Service\obj\Debug\IMS.Service.pdb
+C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Service\bin\Debug\IMS.CustomException.dll
+C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Service\bin\Debug\IMS.CustomException.pdb

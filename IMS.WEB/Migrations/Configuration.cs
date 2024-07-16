@@ -10,7 +10,7 @@ namespace IMS.WEB.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true; //Here I have  to modify only when I need to change something. 
             ContextKey = "IMS.WEB.Database.ApplicationDbContext";
         }
 

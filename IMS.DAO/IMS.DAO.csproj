@@ -67,17 +67,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="CustomerDao\CustomerDao.cs" />
     <Compile Include="Mappings\BrandMapping.cs" />
     <Compile Include="Mappings\CustomerMapping.cs" />
     <Compile Include="Mappings\ProductCategoryMapping.cs" />
+    <Compile Include="Mappings\ProductTypeMapping.cs" />
+    <Compile Include="Mappings\SupplierMapping.cs" />
     <Compile Include="NHibernateConfig.cs" />
     <Compile Include="ProductDao\BrandDao.cs" />
     <Compile Include="ProductDao\CategoryDao.cs" />
+    <Compile Include="ProductDao\ProductTypeDao.cs" />
+    <Compile Include="ProductDao\SKUDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <Compile Include="Mappings\SKUsMapping.cs" />
+    <Compile Include="SupplierDao\SupplierDao.cs" />
+    <Compile Include="UserAccountDao.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IMS.Entity\IMS.Entity.csproj">

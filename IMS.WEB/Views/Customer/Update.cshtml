@@ -1,0 +1,42 @@
+﻿@model IMS.Entity.Entities.Customer
+@{
+    ViewBag.Title = "Update";
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<h2>Update the customer information</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CustomerName, htmlAttributes: new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.CustomerName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.CustomerNumber, htmlAttributes: new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.CustomerNumber, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.CustomerNumber, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.EmailAddress, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.CustomerAddress, htmlAttributes: new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.CustomerAddress, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.CustomerAddress, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save</button>
+        @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })
+    </div>
+}
+

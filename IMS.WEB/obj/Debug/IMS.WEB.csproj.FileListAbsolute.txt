@@ -125,6 +125,8 @@ D:\myLearning\MyIMSProject\IMS.WEB\IMS.WEB\obj\Debug\IMS.WEB.csproj.CoreCompileI
 D:\myLearning\MyIMSProject\IMS.WEB\IMS.WEB\obj\Debug\IMS.WEB.csproj.Up2Date
 D:\myLearning\MyIMSProject\IMS.WEB\IMS.WEB\obj\Debug\IMS.WEB.dll
 D:\myLearning\MyIMSProject\IMS.WEB\IMS.WEB\obj\Debug\IMS.WEB.pdb
+C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.WEB\obj\Debug\IMS.WEB.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.WEB\obj\Debug\IMS.WEB.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.WEB\bin\IMS.WEB.dll.config
 C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.WEB\bin\IMS.WEB.dll
 C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.WEB\bin\IMS.WEB.pdb
@@ -249,8 +251,8 @@ C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.WEB\bin\Microsoft.Owin.Security
 C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.WEB\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.WEB\bin\IMS.DAO.pdb
 C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.WEB\bin\IMS.DAO.dll.config
-C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.WEB\obj\Debug\IMS.WEB.csproj.AssemblyReference.cache
-C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.WEB\obj\Debug\IMS.WEB.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.WEB\obj\Debug\IMS.WEB.csproj.Up2Date
 C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.WEB\obj\Debug\IMS.WEB.dll
 C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.WEB\obj\Debug\IMS.WEB.pdb
+C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.WEB\bin\IMS.CustomException.dll
+C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.WEB\bin\IMS.CustomException.pdb

@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using IMS.WEB.Models;
 using IMS.WEB.Database;
+using IMS.Service;
 
 namespace IMS.WEB.Controllers
 {
@@ -18,11 +19,9 @@ namespace IMS.WEB.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
-        public AccountController()
-        {
-        }
-
+        public AccountController() 
+        { 
+        }  
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
@@ -150,7 +149,11 @@ namespace IMS.WEB.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser 
+                { UserName = model.Email, 
+                    Email = model.Email, 
+                    PhoneNumber = model.PhoneNumber 
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

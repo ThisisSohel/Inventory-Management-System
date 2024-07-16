@@ -18,14 +18,14 @@ namespace IMS.WEB.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "A small description about our Inventory Management System";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Please contact us if you have any queries!";
 
             return View();
         }

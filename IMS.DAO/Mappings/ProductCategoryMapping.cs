@@ -17,9 +17,9 @@ namespace IMS.DAO.Mappings
             Map(x => x.CategoryName);
             Map(x => x.CategoryDescription);
             Map(x => x.CreatedBy);
-            Map(x => x.CreatedAt);
-            Map(x => x.UpdatedBy);
-            Map(x => x.UpdatedAt);
+            Map(x => x.CreatedDate);
+            Map(x => x.ModifyBy);
+            Map(x => x.ModifyDate);
         }
     }
 }

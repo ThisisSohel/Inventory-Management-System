@@ -190,9 +190,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BrandController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductCategoryController.cs" />
+    <Compile Include="Controllers\ProductTypeController.cs" />
+    <Compile Include="Controllers\SkuController.cs" />
+    <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Database\ApplicationUser.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -283,6 +287,33 @@
     <Content Include="Views\Brand\Create.cshtml" />
     <Content Include="Views\Brand\Details.cshtml" />
     <Content Include="Views\Brand\Update.cshtml" />
+    <Content Include="Views\Category\Create.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Category\Details.cshtml" />
+    <Content Include="Views\Category\Delete.cshtml" />
+    <Content Include="Views\Category\Update.cshtml" />
+    <Content Include="Views\ProductType\Create.cshtml" />
+    <Content Include="Views\ProductType\Index.cshtml" />
+    <Content Include="Views\ProductType\Details.cshtml" />
+    <Content Include="Views\ProductType\Update.cshtml" />
+    <Content Include="Views\ProductType\Delete.cshtml" />
+    <Content Include="Views\Sku\Create.cshtml" />
+    <Content Include="Views\Sku\Index.cshtml" />
+    <Content Include="Views\Sku\Update.cshtml" />
+    <Content Include="Views\Sku\Delete.cshtml" />
+    <Content Include="Views\Sku\Details.cshtml" />
+    <Content Include="Views\Customer\Create.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customer\Details.cshtml" />
+    <Content Include="Views\Customer\Update.cshtml" />
+    <Content Include="Views\Customer\Delete.cshtml" />
+    <Content Include="Views\Supplier\Create.cshtml" />
+    <Content Include="Views\Supplier\Index.cshtml" />
+    <Content Include="Views\Supplier\Details.cshtml" />
+    <Content Include="Views\Supplier\Update.cshtml" />
+    <Content Include="Views\Supplier\Delete.cshtml" />
+    <Content Include="Views\Brand\CreateBrand.cshtml" />
+    <Content Include="Views\Brand\Load.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -315,6 +346,10 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\IMS.CustomException\IMS.CustomException.csproj">
+      <Project>{7ee9b170-7c4f-4e9c-a125-18f64ec4942f}</Project>
+      <Name>IMS.CustomException</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IMS.Entity\IMS.Entity.csproj">
       <Project>{fc8a8f2d-bfcf-4141-9679-4f1467e8e903}</Project>
       <Name>IMS.Entity</Name>

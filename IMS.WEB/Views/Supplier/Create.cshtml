@@ -1,0 +1,51 @@
+﻿@model IMS.Entity.Entities.Supplier
+@{
+    ViewBag.Title = "Create";
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<h2>Create a new supplier</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        @Html.LabelFor(model => model.SupplierName, htmlAttributes: new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.SupplierName, new { @class = "form-control", placeholder = "enter your name" })
+        @Html.ValidationMessageFor(model => model.SupplierName, "", new { @class = "text-danger" })
+    </div>
+    <div>
+        @Html.LabelFor(model => Model.SupplierNumber, htmlAttributes: new { @class = "control.label" })
+        @Html.TextBoxFor(model => Model.SupplierNumber, new { @class = "form-control", placeholder = "enter your number" })
+        @Html.ValidationMessageFor(model => Model.SupplierNumber, "", htmlAttributes: new { @class = "text_danger" })
+    </div>
+    <div>
+        @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "cortol-label" })
+        @Html.TextBoxFor(model => model.EmailAddress, htmlAttributes: new { @class = "form-control", placeholder = "enter your email address" })
+        @Html.ValidationMessageFor(model => model.EmailAddress, "", htmlAttributes: new { @class = "text_danger" })
+    </div>
+    <div>
+        @Html.LabelFor(model => model.SupplierAddress, htmlAttributes: new { @class = "cortol-label" })
+        @Html.TextBoxFor(model => model.SupplierAddress, htmlAttributes: new { @class = "form-control", placeholder = "enter your address" })
+        @Html.ValidationMessageFor(model => model.SupplierAddress, "", htmlAttributes: new { @class = "text_danger" })
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    if (Model != null)
+    {
+        <script type="text/javascript">
+            $(function () {
+                alert("Your Brand : " + @Model.SupplierName + "is added");
+            });
+        </script>
+    }
+}
+

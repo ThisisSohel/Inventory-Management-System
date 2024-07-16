@@ -10,6 +10,8 @@ using System.ServiceModel.Channels;
 using log4net;
 using NHibernate;
 using ISession = NHibernate.ISession;
+using System.Runtime.Serialization;
+using IMS.CustomException;
 
 namespace IMS.Service
 {
@@ -18,16 +20,15 @@ namespace IMS.Service
         Task CreateAsync (ProductCategory category);
         Task<IEnumerable<ProductCategory>> GetAllAsync();
         Task<ProductCategory> GetById(long id);
-        Task UpdateAsync (ProductCategory category);
+        Task UpdateAsync (long id, ProductCategory category);
         Task DeleteAsync (long id);
 
     }
     public class CategoryService : ICategoryService
     {
         private readonly ICategoryDao _categoryDao;
-        private readonly ISession session;
-        private readonly ISessionFactory _sessionFactory;
         private readonly ISession _session;
+        private readonly ISessionFactory _sessionFactory;
         private static readonly ILog _logger = LogManager.GetLogger(typeof(BrandService));
         public CategoryService(ICategoryDao categoryDao) 
         { 
@@ -40,19 +41,19 @@ namespace IMS.Service
             _session = _sessionFactory.OpenSession();
             _categoryDao = new CategoryDao(_session);
         }
-        protected void BrandValidator(ProductCategory category)
+        private void CategoryValidator(ProductCategory categoryToValidate)
         {
-            if (category.CategoryName.Trim().Length == 0)
+            if (categoryToValidate.CategoryName.Trim().Length == 0)
             {
                 throw new InvalidNameException("sorry! your input feild is empty.");
             }
-            if (String.IsNullOrWhiteSpace(category.CategoryName))
+            if (String.IsNullOrWhiteSpace(categoryToValidate.CategoryName))
             {
                 throw new InvalidNameException("sorry! only white space is not allowed");
             }
-            if (category.CategoryName.Trim().Length < 5 || category.CategoryName.Trim().Length > 60)
+            if (categoryToValidate.CategoryName.Trim().Length < 3 || categoryToValidate.CategoryName.Trim().Length > 20)
             {
-                throw new InvalidNameException("Sorry! You have to input your name more than 5 character and less than 60 characters");
+                throw new InvalidNameException("Sorry! You have to input your name more than 3 character and less than 20 characters");
             }
         }
 
@@ -89,18 +90,48 @@ namespace IMS.Service
         {
             try
             {
-                await _categoryDao.CreateCategory(category);
+                CategoryValidator(category);
+                var newCategory = new ProductCategory
+                {
+                    CategoryName = category.CategoryName,
+                    CategoryDescription = category.CategoryDescription,
+                    CreatedBy = 100.ToString(),
+                    CreatedDate = DateTime.Now,
+                    ModifyBy = 100.ToString(),
+                    ModifyDate = DateTime.Now,
+                };
+                using (var transaction = _session.BeginTransaction())
+                {
+                    await _categoryDao.CreateCategory(newCategory);
+                    await transaction.CommitAsync();
+                }
             }
             catch (Exception ex)
             {
+                _logger.Error(ex.Message, ex);
                 throw new Exception(ex.Message);
             }
         }
-        public async Task UpdateAsync (ProductCategory category)
+        public async Task UpdateAsync (long id, ProductCategory category)
         {
             try
             {
-                await _categoryDao.Update(category);
+                var updateProductCategory = await _categoryDao.GetById(id);
+                if (updateProductCategory != null)
+                {
+                    using (var transaction = _session.BeginTransaction())
+                    {
+                        updateProductCategory.CategoryName = category.CategoryName;
+                        updateProductCategory.CategoryDescription = category.CategoryDescription;
+                        //updateProductCategory.ModifyBy = category.ModifyBy;
+                        updateProductCategory.ModifyDate = DateTime.Now;
+                        await _categoryDao.Update(updateProductCategory);
+                        await transaction.CommitAsync();
+                    }
+                }else
+                {
+                    throw new ObjectNotFoundException(updateProductCategory, "category");
+                }
             }catch (Exception ex)
             {
                 _logger.Error(ex);
@@ -111,7 +142,11 @@ namespace IMS.Service
         {
             try
             {
-                await _categoryDao.DeleteById(id);
+                var individualCategoryDelete = await _categoryDao.GetById(id);
+                if (individualCategoryDelete != null)
+                {
+                    await _categoryDao.DeleteById(id);
+                }
             }catch(Exception ex) 
             { 
                 _logger.Error(ex);
@@ -119,4 +154,5 @@ namespace IMS.Service
             }
         }
     }
+
 }

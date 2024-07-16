@@ -1,0 +1,6 @@
+C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.CustomException\bin\Debug\IMS.CustomException.dll
+C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.CustomException\bin\Debug\IMS.CustomException.pdb
+C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.CustomException\obj\Debug\IMS.CustomException.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.CustomException\obj\Debug\IMS.CustomException.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.CustomException\obj\Debug\IMS.CustomException.dll
+C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.CustomException\obj\Debug\IMS.CustomException.pdb

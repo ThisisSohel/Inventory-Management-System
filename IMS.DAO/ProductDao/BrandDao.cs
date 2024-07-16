@@ -10,11 +10,11 @@ namespace IMS.DAO
 {
     public interface IBrandDao
     {
-        Task<IEnumerable<Brand>> GetAll();
-        Task<Brand> GetById(long id);
-        Task CreateBrand(Brand brand);
-        Task Update(Brand brand);
-        Task DeleteById(long id);
+        Task<IEnumerable<Brand>> Load();
+        Task<Brand> Get(long id);
+        Task BrandCreate(Brand brand);
+        Task BrandUpdate(Brand brand);
+        Task BrandDelete(long id);
     }
 
     public class BrandDao : IBrandDao
@@ -26,7 +26,7 @@ namespace IMS.DAO
             _session = session;
         }
 
-        public async Task<IEnumerable<Brand>> GetAll()
+        public async Task<IEnumerable<Brand>> Load()
         {
             try
             {
@@ -34,11 +34,11 @@ namespace IMS.DAO
             }
             catch (Exception ex)
             {
-                throw new Exception("Faild to retrieve brands", ex);
+                throw new Exception("Failed to retrieve brands", ex);
             }
         }
 
-        public async Task<Brand> GetById(long id)
+        public async Task<Brand> Get(long id)
         {
             try
             {
@@ -46,11 +46,11 @@ namespace IMS.DAO
             }
             catch (Exception ex)
             {
-                throw new Exception($"Faild to retrieve brand with the ID {id}", ex);
+                throw new Exception($"Failed to retrieve brand with the ID {id}", ex);
             }
         }
 
-        public async Task CreateBrand(Brand brand)
+        public async Task BrandCreate(Brand brand)
         {
             try
             {
@@ -66,7 +66,7 @@ namespace IMS.DAO
             }
         }
 
-        public async Task Update(Brand brand)
+        public async Task BrandUpdate(Brand brand)
         {
             try
             {
@@ -78,11 +78,11 @@ namespace IMS.DAO
             }
             catch (Exception ex)
             {
-                throw ;
+                throw new Exception($"Faild to update the category", ex);
             }
         }
 
-        public async Task DeleteById(long id)
+        public async Task BrandDelete(long id)
         {
             try
             {

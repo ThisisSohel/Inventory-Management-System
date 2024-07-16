@@ -69,9 +69,18 @@
     <Compile Include="BrandService.cs" />
     <Compile Include="CategoryService.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="CustomerService.cs" />
+    <Compile Include="ProductTypeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SkuService.cs" />
+    <Compile Include="SupplierService.cs" />
+    <Compile Include="UserAccountService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\IMS.CustomException\IMS.CustomException.csproj">
+      <Project>{7ee9b170-7c4f-4e9c-a125-18f64ec4942f}</Project>
+      <Name>IMS.CustomException</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IMS.DAO\IMS.DAO.csproj">
       <Project>{5af4b352-09d6-486f-98d2-5d0406dfcf5f}</Project>
       <Name>IMS.DAO</Name>
