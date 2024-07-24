@@ -18,6 +18,7 @@ namespace IMS.Service
         Task CreateBrandService(BrandViewModel brandViewModel);
         Task<IEnumerable<Brand>> GetAll();
         Task<Brand> GetById(long id);
+        Task<BrandViewModel> BrandDetailsService(long  id);
         Task Update(long id, Brand brand);
         Task DeleteAsync(long id);
     }
@@ -166,19 +167,49 @@ namespace IMS.Service
 
             try
             {
-                using(var transaction = _session.BeginTransaction())
-                {
+                //using(var transaction = _session.BeginTransaction())
+                //{
                     brandEntity.BrandName = brandViewModel.BrandName;
                     brandEntity.CreatedBy = 100;
                     brandEntity.CreatedDate = DateTime.Now;
                     brandEntity.ModifyBy = 100;
                     brandEntity.ModifyDate = DateTime.Now;
                     await _brandDao.BrandCreate(brandEntity);
-                    transaction.Commit();
-                }
+                //    transaction.Commit();
+                //}
 
             }catch (Exception ex)
             {
+                throw new Exception(ex.Message, ex);
+            }
+        }
+
+        public async Task<BrandViewModel> BrandDetailsService(long id)
+        {
+            var brandDetails = new BrandViewModel();
+            try
+            {
+                var brand = await _brandDao.Get(id);
+
+                if (brand != null)
+                {
+                    brandDetails.Id = brand.Id;
+                    brandDetails.BrandName = brand.BrandName;
+                    brandDetails.CreatedBy = brand.CreatedBy;
+                    brandDetails.CreatedDate = brand.CreatedDate;
+                    brandDetails.ModifyBy = brand.ModifyBy;
+                    brandDetails.ModifyDate = brand.ModifyDate;
+                    
+                }
+                else
+                {
+                    throw new Exception();
+                }
+                return brandDetails;
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex.Message, ex);
                 throw new Exception(ex.Message, ex);
             }
         }

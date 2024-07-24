@@ -34,20 +34,24 @@ namespace IMS.WEB.Controllers
 
         [HttpPost]
         public async Task<ActionResult> CreateBrand(BrandViewModel brand)
+        
         {
             string message = string.Empty;
             bool isValid = false;
+
             try
             {
+
                 if (ModelState.IsValid)
                 {
                     await _brandService.CreateBrandService(brand);
                     isValid = true;
-                }else
+                }
+                else
                 {
                     message = "Model is not bind correctly!";
                 }
-
+                
             }catch (Exception ex)
             {
                 message = "Internal server error!";
@@ -55,20 +59,34 @@ namespace IMS.WEB.Controllers
             return Json(new {Message = message, IsValid = isValid}, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult Load()
+        {
+            return View();
+        }
 
         [HttpGet]
-        public async Task<ActionResult> Load()
+        public async Task<ActionResult> LoadBrandData()
         {
             var brandViewModelList = new List<BrandViewModel>();
             string message = string.Empty;
             bool isValid = false;
-
             try
             {
+
                 var brand = await _brandService.GetAll();
 
                 if (brand != null)
                 {
+                    //foreach (var item in brand)
+                    //{
+                    //    new BrandViewModel
+                    //    {
+                    //        Id = item.Id,
+                    //        BrandName = item.BrandName,
+                    //        CreatedDate = DateTime.Now,
+                    //        ModifyBy = item.ModifyBy,
+                    //    };
+                    //}
                     brandViewModelList = brand.Select(b => new BrandViewModel
                     {
                         Id = b.Id,
@@ -76,22 +94,25 @@ namespace IMS.WEB.Controllers
                         CreatedDate = b.CreatedDate,
                         ModifyDate = b.ModifyDate
                     }).ToList();
+                    isValid = true;
                 }
                 else
                 {
                     message = "No brand is available!";
                 }
-
             }
             catch (Exception ex)
             {
                 message = "Internal Server Error!";
             }
 
-            return Json(new
-            {
-                BrandDataList = brandViewModelList
-            }, JsonRequestBehavior.AllowGet);
+            return Json(new 
+            { 
+                BrandList = brandViewModelList, 
+                IsValid = isValid, 
+                Message = message 
+            }, 
+            JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
@@ -133,6 +154,7 @@ namespace IMS.WEB.Controllers
         {
             return View();
         }
+
         [HttpGet]
         public async Task<JsonResult> DataTableView()
         {
@@ -141,15 +163,14 @@ namespace IMS.WEB.Controllers
             {
                 data = brandList
             }, JsonRequestBehavior.AllowGet);
-
         }
 
         public async Task<ActionResult> Details(long id)
         {
             try
             {
-                var barnd = await _brandService.GetById(id);
-                return View(barnd);
+                var brand = await _brandService.GetById(id);
+                return View(brand);
 
             }
             catch (Exception ex)
@@ -157,6 +178,36 @@ namespace IMS.WEB.Controllers
                 _logger.Error(ex.Message);
             }
             return View();
+        }
+
+        [HttpGet]
+        public async Task<JsonResult> BrandDetails(long id)
+        {
+            bool isSuccess = false;
+            string message = string.Empty;
+            var brandDetails = new BrandViewModel();
+            try
+            {
+                brandDetails = await _brandService.BrandDetailsService(id);
+                if (brandDetails != null)
+                {
+                    isSuccess = true;
+                }
+                else
+                {
+                    message = "Brand not found!";
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex.Message);
+            }
+            return Json(new
+            {
+                Details = brandDetails, 
+                IsSuccess = isSuccess,
+                Message = message,
+            });
         }
 
 

@@ -1,55 +1,314 @@
 ﻿
-@{
-    ViewBag.Title = "Load";
-}
 
-<h2>Brand List</h2>
+@*DataTable and Bootstrap CDN*@
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
 
-<table id="brandTable">
-    <thead>
-        <tr>
-            <th>Brand</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>BrandName</td>
-        </tr>
-    </tbody>
-</table>
+<div id="errorMessageShow">
+    <p></p>
+</div>
 
-<link href="//cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css" rel="stylesheet" />
+<div id="successMessageShow">
+    <p></p>
+</div>
+
+<div class="row" style="padding: 5%">
+    <div class="container my-3 p-2 text-center bg-gradient text-bg-light">
+        <h2>List of Brands</h2>
+    </div>
+    <a href="#" class="btn btn-dark col-sm-2 m-2" onclick="createBrandFun()">Add New</a>
+
+    <div style="border:1px solid black; padding:10px; width: 1300px; text-align:center" class="col-lg-4">
+        <table id="brandInfoTable" class="cell-border" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Brand Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Id</th>
+                    <th>Brand</th>
+                    <th>Actions</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+
+
+@*Create New Brand Modal*@
+<div class="modal fade" id="createBrand" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" style="text-align:center">Create New Brand</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container my-3 p-2 text-center bg-light text-bg-light">
+                    <table>
+                        <tbody id="brandTableBodyId">
+                            <tr>
+                                <td>
+                                    <label class="control-lable" for="BrandName">BrandName</label>
+                                    <input class="form-control brandName" id="BrandName" name="BrandName" placeholder="Enter the brand name" type="text" value="">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-center ">
+                        <input type="submit" id="employeeSubmitId" class="btn btn-primary" value="Submit" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*Brand Details Modal*@
+<div class="modal fade" id="detailsBrand" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" style="text-align:center">--Details about the brand--</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container my-3 p-2 text-center bg-light text-bg-light">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>CreatedBy</th>
+                                <th>CreatedAt</th>
+                                <th>ModifyBy</th>
+                                <th>ModifyAt</th>
+                            </tr>
+                        </thead>
+                        <tbody id="brandTabledetailsBodyId">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*Delete Modal*@
+<div class="modal" id="deleteBrandModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm...</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4>Are you sure to delete the brand - <span id="deleteBrandName"></span>?</h4>
+                <input type="hidden" value="" id="brandId" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" id="btnBrandDelete" class="btn btn-outline-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 @section scripts{
-    <script src="//cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/2.0.5/js/dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/2.0.5/js/dataTables.bootstrap5.js"></script>
 
     <script>
+
+        const showErrorAlertMessage = (message) => {
+            return `
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+               <p> ${message} </p>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>`
+        }
+
+        const showSuccessAlertMessage = (message) => {
+            return `
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+               <p> ${message} </p>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>`
+        }
+
+        function createBrandFun() {
+            $("#createBrand").modal('show')
+        }
+
+        function brandDataBinding() {
+            const brandName = $("#BrandName").val();
+
+            const brandObject = {
+                BrandName: brandName
+            }
+            return brandObject;
+        }
+
+        function submitBrand(obj) {
+            $.ajax({
+                url: "/Brand/CreateBrand",
+                method: "POST",
+                data: obj,
+                dataType: 'json',
+                success: function (response) {
+                    if (response.IsValid == true) {
+                        window.location.href = "/Brand/LoadBrandData";
+                        const msgAlertMake = showSuccessAlertMessage(response.Message);
+                        $("#successMessageShow").html(msgAlertMake);
+                        $("#createBrand").modal('hide');
+                        window.location.href = "/Brand/LoadBrandData";
+
+                    } else {
+                        const msgAlertMake = showErrorAlertMessage(response.Message);
+                        $("#errorMessageShow").html(msgAlertMake);
+                        $("#createBrand").modal('hide');
+                    }
+                },
+                error: function (error) {
+                    const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
+                    $("#errorMessageShow").html(msgAlertMake);
+                    $("#createBrand").modal('hide');
+                }
+            });
+        }
+
+        function brandDetails(brandId) {
+            $("#detailsBrand").modal('show')
+            $.ajax({
+                url: "/Brand/BrandDetails",
+                type: 'GET',
+                data: { id: brandId },
+                dataType: 'json',
+                success: function (response) {
+                    if (response.IsSuccess == true) {
+                        console.log(response)
+                        $('#detailsBrand').modal('show');
+                    }
+                    else {
+                        const msgAlertMake = showErrorAlertMessage(response.Message);
+                        $("#errorMessageShow").html(msgAlertMake);
+                    }
+                },
+                error: function (error) {
+                    const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
+                    $("#errorMessageShow").html(msgAlertMake);
+                }
+            });
+        }
+
+
+        function brandDelete(deleteId) {
+            $("#deleteBrandModal").modal("show");
+
+            $("btnBrandDelete").click(function () {
+                $.ajax({
+                    url: "/Brand/Delete",
+                    type: 'POST',
+                    data: { id: deleteId },
+                    success: function (response) {
+                        console.log(response);
+                        if (response.result) {
+                            $("#deleteStudentModal").modal('hide');
+                            $("#studentId").val(null);
+                            window.location.href = "/Student/LoadStudent";
+                        } else {
+                            console.log(response.errorMessage);
+                            const msgAlertMake = showAlertMessage(response.errorMessage);
+                            $("#errorMessageShow").html(msgAlertMake);
+                            $("#deleteStudentModal").modal('hide');
+                        }
+                    },
+                    error: function (error) {
+                        const msgAlertMake = showAlertMessage(error.status + " Error!");
+                        $("#errorMessageShow").html(msgAlertMake);
+                        $("#deleteStudentModal").modal('hide');
+                    }
+
+                })
+            })
+
+        }
+
         $(document).ready(function () {
 
-            $("#brandTable").DataTable(
-                {
-                    ajax: {
-                        url: "/Brand/Load"
-                    },
-                    "columns": [
-                        { "BrandDataList": "BrandName", "name": "BrandName" },
-                        {
-                            "Id": "Id", "render": function (data) {
-                                return ` <a> <button type = "submit" class="btn btn-primary btn-sm" onclick = "window.location.href='/Brand/Update/${data}'">
-                                            <i class="fas fa-pencil-alt">
-                                            </i>Update</button></a>
-                                            <a> <button type = "submit" class="btn btn-danger btn-sm" onclick = "window.location.href='/Brand/Delete/${data}'">
-                                            <i class="fas fa-pencil-alt">
-                                            </i>Delete</button></a>
-                                            <a> <button type = "submit" class="btn btn-info btn-sm" onclick = "window.location.href='/Brand/Details/${data}'">
-                                            <i class="fas fa-pencil-alt">
-                                            </i>Details</button></a>`
-                            }
-                        },
-                    ]
-                })
+            $.ajax({
+                url: "/Brand/LoadBrandData",
+                datatype: 'json',
+                type: 'GET',
+                success: function (response) {
+                    console.log(response);
+                    if (response.IsValid == true) {
+                        $("#brandInfoTable").DataTable(
+                            {
+                                data: response.BrandList,
+                                'scrollY': 200,
+                                "columns": [
+                                    { "data": "Id", name: "Id" },
+                                    { "data": "BrandName", "name": "BrandName" },
+                                    {
+                                        "data": "Id", "render": function (brandId) {
+                                            return ` <a> <button type = "submit" class="btn btn-primary btn-sm" onclick = "window.location.href='/Brand/Update/${brandId}'">
+                                                                <i class="fas fa-pencil-alt">
+                                                                </i>Update</button></a>
+                                                                <a> <button type = "submit" class="btn btn-danger btn-sm" onclick = "window.location.href='/Brand/Delete/${brandId}'">
+                                                                <i class="fas fa-pencil-alt">
+                                                                </i>Delete</button></a>
+                                                                <a> <button type = "submit" class="btn btn-info btn-sm" onclick = "window.location.href='/Brand/Details/${brandId}'">
+                                                                <i class="fas fa-pencil-alt">
+                                                                </i>Details</button>
+                                                                <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "brandDetails(${brandId})">
+                                                                <i class="fas fa-pencil-alt">
+                                                                </i>Details</button>
+                                                                <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "brandDelete(${brandId})">
+                                                                <i class="fas fa-pencil-alt">
+                                                                </i>Delete</button></a>
+                                                                <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "brandUpdate(${brandId})">
+                                                                <i class="fas fa-pencil-alt">
+                                                                </i>Update</button></a>
+                                                    </a>
+                                                    `
+                                        }
+                                    },
+                                ]
+                            })
+
+                    } else {
+                        const msgAlertMake = showErrorAlertMessage(response.Message);
+                        $("#errorMessageShow").html(msgAlertMake);
+                    }
+                },
+                error: function (err) {
+                    const msgAlertMake = showErrorAlertMessage(err + " Error!");
+                    $("#errorMessageShow").html(msgAlertMake);
+                }
+            });
+
+            $("#employeeSubmitId").click(function () {
+
+                var formData = brandDataBinding();
+                submitBrand(formData);
+
+            });
         })
+
+
     </script>
 }
