@@ -326,11 +326,11 @@
             $("#updateSaveId").click(function () {
 
                 const id = $("#updateId").val();
-                const name = $("#nameId").val();
+                const name = $("#updateNameId").val();
 
                 var formdata = {
                     Id: id,
-                    BrandName: name
+                    SKUsName: name
                 }
 
                 $.ajax({
@@ -342,17 +342,17 @@
                         if (response.IsSuccess == true) {
                             const msgAlertMake = showSuccessAlertMessage(response.Message);
                             $("#successMessageShow").html(msgAlertMake);
-                            $("#updateBrand").modal('hide');
+                            $("#updateModal").modal('hide');
                         } else {
                             const msgAlertMake = showErrorAlertMessage(response.Message);
                             $("#errorMessageShow").html(msgAlertMake);
-                            $("#updateBrand").modal('hide');
+                            $("#updateModal").modal('hide');
                         }
                     },
                     error: function (error) {
                         const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
                         $("#errorMessageShow").html(msgAlertMake);
-                        $("#updateBrand").modal('hide');
+                        $("#updateModal").modal('hide');
                     }
                 });
             });
