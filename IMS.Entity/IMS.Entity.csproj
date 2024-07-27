@@ -55,6 +55,8 @@
     <Compile Include="Entities\UserRole.cs" />
     <Compile Include="EntityViewModels\BrandViewModel.cs" />
     <Compile Include="EntityViewModels\CategoryViewModel.cs" />
+    <Compile Include="EntityViewModels\CustomerViewModel.cs" />
+    <Compile Include="EntityViewModels\SkuViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

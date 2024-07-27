@@ -9,11 +9,11 @@ namespace IMS.DAO.CustomerDao
 {
     public interface ICustomerDao
     {
-        Task<IEnumerable<Customer>> GetAll();
-        Task<Customer> GetById(long id);
+        Task<IEnumerable<Customer>> Load();
+        Task<Customer> Get(long id);
         Task Create(Customer customer);
         Task Update(Customer customer);
-        Task DeleteById(long id);
+        Task Delete(long id);
     }
     public class CustomerDao : ICustomerDao
     {
@@ -22,7 +22,7 @@ namespace IMS.DAO.CustomerDao
         {
             _session = session;
         }
-        public async Task<IEnumerable<Customer>> GetAll()
+        public async Task<IEnumerable<Customer>> Load()
         {
             try
             {
@@ -30,10 +30,11 @@ namespace IMS.DAO.CustomerDao
             }
             catch (Exception ex)
             {
-                throw new Exception("Faild to retrieve the customer", ex);
+                throw new Exception("Failed to retrieve the customer", ex);
             }
         }
-        public async Task<Customer> GetById(long id)
+
+        public async Task<Customer> Get(long id)
         {
             try
             {
@@ -41,17 +42,27 @@ namespace IMS.DAO.CustomerDao
             }
             catch (Exception ex)
             {
-                throw new Exception($"Faild to retrieve customer with the ID {id}", ex);
+                throw new Exception($"Failed to retrieve customer with the ID {id}", ex);
             }
         }
+
         public async Task Create(Customer customer)
         {
             try
             {
                 using (var transaction = _session.BeginTransaction())
                 {
-                    await _session.SaveAsync(customer);
-                    await transaction.CommitAsync();
+                    try
+                    {
+                        await _session.SaveAsync(customer);
+                        await transaction.CommitAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw new Exception("Customer is not created! Internal issue!", ex);
+
+                    }
                 }
             }
             catch (Exception ex)
@@ -59,32 +70,51 @@ namespace IMS.DAO.CustomerDao
                 throw new Exception("Failed to create new customer", ex);
             }
         }
+
         public async Task Update(Customer customer)
         {
             try
             {
                 using (var transaction = _session.BeginTransaction())
                 {
-                    await _session.UpdateAsync(customer);
-                    await transaction.CommitAsync();
+                    try
+                    {
+                        await _session.UpdateAsync(customer);
+                        await transaction.CommitAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw new Exception("Customer is not updated! Internal Error!", ex);
+                    }
+
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception($"Faild to update the Supplier", ex);
+                throw new Exception($"Failed to update the Customer", ex);
             }
         }
-        public async Task DeleteById(long id)
+
+        public async Task Delete(long id)
         {
             try
             {
-                var deleteIndividualSKU = await _session.GetAsync<Customer>(id);
-                if (deleteIndividualSKU != null)
+                var customer = await _session.GetAsync<Customer>(id);
+                if (customer != null)
                 {
                     using (var transaction = _session.BeginTransaction())
                     {
-                        await _session.DeleteAsync(deleteIndividualSKU);
-                        await transaction.CommitAsync();
+                        try
+                        {
+                            await _session.DeleteAsync(customer);
+                            await transaction.CommitAsync();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            throw new Exception("Rolled Back! Please try again!", ex);
+                        }
                     }
                 }
             }

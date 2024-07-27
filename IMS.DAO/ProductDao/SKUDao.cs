@@ -9,11 +9,11 @@ namespace IMS.DAO.ProductDao
 {
     public interface ISkuDao
     {
-        Task<IEnumerable<SKU>> GetAll();
-        Task<SKU> GetById(long id);
-        Task Create(SKU sKU);
-        Task Update(SKU sKU);
-        Task DeleteById(long id);
+        Task<IEnumerable<SKU>> Load();
+        Task<SKU> Get(long id);
+        Task SkuCreate(SKU sKU);
+        Task SkuUpdate(SKU sKU);
+        Task SkuDelete(long id);
     }
     public class SKUDao : ISkuDao
     {
@@ -22,7 +22,7 @@ namespace IMS.DAO.ProductDao
         {
             _session = session;
         }
-        public async Task<IEnumerable<SKU>> GetAll()
+        public async Task<IEnumerable<SKU>> Load()
         {
             try
             {
@@ -30,10 +30,12 @@ namespace IMS.DAO.ProductDao
             }
             catch (Exception ex)
             {
-                throw new Exception("Faild to retrieve Product SKU", ex);
+                throw new Exception("Failed to retrieve Product SKU", ex);
             }
         }
-        public async Task<SKU> GetById(long id)
+
+
+        public async Task<SKU> Get(long id)
         {
             try
             {
@@ -41,50 +43,83 @@ namespace IMS.DAO.ProductDao
             }
             catch (Exception ex)
             {
-                throw new Exception($"Faild to retrieve the product SKU with the ID {id}", ex);
+                throw new Exception($"Failed to retrieve the product SKU with the ID {id}", ex);
             }
         }
-        public async Task Create(SKU sKU)
+
+
+        public async Task SkuCreate(SKU sKU)
         {
             try
             {
                 using (var transaction = _session.BeginTransaction())
                 {
-                    await _session.SaveAsync(sKU);
-                    await transaction.CommitAsync();
+                    try
+                    {
+                        await _session.SaveAsync(sKU);
+                        await transaction.CommitAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw new Exception("SKU is not created! Internal issue!", ex);
+
+                    }
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Failed to create ProductType", ex);
+                throw new Exception("Failed to create brand", ex);
+
             }
         }
-        public async Task Update(SKU sKU)
+
+
+        public async Task SkuUpdate(SKU sKU)
         {
             try
             {
                 using (var transaction = _session.BeginTransaction())
                 {
-                    await _session.UpdateAsync(sKU);
-                    await transaction.CommitAsync();
+                    try
+                    {
+                        await _session.UpdateAsync(sKU);
+                        await transaction.CommitAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw new Exception("SKU is not updated! Internal Error!", ex);
+                    }
+
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception($"Faild to update the Type", ex);
+                throw new Exception($"Failed to update the SKU", ex);
             }
         }
-        public async Task DeleteById(long id)
+
+
+        public async Task SkuDelete(long id)
         {
             try
             {
-                var deleteIndividualSKU = await _session.GetAsync<SKU>(id);
-                if (deleteIndividualSKU != null)
+                var sku = await _session.GetAsync<SKU>(id);
+                if (sku != null)
                 {
                     using (var transaction = _session.BeginTransaction())
                     {
-                        await _session.DeleteAsync(deleteIndividualSKU);
-                        await transaction.CommitAsync();
+                        try
+                        {
+                            await _session.DeleteAsync(sku);
+                            await transaction.CommitAsync();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            throw new Exception("Rolled Back! Please try again!", ex);
+                        }
                     }
                 }
             }

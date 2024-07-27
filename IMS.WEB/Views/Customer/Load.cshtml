@@ -20,23 +20,29 @@
 @*DataTable View*@
 <div class="row" style="padding: 5%">
     <div class="container my-3 p-2 text-center bg-gradient text-bg-light">
-        <h2>List of Brands</h2>
+        <h2>List of Customers</h2>
     </div>
-    <a href="#" class="btn btn-dark col-sm-2 m-2" onclick="createBrandFun()">Add New</a>
+    <a href="#" class="btn btn-dark col-sm-2 m-2" onclick="createNewFun()">Add New</a>
 
     <div style="border:1px solid black; padding:10px; width: 1300px; text-align:center" class="col-lg-4">
-        <table id="brandInfoTable" class="cell-border" style="width:100%">
+        <table id="InfoTable" class="cell-border" style="width:100%">
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Brand Name</th>
+                    <th>Customer Name</th>
+                    <th>Customer Number</th>
+                    <th>Customer Email</th>
+                    <th>Customer Address</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
                     <th>Id</th>
-                    <th>Brand</th>
+                    <th>Customer Name</th>
+                    <th>Customer Number</th>
+                    <th>Customer Email</th>
+                    <th>Customer Address</th>
                     <th>Actions</th>
                 </tr>
             </tfoot>
@@ -46,25 +52,37 @@
 
 
 
-@*Create New Brand Modal*@
-<div class="modal fade" id="createBrand" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+@*Create New  Modal*@
+<div class="modal fade" id="createModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #1d4552">
-                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">Create New Brand</h1>
+                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">Create New Customer</h1>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="background-color: darkgray">
                 <div class="container my-3 p-2 text-center">
                     <div class="row mb-3">
-                        <label for="BrandName" class="col-sm-3 col-form-label text-start" style="color:black;">Brand Name</label>
+                        <label for="CustomerName" class="col-sm-3 col-form-label text-start" style="color:black;">Customer Name</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="BrandName" name="BrandName" placeholder="Enter the brand name" style="background-color:#f5f5f5">
+                            <input type="text" class="form-control" id="CustomerName" name="CustomerName" placeholder="Enter customer name" style="background-color:#f5f5f5">
+                        </div>
+                        <label for="CustomerNumber" class="col-sm-3 col-form-label text-start" style="color:black;">Customer Number</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="CustomerNumber" name="CustomerNumber" placeholder="Enter customer number" style="background-color:#f5f5f5">
+                        </div>
+                        <label for="EmailAddress" class="col-sm-3 col-form-label text-start" style="color:black;">Customer Email</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="EmailAddress" name="EmailAddress" placeholder="Enter customer email" style="background-color:#f5f5f5">
+                        </div>
+                        <label for="CustomerAddress" class="col-sm-3 col-form-label text-start" style="color:black;">Customer Address</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="CustomerAddress" name="CustomerAddress" placeholder="Enter customer address" style="background-color:#f5f5f5">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col text-center">
-                            <input type="submit" id="employeeSubmitId" class="btn btn-primary" value="Create" style="background-color: #1d4552">
+                            <input type="submit" id="submitId" class="btn btn-primary" value="Create" style="background-color: #1d4552">
                         </div>
                     </div>
                 </div>
@@ -77,12 +95,12 @@
 </div>
 
 
-@*Brand Details Modal*@
-<div class="modal fade" id="detailsBrand" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+@* Details Modal*@
+<div class="modal fade" id="detailsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #1d4552">
-                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">--Details about the brand--</h1>
+                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">--Details about the Customer--</h1>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="background-color: darkgray">
@@ -96,7 +114,7 @@
                                 <th>ModifyAt</th>
                             </tr>
                         </thead>
-                        <tbody id="brandTabledetailsBodyId">
+                        <tbody id="detailsBodyId">
                         </tbody>
                     </table>
                 </div>
@@ -110,7 +128,7 @@
 
 
 @*Delete Modal*@
-<div class="modal fade" id="deleteBrandModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #1d4552">
@@ -118,37 +136,51 @@
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="background-color: darkgray">
-                <h4>Are you sure to delete the brand - <span id="deleteBrandName"></span>?</h4>
-                <input type="hidden" value="" id="brandId" />
+                <h4>Are you sure to delete the Customer - <span id="nameId"></span>?</h4>
+                <input type="hidden" value="" id="Id" />
             </div>
             <div class="modal-footer" style="background-color: #1d4552">
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" style="background-color:#a9a9a9">Close</button>
-                <button type="button" id="btnBrandDelete" class="btn btn-outline-danger">Delete</button>
+                <button type="button" id="btnDelete" class="btn btn-outline-danger">Delete</button>
             </div>
         </div>
     </div>
 </div>
 
-@*Update Brand Modal*@
-<div class="modal fade" id="updateBrand" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+@*Update  Modal*@
+<div class="modal fade" id="updateModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #1d4552">
-                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">Update Brand</h1>
+                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">Update Customer</h1>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="background-color: darkgray">
                 <div class="container my-3 p-2 text-center">
                     <div class="row mb-3">
-                        <label for="UpdateBrandName" class="col-sm-3 col-form-label text-start" style="color:black;">Brand Name</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="updateBrandName" name="BrandName" style="background-color:#f5f5f5">
+                        <div class="row mb-3">
+                            <label for="CustomerName" class="col-sm-3 col-form-label text-start" style="color:black;">Customer Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="updateCustomerName" name="CustomerName" style="background-color:#f5f5f5">
+                            </div>
+                            <label for="CustomerNumber" class="col-sm-3 col-form-label text-start" style="color:black;">Customer Number</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="updateCustomerNumber" name="CustomerNumber" style="background-color:#f5f5f5">
+                            </div>
+                            <label for="EmailAddress" class="col-sm-3 col-form-label text-start" style="color:black;">Customer Email</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="updateEmailAddress" name="EmailAddress" style="background-color:#f5f5f5">
+                            </div>
+                            <label for="CustomerAddress" class="col-sm-3 col-form-label text-start" style="color:black;">Customer Address</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="updateCustomerAddress" name="CustomerAddress" style="background-color:#f5f5f5">
+                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col text-center">
-                            <input type="hidden" id="updateBrandId" name="Id">
-                            <input type="submit" id="updateBrandSaveId" class="btn btn-primary" value="Save" style="background-color: #1d4552">
+                            <input type="hidden" id="updateId" name="Id">
+                            <input type="submit" id="updateSaveId" class="btn btn-primary" value="Save" style="background-color: #1d4552">
                         </div>
                     </div>
                 </div>
@@ -183,22 +215,28 @@
                         </div>`
         }
 
-        function createBrandFun() {
-            $("#createBrand").modal('show')
+        function createNewFun() {
+            $("#createModal").modal('show')
         }
 
-        function brandDataBinding() {
-            const brandName = $("#BrandName").val();
+        function DataBinding() {
+            const name = $("#CustomerName").val();
+            const number = $("#CustomerNumber").val();
+            const email = $("#EmailAddress").val();
+            const address = $("#CustomerAddress").val();
 
-            const brandObject = {
-                BrandName: brandName
+            const obj = {
+                CustomerName: name,
+                CustomerNumber: number,
+                EmailAddress: email,
+                CustomerAddress: address
             }
-            return brandObject;
+            return obj;
         }
 
-        function submitBrand(obj) {
+        function submitData(obj) {
             $.ajax({
-                url: "/Brand/CreateBrand",
+                url: "/Customer/Create",
                 method: "POST",
                 data: obj,
                 dataType: 'json',
@@ -206,39 +244,36 @@
                     if (response.IsValid == true) {
                         const msgAlertMake = showSuccessAlertMessage(response.Message);
                         $("#successMessageShow").html(msgAlertMake);
-                        $("#createBrand").modal('hide');
+                        $("#createModal").modal('hide');
 
                         //Reload the DataTable after added a new brand.
                         const table = $("#brandInfoTable").DataTable();
                         table.ajax.reload();
 
-                        //window.location.href = "/Brand/Load";
-
                     } else {
                         const msgAlertMake = showErrorAlertMessage(response.Message);
                         $("#errorMessageShow").html(msgAlertMake);
-                        $("#createBrand").modal('hide');
+                        $("#createModal").modal('hide');
                     }
                 },
                 error: function (error) {
                     const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
                     $("#errorMessageShow").html(msgAlertMake);
-                    $("#createBrand").modal('hide');
+                    $("#createModal").modal('hide');
                 }
             });
         }
 
-        function brandDetails(brandId) {
-            $("#detailsBrand").modal('show')
+        function Details(id) {
+            $("#detailsModal").modal('show')
             $.ajax({
-                url: "/Brand/BrandDetails",
+                url: "/Customer/Details",
                 type: 'GET',
-                data: { id: brandId },
+                data: { id: id },
                 dataType: 'json',
                 success: function (response) {
                     if (response.IsSuccess == true) {
-                        console.log("Deatils of Brand", response.Details)
-                        $("#brandTabledetailsBodyId").empty();
+                        $("#detailsBodyId").empty();
                         const trMake = `
                                         <tr>
                                             <td>${response.Details.CreatedBy}</td>
@@ -247,41 +282,43 @@
                                             <td>${response.Details.ModifyDate}</td>
                                         </tr>
                                     `;
-                        $("#brandTabledetailsBodyId").append(trMake);
-                        $('#detailsBrand').modal('show');
+                        $("#detailsBodyId").append(trMake);
+                        $('#detailsModal').modal('show');
                     }
                     else {
                         const msgAlertMake = showErrorAlertMessage(response.Message);
                         $("#errorMessageShow").html(msgAlertMake);
+                        $('#detailsModal').modal('hide');
                     }
                 },
                 error: function (error) {
                     const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
                     $("#errorMessageShow").html(msgAlertMake);
+                    $('#detailsModal').modal('hide');
                 }
             });
         }
 
 
-        function brandDelete(deleteId) {
-            $("#deleteBrandModal").modal("show");
+        function Delete(id) {
+            $("#deleteModal").modal("show");
 
-            $("#btnBrandDelete").click(function () {
+            $("#btnDelete").click(function () {
                 $.ajax({
-                    url: "/Brand/Delete",
+                    url: "/Customer/Delete",
                     type: 'POST',
-                    data: { id: deleteId },
+                    data: { id: id },
                     success: function (response) {
                         console.log(response);
                         if (response.IsSuccess == true) {
-                            $("#deleteBrandModal").modal('hide');
+                            $("#deleteModal").modal('hide');
                             const msgAlertMake = showSuccessAlertMessage(response.Message);
                             $("#successMessageShow").html(msgAlertMake);
-                            $("#deleteBrandModal").modal('hide');
+                            $("#deleteModal").modal('hide');
                         } else {
                             const msgAlertMake = showErrorAlertMessage(response.Message);
                             $("#errorMessageShow").html(msgAlertMake);
-                            $("#deleteBrandModal").modal('hide');
+                            $("#deleteModal").modal('hide');
                         }
                     },
                     error: function (error) {
@@ -295,61 +332,74 @@
 
         }
 
-        function brandUpdate(updateId) {
-            $("#updateBrand").modal('show');
+
+        function Update(updateId) {
+            $("#updateModal").modal('show');
 
             $.ajax({
-                url: "/Brand/Update",
+                url: "/Customer/Update",
                 dataType: 'json',
                 type: 'GET',
                 data: { id: updateId },
                 success: function (response) {
-                    if (response.IsSuccess == true) {
-                        $("#updateBrandId").val(response.UpdateBrandData.Id);
-                        $("#updateBrandName").val(response.UpdateBrandData.BrandName);
-                        $("#updateBrand").modal('show');
+                    console.log(response)
+                    if (response.IsSuccess) {
+                        $("#updateId").val(response.UpdateCustomerData.Id);
+                        $("#updateCustomerName").val(response.UpdateCustomerData.CustomerName);
+                        $("#updateCustomerNumber").val(response.UpdateCustomerData.CustomerNumber);
+                        $("#updateEmailAddress").val(response.UpdateCustomerData.EmailAddress);
+                        $("#updateCustomerAddress").val(response.UpdateCustomerData.CustomerAddress);
+                        $("#updateModal").modal('show');
                     }
                     else {
                         const msgAlertMake = showErrorAlertMessage(response.Message);
                         $("#errorMessageShow").html(msgAlertMake);
+                        $("#updateModal").modal('hide');
                     }
                 },
                 error: function (error) {
                     const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
                     $("#errorMessageShow").html(msgAlertMake);
+                    $("#updateModal").modal('hide');
                 }
             });
 
-            $("#updateBrandSaveId").click(function () {
+            $("#updateSaveId").click(function () {
 
-                const brandId = $("#updateBrandId").val();
-                const brandName = $("#updateBrandName").val();
+                const id = $("#updateId").val();
+                const cutomerName = $("#updateCustomerName").val();
+                const cutomerNumber = $("#updateCustomerNumber").val();
+                const email = $("#updateEmailAddress").val();
+                const address = $("#updateCustomerAddress").val();
 
                 var formdata = {
-                    Id: brandId,
-                    BrandName: brandName
+                    Id: id,
+                    CustomerName: cutomerName,
+                    CustomerNumber: cutomerNumber,
+                    EmailAddress: email,
+                    CustomerAddress: address
                 }
 
                 $.ajax({
-                    url: "/Brand/Update",
+                    url: "/Customer/Update",
                     dataType: 'json',
                     type: 'POST',
-                    data: { id: formdata.Id, brand: formdata },
+                    data: { id: formdata.Id, customerViewModel: formdata },
                     success: function (response) {
                         if (response.IsSuccess == true) {
                             const msgAlertMake = showSuccessAlertMessage(response.Message);
                             $("#successMessageShow").html(msgAlertMake);
-                            $("#updateBrand").modal('hide');
+                            $("#updateModal").modal('hide');
                         } else {
                             const msgAlertMake = showErrorAlertMessage(response.Message);
                             $("#errorMessageShow").html(msgAlertMake);
-                            $("#updateBrand").modal('hide');
+                            $("#updateModal").modal('hide');
                         }
                     },
                     error: function (error) {
                         const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
                         $("#errorMessageShow").html(msgAlertMake);
-                        $("#updateBrand").modal('hide');
+                        $("#updateModal").modal('hide');
                     }
                 });
             });
@@ -358,31 +408,34 @@
         $(document).ready(function () {
 
             $.ajax({
-                url: "/Brand/LoadBrandData",
+                url: "/Customer/LoadCustomerData",
                 datatype: 'json',
                 type: 'GET',
                 success: function (response) {
                     if (response.IsValid == true) {
-                        $("#brandInfoTable").DataTable(
+                        $("#InfoTable").DataTable(
                             {
-                                data: response.BrandList,
+                                data: response.CustomerList,
                                 'scrollY': 200,
                                 "columns": [
                                     { "data": "Id", name: "Id" },
-                                    { "data": "BrandName", "name": "BrandName" },
+                                    { "data": "CustomerName", "name": "CustomerName" },
+                                    { "data": "CustomerNumber", "name": "CustomerNumber" },
+                                    { "data": "EmailAddress", "name": "EmailAddress" },
+                                    { "data": "CustomerAddress", "name": "CustomerAddress" },
                                     {
-                                        "data": "Id", "render": function (brandId) {
+                                        "data": "Id", "render": function (cusId) {
                                             return `
-                                                    <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "brandDetails(${brandId})">
+                                                    <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "Details(${cusId})">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>Details</button></a>
-                                                    <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "brandDelete(${brandId})">
+                                                    <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "Delete(${cusId})">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>Delete</button></a>
-                                                    <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "brandUpdate(${brandId})">
+                                                    <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "Update(${cusId})">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>Update</button></a>
-                                                    
+
                                                     `
                                         }
                                     },
@@ -400,10 +453,10 @@
                 }
             });
 
-            $("#employeeSubmitId").click(function () {
+            $("#submitId").click(function () {
 
-                var formData = brandDataBinding();
-                submitBrand(formData);
+                var formData = DataBinding();
+                submitData(formData);
 
             });
         })
@@ -411,3 +464,4 @@
 
     </script>
 }
+

@@ -1,8 +1,10 @@
 ﻿using IMS.Entity.Entities;
+using IMS.Entity.EntityViewModels;
 using IMS.Service;
 using log4net;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -19,123 +21,224 @@ namespace IMS.WEB.Controllers
             _skuService = new SkuService();
         }
 
-        [HttpGet]
-        public ActionResult Create()
+
+        public ActionResult CreateSKU()
         {
-            return View();
+            return View(new SkuViewModel());
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(SKU sKU)
+        public async Task<ActionResult> CreateSKU(SkuViewModel skuViewModel)
+
         {
+            string message = string.Empty;
+            bool isValid = false;
+
             try
             {
-                if (ModelState.IsValid == false)
+                if (skuViewModel != null)
                 {
-                    return View(sKU);
+                    await _skuService.CreateSkuService(skuViewModel);
+                    isValid = true;
+                    message = "SKU is added successfully!";
                 }
-                await _skuService.CreateAsync(sKU);
+                else
+                {
+                    message = "Something is wrong! Please try again!";
+                }
+
             }
             catch (Exception ex)
             {
-                _logger.Error(ex.Message);
-                ViewBag.Error = ex.Message;
+                message = "Internal server error!";
             }
-            TempData["AlertMessage"] = "New SKU is Created successfully!";
-            return RedirectToAction("Index");
+            return Json(new { Message = message, IsValid = isValid }, JsonRequestBehavior.AllowGet);
         }
 
+
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Load()
         {
             return View();
         }
 
         [HttpGet]
-        public async Task<JsonResult> DataTableView()
+        public async Task<ActionResult> LoadSkuData()
         {
-            var SkuList = await _skuService.GetAllAsync();
+            var skuViewModelList = new List<SkuViewModel>();
+            string message = string.Empty;
+            bool isValid = false;
+            try
+            {
+
+                var sku = await _skuService.GetAll();
+
+                if (sku != null)
+                {
+                    skuViewModelList = sku.Select(b => new SkuViewModel
+                    {
+                        Id = b.Id,
+                        SKUsName = b.SKUsName,
+                        CreatedDate = b.CreatedDate,
+                        ModifyDate = b.ModifyDate
+                    }).ToList();
+                    isValid = true;
+                }
+                else
+                {
+                    message = "No Sku is available!";
+                }
+            }
+            catch (Exception ex)
+            {
+                message = "Internal Server Error!";
+            }
+
             return Json(new
             {
-                data = SkuList
+                SkuList = skuViewModelList,
+                IsValid = isValid,
+                Message = message
+            },
+            JsonRequestBehavior.AllowGet);
+        }
+
+
+        public async Task<ActionResult> SkuDetails(long id)
+        {
+            bool isSuccess = false;
+            string message = string.Empty;
+            var skuDetails = new SkuViewModel();
+            try
+            {
+                skuDetails = await _skuService.SkuDetailsService(id);
+
+                if (skuDetails != null)
+                {
+                    isSuccess = true;
+                }
+                else
+                {
+                    message = "SKU not found!";
+                }
+            }
+            catch (Exception ex)
+            {
+                //_logger.Error(ex.Message);
+            }
+            return Json(new
+            {
+                Details = new
+                {
+                    skuDetails.CreatedBy,
+                    CreatedDate = skuDetails.CreatedDate?.ToString("yyyy-MM-dd HH:mm:ss tt"),
+                    skuDetails.ModifyBy,
+                    ModifyDate = skuDetails.ModifyDate?.ToString("yyyy-MM-dd HH:mm:ss tt")
+                },
+                IsSuccess = isSuccess,
+                Message = message,
             }, JsonRequestBehavior.AllowGet);
         }
 
-        public async Task<ActionResult> Details(long id)
-        {
-            try
-            {
-                var individualSku = await _skuService.GetById(id);
-                return View(individualSku);
-
-            }
-            catch (Exception ex)
-            {
-                _logger.Error(ex.Message);
-            }
-            return View();
-        }
 
         [HttpGet]
         public async Task<ActionResult> Update(long id)
         {
-            var updateProductSku = new SKU();
+            bool isSuccess = false;
+            string message = string.Empty;
+            var sku = new SKU();
             try
             {
-                updateProductSku = await _skuService.GetById(id);
+                sku = await _skuService.GetById(id);
+                if (sku == null)
+                {
+                    message = "SKU is not found!";
+                }
+                else
+                {
+                    isSuccess = true;
+                }
+
             }
             catch (Exception ex)
             {
-                _logger.Error(ex.Message);
+                message = "Internal server error!";
             }
-            return View(updateProductSku);
+            return Json(new
+            {
+                UpdateSkuData = sku,
+                IsSuccess = isSuccess,
+                Message = message,
+            }, JsonRequestBehavior.AllowGet);
         }
 
+
         [HttpPost]
-        public async Task<ActionResult> Update(long id, SKU sKU )
+        public async Task<ActionResult> Update(long id, SkuViewModel sKU )
         {
-            var sKuToUpdate = await _skuService.GetById(id);
-            if (sKuToUpdate == null)
+            string message = string.Empty;
+            bool isSuccess = false;
+            if (sKU == null)
             {
-                return RedirectToAction("Index");
+                message = "SKU is not found! Try again";
             }
-            try
+            else
             {
-                if (ModelState.IsValid == false)
+                try
                 {
-                    return View(sKuToUpdate);
+                    //brand.ModifyBy = long.Parse(User.Identity.GetUserId());
+                    sKU.ModifyBy = 200;
+                    await _skuService.UpdateAsync(sKU.Id, sKU);
+                    isSuccess = true;
+                    message = "SKU is updated successfully!";
                 }
-                await _skuService.UpdateAsync(id, sKU);
+                catch (Exception ex)
+                {
+                    message = "Internal server error!";
+                }
             }
-            catch (Exception ex)
+            return Json(new
             {
-                _logger.Error(ex.Message);
-            }
-            TempData["AlertMessage"] = "SKU is updated successfully!";
-            return RedirectToAction("Index");
+                IsSuccess = isSuccess,
+                Message = message,
+            });
         }
+
 
         public async Task<ActionResult> Delete(long id)
         {
-            var individualSkuDelete = await _skuService.GetById(id);
-            if (individualSkuDelete == null)
+            string message = string.Empty;
+            bool isSuccess = false;
+            var sku = await _skuService.GetById(id);
+            if (sku == null)
             {
-                return RedirectToAction("Index");
+                message = "SKU not found to delete!";
             }
-            try
+            else
             {
-                await _skuService.DeleteAsync(id);
-                TempData["AlertMessage"] = "SKU is Deleted successfully!";
-                return RedirectToAction("Index");
+                try
+                {
+                    if (sku.Id != 0)
+                    {
+                        await _skuService.DeleteAsync(id);
+                        message = "SKU is deleted successfully!";
+                        isSuccess = true;
+                    }
+                    else
+                    {
+                        message = "SKU is not found!";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    message = "Internal server error!";
+                }
             }
-            catch (Exception ex)
+            return Json(new
             {
-                _logger.Error(ex.Message);
-                //ViewBag.Error = ex.Message;
-                //TempData["DeleteAlertMessage"] = "Brand is not found!";
-            }
-            return View(individualSkuDelete);
+                Message = message,
+                IsSuccess = isSuccess
+            }, JsonRequestBehavior.AllowGet);
         }
     }
 }

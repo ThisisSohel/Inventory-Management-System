@@ -7,15 +7,17 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using ISession = NHibernate.ISession;
 using IMS.CustomException;
+using IMS.Entity.EntityViewModels;
 
 namespace IMS.Service
 {
     public interface ISkuService
     {
-        Task CreateAsync(SKU sKU);
-        Task<IEnumerable<SKU>> GetAllAsync();
+        Task CreateSkuService(SkuViewModel skuViewModel);
+        Task<IEnumerable<SKU>> GetAll();
         Task<SKU> GetById(long id);
-        Task UpdateAsync(long id, SKU sKU);
+        Task<SkuViewModel> SkuDetailsService(long id);
+        Task UpdateAsync(long id, SkuViewModel sKU);
         Task DeleteAsync(long id);
     }
     public class SkuService : ISkuService
@@ -51,24 +53,23 @@ namespace IMS.Service
                 throw new InvalidNameException("Sorry! You have to input your name more than 5 character and less than 60 characters");
             }
         }
-        public async Task<IEnumerable<SKU>> GetAllAsync()
+        public async Task<IEnumerable<SKU>> GetAll()
         {
             try
             {
-                return await _skuDao.GetAll();
+                return await _skuDao.Load();
 
             }
             catch (Exception ex)
             {
-                _logger.Error(ex);
-                throw new InvalidNameException(ex.Message);
+                throw new Exception(ex.Message);
             }
         }
         public async Task<SKU> GetById(long id)
         {
             try
             {
-                var individualProductSku = await _skuDao.GetById(id);
+                var individualProductSku = await _skuDao.Get(id);
                 if (individualProductSku == null)
                 {
                     throw new ObjectNotFoundException(individualProductSku, $"The product SKU with the id {id} is not found");
@@ -77,76 +78,91 @@ namespace IMS.Service
             }
             catch (Exception ex)
             {
-                _logger.Error(ex);
-                throw new InvalidNameException(ex.Message);
+                throw ex;
             }
         }
-        public async Task CreateAsync(SKU sKU)
+        public async Task CreateSkuService(SkuViewModel skuViewModelEntity)
         {
+            var skuMainEntity = new SKU();
             try
             {
-                SkuValidator(sKU);
-                var newSku = new SKU
-                {
-                    SKUsName = sKU.SKUsName,
-                    CreatedBy = 100.ToString(),
-                    CreatedDate = DateTime.Now,
-                    ModifyBy = 100.ToString(),
-                    ModifyDate = DateTime.Now,
-                };
-                using (var transaction = _session.BeginTransaction())
-                {
-                    await _skuDao.Create(newSku);
-                    await transaction.CommitAsync();
-                }
+
+                skuMainEntity.SKUsName = skuViewModelEntity.SKUsName;
+                skuMainEntity.CreatedBy = 100;
+                skuMainEntity.CreatedDate = DateTime.Now;
+                skuMainEntity.ModifyBy = 100;
+                skuMainEntity.ModifyDate = DateTime.Now;
+
+                await _skuDao.SkuCreate(skuMainEntity);
             }
             catch (Exception ex)
             {
-                _logger.Error(ex.Message, ex);
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
-        public async Task UpdateAsync(long id, SKU sKU)
+        public async Task UpdateAsync(long id, SkuViewModel sKU)
         {
             try
             {
-                var individualProductSku = await _skuDao.GetById(id);
-                if (individualProductSku != null)
+                var updateSku = await _skuDao.Get(id);
+
+                if (updateSku != null)
                 {
-                    using (var transaction = _session.BeginTransaction())
-                    {
-                        individualProductSku.SKUsName = sKU.SKUsName;
-                        //individualProductSku.ModifyBy = sKU.ModifyBy;
-                        individualProductSku.ModifyDate = DateTime.Now;
-                        await _skuDao.Update(individualProductSku);
-                        await transaction.CommitAsync();
-                    }
+                    updateSku.SKUsName = sKU.SKUsName;
+                    updateSku.ModifyBy = sKU.ModifyBy;
+                    updateSku.ModifyDate = DateTime.Now;
+                    await _skuDao.SkuUpdate(updateSku);
+
                 }
                 else
                 {
-                    throw new ObjectNotFoundException(individualProductSku, "ProductSKU Not Found!");
+                    throw new ObjectNotFoundException(updateSku, "skU");
                 }
             }
             catch (Exception ex)
             {
-                _logger.Error(ex);
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
         public async Task DeleteAsync(long id)
         {
             try
             {
-                var individualTypeDelete = _skuDao.GetById(id);
-                if (individualTypeDelete != null)
+                var individualSkuDelete = _skuDao.Get(id);
+                if (individualSkuDelete != null)
                 {
-                    await _skuDao.DeleteById(id);
+                    await _skuDao.SkuDelete(id);
                 }
             }
             catch (Exception ex)
             {
-                _logger.Error(ex);
-                throw new Exception(ex.Message);
+                throw ex;
+            }
+        }
+        public async Task<SkuViewModel> SkuDetailsService(long id)
+        {
+            var skuDetails = new SkuViewModel();
+
+            try
+            {
+                var sku = await _skuDao.Get(id);
+                if(sku != null)
+                {
+                    skuDetails.Id = sku.Id;
+                    skuDetails.SKUsName = sku.SKUsName;
+                    skuDetails.CreatedBy = sku.CreatedBy;
+                    skuDetails.CreatedDate = sku.CreatedDate;
+                    skuDetails.ModifyBy = sku.ModifyBy;
+                    skuDetails.ModifyDate = sku.ModifyDate;
+                }
+                else
+                {
+                    throw new Exception("Brand is null!");
+                }
+                return skuDetails;
+            }catch (Exception ex)
+            {
+                throw ex;
             }
         }
 

@@ -56,13 +56,23 @@ namespace IMS.DAO
             {
                 using (var transaction = _session.BeginTransaction())
                 {
-                    await _session.SaveAsync(brand);
-                    await transaction.CommitAsync();
+                    try
+                    {
+                        await _session.SaveAsync(brand);
+                        await transaction.CommitAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw new Exception("Brand is not created! Internal issue!", ex);
+
+                    }
                 }
             }
             catch (Exception ex)
             {
                 throw new Exception("Failed to create brand", ex);
+                
             }
         }
 
@@ -70,15 +80,25 @@ namespace IMS.DAO
         {
             try
             {
+
                 using (var transaction = _session.BeginTransaction())
                 {
-                    await _session.UpdateAsync(brand);
-                    await transaction.CommitAsync();
+                    try
+                    {
+                        await _session.UpdateAsync(brand);
+                        await transaction.CommitAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw new Exception("Brand is not updated! Internal Error!", ex);
+                    }
+
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception($"Faild to update the category", ex);
+                throw new Exception($"Failed to update the category", ex);
             }
         }
 
@@ -91,14 +111,21 @@ namespace IMS.DAO
                 {
                     using (var transaction = _session.BeginTransaction())
                     {
-                        await _session.DeleteAsync(brand);
-                        await transaction.CommitAsync();
+                        try
+                        {
+                            await _session.DeleteAsync(brand);
+                            await transaction.CommitAsync();
+                        }
+                        catch(Exception ex)
+                        {
+                            transaction.Rollback();
+                            throw new Exception("Rolled Back! Please try again!", ex);
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                //transaction.Rollback();
                 throw new Exception($"Failed to delete Brand with ID {id}", ex);
             }
         }

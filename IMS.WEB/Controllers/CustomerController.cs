@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using IMS.Entity.Entities;
+using IMS.Entity.EntityViewModels;
 using IMS.Service;
 using log4net;
 
@@ -26,115 +27,217 @@ namespace IMS.WEB.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(Customer customer)
+        public async Task<ActionResult> Create(CustomerViewModel customerViewModel)
         {
+            string message = string.Empty;
+            bool isValid = false;
+
             try
             {
-                if (ModelState.IsValid == false)
+                if (customerViewModel != null)
                 {
-                    return View(customer);
+                    await _customerService.CreateAsync(customerViewModel);
+                    isValid = true;
+                    message = "Customer is added successfully!";
                 }
-                await _customerService.CreateAsync(customer);
+                else
+                {
+                    message = "Something is wrong! Please try again!";
+                }
+
             }
             catch (Exception ex)
             {
-                _logger.Error(ex.Message);
-                ViewBag.Error = ex.Message;
+                message = "Internal server error!";
             }
-            TempData["AlertMessage"] = "New Customer is Created successfully!";
-            return RedirectToAction("Index");
+            return Json(new { Message = message, IsValid = isValid }, JsonRequestBehavior.AllowGet);
         }
+
+
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Load()
         {
             return View();
         }
 
         [HttpGet]
-        public async Task<JsonResult> DataTableView()
+        public async Task<ActionResult> LoadCustomerData()
         {
-            var customerList = await _customerService.GetAllAsync();
+            var customerViewModelList = new List<CustomerViewModel>();
+            string message = string.Empty;
+            bool isValid = false;
+            try
+            {
+
+                var sku = await _customerService.GetAllAsync();
+
+                if (sku != null)
+                {
+                    customerViewModelList = sku.Select(b => new CustomerViewModel
+                    {
+                        Id = b.Id,
+                        CustomerName = b.CustomerName,
+                        CustomerNumber = b.CustomerNumber,
+                        CustomerAddress = b.CustomerAddress,
+                        EmailAddress = b.CustomerAddress,
+                        CreatedBy = b.CreatedBy,
+                        CreatedDate = b.CreatedDate,
+                        ModifyBy = b.ModifyBy,
+                        ModifyDate = b.ModifyDate
+                    }).ToList();
+                    isValid = true;
+                }
+                else
+                {
+                    message = "No customer is available!";
+                }
+            }
+            catch (Exception ex)
+            {
+                message = "Internal Server Error!";
+            }
+
             return Json(new
             {
-                data = customerList
-            }, JsonRequestBehavior.AllowGet);
+                CustomerList = customerViewModelList,
+                IsValid = isValid,
+                Message = message
+            },
+            JsonRequestBehavior.AllowGet);
         }
 
         public async Task<ActionResult> Details(long id)
         {
+            bool isSuccess = false;
+            string message = string.Empty;
+            var customerDetails = new CustomerViewModel();
             try
             {
-                var individualSku = await _customerService.GetById(id);
-                return View(individualSku);
+                customerDetails = await _customerService.CustomerDetails(id);
 
+                if (customerDetails != null)
+                {
+                    isSuccess = true;
+                }
+                else
+                {
+                    message = "Customer not found!";
+                }
             }
             catch (Exception ex)
             {
-                _logger.Error(ex.Message);
+                //_logger.Error(ex.Message);
             }
-            return View();
+            return Json(new
+            {
+                Details = new
+                {
+                    customerDetails.CreatedBy,
+                    CreatedDate = customerDetails.CreatedDate?.ToString("yyyy-MM-dd HH:mm:ss tt"),
+                    customerDetails.ModifyBy,
+                    ModifyDate = customerDetails.ModifyDate?.ToString("yyyy-MM-dd HH:mm:ss tt")
+                },
+                IsSuccess = isSuccess,
+                Message = message,
+            }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
         public async Task<ActionResult> Update(long id)
         {
-            var updateIndividualCustomer = new Customer();
+            bool isSuccess = false;
+            string message = string.Empty;
+            var customerToUpdate = new Customer();
             try
             {
-                updateIndividualCustomer = await _customerService.GetById(id);
+                customerToUpdate = await _customerService.GetById(id);
+                if (customerToUpdate == null)
+                {
+                    message = "Customer is not found!";
+                }
+                else
+                {
+                    isSuccess = true;
+                }
+
             }
             catch (Exception ex)
             {
-                _logger.Error(ex.Message);
+                message = "Internal server error!";
             }
-            return View(updateIndividualCustomer);
+            return Json(new
+            {
+                UpdateCustomerData = customerToUpdate,
+                IsSuccess = isSuccess,
+                Message = message,
+            }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public async Task<ActionResult> Update(long id, Customer customer)
+        public async Task<ActionResult> Update(long id, CustomerViewModel customerViewModel)
         {
-            var updateIndividualCustomer = await _customerService.GetById(id);
-            if (updateIndividualCustomer == null)
+            string message = string.Empty;
+            bool isSuccess = false;
+            if (customerViewModel == null)
             {
-                return RedirectToAction("Index");
+                message = "SKU is not found! Try again";
             }
-            try
+            else
             {
-                if (ModelState.IsValid == false)
+                try
                 {
-                    return View(updateIndividualCustomer);
+                    //brand.ModifyBy = long.Parse(User.Identity.GetUserId());
+                    customerViewModel.ModifyBy = 200;
+                    await _customerService.UpdateAsync(customerViewModel.Id, customerViewModel);
+                    isSuccess = true;
+                    message = "Customer is updated successfully!";
                 }
-                await _customerService.UpdateAsync(id, customer);
+                catch (Exception ex)
+                {
+                    message = "Internal server error!";
+                }
             }
-            catch (Exception ex)
+            return Json(new
             {
-                _logger.Error(ex.Message);
-            }
-            TempData["AlertMessage"] = "Customer details are updated successfully!";
-            return RedirectToAction("Index");
+                IsSuccess = isSuccess,
+                Message = message,
+            });
         }
 
         public async Task<ActionResult> Delete(long id)
         {
-            var individualSkuDelete = await _customerService.GetById(id);
-            if (individualSkuDelete == null)
+            string message = string.Empty;
+            bool isSuccess = false;
+            var customer = await _customerService.GetById(id);
+            if (customer == null)
             {
-                return RedirectToAction("Index");
+                message = "Customer not found to delete!";
             }
-            try
+            else
             {
-                await _customerService.DeleteAsync(id);
-                TempData["AlertMessage"] = "Customer is Deleted successfully!";
-                return RedirectToAction("Index");
+                try
+                {
+                    if (customer.Id != 0)
+                    {
+                        await _customerService.DeleteAsync(id);
+                        message = "Customer is deleted successfully!";
+                        isSuccess = true;
+                    }
+                    else
+                    {
+                        message = "Customer is not found!";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    message = "Internal server error!";
+                }
             }
-            catch (Exception ex)
+            return Json(new
             {
-                _logger.Error(ex.Message);
-                //ViewBag.Error = ex.Message;
-                //TempData["DeleteAlertMessage"] = "Brand is not found!";
-            }
-            return View(individualSkuDelete);
+                Message = message,
+                IsSuccess = isSuccess
+            }, JsonRequestBehavior.AllowGet);
         }
 
     }

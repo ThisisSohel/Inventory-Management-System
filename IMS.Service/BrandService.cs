@@ -14,12 +14,11 @@ namespace IMS.Service
 {
     public interface IBrandService
     {
-        Task CreateAsync(Brand brand);
         Task CreateBrandService(BrandViewModel brandViewModel);
         Task<IEnumerable<Brand>> GetAll();
         Task<Brand> GetById(long id);
         Task<BrandViewModel> BrandDetailsService(long  id);
-        Task Update(long id, Brand brand);
+        Task Update(long id, BrandViewModel brand);
         Task DeleteAsync(long id);
     }
 
@@ -33,7 +32,6 @@ namespace IMS.Service
         {
             _brandDao = brandDao;
         }
-
         public BrandService()
         {
             _sessionFactory = NHibernateConfig.GetSession();
@@ -66,7 +64,6 @@ namespace IMS.Service
             }
             catch (Exception ex)
             {
-                _logger.Error(ex.Message);
                 throw new Exception(ex.Message);
             }
         }
@@ -84,53 +81,21 @@ namespace IMS.Service
             }
             catch (Exception ex)
             {
-                _logger.Error(ex.Message, ex);
-                throw;
+                throw ex;
             }
         }
 
-        public async Task CreateAsync(Brand brand)
-        {
-            try
-            {
-
-                BrandValidator(brand);
-                var brandDao = new Brand
-                {
-                    BrandName = brand.BrandName,
-                    CreatedBy = brand.CreatedBy,
-                    CreatedDate = DateTime.Now,
-                    ModifyBy = brand.CreatedBy,
-                    ModifyDate = DateTime.Now,
-                };
-                using (var transaction = _session.BeginTransaction())
-                {
-                    await _brandDao.BrandCreate(brandDao);
-                    await transaction.CommitAsync();
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.Error(ex.Message, ex);
-                throw;
-            }
-        }
-
-        public async Task Update(long id, Brand brand)
+        public async Task Update(long id, BrandViewModel brand)
         {
             try
             {
                 var valueForUpdate = await _brandDao.Get(brand.Id);
                 if (valueForUpdate != null)
                 {
-                    using (var transaction = _session.BeginTransaction())
-                    {
                         valueForUpdate.BrandName = brand.BrandName;
                         valueForUpdate.ModifyBy = brand.ModifyBy;
                         valueForUpdate.ModifyDate = DateTime.Now;
-                        await _brandDao.BrandUpdate(valueForUpdate);
-                        await transaction.CommitAsync();
-                    }
+                        await _brandDao.BrandUpdate(valueForUpdate);                  
                 }
                 else
                 {
@@ -139,8 +104,7 @@ namespace IMS.Service
             }
             catch (Exception ex)
             {
-                _logger.Error(ex.Message, ex);
-                throw;
+                throw ex;
             }
         }
 
@@ -156,31 +120,25 @@ namespace IMS.Service
             }
             catch (Exception ex)
             {
-                _logger.Error(ex.Message, ex);
-                throw;
+                throw ex;
             }
         }
 
-        public async Task CreateBrandService(BrandViewModel brandViewModel)
+        public async Task CreateBrandService(BrandViewModel brandViewModelEntity)
         {
-            var brandEntity = new Brand();
-
+            var brandMainEntity = new Brand();
             try
             {
-                //using(var transaction = _session.BeginTransaction())
-                //{
-                    brandEntity.BrandName = brandViewModel.BrandName;
-                    brandEntity.CreatedBy = 100;
-                    brandEntity.CreatedDate = DateTime.Now;
-                    brandEntity.ModifyBy = 100;
-                    brandEntity.ModifyDate = DateTime.Now;
-                    await _brandDao.BrandCreate(brandEntity);
-                //    transaction.Commit();
-                //}
+                    brandMainEntity.BrandName = brandViewModelEntity.BrandName;
+                    brandMainEntity.CreatedBy = 100;
+                    brandMainEntity.CreatedDate = DateTime.Now;
+                    brandMainEntity.ModifyBy = 100;
+                    brandMainEntity.ModifyDate = DateTime.Now;
+                    await _brandDao.BrandCreate(brandMainEntity);
 
             }catch (Exception ex)
             {
-                throw new Exception(ex.Message, ex);
+                throw ex;
             }
         }
 
@@ -203,35 +161,14 @@ namespace IMS.Service
                 }
                 else
                 {
-                    throw new Exception();
+                    throw new Exception("Brand is null!");
                 }
                 return brandDetails;
             }
             catch (Exception ex)
             {
-                _logger.Error(ex.Message, ex);
-                throw new Exception(ex.Message, ex);
+                throw ex;
             }
         }
     }
-
-    //[Serializable]
-    //public class InvalidNameException : Exception
-    //{
-    //    public InvalidNameException()
-    //    {
-    //    }
-
-    //    public InvalidNameException(string message) : base(message)
-    //    {
-    //    }
-
-    //    public InvalidNameException(string message, Exception innerException) : base(message, innerException)
-    //    {
-    //    }
-
-    //    protected InvalidNameException(SerializationInfo info, StreamingContext context) : base(info, context)
-    //    {
-    //    }
-    //}
 }

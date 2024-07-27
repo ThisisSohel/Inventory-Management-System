@@ -59,10 +59,12 @@ namespace IMS.WEB.Controllers
             return Json(new {Message = message, IsValid = isValid}, JsonRequestBehavior.AllowGet);
         }
 
+
         public ActionResult Load()
         {
             return View();
         }
+
 
         [HttpGet]
         public async Task<ActionResult> LoadBrandData()
@@ -115,73 +117,9 @@ namespace IMS.WEB.Controllers
             JsonRequestBehavior.AllowGet);
         }
 
-        [HttpGet]
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(Brand brand)
-        {
-            try
-            {
-                if (ModelState.IsValid == false)
-                {
-                    return View(brand);
-                }
-                brand.CreatedBy = long.Parse(User.Identity.GetUserId());
-                brand.ModifyBy = long.Parse(User.Identity.GetUserId());
-                await _brandService.CreateAsync(brand);
-            }
-            catch (InvalidNameException ex)
-            {
-                TempData["ErrorMessage"] = ex.Message;
-                return View(brand);
-            }
-            catch (Exception ex)
-            {
-                _logger.Error(ex.Message);
-                ViewBag.Error = "Something went wrong!";
-            }
-            TempData["AlertMessage"] = "Brand is Created successfully!";
-            return RedirectToAction("Index");
-        }
 
         [HttpGet]
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public async Task<JsonResult> DataTableView()
-        {
-            var brandList = await _brandService.GetAll();
-            return Json(new
-            {
-                data = brandList
-            }, JsonRequestBehavior.AllowGet);
-        }
-
-        public async Task<ActionResult> Details(long id)
-        {
-            try
-            {
-                var brand = await _brandService.GetById(id);
-                return View(brand);
-
-            }
-            catch (Exception ex)
-            {
-                _logger.Error(ex.Message);
-            }
-            return View();
-        }
-
-        [HttpGet]
-        public async Task<JsonResult> BrandDetails(long id)
+        public async Task<ActionResult> BrandDetails(long id)
         {
             bool isSuccess = false;
             string message = string.Empty;
@@ -189,6 +127,7 @@ namespace IMS.WEB.Controllers
             try
             {
                 brandDetails = await _brandService.BrandDetailsService(id);
+
                 if (brandDetails != null)
                 {
                     isSuccess = true;
@@ -200,11 +139,17 @@ namespace IMS.WEB.Controllers
             }
             catch (Exception ex)
             {
-                _logger.Error(ex.Message);
+                //_logger.Error(ex.Message);
             }
             return Json(new
             {
-                Details = brandDetails, 
+                Details = new
+                {
+                    brandDetails.CreatedBy,
+                    CreatedDate = brandDetails.CreatedDate?.ToString("yyyy-MM-dd HH:mm:ss tt"),
+                    brandDetails.ModifyBy,
+                    ModifyDate = brandDetails.ModifyDate?.ToString("yyyy-MM-dd HH:mm:ss tt")
+                },
                 IsSuccess = isSuccess,
                 Message = message,
             }, JsonRequestBehavior.AllowGet);
@@ -232,8 +177,7 @@ namespace IMS.WEB.Controllers
             }
             catch (Exception ex)
             {
-                _logger.Error(ex.Message);
-                ViewBag.Error = ex.Message;
+                message = "Internal server error!";
             }
             return Json(new
             {
@@ -243,29 +187,37 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Update(long id, Brand brand)
+        public async Task<ActionResult> Update(long id, BrandViewModel brand)
         {
-            try
+            string message = string.Empty;
+            bool isSuccess = false;
+            if (brand == null)
             {
-
-                if (ModelState.IsValid == false)
+                message = "Brand is not found! Try again";
+            }
+            else{
+                try
                 {
-                    return View(brand);
+                    //brand.ModifyBy = long.Parse(User.Identity.GetUserId());
+                    brand.ModifyBy = 200;
+                    await _brandService.Update(brand.Id, brand);
+                    isSuccess = true;
+                    message = "Brand is updated successfully!";
                 }
-                brand.ModifyBy = long.Parse(User.Identity.GetUserId());
-                await _brandService.Update(brand.Id, brand);
+                catch (Exception ex)
+                {
+                    message = "Internal server error!";
+                }
             }
-            catch (Exception ex)
+            return Json(new
             {
-                _logger.Error(ex.Message);
-                //ViewBag.Error = ex.Message;
-
-            }
-            TempData["AlertMessage"] = "Brand is updated successfully!";
-            return RedirectToAction("Index");
+                IsSuccess = isSuccess,
+                Message = message,
+            });
         }
+
 
         [HttpPost]
         public async Task<ActionResult> Delete(long id)
@@ -273,25 +225,30 @@ namespace IMS.WEB.Controllers
             string message = string.Empty;
             bool isSuccess = false;
             var brand = await _brandService.GetById(id);
-            try
+            if (brand == null)
             {
-                if(brand.Id != 0) 
+                message = "Brand not found to delete!";
+            }
+            else
+            {
+                try
                 {
-                    await _brandService.DeleteAsync(id);
-                    message = "Brand is deleted successfully!";
-                    isSuccess = true;
+                    if (brand.Id != 0)
+                    {
+                        await _brandService.DeleteAsync(id);
+                        message = "Brand is deleted successfully!";
+                        isSuccess = true;
+                    }
+                    else
+                    {
+                        message = "Brand is not found!";
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    message = "Brand is not found!";
+                    message = "Internal server error!";
                 }
             }
-            catch (Exception ex)
-            {
-                message = "Internal server error!";
-                //_logger.Error(ex.Message);
-            }
-
             return Json(new
             {
                 Message = message,
