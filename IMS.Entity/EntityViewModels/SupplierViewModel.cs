@@ -7,28 +7,29 @@ using System.Threading.Tasks;
 
 namespace IMS.Entity.EntityViewModels
 {
-    public class CustomerViewModel
+    public class SupplierViewModel
     {
-        public  long Id { get; set; }
-        [Required(ErrorMessage = "Name can not be blank!")]
+        public virtual long Id { get; set; }
+
+        [Required(ErrorMessage = "Name is required!")]
         [RegularExpression(@"^(([A-za-z]+[\s]{1}[A-za-z]+)|([A-Za-z]+))$", ErrorMessage = "Please enter upper and lower case only & no special character/digit is acceptable!")]
-        [StringLength(20, MinimumLength = 3, ErrorMessage = "The name field must be a minimum lenght of 3 and a maximum lenght of 20!")]
-        public  string CustomerName { get; set; }
+        [StringLength(20, MinimumLength = 3, ErrorMessage = "The name field must be a minimum length of 3 and a maximum length of 20!")]
+        public virtual string SupplierName { get; set; }
 
         [Required(ErrorMessage = "Mobile number is required!")]
         [Phone]
         [RegularExpression("^([0-9]{11})$", ErrorMessage = "Invalid Mobile Number.")]
-        public  string CustomerNumber { get; set; }
+        public virtual string SupplierNumber { get; set; }
 
         [Required(ErrorMessage = "Email address is required!")]
         [RegularExpression(@"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|" + @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)" + @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$", ErrorMessage = "Invalid email address!")]
-        public  string EmailAddress { get; set; }
+        public virtual string EmailAddress { get; set; }
 
-        [Required(ErrorMessage = "Customer address is required!")]
-        public  string CustomerAddress { get; set; }
-        public  long CreatedBy { get; set; }
-        public  DateTime? CreatedDate { get; set; }
-        public  long ModifyBy { get; set; }
-        public  DateTime? ModifyDate { get; set; }
+        [Required(ErrorMessage = "Supplier address is required!")]
+        public virtual string SupplierAddress { get; set; }
+        public virtual long CreatedBy { get; set; }
+        public virtual DateTime? CreatedDate { get; set; }
+        public virtual long ModifyBy { get; set; }
+        public virtual DateTime? ModifyDate { get; set; }
     }
 }

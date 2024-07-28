@@ -9,14 +9,15 @@ using System.Data;
 using System.Threading.Tasks;
 using IMS.CustomException;
 using IMS.Entity.EntityViewModels;
+using System.Linq;
 
 namespace IMS.Service
 {
     public interface ICustomerService
     {
         Task CreateAsync(CustomerViewModel customer);
-        Task<IEnumerable<Customer>> GetAllAsync();
-        Task<Customer> GetById(long id);
+        Task<List<CustomerViewModel>> GetAllAsync();
+        Task<CustomerViewModel> GetById(long id);
         Task<CustomerViewModel> CustomerDetails(long id);
         Task UpdateAsync(long id, CustomerViewModel customer);
         Task DeleteAsync(long id);
@@ -53,20 +54,36 @@ namespace IMS.Service
             }
         }
 
-        public async Task<IEnumerable<Customer>> GetAllAsync()
+        public async Task<List<CustomerViewModel>> GetAllAsync()
         {
+            var customer = new List<Customer>();
+            var customerView = new List<CustomerViewModel>();
+
             try
             {
-                return await _customerDao.Load();
+                customer =  await _customerDao.Load();
 
+                customerView = customer.Select(c => new CustomerViewModel
+                {
+                    Id = c.Id,
+                    CustomerName = c.CustomerName,
+                    CustomerNumber = c.CustomerNumber,
+                    EmailAddress = c.EmailAddress,
+                    CustomerAddress = c.CustomerAddress,
+                    CreatedBy = c.CreatedBy,
+                    CreatedDate = c.CreatedDate,
+                    ModifyBy = c.ModifyBy,
+                }).ToList();
+                return customerView;
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<Customer> GetById(long id)
-        {
+        public async Task<CustomerViewModel> GetById(long id)
+        {    
+            var customerView = new CustomerViewModel();
             try
             {
                 var individualCustomer = await _customerDao.Get(id);
@@ -74,7 +91,18 @@ namespace IMS.Service
                 {
                     throw new Exception($"The Customer with the id {id} is not found");
                 }
-                return individualCustomer;
+
+                customerView.Id = individualCustomer.Id;
+                customerView.CustomerName = individualCustomer.CustomerName;
+                customerView.CustomerNumber = individualCustomer.CustomerNumber;
+                customerView.EmailAddress = individualCustomer.EmailAddress;
+                customerView.CustomerAddress = individualCustomer.CustomerAddress;
+                customerView.CreatedBy = individualCustomer.CreatedBy;
+                customerView.CreatedDate = individualCustomer.CreatedDate;
+                customerView.ModifyBy = individualCustomer.ModifyBy;    
+                customerView.ModifyDate = individualCustomer.ModifyDate;
+
+                return customerView;
             }
             catch (Exception ex)
             {
@@ -108,19 +136,19 @@ namespace IMS.Service
         {
             try
             {
-                var individualCustomer = await _customerDao.Get(id);
+                var individualCustomerUpdate = await _customerDao.Get(id);
 
-                if (individualCustomer != null)
+                if (individualCustomerUpdate != null)
                 {
 
-                        individualCustomer.CustomerName = customerViewModel.CustomerName;
-                        individualCustomer.CustomerNumber = customerViewModel.CustomerNumber;
-                        individualCustomer.EmailAddress = customerViewModel.EmailAddress;
-                        individualCustomer.CustomerAddress = customerViewModel.CustomerAddress;
-                        individualCustomer.ModifyBy = customerViewModel.ModifyBy;
-                        individualCustomer.ModifyDate = DateTime.Now;
+                        individualCustomerUpdate.CustomerName = customerViewModel.CustomerName;
+                        individualCustomerUpdate.CustomerNumber = customerViewModel.CustomerNumber;
+                        individualCustomerUpdate.EmailAddress = customerViewModel.EmailAddress;
+                        individualCustomerUpdate.CustomerAddress = customerViewModel.CustomerAddress;
+                        individualCustomerUpdate.ModifyBy = customerViewModel.ModifyBy;
+                        individualCustomerUpdate.ModifyDate = DateTime.Now;
 
-                        await _customerDao.Update(individualCustomer);
+                        await _customerDao.Update(individualCustomerUpdate);
                 }
                 else
                 {

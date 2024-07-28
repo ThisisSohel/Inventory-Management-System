@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using ISession = NHibernate.ISession;
 using IMS.Entity.EntityViewModels;
+using System.Linq;
 
 
 namespace IMS.Service
@@ -15,8 +16,8 @@ namespace IMS.Service
     public interface IBrandService
     {
         Task CreateBrandService(BrandViewModel brandViewModel);
-        Task<IEnumerable<Brand>> GetAll();
-        Task<Brand> GetById(long id);
+        Task<List<BrandViewModel>> GetAll();
+        Task<BrandViewModel> GetById(long id);
         Task<BrandViewModel> BrandDetailsService(long  id);
         Task Update(long id, BrandViewModel brand);
         Task DeleteAsync(long id);
@@ -56,11 +57,31 @@ namespace IMS.Service
             }
         }
 
-        public async Task<IEnumerable<Brand>> GetAll()
+        public async Task<List<BrandViewModel>> GetAll()
         {
+            var brandView = new List<BrandViewModel>();
+            var brand = new List<Brand>();
             try
             {
-                return await _brandDao.Load();
+                brand =  await _brandDao.Load();
+
+                if (brand != null)
+                {
+                    brandView = brand.Select(b =>  new BrandViewModel
+                    {
+                        Id = b.Id,
+                        BrandName = b.BrandName,
+                        CreatedBy = b.CreatedBy,
+                        CreatedDate = b.CreatedDate,
+                        ModifyBy = b.ModifyBy,
+                        ModifyDate = b.ModifyDate,
+                    }).ToList();
+                }
+                else
+                {
+                    throw new Exception("Brand not found!");
+                }
+                return brandView;
             }
             catch (Exception ex)
             {
@@ -68,16 +89,30 @@ namespace IMS.Service
             }
         }
 
-        public async Task<Brand> GetById(long id)
+        public async Task<BrandViewModel> GetById(long id)
         {
+            var brandView = new BrandViewModel();
+
             try
             {
                 var brand = await _brandDao.Get(id);
+
                 if (brand == null)
                 {
                     throw new ObjectNotFoundException(brand, "Brand is not found");
                 }
-                return brand;
+                else
+                {
+                    brandView.Id = brand.Id;
+                    brandView.BrandName = brand.BrandName;
+                    brandView.CreatedBy = brand.CreatedBy;
+                    brandView.CreatedDate = brand.CreatedDate;
+                    brandView.ModifyBy = brand.ModifyBy;
+                    brandView.ModifyDate = brand.ModifyDate;
+
+                    return brandView;
+                }
+
             }
             catch (Exception ex)
             {

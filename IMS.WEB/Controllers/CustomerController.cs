@@ -50,7 +50,12 @@ namespace IMS.WEB.Controllers
             {
                 message = "Internal server error!";
             }
-            return Json(new { Message = message, IsValid = isValid }, JsonRequestBehavior.AllowGet);
+
+            return Json(new 
+            { 
+                Message = message, 
+                IsValid = isValid 
+            }, JsonRequestBehavior.AllowGet);
         }
 
 
@@ -67,7 +72,7 @@ namespace IMS.WEB.Controllers
             string message = string.Empty;
             bool isValid = false;
             try
-            {
+            { 
 
                 var sku = await _customerService.GetAllAsync();
 
@@ -126,8 +131,9 @@ namespace IMS.WEB.Controllers
             }
             catch (Exception ex)
             {
-                //_logger.Error(ex.Message);
+                message = "Internal server error!";
             }
+
             return Json(new
             {
                 Details = new
@@ -147,7 +153,7 @@ namespace IMS.WEB.Controllers
         {
             bool isSuccess = false;
             string message = string.Empty;
-            var customerToUpdate = new Customer();
+            var customerToUpdate = new CustomerViewModel();
             try
             {
                 customerToUpdate = await _customerService.GetById(id);
@@ -180,7 +186,7 @@ namespace IMS.WEB.Controllers
             bool isSuccess = false;
             if (customerViewModel == null)
             {
-                message = "SKU is not found! Try again";
+                message = "Customer is not found! Try again";
             }
             else
             {
@@ -188,7 +194,7 @@ namespace IMS.WEB.Controllers
                 {
                     //brand.ModifyBy = long.Parse(User.Identity.GetUserId());
                     customerViewModel.ModifyBy = 200;
-                    await _customerService.UpdateAsync(customerViewModel.Id, customerViewModel);
+                    await _customerService.UpdateAsync(id, customerViewModel);
                     isSuccess = true;
                     message = "Customer is updated successfully!";
                 }

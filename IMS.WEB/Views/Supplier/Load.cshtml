@@ -20,7 +20,7 @@
 @*DataTable View*@
 <div class="row" style="padding: 5%">
     <div class="container my-3 p-2 text-center bg-gradient text-bg-light">
-        <h2>List of SKUs</h2>
+        <h2>List of Suppliers</h2>
     </div>
     <a href="#" class="btn btn-dark col-sm-2 m-2" onclick="createNewFun()">Add New</a>
 
@@ -29,14 +29,20 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>SKU Name</th>
+                    <th>Supplier Name</th>
+                    <th>Supplier Number</th>
+                    <th>Supplier Email</th>
+                    <th>Supplier Address</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
                     <th>Id</th>
-                    <th>SKU Name</th>
+                    <th>Supplier Name</th>
+                    <th>Supplier Number</th>
+                    <th>Supplier Email</th>
+                    <th>Supplier Address</th>
                     <th>Actions</th>
                 </tr>
             </tfoot>
@@ -51,15 +57,27 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #1d4552">
-                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">Create New SKU</h1>
+                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">Create New Supplier</h1>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="background-color: darkgray">
                 <div class="container my-3 p-2 text-center">
                     <div class="row mb-3">
-                        <label for="SKUsName" class="col-sm-3 col-form-label text-start" style="color:black;">SKU Name</label>
+                        <label for="SupplierName" class="col-sm-3 col-form-label text-start" style="color:black;">Supplier Name</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="SKUsName" name="SKUsName" placeholder="Enter the SKU" style="background-color:#f5f5f5">
+                            <input type="text" class="form-control" id="SupplierName" name="SupplierName" placeholder="Enter supplier name" style="background-color:#f5f5f5">
+                        </div>
+                        <label for="SupplierNumber" class="col-sm-3 col-form-label text-start" style="color:black;">Supplier Number</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="SupplierNumber" name="SupplierNumber" placeholder="Enter supplier number" style="background-color:#f5f5f5">
+                        </div>
+                        <label for="EmailAddress" class="col-sm-3 col-form-label text-start" style="color:black;">Supplier Email</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="EmailAddress" name="EmailAddress" placeholder="Enter customer email" style="background-color:#f5f5f5">
+                        </div>
+                        <label for="SupplierAddress" class="col-sm-3 col-form-label text-start" style="color:black;">Supplier Address</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="SupplierAddress" name="SupplierAddress" placeholder="Enter supplier address" style="background-color:#f5f5f5">
                         </div>
                     </div>
                     <div class="row">
@@ -82,7 +100,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #1d4552">
-                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">--Details about the SKU--</h1>
+                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">--Details about the Customer--</h1>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="background-color: darkgray">
@@ -118,7 +136,7 @@
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="background-color: darkgray">
-                <h4>Are you sure to delete the SKU - <span id="nameId"></span>?</h4>
+                <h4>Are you sure to delete the Supplier - <span id="nameId"></span>?</h4>
                 <input type="hidden" value="" id="Id" />
             </div>
             <div class="modal-footer" style="background-color: #1d4552">
@@ -134,15 +152,29 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #1d4552">
-                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">Update SKU</h1>
+                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">Update Customer</h1>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="background-color: darkgray">
                 <div class="container my-3 p-2 text-center">
                     <div class="row mb-3">
-                        <label for="SKUsName" class="col-sm-3 col-form-label text-start" style="color:black;">SKU Name</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="updateNameId" name="SKUsName" style="background-color:#f5f5f5">
+                        <div class="row mb-3">
+                            <label for="SupplierName" class="col-sm-3 col-form-label text-start" style="color:black;">Supplier Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="updateSupplierName" name="SupplierName" style="background-color:#f5f5f5">
+                            </div>
+                            <label for="SupplierNumber" class="col-sm-3 col-form-label text-start" style="color:black;">Supplier Number</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="updateSupplierNumber" name="SupplierNumber" style="background-color:#f5f5f5">
+                            </div>
+                            <label for="EmailAddress" class="col-sm-3 col-form-label text-start" style="color:black;">Supplier Email</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="updateEmailAddress" name="EmailAddress" style="background-color:#f5f5f5">
+                            </div>
+                            <label for="CustomerAddress" class="col-sm-3 col-form-label text-start" style="color:black;">Supplier Address</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="updateSupplierAddress" name="SupplierAddress" style="background-color:#f5f5f5">
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -169,18 +201,18 @@
 
         function showErrorAlertMessage(message) {
             return `
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <p> ${message} </p>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>`
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <p> ${message} </p>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>`
         }
 
         function showSuccessAlertMessage(message) {
             return `
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <p> ${message} </p>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>`
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <p> ${message} </p>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>`
         }
 
         function createNewFun() {
@@ -188,17 +220,23 @@
         }
 
         function DataBinding() {
-            const name = $("#SKUsName").val();
+            const name = $("#Supplierame").val();
+            const number = $("#SupplierNumber").val();
+            const email = $("#EmailAddress").val();
+            const address = $("#SupplierAddress").val();
 
             const obj = {
-                SKUsName: name
+                SupplierName: name,
+                SupplierNumber: number,
+                EmailAddress: email,
+                SupplierAddress: address
             }
             return obj;
         }
 
         function submitData(obj) {
             $.ajax({
-                url: "/Sku/CreateSKU",
+                url: "/Supplier/Create",
                 method: "POST",
                 data: obj,
                 dataType: 'json',
@@ -229,7 +267,7 @@
         function Details(id) {
             $("#detailsModal").modal('show')
             $.ajax({
-                url: "/Sku/SkuDetails",
+                url: "/Supplier/Details",
                 type: 'GET',
                 data: { id: id },
                 dataType: 'json',
@@ -237,13 +275,13 @@
                     if (response.IsSuccess == true) {
                         $("#detailsBodyId").empty();
                         const trMake = `
-                                        <tr>
-                                            <td>${response.Details.CreatedBy}</td>
-                                            <td>${response.Details.CreatedDate}</td>
-                                            <td>${response.Details.ModifyBy}</td>
-                                            <td>${response.Details.ModifyDate}</td>
-                                        </tr>
-                                    `;
+                                            <tr>
+                                                <td>${response.Details.CreatedBy}</td>
+                                                <td>${response.Details.CreatedDate}</td>
+                                                <td>${response.Details.ModifyBy}</td>
+                                                <td>${response.Details.ModifyDate}</td>
+                                            </tr>
+                                        `;
                         $("#detailsBodyId").append(trMake);
                         $('#detailsModal').modal('show');
                     }
@@ -267,7 +305,7 @@
 
             $("#btnDelete").click(function () {
                 $.ajax({
-                    url: "/Sku/Delete",
+                    url: "/Supplier/Delete",
                     type: 'POST',
                     data: { id: id },
                     success: function (response) {
@@ -299,15 +337,18 @@
             $("#updateModal").modal('show');
 
             $.ajax({
-                url: "/Sku/Update",
+                url: "/Supplier/Update",
                 dataType: 'json',
                 type: 'GET',
                 data: { id: updateId },
                 success: function (response) {
                     console.log(response)
-                    if (response.IsSuccess == true) {
-                        $("#updateId").val(response.UpdateSkuData.Id);
-                        $("#updateNameId").val(response.UpdateSkuData.SKUsName);
+                    if (response.IsSuccess) {
+                        $("#updateId").val(response.UpdateSupplierData.Id);
+                        $("#updateSupplierName").val(response.UpdateSupplierData.SupplierName);
+                        $("#updateSupplierNumber").val(response.UpdateSupplierData.SupplierNumber);
+                        $("#updateEmailAddress").val(response.UpdateSupplierData.EmailAddress);
+                        $("#updateSupplierAddress").val(response.UpdateSupplierData.SupplierAddress);
                         $("#updateModal").modal('show');
                     }
                     else {
@@ -326,18 +367,24 @@
             $("#updateSaveId").click(function () {
 
                 const id = $("#updateId").val();
-                const name = $("#updateNameId").val();
+                const name = $("#updateSupplierName").val();
+                const number = $("#updateSupplierNumber").val();
+                const email = $("#updateEmailAddress").val();
+                const address = $("#updateSupplierAddress").val();
 
                 var formdata = {
                     Id: id,
-                    SKUsName: name
+                    SupplierName: name,
+                    SupplierNumber: number,
+                    EmailAddress: email,
+                    SupplierAddress: address
                 }
 
                 $.ajax({
-                    url: "/Sku/Update",
+                    url: "/Supplier/Update",
                     dataType: 'json',
                     type: 'POST',
-                    data: { id: formdata.Id, sKU: formdata },
+                    data: { id: formdata.Id, supplierViewModel: formdata },
                     success: function (response) {
                         if (response.IsSuccess == true) {
                             const msgAlertMake = showSuccessAlertMessage(response.Message);
@@ -361,32 +408,35 @@
         $(document).ready(function () {
 
             $.ajax({
-                url: "/Sku/LoadSkuData",
+                url: "/Supplier/LoadSupplierData",
                 datatype: 'json',
                 type: 'GET',
                 success: function (response) {
                     if (response.IsValid == true) {
                         $("#InfoTable").DataTable(
                             {
-                                data: response.SkuList,
+                                data: response.SupplierList,
                                 'scrollY': 200,
                                 "columns": [
                                     { "data": "Id", name: "Id" },
-                                    { "data": "SKUsName", "name": "SKUsName" },
+                                    { "data": "SupplierName", "name": "SupplierName" },
+                                    { "data": "SupplierNumber", "name": "SupplierNumber" },
+                                    { "data": "EmailAddress", "name": "EmailAddress" },
+                                    { "data": "SupplierAddress", "name": "SupplierAddress" },
                                     {
-                                        "data": "Id", "render": function (skuId) {
+                                        "data": "Id", "render": function (id) {
                                             return `
-                                                    <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "Details(${skuId})">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>Details</button></a>
-                                                    <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "Delete(${skuId})">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>Delete</button></a>
-                                                    <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "Update(${skuId})">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>Update</button></a>
+                                                        <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "Details(${id})">
+                                                        <i class="fas fa-pencil-alt">
+                                                        </i>Details</button></a>
+                                                        <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "Delete(${id})">
+                                                        <i class="fas fa-pencil-alt">
+                                                        </i>Delete</button></a>
+                                                        <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "Update(${id})">
+                                                        <i class="fas fa-pencil-alt">
+                                                        </i>Update</button></a>
 
-                                                    `
+                                                        `
                                         }
                                     },
                                 ]
@@ -414,3 +464,4 @@
 
     </script>
 }
+

@@ -146,7 +146,7 @@ namespace IMS.WEB.Controllers
         {
             bool isSuccess = false;
             string message = string.Empty;
-            var sku = new SKU();
+            var sku = new SkuViewModel();
             try
             {
                 sku = await _skuService.GetById(id);

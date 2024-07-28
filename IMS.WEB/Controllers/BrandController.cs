@@ -161,7 +161,7 @@ namespace IMS.WEB.Controllers
         {
             bool isSuccess = false;
             string message = string.Empty;
-            var updateBrand = new Brand();
+            var updateBrand = new BrandViewModel();
             try
             {
                 updateBrand = await _brandService.GetById(id);

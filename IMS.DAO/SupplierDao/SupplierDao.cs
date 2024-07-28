@@ -12,11 +12,11 @@ namespace IMS.DAO.SupplierDao
 {
     public interface ISupplierDao
     {
-        Task<IEnumerable<Supplier>> GetAll();
-        Task<Supplier> GetById(long id);
+        Task<List<Supplier>> Load();
+        Task<Supplier> Get(long id);
         Task Create(Supplier supplier);
         Task Update(Supplier supplier);
-        Task DeleteById(long id);
+        Task Delete(long id);
     }
     public class SupplierDao : ISupplierDao
     {
@@ -26,7 +26,8 @@ namespace IMS.DAO.SupplierDao
         {
             _session = session;
         }
-        public async Task<IEnumerable<Supplier>> GetAll()
+
+        public async Task<List<Supplier>> Load()
         {
             try
             {
@@ -34,10 +35,11 @@ namespace IMS.DAO.SupplierDao
             }
             catch (Exception ex)
             {
-                throw new Exception("Faild to retrieve the supplier", ex);
+                throw new Exception("Failed to retrieve the supplier", ex);
             }
         }
-        public async Task<Supplier> GetById(long id)
+
+        public async Task<Supplier> Get(long id)
         {
             try
             {
@@ -45,56 +47,77 @@ namespace IMS.DAO.SupplierDao
             }
             catch (Exception ex)
             {
-                throw new Exception($"Faild to retrieve supplier with the ID {id}", ex);
+                throw new Exception($"Failed to retrieve supplier with the ID {id}", ex);
             }
         }
+
         public async Task Create(Supplier supplier)
         {
-            try
+            using (var transaction = _session.BeginTransaction())
             {
-                using (var transaction = _session.BeginTransaction())
+                try
                 {
                     await _session.SaveAsync(supplier);
                     await transaction.CommitAsync();
                 }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Failed to create new supplier", ex);
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw new Exception("Supplier is not created! Internal issue!", ex);
+                }
             }
         }
+
         public async Task Update(Supplier supplier)
         {
             try
             {
                 using (var transaction = _session.BeginTransaction())
                 {
-                    await _session.UpdateAsync(supplier);
-                    await transaction.CommitAsync();
+                    try
+                    {
+                        await _session.UpdateAsync(supplier);
+                        await transaction.CommitAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw new Exception("Internal Error! Please try again!", ex);
+                    }
+
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception($"Faild to update the Supplier", ex);
+                throw new Exception($"Failed to update the Supplier", ex);
             }
         }
-        public async Task DeleteById(long id)
+
+        public async Task Delete(long id)
         {
             try
             {
-                var deleteIndividualSupplier = await _session.GetAsync<Supplier>(id);
-                if (deleteIndividualSupplier != null)
+                var supplier = await _session.GetAsync<Supplier>(id);
+                if (supplier != null)
                 {
                     using (var transaction = _session.BeginTransaction())
                     {
-                        await _session.DeleteAsync(deleteIndividualSupplier);
-                        await transaction.CommitAsync();
+                        try
+                        {
+                            await _session.DeleteAsync(supplier);
+                            await transaction.CommitAsync();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            throw new Exception("Internal Error! Please try again!", ex);
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception($"Failed to delete Customer with ID {id}", ex);
+                throw new Exception($"Failed to delete supplier with ID {id}", ex);
             }
         }
     }

@@ -9,7 +9,7 @@ namespace IMS.DAO.CustomerDao
 {
     public interface ICustomerDao
     {
-        Task<IEnumerable<Customer>> Load();
+        Task<List<Customer>> Load();
         Task<Customer> Get(long id);
         Task Create(Customer customer);
         Task Update(Customer customer);
@@ -22,7 +22,7 @@ namespace IMS.DAO.CustomerDao
         {
             _session = session;
         }
-        public async Task<IEnumerable<Customer>> Load()
+        public async Task<List<Customer>> Load()
         {
             try
             {

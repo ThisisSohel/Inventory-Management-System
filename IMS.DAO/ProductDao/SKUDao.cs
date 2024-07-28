@@ -9,7 +9,7 @@ namespace IMS.DAO.ProductDao
 {
     public interface ISkuDao
     {
-        Task<IEnumerable<SKU>> Load();
+        Task<List<SKU>> Load();
         Task<SKU> Get(long id);
         Task SkuCreate(SKU sKU);
         Task SkuUpdate(SKU sKU);
@@ -22,7 +22,8 @@ namespace IMS.DAO.ProductDao
         {
             _session = session;
         }
-        public async Task<IEnumerable<SKU>> Load()
+
+        public async Task<List<SKU>> Load()
         {
             try
             {
@@ -33,7 +34,6 @@ namespace IMS.DAO.ProductDao
                 throw new Exception("Failed to retrieve Product SKU", ex);
             }
         }
-
 
         public async Task<SKU> Get(long id)
         {
@@ -46,7 +46,6 @@ namespace IMS.DAO.ProductDao
                 throw new Exception($"Failed to retrieve the product SKU with the ID {id}", ex);
             }
         }
-
 
         public async Task SkuCreate(SKU sKU)
         {
@@ -74,7 +73,6 @@ namespace IMS.DAO.ProductDao
             }
         }
 
-
         public async Task SkuUpdate(SKU sKU)
         {
             try
@@ -99,7 +97,6 @@ namespace IMS.DAO.ProductDao
                 throw new Exception($"Failed to update the SKU", ex);
             }
         }
-
 
         public async Task SkuDelete(long id)
         {

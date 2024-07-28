@@ -10,7 +10,7 @@ namespace IMS.DAO
 {
     public interface IBrandDao
     {
-        Task<IEnumerable<Brand>> Load();
+        Task<List<Brand>> Load();
         Task<Brand> Get(long id);
         Task BrandCreate(Brand brand);
         Task BrandUpdate(Brand brand);
@@ -26,7 +26,7 @@ namespace IMS.DAO
             _session = session;
         }
 
-        public async Task<IEnumerable<Brand>> Load()
+        public async Task<List<Brand>> Load()
         {
             try
             {

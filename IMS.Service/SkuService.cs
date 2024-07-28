@@ -8,14 +8,16 @@ using System.Threading.Tasks;
 using ISession = NHibernate.ISession;
 using IMS.CustomException;
 using IMS.Entity.EntityViewModels;
+using System.Linq;
+using System.Web.UI;
 
 namespace IMS.Service
 {
     public interface ISkuService
     {
         Task CreateSkuService(SkuViewModel skuViewModel);
-        Task<IEnumerable<SKU>> GetAll();
-        Task<SKU> GetById(long id);
+        Task<List<SkuViewModel>> GetAll();
+        Task<SkuViewModel> GetById(long id);
         Task<SkuViewModel> SkuDetailsService(long id);
         Task UpdateAsync(long id, SkuViewModel sKU);
         Task DeleteAsync(long id);
@@ -53,11 +55,32 @@ namespace IMS.Service
                 throw new InvalidNameException("Sorry! You have to input your name more than 5 character and less than 60 characters");
             }
         }
-        public async Task<IEnumerable<SKU>> GetAll()
+
+        public async Task<List<SkuViewModel>> GetAll()
         {
+            var skuViewList = new List<SkuViewModel>();
+            var skuList = new List<SKU>();
             try
             {
-                return await _skuDao.Load();
+                skuList =  await _skuDao.Load();
+
+                if(skuList.Count > 0)
+                {
+                    skuViewList = skuList.Select(s => new SkuViewModel
+                    {
+                        Id = s.Id,
+                        SKUsName = s.SKUsName,
+                        CreatedBy = s.CreatedBy,
+                        CreatedDate = s.CreatedDate,
+                        ModifyBy = s.ModifyBy,
+                        ModifyDate = s.ModifyDate,
+                    }).ToList();
+                    return skuViewList;
+                }
+                else
+                {
+                    throw new Exception("SKU is not found!");
+                }
 
             }
             catch (Exception ex)
@@ -65,8 +88,10 @@ namespace IMS.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<SKU> GetById(long id)
+
+        public async Task<SkuViewModel> GetById(long id)
         {
+            var skuView = new SkuViewModel();
             try
             {
                 var individualProductSku = await _skuDao.Get(id);
@@ -74,13 +99,24 @@ namespace IMS.Service
                 {
                     throw new ObjectNotFoundException(individualProductSku, $"The product SKU with the id {id} is not found");
                 }
-                return individualProductSku;
+                else
+                {
+                    skuView.Id = individualProductSku.Id;
+                    skuView.SKUsName = individualProductSku.SKUsName;
+                    skuView.CreatedBy = individualProductSku.CreatedBy;
+                    skuView.CreatedDate = individualProductSku.CreatedDate;
+                    skuView.ModifyBy = individualProductSku.ModifyBy;
+                    skuView.ModifyDate = individualProductSku.ModifyDate; 
+                    
+                    return skuView;
+                }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+
         public async Task CreateSkuService(SkuViewModel skuViewModelEntity)
         {
             var skuMainEntity = new SKU();
@@ -100,6 +136,7 @@ namespace IMS.Service
                 throw ex;
             }
         }
+
         public async Task UpdateAsync(long id, SkuViewModel sKU)
         {
             try
@@ -124,6 +161,7 @@ namespace IMS.Service
                 throw ex;
             }
         }
+
         public async Task DeleteAsync(long id)
         {
             try
@@ -139,6 +177,7 @@ namespace IMS.Service
                 throw ex;
             }
         }
+
         public async Task<SkuViewModel> SkuDetailsService(long id)
         {
             var skuDetails = new SkuViewModel();
