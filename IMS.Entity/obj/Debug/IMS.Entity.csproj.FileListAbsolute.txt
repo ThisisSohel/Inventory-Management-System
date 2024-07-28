@@ -10,3 +10,9 @@ F:\Professional Project\New folder (2)\Inventory-Management-System\IMS.Entity\ob
 F:\Professional Project\New folder (2)\Inventory-Management-System\IMS.Entity\obj\Debug\IMS.Entity.csproj.CoreCompileInputs.cache
 F:\Professional Project\New folder (2)\Inventory-Management-System\IMS.Entity\obj\Debug\IMS.Entity.dll
 F:\Professional Project\New folder (2)\Inventory-Management-System\IMS.Entity\obj\Debug\IMS.Entity.pdb
+F:\Professional Project\New folder (3)\Inventory-Management-System\IMS.Entity\bin\Debug\IMS.Entity.dll
+F:\Professional Project\New folder (3)\Inventory-Management-System\IMS.Entity\bin\Debug\IMS.Entity.pdb
+F:\Professional Project\New folder (3)\Inventory-Management-System\IMS.Entity\obj\Debug\IMS.Entity.csproj.AssemblyReference.cache
+F:\Professional Project\New folder (3)\Inventory-Management-System\IMS.Entity\obj\Debug\IMS.Entity.csproj.CoreCompileInputs.cache
+F:\Professional Project\New folder (3)\Inventory-Management-System\IMS.Entity\obj\Debug\IMS.Entity.dll
+F:\Professional Project\New folder (3)\Inventory-Management-System\IMS.Entity\obj\Debug\IMS.Entity.pdb

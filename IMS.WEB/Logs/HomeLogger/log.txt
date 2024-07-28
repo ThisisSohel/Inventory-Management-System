@@ -8507,3 +8507,4 @@ The statement has been terminated.
    at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
    at NHibernate.Event.Default.AbstractFlushingEventListener.<PerformExecutionsAsync>d__6.MoveNext()
 >>>>>>> 159a539d3076b19f8c65c89afb8963a6ce95b512
+2024-07-28 22:14:20,606 [8] INFO  LoggerConfiguration - Index page visited.
