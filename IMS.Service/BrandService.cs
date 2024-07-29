@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using ISession = NHibernate.ISession;
 using IMS.Entity.EntityViewModels;
 using System.Linq;
+using System.Text.RegularExpressions;
+using System.Web.ModelBinding;
 
 
 namespace IMS.Service
@@ -40,22 +42,7 @@ namespace IMS.Service
             _brandDao = new BrandDao(_session);
         }
 
-        private void BrandValidator(Brand brandToValidate)
-        {
-            if (String.IsNullOrWhiteSpace(brandToValidate.BrandName))
-            {
-                throw new InvalidNameException("sorry! only white space is not allowed");
-            }
-            if (brandToValidate.BrandName.Length == 0)
-            {
-                //ModelState.AddModelError("sorry! your input feild is empty.");
-                throw new InvalidNameException("sorry! your input feild is empty.");
-            }
-            if (brandToValidate.BrandName.Trim().Length < 3 || brandToValidate.BrandName.Trim().Length > 20)
-            {
-                throw new InvalidNameException("Sorry! You have to input your brand name more than 3 character and less than 20 characters");
-            }
-        }
+
 
         public async Task<List<BrandViewModel>> GetAll()
         {
@@ -122,12 +109,14 @@ namespace IMS.Service
 
         public async Task Update(long id, BrandViewModel brand)
         {
+
             try
             {
+                ModelValidatorMethod(brand);
                 var valueForUpdate = await _brandDao.Get(brand.Id);
                 if (valueForUpdate != null)
                 {
-                        valueForUpdate.BrandName = brand.BrandName;
+                        valueForUpdate.BrandName = brand.BrandName.Trim();
                         valueForUpdate.ModifyBy = brand.ModifyBy;
                         valueForUpdate.ModifyDate = DateTime.Now;
                         await _brandDao.BrandUpdate(valueForUpdate);                  
@@ -136,6 +125,10 @@ namespace IMS.Service
                 {
                     throw new ObjectNotFoundException(valueForUpdate, "brand");
                 }
+            }
+            catch(InvalidNameException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
@@ -161,17 +154,52 @@ namespace IMS.Service
 
         public async Task CreateBrandService(BrandViewModel brandViewModelEntity)
         {
-            var brandMainEntity = new Brand();
+
             try
             {
-                    brandMainEntity.BrandName = brandViewModelEntity.BrandName;
-                    brandMainEntity.CreatedBy = 100;
-                    brandMainEntity.CreatedDate = DateTime.Now;
-                    brandMainEntity.ModifyBy = 100;
-                    brandMainEntity.ModifyDate = DateTime.Now;
-                    await _brandDao.BrandCreate(brandMainEntity);
+                var brandDuplicateCheck = new List<Brand>();
+                var brand = await _brandDao.Load();
 
-            }catch (Exception ex)
+                if (brand.Count != 0)
+                {
+                    foreach(var item in brand)
+                    {
+                        if (brandViewModelEntity.BrandName.Contains(item.BrandName))
+                        {
+                            throw new DuplicateValueException ("Brand name can not be duplicate!");
+                        }
+                    }
+                }
+                else
+                {
+                    ModelValidatorMethod(brandViewModelEntity);
+
+                    var brandMainEntity = new Brand();
+                    try
+                    {
+                        brandMainEntity.BrandName = brandViewModelEntity.BrandName.Trim();
+                        brandMainEntity.CreatedBy = 100;
+                        brandMainEntity.CreatedDate = DateTime.Now;
+                        brandMainEntity.ModifyBy = 100;
+                        brandMainEntity.ModifyDate = DateTime.Now;
+                        await _brandDao.BrandCreate(brandMainEntity);
+
+                    }
+                    catch (InvalidNameException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+            }
+            catch(DuplicateValueException ex)
+            {
+                throw ex;
+            }
+            catch(Exception ex)
             {
                 throw ex;
             }
@@ -203,6 +231,24 @@ namespace IMS.Service
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+
+        private void ModelValidatorMethod (BrandViewModel modelToValidate)
+        {
+            if (String.IsNullOrWhiteSpace(modelToValidate.BrandName))
+            {
+                throw new InvalidNameException("Name can not be null!");
+            }
+            if (modelToValidate.BrandName.Trim().Length <3 || modelToValidate.BrandName.Trim().Length >30)
+            {
+                //ModelState.AddModelError("sorry! your input field is empty.");
+                throw new InvalidNameException("Brand name character should be in between 3 to 30!");
+            }
+            if (!Regex.IsMatch(modelToValidate.BrandName, @"^[a-zA-Z ]+$"))
+            {
+                throw new InvalidNameException("Name can not contain numbers or special characters! Please input alphabetic characters and space only!");
             }
         }
     }

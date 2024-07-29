@@ -1,4 +1,5 @@
-﻿using IMS.Entity.Entities;
+﻿using IMS.CustomException;
+using IMS.Entity.Entities;
 using IMS.Entity.EntityViewModels;
 using IMS.Service;
 using log4net;
@@ -48,13 +49,16 @@ namespace IMS.WEB.Controllers
                 }
 
             }
+            catch(InvalidNameException ex)
+            {
+                message = ex.Message;
+            }
             catch (Exception ex)
             {
                 message = "Internal server error!";
             }
             return Json(new { Message = message, IsValid = isValid }, JsonRequestBehavior.AllowGet);
         }
-
 
         [HttpGet]
         public ActionResult Load()
@@ -103,7 +107,6 @@ namespace IMS.WEB.Controllers
             JsonRequestBehavior.AllowGet);
         }
 
-
         public async Task<ActionResult> SkuDetails(long id)
         {
             bool isSuccess = false;
@@ -140,7 +143,6 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
-
         [HttpGet]
         public async Task<ActionResult> Update(long id)
         {
@@ -172,7 +174,6 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
-
         [HttpPost]
         public async Task<ActionResult> Update(long id, SkuViewModel sKU )
         {
@@ -188,9 +189,13 @@ namespace IMS.WEB.Controllers
                 {
                     //brand.ModifyBy = long.Parse(User.Identity.GetUserId());
                     sKU.ModifyBy = 200;
-                    await _skuService.UpdateAsync(sKU.Id, sKU);
+                    await _skuService.UpdateAsync(id, sKU);
                     isSuccess = true;
                     message = "SKU is updated successfully!";
+                }
+                catch(InvalidNameException ex)
+                {
+                    message = ex.Message;
                 }
                 catch (Exception ex)
                 {
@@ -203,7 +208,6 @@ namespace IMS.WEB.Controllers
                 Message = message,
             });
         }
-
 
         public async Task<ActionResult> Delete(long id)
         {

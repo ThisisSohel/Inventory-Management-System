@@ -1,9 +1,11 @@
-﻿using IMS.Entity.Entities;
+﻿using IMS.CustomException;
+using IMS.Entity.Entities;
 using IMS.Entity.EntityViewModels;
 using IMS.Service;
 using log4net;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity.Core;
 using System.Linq;
 using System.Threading.Tasks;
@@ -46,9 +48,17 @@ namespace IMS.WEB.Controllers
                     message = "Something is wrong! Please try again!";
                 }
             }
-            catch (Exception ex)
+            catch (InvalidNameException ex)
             {
                 message = ex.Message;
+            }
+            catch (InvalidExpressionException ex)
+            {
+                message = ex.Message;
+            }
+            catch (Exception ex)
+            {
+                message = "Internal server error!";
             }
 
             return Json(new
@@ -197,6 +207,14 @@ namespace IMS.WEB.Controllers
                     await _supplierService.UpdateAsync(id, supplierViewModel);
                     isSuccess = true;
                     message = "Supplier is updated successfully!";
+                }
+                catch (InvalidNameException ex)
+                {
+                    message = ex.Message;
+                }
+                catch (InvalidExpressionException ex)
+                {
+                    message = ex.Message;
                 }
                 catch (Exception ex)
                 {

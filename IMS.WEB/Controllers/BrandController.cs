@@ -34,7 +34,6 @@ namespace IMS.WEB.Controllers
 
         [HttpPost]
         public async Task<ActionResult> CreateBrand(BrandViewModel brand)
-        
         {
             string message = string.Empty;
             bool isValid = false;
@@ -52,7 +51,16 @@ namespace IMS.WEB.Controllers
                     message = "Something is wrong! Please try again!";
                 }
                 
-            }catch (Exception ex)
+            }
+            catch(DuplicateValueException ex)
+            {
+                message = ex.Message;
+            }
+            catch(InvalidNameException ex)
+            {
+                message = ex.Message;
+            }
+            catch (Exception ex)
             {
                 message = "Internal server error!";
             }
@@ -205,6 +213,10 @@ namespace IMS.WEB.Controllers
                     await _brandService.Update(brand.Id, brand);
                     isSuccess = true;
                     message = "Brand is updated successfully!";
+                }
+                catch(InvalidNameException ex)
+                {
+                    message = ex.Message;   
                 }
                 catch (Exception ex)
                 {

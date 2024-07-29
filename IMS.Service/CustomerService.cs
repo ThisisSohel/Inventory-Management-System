@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using IMS.CustomException;
 using IMS.Entity.EntityViewModels;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace IMS.Service
 {
@@ -37,21 +38,6 @@ namespace IMS.Service
             _sessionFactory = NHibernateConfig.GetSession();
             _session = _sessionFactory.OpenSession();
             _customerDao = new CustomerDao(_session);
-        }
-        private void CustomerValidator(Customer customerToValidate)
-        {
-            if (customerToValidate.CustomerName.Trim().Length == 0)
-            {
-                throw new InvalidNameException("sorry! your input field is empty.");
-            }
-            if (String.IsNullOrWhiteSpace(customerToValidate.CustomerName))
-            {
-                throw new InvalidNameException("sorry! only white space is not allowed");
-            }
-            if (customerToValidate.CustomerName.Trim().Length < 5 || customerToValidate.CustomerName.Trim().Length > 30)
-            {
-                throw new InvalidNameException("Sorry! You have to input your name more than 5 character and less than 60 characters");
-            }
         }
 
         public async Task<List<CustomerViewModel>> GetAllAsync()
@@ -81,6 +67,7 @@ namespace IMS.Service
                 throw new Exception(ex.Message);
             }
         }
+
         public async Task<CustomerViewModel> GetById(long id)
         {    
             var customerView = new CustomerViewModel();
@@ -115,9 +102,11 @@ namespace IMS.Service
             var customerMainEntity = new Customer();
             try
             {
-                customerMainEntity.CustomerName = customerViewModel.CustomerName;
-                customerMainEntity.CustomerNumber = customerViewModel.CustomerNumber;
-                customerMainEntity.EmailAddress = customerViewModel.EmailAddress;
+                ModelValidatorMethod(customerViewModel);
+
+                customerMainEntity.CustomerName = customerViewModel.CustomerName.Trim();
+                customerMainEntity.CustomerNumber = customerViewModel.CustomerNumber.Trim();
+                customerMainEntity.EmailAddress = customerViewModel.EmailAddress.Trim();
                 customerMainEntity.CustomerAddress = customerViewModel.CustomerAddress;
                 customerMainEntity.CreatedBy = customerViewModel.CreatedBy;
                 customerMainEntity.CreatedDate = DateTime.Now;
@@ -125,6 +114,14 @@ namespace IMS.Service
                 customerMainEntity.ModifyDate = DateTime.Now;
 
                 await _customerDao.Create(customerMainEntity);  
+            }
+            catch(InvalidNameException ex)
+            {
+                throw ex;
+            }
+            catch(InvalidExpressionException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
@@ -136,6 +133,7 @@ namespace IMS.Service
         {
             try
             {
+                ModelValidatorMethod(customerViewModel);
                 var individualCustomerUpdate = await _customerDao.Get(id);
 
                 if (individualCustomerUpdate != null)
@@ -154,6 +152,14 @@ namespace IMS.Service
                 {
                     throw new Exception("Customer Not Found!");
                 }
+            }
+            catch(InvalidExpressionException ex)
+            {
+                throw ex;
+            }
+            catch(InvalidNameException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
@@ -208,5 +214,48 @@ namespace IMS.Service
             }
         }
 
+        private void ModelValidatorMethod(CustomerViewModel modelToValidate)
+        {
+            if (String.IsNullOrWhiteSpace(modelToValidate.CustomerName))
+            {
+                throw new InvalidNameException("Name can not be null!");
+            }
+            if (modelToValidate.CustomerName?.Trim().Length < 3 || modelToValidate.CustomerName.Trim().Length > 30)
+            {
+                throw new InvalidNameException("Name character should be in between 3 to 30!");
+            }
+            if (!Regex.IsMatch(modelToValidate.CustomerName, @"^[a-zA-Z ]+$"))
+            {
+                throw new InvalidExpressionException("Name can not contain numbers or special characters! Please input alphabetic characters and space only!");
+            }
+            if (!Regex.IsMatch(modelToValidate.CustomerNumber, @"^([0-9\(\)\/\+ \-]*)$"))
+            {
+                throw new InvalidExpressionException("Invalid number! Please input correct format number!");
+            }
+            if (modelToValidate.CustomerNumber == null)
+            {
+                throw new InvalidNameException("Number can not be null");
+            }
+            if (modelToValidate.CustomerNumber.Length < 11 || modelToValidate.CustomerNumber.Length > 18)
+            {
+                throw new InvalidNameException("Number length should be between 11 to 18");
+            }
+            if(modelToValidate.EmailAddress?.Trim() == null)
+            {
+                throw new InvalidNameException("Email can not be null");
+            }
+            if (!Regex.IsMatch(modelToValidate.EmailAddress, @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|" + @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)" + @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$"))
+            {
+                throw new InvalidExpressionException("Please enter valid email");
+            }
+            if(modelToValidate.CustomerAddress?.Trim() == null)
+            {
+                throw new InvalidNameException("Address can not be null");
+            }
+            if (modelToValidate.CustomerAddress?.Trim().Length > 250 || modelToValidate.CustomerAddress?.Trim().Length < 10)
+            {
+                throw new InvalidNameException("Address length should be in between 20 to 250");
+            }
+        }
     }
 }

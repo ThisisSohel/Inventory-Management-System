@@ -2,13 +2,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
 
-<div id="errorMessageShow">
-    <p></p>
-</div>
 
-<div id="successMessageShow">
-    <p></p>
-</div>
 
 <style>
     body {
@@ -19,6 +13,13 @@
 
 @*DataTable View*@
 <div class="row" style="padding: 5%">
+    <div id="errorMessageShow">
+        <p></p>
+    </div>
+
+    <div id="successMessageShow">
+        <p></p>
+    </div>
     <div class="container my-3 p-2 text-center bg-gradient text-bg-light">
         <h2>List of Customers</h2>
     </div>
@@ -54,7 +55,7 @@
 
 @*Create New  Modal*@
 <div class="modal fade" id="createModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #1d4552">
                 <h1 class="modal-title fs-5 w-100 text-center" style="color: white">Create New Customer</h1>
@@ -62,21 +63,21 @@
             </div>
             <div class="modal-body" style="background-color: darkgray">
                 <div class="container my-3 p-2 text-center">
-                    <div class="row mb-3">
-                        <label for="CustomerName" class="col-sm-3 col-form-label text-start" style="color:black;">Customer Name</label>
-                        <div class="col-sm-9">
+                    <div class="row mb-6 ps-lg-5">
+                        <label for="CustomerName" class="col-form-label text-start" style="color:black;">Name</label>
+                        <div class="col-sm-6 pb-2">
                             <input type="text" class="form-control" id="CustomerName" name="CustomerName" placeholder="Enter customer name" style="background-color:#f5f5f5">
                         </div>
-                        <label for="CustomerNumber" class="col-sm-3 col-form-label text-start" style="color:black;">Customer Number</label>
-                        <div class="col-sm-9">
+                        <label for="CustomerNumber" class=" col-form-label text-start" style="color:black;">Number</label>
+                        <div class="col-md-6 pb-2">
                             <input type="text" class="form-control" id="CustomerNumber" name="CustomerNumber" placeholder="Enter customer number" style="background-color:#f5f5f5">
                         </div>
-                        <label for="EmailAddress" class="col-sm-3 col-form-label text-start" style="color:black;">Customer Email</label>
-                        <div class="col-sm-9">
+                        <label for="EmailAddress" class=" col-form-label text-start" style="color:black;">Email</label>
+                        <div class="col-md-6 pb-2">
                             <input type="text" class="form-control" id="EmailAddress" name="EmailAddress" placeholder="Enter customer email" style="background-color:#f5f5f5">
                         </div>
-                        <label for="CustomerAddress" class="col-sm-3 col-form-label text-start" style="color:black;">Customer Address</label>
-                        <div class="col-sm-9">
+                        <label for="CustomerAddress" class=" col-form-label text-start" style="color:black;">Address</label>
+                        <div class="col-md-6 pb-2">
                             <input type="text" class="form-control" id="CustomerAddress" name="CustomerAddress" placeholder="Enter customer address" style="background-color:#f5f5f5">
                         </div>
                     </div>

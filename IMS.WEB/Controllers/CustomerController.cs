@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using IMS.CustomException;
 using IMS.Entity.Entities;
 using IMS.Entity.EntityViewModels;
 using IMS.Service;
@@ -46,6 +48,14 @@ namespace IMS.WEB.Controllers
                 }
 
             }
+            catch(InvalidNameException ex)
+            {
+                message = ex.Message;
+            }
+            catch(InvalidExpressionException ex)
+            {
+                message = ex.Message;
+            }
             catch (Exception ex)
             {
                 message = "Internal server error!";
@@ -83,8 +93,8 @@ namespace IMS.WEB.Controllers
                         Id = b.Id,
                         CustomerName = b.CustomerName,
                         CustomerNumber = b.CustomerNumber,
+                        EmailAddress = b.EmailAddress,
                         CustomerAddress = b.CustomerAddress,
-                        EmailAddress = b.CustomerAddress,
                         CreatedBy = b.CreatedBy,
                         CreatedDate = b.CreatedDate,
                         ModifyBy = b.ModifyBy,
@@ -197,6 +207,14 @@ namespace IMS.WEB.Controllers
                     await _customerService.UpdateAsync(id, customerViewModel);
                     isSuccess = true;
                     message = "Customer is updated successfully!";
+                }
+                catch(InvalidNameException ex)
+                {
+                    message = ex.Message;
+                }
+                catch(InvalidExpressionException ex)
+                {
+                    message = ex.Message;
                 }
                 catch (Exception ex)
                 {

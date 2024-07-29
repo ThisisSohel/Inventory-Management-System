@@ -10,6 +10,7 @@ using IMS.CustomException;
 using IMS.Entity.EntityViewModels;
 using System.Linq;
 using System.Web.UI;
+using System.Text.RegularExpressions;
 
 namespace IMS.Service
 {
@@ -38,22 +39,6 @@ namespace IMS.Service
             _sessionFactory = NHibernateConfig.GetSession();
             _session = _sessionFactory.OpenSession();
             _skuDao = new SKUDao(_session);
-        }
-
-        private void SkuValidator(SKU sKuToValidate)
-        {
-            if (sKuToValidate.SKUsName.Trim().Length == 0)
-            {
-                throw new InvalidNameException("sorry! your input feild is empty.");
-            }
-            if (String.IsNullOrWhiteSpace(sKuToValidate.SKUsName))
-            {
-                throw new InvalidNameException("sorry! only white space is not allowed");
-            }
-            if (sKuToValidate.SKUsName.Trim().Length < 1 || sKuToValidate.SKUsName.Trim().Length > 4)
-            {
-                throw new InvalidNameException("Sorry! You have to input your name more than 5 character and less than 60 characters");
-            }
         }
 
         public async Task<List<SkuViewModel>> GetAll()
@@ -122,14 +107,19 @@ namespace IMS.Service
             var skuMainEntity = new SKU();
             try
             {
+                ModelValidatorMethod(skuViewModelEntity);
 
-                skuMainEntity.SKUsName = skuViewModelEntity.SKUsName;
+                skuMainEntity.SKUsName = skuViewModelEntity.SKUsName.Trim();
                 skuMainEntity.CreatedBy = 100;
                 skuMainEntity.CreatedDate = DateTime.Now;
                 skuMainEntity.ModifyBy = 100;
                 skuMainEntity.ModifyDate = DateTime.Now;
 
                 await _skuDao.SkuCreate(skuMainEntity);
+            }
+            catch(InvalidNameException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
@@ -141,6 +131,7 @@ namespace IMS.Service
         {
             try
             {
+                ModelValidatorMethod(sKU);
                 var updateSku = await _skuDao.Get(id);
 
                 if (updateSku != null)
@@ -155,6 +146,10 @@ namespace IMS.Service
                 {
                     throw new ObjectNotFoundException(updateSku, "skU");
                 }
+            }
+            catch(InvalidNameException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
@@ -202,6 +197,23 @@ namespace IMS.Service
             }catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        private void ModelValidatorMethod(SkuViewModel modelToValidate)
+        {
+            if (String.IsNullOrWhiteSpace(modelToValidate.SKUsName))
+            {
+                throw new InvalidNameException("Name can not be null!");
+            }
+            if (modelToValidate.SKUsName.Trim().Length < 3 || modelToValidate.SKUsName.Trim().Length > 30)
+            {
+                //ModelState.AddModelError("sorry! your input field is empty.");
+                throw new InvalidNameException("Name character should be in between 3 to 30!");
+            }
+            if (!Regex.IsMatch(modelToValidate.SKUsName, @"^[a-zA-Z ]+$"))
+            {
+                throw new InvalidNameException("Name can not contain numbers or special characters! Please input alphabetic characters and space only!");
             }
         }
 

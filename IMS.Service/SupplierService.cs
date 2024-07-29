@@ -12,6 +12,8 @@ using IMS.CustomException;
 using IMS.Entity.EntityViewModels;
 using System.ServiceModel.Channels;
 using ISession = NHibernate.ISession;
+using System.Data;
+using System.Text.RegularExpressions;
 
 namespace IMS.Service
 {
@@ -41,22 +43,6 @@ namespace IMS.Service
             _sessionFactory = NHibernateConfig.GetSession();
             _session = _sessionFactory.OpenSession();
             _supplierDao = new SupplierDao(_session);
-        }
-
-        private void SupplierValidator(Supplier supplierToValidate)
-        {
-            if (supplierToValidate.SupplierName.Trim().Length == 0)
-            {
-                throw new InvalidNameException("sorry! your input feiled is empty.");
-            }
-            if (String.IsNullOrWhiteSpace(supplierToValidate.SupplierName))
-            {
-                throw new InvalidNameException("sorry! only white space is not allowed");
-            }
-            if (supplierToValidate.SupplierName.Trim().Length < 5 || supplierToValidate.SupplierName.Trim().Length > 30)
-            {
-                throw new InvalidNameException("Sorry! You have to input your name more than 5 character and less than 60 characters");
-            }
         }
 
         public async Task<List<SupplierViewModel>> GetAllAsync()
@@ -123,6 +109,7 @@ namespace IMS.Service
 
         public async Task CreateAsync(SupplierViewModel supplierViewModel)
         {
+            ModelValidatorMethod(supplierViewModel);
             var supplierMainEntity = new Supplier();
             try
             {
@@ -137,6 +124,14 @@ namespace IMS.Service
 
                 await _supplierDao.Create(supplierMainEntity);
             }
+            catch (InvalidNameException ex)
+            {
+                throw ex;
+            }
+            catch (InvalidExpressionException ex)
+            {
+                throw ex;
+            }
             catch (Exception ex)
             {
                 throw ex;
@@ -147,6 +142,7 @@ namespace IMS.Service
         {
             try
             {
+                ModelValidatorMethod(supplierViewModel);
                 var individualSupplierUpdate = await _supplierDao.Get(id);
 
                 if (individualSupplierUpdate != null)
@@ -163,6 +159,14 @@ namespace IMS.Service
                 {
                     throw new Exception("Supplier Not Found!");
                 }
+            }
+            catch (InvalidExpressionException ex)
+            {
+                throw ex;
+            }
+            catch (InvalidNameException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
@@ -214,6 +218,50 @@ namespace IMS.Service
             }catch(Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        private void ModelValidatorMethod(SupplierViewModel modelToValidate)
+        {
+            if (String.IsNullOrWhiteSpace(modelToValidate.SupplierName))
+            {
+                throw new InvalidNameException("Name can not be null!");
+            }
+            if (modelToValidate.SupplierName?.Trim().Length < 3 || modelToValidate.Suppli   .Trim().Length > 30)
+            {
+                throw new InvalidNameException("Name character should be in between 3 to 30!");
+            }
+            if (!Regex.IsMatch(modelToValidate.SupplierName, @"^[a-zA-Z ]+$"))
+            {
+                throw new InvalidExpressionException("Name can not contain numbers or special characters! Please input alphabetic characters and space only!");
+            }
+            if (!Regex.IsMatch(modelToValidate.SupplierNumber, @"^([0-9\(\)\/\+ \-]*)$"))
+            {
+                throw new InvalidExpressionException("Invalid number! Please input correct format number!");
+            }
+            if (modelToValidate.SupplierNumber == null)
+            {
+                throw new InvalidNameException("Number can not be null");
+            }
+            if (modelToValidate.SupplierNumber.Length < 11 || modelToValidate.SupplierNumber.Length > 18)
+            {
+                throw new InvalidNameException("Number length should be between 11 to 18");
+            }
+            if (modelToValidate.EmailAddress?.Trim() == null)
+            {
+                throw new InvalidNameException("Email can not be null");
+            }
+            if (!Regex.IsMatch(modelToValidate.EmailAddress, @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|" + @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)" + @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$"))
+            {
+                throw new InvalidExpressionException("Please enter valid email");
+            }
+            if (modelToValidate.SupplierAddress?.Trim() == null)
+            {
+                throw new InvalidNameException("Address can not be null");
+            }
+            if (modelToValidate.SupplierAddress?.Trim().Length > 250 || modelToValidate.SupplierNumber?.Trim().Length < 10)
+            {
+                throw new InvalidNameException("Address length should be in between 20 to 250");
             }
         }
 
