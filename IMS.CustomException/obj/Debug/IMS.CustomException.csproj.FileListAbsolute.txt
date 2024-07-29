@@ -4,3 +4,18 @@ C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.CustomException\obj\Debug\IMS.C
 C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.CustomException\obj\Debug\IMS.CustomException.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.CustomException\obj\Debug\IMS.CustomException.dll
 C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.CustomException\obj\Debug\IMS.CustomException.pdb
+<<<<<<< HEAD
+=======
+F:\Professional Project\New folder (2)\Inventory-Management-System\IMS.CustomException\bin\Debug\IMS.CustomException.dll
+F:\Professional Project\New folder (2)\Inventory-Management-System\IMS.CustomException\bin\Debug\IMS.CustomException.pdb
+F:\Professional Project\New folder (2)\Inventory-Management-System\IMS.CustomException\obj\Debug\IMS.CustomException.csproj.AssemblyReference.cache
+F:\Professional Project\New folder (2)\Inventory-Management-System\IMS.CustomException\obj\Debug\IMS.CustomException.csproj.CoreCompileInputs.cache
+F:\Professional Project\New folder (2)\Inventory-Management-System\IMS.CustomException\obj\Debug\IMS.CustomException.dll
+F:\Professional Project\New folder (2)\Inventory-Management-System\IMS.CustomException\obj\Debug\IMS.CustomException.pdb
+F:\Professional Project\New folder (3)\Inventory-Management-System\IMS.CustomException\bin\Debug\IMS.CustomException.dll
+F:\Professional Project\New folder (3)\Inventory-Management-System\IMS.CustomException\bin\Debug\IMS.CustomException.pdb
+F:\Professional Project\New folder (3)\Inventory-Management-System\IMS.CustomException\obj\Debug\IMS.CustomException.csproj.AssemblyReference.cache
+F:\Professional Project\New folder (3)\Inventory-Management-System\IMS.CustomException\obj\Debug\IMS.CustomException.csproj.CoreCompileInputs.cache
+F:\Professional Project\New folder (3)\Inventory-Management-System\IMS.CustomException\obj\Debug\IMS.CustomException.dll
+F:\Professional Project\New folder (3)\Inventory-Management-System\IMS.CustomException\obj\Debug\IMS.CustomException.pdb
+>>>>>>> c04ef5bf7a9a7bb23e9ecd76cf1aafc6335228d7

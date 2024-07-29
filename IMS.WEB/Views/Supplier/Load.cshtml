@@ -50,6 +50,44 @@
     </div>
 </div>
 
+<div class="modal fade" id="createModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #1d4552">
+                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">Create New Supplier</h1>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="background-color: darkgray">
+                <form class="row g-3">
+                    <div class="col-md-6">
+                        <label for="SupplierName" class="form-label" style="color:black;">Supplier Name</label>
+                        <input type="text" class="form-control" id="SupplierName" name="SupplierName" placeholder="Enter supplier name" style="background-color:#f5f5f5">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="SupplierNumber" class="form-label" style="color:black;">Supplier Number</label>
+                        <input type="text" class="form-control" id="SupplierNumber" name="SupplierNumber" placeholder="Enter supplier number" style="background-color:#f5f5f5">
+                    </div>
+                    <div class="col-12">
+                        <label for="EmailAddress" class="form-label" style="color:black;">Supplier Email</label>
+                        <input type="text" class="form-control" id="EmailAddress" name="EmailAddress" placeholder="Enter customer email" style="background-color:#f5f5f5">
+                    </div>
+                    <div class="col-12">
+                        <label for="SupplierAddress" class="form-label" style="color:black;">Supplier Address</label>
+                        <input type="text" class="form-control" id="SupplierAddress" name="SupplierAddress" placeholder="Enter supplier address" style="background-color:#f5f5f5">
+                    </div>
+                    <div class="col-12 text-center">
+                        <input type="submit" id="submitId" class="btn btn-primary" value="Create" style="background-color: #1d4552">
+                    </div>
+                    <div class="col-12 text-center">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color:#a9a9a9">Close</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer" style="background-color: #1d4552;">
+            </div>
+        </div>
+    </div>
+</div>
 
 
 @*Create New  Modal*@
@@ -201,18 +239,18 @@
 
         function showErrorAlertMessage(message) {
             return `
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <p> ${message} </p>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>`
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <p> ${message} </p>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>`
         }
 
         function showSuccessAlertMessage(message) {
             return `
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <p> ${message} </p>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>`
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <p> ${message} </p>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>`
         }
 
         function createNewFun() {
@@ -275,13 +313,13 @@
                     if (response.IsSuccess == true) {
                         $("#detailsBodyId").empty();
                         const trMake = `
-                                            <tr>
-                                                <td>${response.Details.CreatedBy}</td>
-                                                <td>${response.Details.CreatedDate}</td>
-                                                <td>${response.Details.ModifyBy}</td>
-                                                <td>${response.Details.ModifyDate}</td>
-                                            </tr>
-                                        `;
+                                                <tr>
+                                                    <td>${response.Details.CreatedBy}</td>
+                                                    <td>${response.Details.CreatedDate}</td>
+                                                    <td>${response.Details.ModifyBy}</td>
+                                                    <td>${response.Details.ModifyDate}</td>
+                                                </tr>
+                                            `;
                         $("#detailsBodyId").append(trMake);
                         $('#detailsModal').modal('show');
                     }
@@ -426,17 +464,17 @@
                                     {
                                         "data": "Id", "render": function (id) {
                                             return `
-                                                        <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "Details(${id})">
-                                                        <i class="fas fa-pencil-alt">
-                                                        </i>Details</button></a>
-                                                        <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "Delete(${id})">
-                                                        <i class="fas fa-pencil-alt">
-                                                        </i>Delete</button></a>
-                                                        <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "Update(${id})">
-                                                        <i class="fas fa-pencil-alt">
-                                                        </i>Update</button></a>
+                                                            <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "Details(${id})">
+                                                            <i class="fas fa-pencil-alt">
+                                                            </i>Details</button></a>
+                                                            <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "Delete(${id})">
+                                                            <i class="fas fa-pencil-alt">
+                                                            </i>Delete</button></a>
+                                                            <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "Update(${id})">
+                                                            <i class="fas fa-pencil-alt">
+                                                            </i>Update</button></a>
 
-                                                        `
+                                                            `
                                         }
                                     },
                                 ]
