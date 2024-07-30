@@ -17,7 +17,7 @@ namespace IMS.WEB.Controllers
     public class SupplierController : Controller
     {
         private readonly ISupplierService _supplierService;
-        public static readonly ILog _logger = LogManager.GetLogger(typeof(SupplierController));
+        //public static readonly ILog _logger = LogManager.GetLogger(typeof(SupplierController));
 
         public SupplierController()
         {
@@ -35,9 +35,10 @@ namespace IMS.WEB.Controllers
         {
             string message = string.Empty;
             bool isValid = false;
+
             try
             {
-                if(supplierViewModel != null)
+                if (supplierViewModel != null)
                 {
                     await _supplierService.CreateAsync(supplierViewModel);
                     isValid = true;
@@ -58,7 +59,7 @@ namespace IMS.WEB.Controllers
             }
             catch (Exception ex)
             {
-                message = "Internal server error!";
+                message = "Something went wrong!";
             }
 
             return Json(new
@@ -78,47 +79,38 @@ namespace IMS.WEB.Controllers
         public async Task<ActionResult> LoadSupplierData()
         {
             var supplierViewModelList = new List<SupplierViewModel>();
-            string message = string.Empty;
-            bool isValid = false;
 
             try
             {
                 var supplierList = await _supplierService.GetAllAsync();
-                if(supplierList != null)
+
+                foreach (var supplier in supplierList)
                 {
-                    foreach (var supplier in supplierList)
+                    var supplierViewModel = new SupplierViewModel
                     {
-                        var supplierViewModel = new SupplierViewModel
-                        {
-                            Id = supplier.Id,
-                            SupplierName = supplier.SupplierName,
-                            SupplierNumber = supplier.SupplierNumber,
-                            EmailAddress = supplier.EmailAddress,
-                            SupplierAddress = supplier.SupplierAddress,
-                            CreatedBy = supplier.CreatedBy,
-                            CreatedDate = supplier.CreatedDate,
-                            ModifyBy = supplier.ModifyBy,
-                            ModifyDate = supplier.ModifyDate,
-                        };
-                        supplierViewModelList.Add(supplierViewModel);
-                    }
-                    isValid = true;
+                        Id = supplier.Id,
+                        SupplierName = supplier.SupplierName,
+                        SupplierNumber = supplier.SupplierNumber,
+                        EmailAddress = supplier.EmailAddress,
+                        SupplierAddress = supplier.SupplierAddress,
+                        CreatedBy = supplier.CreatedBy,
+                        CreatedDate = supplier.CreatedDate,
+                        ModifyBy = supplier.ModifyBy,
+                        ModifyDate = supplier.ModifyDate,
+                    };
+                    supplierViewModelList.Add(supplierViewModel);
                 }
-                else
-                {
-                    message = "No supplier is found!";
-                }
+
             }
             catch (Exception ex)
             {
-                message = "Internal server error!";
+
             }
 
             return Json(new
             {
-                SupplierList = supplierViewModelList,
-                IsValid = isValid,
-                Message = message
+                recordsTotal = supplierViewModelList.Count,
+                data = supplierViewModelList,
             }, JsonRequestBehavior.AllowGet);
         }
 
@@ -134,15 +126,17 @@ namespace IMS.WEB.Controllers
                 if (supplierDetails != null)
                 {
                     isSuccess = true;
-                }else
+                }
+                else
                 {
                     message = "Supplier not found!";
                 }
             }
             catch (Exception ex)
             {
-                message = "Internal server error!";
+                message = "Something went wrong!";
             }
+
             return Json(new
             {
                 Details = new
@@ -163,6 +157,7 @@ namespace IMS.WEB.Controllers
             bool isSuccess = false;
             string message = string.Empty;
             var supplierToUpdate = new SupplierViewModel();
+
             try
             {
                 supplierToUpdate = await _supplierService.GetById(id);
@@ -175,12 +170,12 @@ namespace IMS.WEB.Controllers
                 {
                     isSuccess = true;
                 }
-
             }
             catch (Exception ex)
             {
-                message = "Internal server error!";
+                message = "Something went wrong!";
             }
+
             return Json(new
             {
                 UpdateSupplierData = supplierToUpdate,
@@ -218,7 +213,7 @@ namespace IMS.WEB.Controllers
                 }
                 catch (Exception ex)
                 {
-                    message = "Internal server error!";
+                    message = "Something went wrong!";
                 }
             }
 
@@ -233,32 +228,28 @@ namespace IMS.WEB.Controllers
         {
             string message = string.Empty;
             bool isSuccess = false;
-            var supplier = await _supplierService.GetById(id);
+            var supplier = new SupplierViewModel();
 
-            if (supplier == null)
+            try
             {
-                message = "Supplier not found to delete!";
-            }
-            else
-            {
-                try
+                supplier = await _supplierService.GetById(id);
+
+                if (supplier != null)
                 {
-                    if (supplier.Id != 0)
-                    {
-                        await _supplierService.DeleteAsync(id);
-                        message = "Supplier is deleted successfully!";
-                        isSuccess = true;
-                    }
-                    else
-                    {
-                        message = "Supplier is not found!";
-                    }
+                    await _supplierService.DeleteAsync(id);
+                    message = "Supplier is deleted successfully!";
+                    isSuccess = true;
                 }
-                catch (Exception ex)
+                else
                 {
-                    message = "Internal server error!";
+                    message = "Supplier is not found!";
                 }
             }
+            catch (Exception ex)
+            {
+                message = "Internal server error!";
+            }
+
             return Json(new
             {
                 Message = message,

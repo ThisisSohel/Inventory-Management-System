@@ -13,14 +13,15 @@
 
 @*DataTable View*@
 <div class="row" style="padding: 5%">
-    <div id="errorMessageShow">
-        <p></p>
-    </div>
 
-    <div id="successMessageShow">
-        <p></p>
-    </div>
     <div class="container my-3 p-2 text-center bg-gradient text-bg-light">
+        <div id="errorMessageShow">
+            <p></p>
+        </div>
+
+        <div id="successMessageShow">
+            <p></p>
+        </div>
         <h2>List of Customers</h2>
     </div>
     <a href="#" class="btn btn-dark col-sm-2 m-2" onclick="createNewFun()">Add New</a>
@@ -246,9 +247,7 @@
                         const msgAlertMake = showSuccessAlertMessage(response.Message);
                         $("#successMessageShow").html(msgAlertMake);
                         $("#createModal").modal('hide');
-
-                        //Reload the DataTable after added a new brand.
-                        const table = $("#brandInfoTable").DataTable();
+                        const table = $("#InfoTable").DataTable();
                         table.ajax.reload();
 
                     } else {
@@ -316,6 +315,8 @@
                             const msgAlertMake = showSuccessAlertMessage(response.Message);
                             $("#successMessageShow").html(msgAlertMake);
                             $("#deleteModal").modal('hide');
+                            const table = $("#InfoTable").DataTable();
+                            table.ajax.reload();
                         } else {
                             const msgAlertMake = showErrorAlertMessage(response.Message);
                             $("#errorMessageShow").html(msgAlertMake);
@@ -391,6 +392,8 @@
                             const msgAlertMake = showSuccessAlertMessage(response.Message);
                             $("#successMessageShow").html(msgAlertMake);
                             $("#updateModal").modal('hide');
+                            const table = $("#InfoTable").DataTable();
+                            table.ajax.reload();
                         } else {
                             const msgAlertMake = showErrorAlertMessage(response.Message);
                             $("#errorMessageShow").html(msgAlertMake);
@@ -408,51 +411,40 @@
 
         $(document).ready(function () {
 
-            $.ajax({
-                url: "/Customer/LoadCustomerData",
-                datatype: 'json',
-                type: 'GET',
-                success: function (response) {
-                    if (response.IsValid == true) {
-                        $("#InfoTable").DataTable(
+                $("#InfoTable").DataTable(
+                    {
+                        "processing": true,
+                        "serverSide": true,
+                        "ajax": {
+                            "url": "/Customer/LoadCustomerData",
+                            "type": "GET",
+                            "datatype": "json"
+                        },
+                        "columns": [
+                            { "data": "Id", name: "Id" },
+                            { "data": "CustomerName", "name": "CustomerName" },
+                            { "data": "CustomerNumber", "name": "CustomerNumber" },
+                            { "data": "EmailAddress", "name": "EmailAddress" },
+                            { "data": "CustomerAddress", "name": "CustomerAddress" },
                             {
-                                data: response.CustomerList,
-                                'scrollY': 200,
-                                "columns": [
-                                    { "data": "Id", name: "Id" },
-                                    { "data": "CustomerName", "name": "CustomerName" },
-                                    { "data": "CustomerNumber", "name": "CustomerNumber" },
-                                    { "data": "EmailAddress", "name": "EmailAddress" },
-                                    { "data": "CustomerAddress", "name": "CustomerAddress" },
-                                    {
-                                        "data": "Id", "render": function (cusId) {
-                                            return `
-                                                    <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "Details(${cusId})">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>Details</button></a>
-                                                    <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "Delete(${cusId})">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>Delete</button></a>
-                                                    <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "Update(${cusId})">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>Update</button></a>
+                                "data": "Id", "render": function (cusId) {
+                                    return `
+                                            <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "Details(${cusId})">
+                                            <i class="fas fa-pencil-alt">
+                                            </i>Details</button></a>
+                                            <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "Delete(${cusId})">
+                                            <i class="fas fa-pencil-alt">
+                                            </i>Delete</button></a>
+                                            <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "Update(${cusId})">
+                                            <i class="fas fa-pencil-alt">
+                                            </i>Update</button></a>
 
-                                                    `
-                                        }
-                                    },
-                                ]
-                            })
+                                            `
+                                }
+                            },
+                        ]
+                    });
 
-                    } else {
-                        const msgAlertMake = showErrorAlertMessage(response.Message);
-                        $("#errorMessageShow").html(msgAlertMake);
-                    }
-                },
-                error: function (err) {
-                    const msgAlertMake = showErrorAlertMessage(err + " Error!");
-                    $("#errorMessageShow").html(msgAlertMake);
-                }
-            });
 
             $("#submitId").click(function () {
 

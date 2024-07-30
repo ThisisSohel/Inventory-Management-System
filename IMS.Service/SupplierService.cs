@@ -31,7 +31,7 @@ namespace IMS.Service
         private readonly ISupplierDao _supplierDao;
         private readonly ISession _session;
         private readonly ISessionFactory _sessionFactory;
-        private static readonly ILog _logger = LogManager.GetLogger(typeof(SupplierService));
+        //private static readonly ILog _logger = LogManager.GetLogger(typeof(SupplierService));
 
         public SupplierService(ISupplierDao supplierDao)
         {
@@ -83,7 +83,7 @@ namespace IMS.Service
 
                 if (individualSupplierFind == null)
                 {
-                    throw new Exception($"The Supplier with the id {id} is not found");
+                    throw new Exception("The Supplier is not found");
                 }
                 else
                 {
@@ -111,6 +111,7 @@ namespace IMS.Service
         {
             ModelValidatorMethod(supplierViewModel);
             var supplierMainEntity = new Supplier();
+
             try
             {
                 supplierMainEntity.SupplierName = supplierViewModel.SupplierName;
@@ -179,6 +180,7 @@ namespace IMS.Service
             try
             {
                 var individualTypeDelete = _supplierDao.Get(id);
+
                 if (individualTypeDelete != null)
                 {
                     await _supplierDao.Delete(id);
@@ -214,7 +216,9 @@ namespace IMS.Service
                 {
                     throw new Exception("No supplier is found!");
                 }
+
                 return supplierDetails;
+
             }catch(Exception ex)
             {
                 throw ex;
@@ -223,11 +227,11 @@ namespace IMS.Service
 
         private void ModelValidatorMethod(SupplierViewModel modelToValidate)
         {
-            if (String.IsNullOrWhiteSpace(modelToValidate.SupplierName))
+            if (string.IsNullOrWhiteSpace(modelToValidate.SupplierName))
             {
                 throw new InvalidNameException("Name can not be null!");
             }
-            if (modelToValidate.SupplierName?.Trim().Length < 3 || modelToValidate.Suppli   .Trim().Length > 30)
+            if (modelToValidate.SupplierName?.Trim().Length < 3 || modelToValidate.SupplierName.Trim().Length > 30)
             {
                 throw new InvalidNameException("Name character should be in between 3 to 30!");
             }

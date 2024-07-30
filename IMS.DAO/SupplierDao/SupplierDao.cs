@@ -47,7 +47,7 @@ namespace IMS.DAO.SupplierDao
             }
             catch (Exception ex)
             {
-                throw new Exception($"Failed to retrieve supplier with the ID {id}", ex);
+                throw new Exception("Failed to retrieve supplier", ex);
             }
         }
 
@@ -117,7 +117,7 @@ namespace IMS.DAO.SupplierDao
             }
             catch (Exception ex)
             {
-                throw new Exception($"Failed to delete supplier with ID {id}", ex);
+                throw new Exception("Failed to delete supplier", ex);
             }
         }
     }

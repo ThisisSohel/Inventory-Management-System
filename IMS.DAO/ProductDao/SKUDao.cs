@@ -15,6 +15,7 @@ namespace IMS.DAO.ProductDao
         Task SkuUpdate(SKU sKU);
         Task SkuDelete(long id);
     }
+
     public class SKUDao : ISkuDao
     {
         private readonly ISession _session;
@@ -43,7 +44,7 @@ namespace IMS.DAO.ProductDao
             }
             catch (Exception ex)
             {
-                throw new Exception($"Failed to retrieve the product SKU with the ID {id}", ex);
+                throw new Exception("Failed to retrieve the product SKU", ex);
             }
         }
 
@@ -122,7 +123,7 @@ namespace IMS.DAO.ProductDao
             }
             catch (Exception ex)
             {
-                throw new Exception($"Failed to delete SKU with ID {id}", ex);
+                throw new Exception("Failed to delete SKU", ex);
             }
         }
     }

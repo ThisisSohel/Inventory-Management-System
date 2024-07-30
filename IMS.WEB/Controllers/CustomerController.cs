@@ -1,22 +1,20 @@
-﻿using System;
+﻿using IMS.CustomException;
+using IMS.Entity.EntityViewModels;
+using IMS.Service;
+using log4net;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
-using IMS.CustomException;
-using IMS.Entity.Entities;
-using IMS.Entity.EntityViewModels;
-using IMS.Service;
-using log4net;
 
 namespace IMS.WEB.Controllers
 {
     public class CustomerController : Controller
     {
         private readonly ICustomerService _customerService;
-        public static readonly ILog _logger = LogManager.GetLogger(typeof(CustomerController));
+        //public static readonly ILog _logger = LogManager.GetLogger(typeof(CustomerController));
         public CustomerController()
         {
             _customerService = new CustomerService();
@@ -48,26 +46,25 @@ namespace IMS.WEB.Controllers
                 }
 
             }
-            catch(InvalidNameException ex)
+            catch (InvalidNameException ex)
             {
                 message = ex.Message;
             }
-            catch(InvalidExpressionException ex)
+            catch (InvalidExpressionException ex)
             {
                 message = ex.Message;
             }
             catch (Exception ex)
             {
-                message = "Internal server error!";
+                message = "Something went wrong!";
             }
 
-            return Json(new 
-            { 
-                Message = message, 
-                IsValid = isValid 
+            return Json(new
+            {
+                Message = message,
+                IsValid = isValid
             }, JsonRequestBehavior.AllowGet);
         }
-
 
         [HttpGet]
         public ActionResult Load()
@@ -79,53 +76,45 @@ namespace IMS.WEB.Controllers
         public async Task<ActionResult> LoadCustomerData()
         {
             var customerViewModelList = new List<CustomerViewModel>();
-            string message = string.Empty;
-            bool isValid = false;
+
             try
-            { 
+            {
+                var customer = await _customerService.GetAllAsync();
 
-                var sku = await _customerService.GetAllAsync();
+                customerViewModelList = customer.Select(b => new CustomerViewModel
+                {
+                    Id = b.Id,
+                    CustomerName = b.CustomerName,
+                    CustomerNumber = b.CustomerNumber,
+                    EmailAddress = b.EmailAddress,
+                    CustomerAddress = b.CustomerAddress,
+                    CreatedBy = b.CreatedBy,
+                    CreatedDate = b.CreatedDate,
+                    ModifyBy = b.ModifyBy,
+                    ModifyDate = b.ModifyDate
+                }).ToList();
 
-                if (sku != null)
-                {
-                    customerViewModelList = sku.Select(b => new CustomerViewModel
-                    {
-                        Id = b.Id,
-                        CustomerName = b.CustomerName,
-                        CustomerNumber = b.CustomerNumber,
-                        EmailAddress = b.EmailAddress,
-                        CustomerAddress = b.CustomerAddress,
-                        CreatedBy = b.CreatedBy,
-                        CreatedDate = b.CreatedDate,
-                        ModifyBy = b.ModifyBy,
-                        ModifyDate = b.ModifyDate
-                    }).ToList();
-                    isValid = true;
-                }
-                else
-                {
-                    message = "No customer is available!";
-                }
             }
             catch (Exception ex)
             {
-                message = "Internal Server Error!";
+
             }
 
             return Json(new
             {
-                CustomerList = customerViewModelList,
-                IsValid = isValid,
-                Message = message
+                recordsTotal = customerViewModelList.Count,
+                data = customerViewModelList,
             },
             JsonRequestBehavior.AllowGet);
         }
 
+        [HttpGet]
         public async Task<ActionResult> Details(long id)
         {
             bool isSuccess = false;
             string message = string.Empty;
             var customerDetails = new CustomerViewModel();
+
             try
             {
                 customerDetails = await _customerService.CustomerDetails(id);
@@ -141,7 +130,7 @@ namespace IMS.WEB.Controllers
             }
             catch (Exception ex)
             {
-                message = "Internal server error!";
+                message = "Something went wrong!";
             }
 
             return Json(new
@@ -164,6 +153,7 @@ namespace IMS.WEB.Controllers
             bool isSuccess = false;
             string message = string.Empty;
             var customerToUpdate = new CustomerViewModel();
+
             try
             {
                 customerToUpdate = await _customerService.GetById(id);
@@ -179,8 +169,9 @@ namespace IMS.WEB.Controllers
             }
             catch (Exception ex)
             {
-                message = "Internal server error!";
+                message = "Something went wrong!";
             }
+
             return Json(new
             {
                 UpdateCustomerData = customerToUpdate,
@@ -194,6 +185,7 @@ namespace IMS.WEB.Controllers
         {
             string message = string.Empty;
             bool isSuccess = false;
+
             if (customerViewModel == null)
             {
                 message = "Customer is not found! Try again";
@@ -208,19 +200,20 @@ namespace IMS.WEB.Controllers
                     isSuccess = true;
                     message = "Customer is updated successfully!";
                 }
-                catch(InvalidNameException ex)
+                catch (InvalidNameException ex)
                 {
                     message = ex.Message;
                 }
-                catch(InvalidExpressionException ex)
+                catch (InvalidExpressionException ex)
                 {
                     message = ex.Message;
                 }
                 catch (Exception ex)
                 {
-                    message = "Internal server error!";
+                    message = "Something went wrong!";
                 }
             }
+
             return Json(new
             {
                 IsSuccess = isSuccess,
@@ -232,31 +225,29 @@ namespace IMS.WEB.Controllers
         {
             string message = string.Empty;
             bool isSuccess = false;
-            var customer = await _customerService.GetById(id);
-            if (customer == null)
+            var customer = new CustomerViewModel();
+
+            try
             {
-                message = "Customer not found to delete!";
-            }
-            else
-            {
-                try
+                customer = await _customerService.GetById(id);
+
+                if (customer !=  null)
                 {
-                    if (customer.Id != 0)
-                    {
-                        await _customerService.DeleteAsync(id);
-                        message = "Customer is deleted successfully!";
-                        isSuccess = true;
-                    }
-                    else
-                    {
-                        message = "Customer is not found!";
-                    }
+                    await _customerService.DeleteAsync(id);
+                    message = "Customer is deleted successfully!";
+                    isSuccess = true;
                 }
-                catch (Exception ex)
+                else
                 {
-                    message = "Internal server error!";
+                    message = "Customer is not found!";
                 }
             }
+            catch (Exception ex)
+            {
+                message = "Something went wrong!";
+            }
+
+
             return Json(new
             {
                 Message = message,

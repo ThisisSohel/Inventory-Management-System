@@ -16,12 +16,11 @@ namespace IMS.WEB.Controllers
     public class SkuController : Controller
     {
         private readonly ISkuService _skuService;
-        public static readonly ILog _logger = LogManager.GetLogger(typeof(HomeController));
+        //public static readonly ILog _logger = LogManager.GetLogger(typeof(HomeController));
         public SkuController()
         {
             _skuService = new SkuService();
         }
-
 
         public ActionResult CreateSKU()
         {
@@ -47,7 +46,10 @@ namespace IMS.WEB.Controllers
                 {
                     message = "Something is wrong! Please try again!";
                 }
-
+            }
+            catch(DuplicateValueException ex)
+            {
+                message = ex.Message;
             }
             catch(InvalidNameException ex)
             {
@@ -55,9 +57,14 @@ namespace IMS.WEB.Controllers
             }
             catch (Exception ex)
             {
-                message = "Internal server error!";
+                message = "Something went wrong!";
             }
-            return Json(new { Message = message, IsValid = isValid }, JsonRequestBehavior.AllowGet);
+
+            return Json(new 
+            { 
+                Message = message, 
+                IsValid = isValid 
+            }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
@@ -70,48 +77,38 @@ namespace IMS.WEB.Controllers
         public async Task<ActionResult> LoadSkuData()
         {
             var skuViewModelList = new List<SkuViewModel>();
-            string message = string.Empty;
-            bool isValid = false;
             try
             {
-
                 var sku = await _skuService.GetAll();
 
-                if (sku != null)
+                skuViewModelList = sku.Select(b => new SkuViewModel
                 {
-                    skuViewModelList = sku.Select(b => new SkuViewModel
-                    {
-                        Id = b.Id,
-                        SKUsName = b.SKUsName,
-                        CreatedDate = b.CreatedDate,
-                        ModifyDate = b.ModifyDate
-                    }).ToList();
-                    isValid = true;
-                }
-                else
-                {
-                    message = "No Sku is available!";
-                }
+                    Id = b.Id,
+                    SKUsName = b.SKUsName,
+                    CreatedDate = b.CreatedDate,
+                    ModifyDate = b.ModifyDate
+                }).ToList();
             }
             catch (Exception ex)
             {
-                message = "Internal Server Error!";
+             
             }
 
             return Json(new
             {
-                SkuList = skuViewModelList,
-                IsValid = isValid,
-                Message = message
+                recorsTotal = skuViewModelList.Count,
+                data = skuViewModelList,
             },
             JsonRequestBehavior.AllowGet);
         }
 
+        [HttpGet]
         public async Task<ActionResult> SkuDetails(long id)
         {
             bool isSuccess = false;
             string message = string.Empty;
             var skuDetails = new SkuViewModel();
+
             try
             {
                 skuDetails = await _skuService.SkuDetailsService(id);
@@ -127,8 +124,10 @@ namespace IMS.WEB.Controllers
             }
             catch (Exception ex)
             {
+                message = "Something went wrong!";
                 //_logger.Error(ex.Message);
             }
+
             return Json(new
             {
                 Details = new
@@ -149,9 +148,11 @@ namespace IMS.WEB.Controllers
             bool isSuccess = false;
             string message = string.Empty;
             var sku = new SkuViewModel();
+
             try
             {
                 sku = await _skuService.GetById(id);
+
                 if (sku == null)
                 {
                     message = "SKU is not found!";
@@ -164,8 +165,9 @@ namespace IMS.WEB.Controllers
             }
             catch (Exception ex)
             {
-                message = "Internal server error!";
+                message = "Something went wrong!";
             }
+
             return Json(new
             {
                 UpdateSkuData = sku,
@@ -179,6 +181,7 @@ namespace IMS.WEB.Controllers
         {
             string message = string.Empty;
             bool isSuccess = false;
+
             if (sKU == null)
             {
                 message = "SKU is not found! Try again";
@@ -199,9 +202,10 @@ namespace IMS.WEB.Controllers
                 }
                 catch (Exception ex)
                 {
-                    message = "Internal server error!";
+                    message = "Something went wrong!";
                 }
             }
+
             return Json(new
             {
                 IsSuccess = isSuccess,
@@ -213,7 +217,8 @@ namespace IMS.WEB.Controllers
         {
             string message = string.Empty;
             bool isSuccess = false;
-            var sku = await _skuService.GetById(id);
+            var sku = new SkuViewModel();
+
             if (sku == null)
             {
                 message = "SKU not found to delete!";
@@ -222,6 +227,8 @@ namespace IMS.WEB.Controllers
             {
                 try
                 {
+                    sku = await _skuService.GetById(id);
+
                     if (sku.Id != 0)
                     {
                         await _skuService.DeleteAsync(id);
@@ -235,9 +242,10 @@ namespace IMS.WEB.Controllers
                 }
                 catch (Exception ex)
                 {
-                    message = "Internal server error!";
+                    message = "Something went wrong!";
                 }
             }
+
             return Json(new
             {
                 Message = message,

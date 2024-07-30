@@ -2,13 +2,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
 
-<div id="errorMessageShow">
-    <p></p>
-</div>
 
-<div id="successMessageShow">
-    <p></p>
-</div>
 
 <style>
     body {
@@ -20,6 +14,13 @@
 @*DataTable View*@
 <div class="row" style="padding: 5%">
     <div class="container my-3 p-2 text-center bg-gradient text-bg-light">
+        <div id="errorMessageShow">
+            <p></p>
+        </div>
+
+        <div id="successMessageShow">
+            <p></p>
+        </div>
         <h2>List of Suppliers</h2>
     </div>
     <a href="#" class="btn btn-dark col-sm-2 m-2" onclick="createNewFun()">Add New</a>
@@ -50,44 +51,6 @@
     </div>
 </div>
 
-<div class="modal fade" id="createModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header" style="background-color: #1d4552">
-                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">Create New Supplier</h1>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" style="background-color: darkgray">
-                <form class="row g-3">
-                    <div class="col-md-6">
-                        <label for="SupplierName" class="form-label" style="color:black;">Supplier Name</label>
-                        <input type="text" class="form-control" id="SupplierName" name="SupplierName" placeholder="Enter supplier name" style="background-color:#f5f5f5">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="SupplierNumber" class="form-label" style="color:black;">Supplier Number</label>
-                        <input type="text" class="form-control" id="SupplierNumber" name="SupplierNumber" placeholder="Enter supplier number" style="background-color:#f5f5f5">
-                    </div>
-                    <div class="col-12">
-                        <label for="EmailAddress" class="form-label" style="color:black;">Supplier Email</label>
-                        <input type="text" class="form-control" id="EmailAddress" name="EmailAddress" placeholder="Enter customer email" style="background-color:#f5f5f5">
-                    </div>
-                    <div class="col-12">
-                        <label for="SupplierAddress" class="form-label" style="color:black;">Supplier Address</label>
-                        <input type="text" class="form-control" id="SupplierAddress" name="SupplierAddress" placeholder="Enter supplier address" style="background-color:#f5f5f5">
-                    </div>
-                    <div class="col-12 text-center">
-                        <input type="submit" id="submitId" class="btn btn-primary" value="Create" style="background-color: #1d4552">
-                    </div>
-                    <div class="col-12 text-center">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color:#a9a9a9">Close</button>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer" style="background-color: #1d4552;">
-            </div>
-        </div>
-    </div>
-</div>
 
 
 @*Create New  Modal*@
@@ -239,18 +202,18 @@
 
         function showErrorAlertMessage(message) {
             return `
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    <p> ${message} </p>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>`
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <p> ${message} </p>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>`
         }
 
         function showSuccessAlertMessage(message) {
             return `
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    <p> ${message} </p>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>`
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <p> ${message} </p>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>`
         }
 
         function createNewFun() {
@@ -258,7 +221,7 @@
         }
 
         function DataBinding() {
-            const name = $("#Supplierame").val();
+            const name = $("#SupplierName").val();
             const number = $("#SupplierNumber").val();
             const email = $("#EmailAddress").val();
             const address = $("#SupplierAddress").val();
@@ -283,9 +246,7 @@
                         const msgAlertMake = showSuccessAlertMessage(response.Message);
                         $("#successMessageShow").html(msgAlertMake);
                         $("#createModal").modal('hide');
-
-                        //Reload the DataTable after added a new brand.
-                        const table = $("#brandInfoTable").DataTable();
+                        const table = $("#InfoTable").DataTable();
                         table.ajax.reload();
 
                     } else {
@@ -313,13 +274,13 @@
                     if (response.IsSuccess == true) {
                         $("#detailsBodyId").empty();
                         const trMake = `
-                                                <tr>
-                                                    <td>${response.Details.CreatedBy}</td>
-                                                    <td>${response.Details.CreatedDate}</td>
-                                                    <td>${response.Details.ModifyBy}</td>
-                                                    <td>${response.Details.ModifyDate}</td>
-                                                </tr>
-                                            `;
+                                            <tr>
+                                                <td>${response.Details.CreatedBy}</td>
+                                                <td>${response.Details.CreatedDate}</td>
+                                                <td>${response.Details.ModifyBy}</td>
+                                                <td>${response.Details.ModifyDate}</td>
+                                            </tr>
+                                        `;
                         $("#detailsBodyId").append(trMake);
                         $('#detailsModal').modal('show');
                     }
@@ -353,6 +314,8 @@
                             const msgAlertMake = showSuccessAlertMessage(response.Message);
                             $("#successMessageShow").html(msgAlertMake);
                             $("#deleteModal").modal('hide');
+                            const table = $("#InfoTable").DataTable();
+                            table.ajax.reload();
                         } else {
                             const msgAlertMake = showErrorAlertMessage(response.Message);
                             $("#errorMessageShow").html(msgAlertMake);
@@ -428,6 +391,8 @@
                             const msgAlertMake = showSuccessAlertMessage(response.Message);
                             $("#successMessageShow").html(msgAlertMake);
                             $("#updateModal").modal('hide');
+                            const table = $("#InfoTable").DataTable();
+                            table.ajax.reload();
                         } else {
                             const msgAlertMake = showErrorAlertMessage(response.Message);
                             $("#errorMessageShow").html(msgAlertMake);
@@ -445,51 +410,39 @@
 
         $(document).ready(function () {
 
-            $.ajax({
-                url: "/Supplier/LoadSupplierData",
-                datatype: 'json',
-                type: 'GET',
-                success: function (response) {
-                    if (response.IsValid == true) {
-                        $("#InfoTable").DataTable(
-                            {
-                                data: response.SupplierList,
-                                'scrollY': 200,
-                                "columns": [
-                                    { "data": "Id", name: "Id" },
-                                    { "data": "SupplierName", "name": "SupplierName" },
-                                    { "data": "SupplierNumber", "name": "SupplierNumber" },
-                                    { "data": "EmailAddress", "name": "EmailAddress" },
-                                    { "data": "SupplierAddress", "name": "SupplierAddress" },
-                                    {
-                                        "data": "Id", "render": function (id) {
-                                            return `
-                                                            <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "Details(${id})">
-                                                            <i class="fas fa-pencil-alt">
-                                                            </i>Details</button></a>
-                                                            <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "Delete(${id})">
-                                                            <i class="fas fa-pencil-alt">
-                                                            </i>Delete</button></a>
-                                                            <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "Update(${id})">
-                                                            <i class="fas fa-pencil-alt">
-                                                            </i>Update</button></a>
+            $("#InfoTable").DataTable(
+                {
+                    "processing": true,
+                    "serverSide": true,
+                    "ajax": {
+                        "url": "/Supplier/LoadSupplierData",
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                        { "data": "Id", name: "Id" },
+                        { "data": "SupplierName", "name": "SupplierName" },
+                        { "data": "SupplierNumber", "name": "SupplierNumber" },
+                        { "data": "EmailAddress", "name": "EmailAddress" },
+                        { "data": "SupplierAddress", "name": "SupplierAddress" },
+                        {
+                            "data": "Id", "render": function (id) {
+                                return `
+                                                        <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "Details(${id})">
+                                                        <i class="fas fa-pencil-alt">
+                                                        </i>Details</button></a>
+                                                        <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "Delete(${id})">
+                                                        <i class="fas fa-pencil-alt">
+                                                        </i>Delete</button></a>
+                                                        <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "Update(${id})">
+                                                        <i class="fas fa-pencil-alt">
+                                                        </i>Update</button></a>
 
-                                                            `
-                                        }
-                                    },
-                                ]
-                            })
-
-                    } else {
-                        const msgAlertMake = showErrorAlertMessage(response.Message);
-                        $("#errorMessageShow").html(msgAlertMake);
-                    }
-                },
-                error: function (err) {
-                    const msgAlertMake = showErrorAlertMessage(err + " Error!");
-                    $("#errorMessageShow").html(msgAlertMake);
-                }
-            });
+                                                        `
+                            }
+                        },
+                    ]
+                });
 
             $("#submitId").click(function () {
 

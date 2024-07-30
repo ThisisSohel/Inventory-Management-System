@@ -46,7 +46,7 @@ namespace IMS.DAO
             }
             catch (Exception ex)
             {
-                throw new Exception($"Failed to retrieve brand with the ID {id}", ex);
+                throw new Exception("Brand is not found!", ex);
             }
         }
 
@@ -64,8 +64,7 @@ namespace IMS.DAO
                     catch (Exception ex)
                     {
                         transaction.Rollback();
-                        throw new Exception("Brand is not created! Internal issue!", ex);
-
+                        throw new Exception("Brand is not created! Something went wrong!", ex);
                     }
                 }
             }
@@ -80,7 +79,6 @@ namespace IMS.DAO
         {
             try
             {
-
                 using (var transaction = _session.BeginTransaction())
                 {
                     try
@@ -98,7 +96,7 @@ namespace IMS.DAO
             }
             catch (Exception ex)
             {
-                throw new Exception($"Failed to update the category", ex);
+                throw new Exception("Failed to update the category", ex);
             }
         }
 
@@ -107,6 +105,7 @@ namespace IMS.DAO
             try
             {
                 var brand = await _session.GetAsync<Brand>(id);
+
                 if (brand != null)
                 {
                     using (var transaction = _session.BeginTransaction())
@@ -126,7 +125,7 @@ namespace IMS.DAO
             }
             catch (Exception ex)
             {
-                throw new Exception($"Failed to delete Brand with ID {id}", ex);
+                throw new Exception("Failed to delete Brand with ID", ex);
             }
         }
     }

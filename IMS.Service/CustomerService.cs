@@ -23,16 +23,19 @@ namespace IMS.Service
         Task UpdateAsync(long id, CustomerViewModel customer);
         Task DeleteAsync(long id);
     }
+
     public class CustomerService : ICustomerService
     {
         private readonly ICustomerDao _customerDao;
         private readonly ISession _session;
         private readonly ISessionFactory _sessionFactory;
-        private static readonly ILog _logger = LogManager.GetLogger(typeof(CustomerService));
+        //private static readonly ILog _logger = LogManager.GetLogger(typeof(CustomerService));
+
         public CustomerService(ICustomerDao customerDao)
         {
             _customerDao = customerDao;
         }
+
         public CustomerService()
         {
             _sessionFactory = NHibernateConfig.GetSession();
@@ -42,11 +45,10 @@ namespace IMS.Service
 
         public async Task<List<CustomerViewModel>> GetAllAsync()
         {
-            var customer = new List<Customer>();
-            var customerView = new List<CustomerViewModel>();
-
             try
             {
+                var customer = new List<Customer>();
+                var customerView = new List<CustomerViewModel>();
                 customer =  await _customerDao.Load();
 
                 customerView = customer.Select(c => new CustomerViewModel
@@ -70,13 +72,14 @@ namespace IMS.Service
 
         public async Task<CustomerViewModel> GetById(long id)
         {    
-            var customerView = new CustomerViewModel();
             try
             {
+                var customerView = new CustomerViewModel();
                 var individualCustomer = await _customerDao.Get(id);
+
                 if (individualCustomer == null)
                 {
-                    throw new Exception($"The Customer with the id {id} is not found");
+                    throw new Exception("The Customer is not found");
                 }
 
                 customerView.Id = individualCustomer.Id;
@@ -99,9 +102,9 @@ namespace IMS.Service
 
         public async Task CreateAsync(CustomerViewModel customerViewModel)
         {
-            var customerMainEntity = new Customer();
             try
             {
+                var customerMainEntity = new Customer();
                 ModelValidatorMethod(customerViewModel);
 
                 customerMainEntity.CustomerName = customerViewModel.CustomerName.Trim();
@@ -172,6 +175,7 @@ namespace IMS.Service
             try
             {
                 var individualCustomerDelete = _customerDao.Get(id);
+
                 if (individualCustomerDelete != null)
                 {
                     await _customerDao.Delete(id);
@@ -185,11 +189,11 @@ namespace IMS.Service
 
         public async Task<CustomerViewModel> CustomerDetails(long id)
         {
-            var customerDetails = new CustomerViewModel();
-
             try
             {
+                var customerDetails = new CustomerViewModel();
                 var customer = await _customerDao.Get(id);
+
                 if (customer != null)
                 {
                     customerDetails.Id = customer.Id;
@@ -206,6 +210,7 @@ namespace IMS.Service
                 {
                     throw new Exception("No customer is found!");
                 }
+
                 return customerDetails;
             }
             catch (Exception ex)
@@ -216,7 +221,7 @@ namespace IMS.Service
 
         private void ModelValidatorMethod(CustomerViewModel modelToValidate)
         {
-            if (String.IsNullOrWhiteSpace(modelToValidate.CustomerName))
+            if (string.IsNullOrWhiteSpace(modelToValidate.CustomerName))
             {
                 throw new InvalidNameException("Name can not be null!");
             }

@@ -15,6 +15,7 @@ namespace IMS.DAO.CustomerDao
         Task Update(Customer customer);
         Task Delete(long id);
     }
+
     public class CustomerDao : ICustomerDao
     {
         private readonly ISession _session;
@@ -22,6 +23,7 @@ namespace IMS.DAO.CustomerDao
         {
             _session = session;
         }
+
         public async Task<List<Customer>> Load()
         {
             try
@@ -42,7 +44,7 @@ namespace IMS.DAO.CustomerDao
             }
             catch (Exception ex)
             {
-                throw new Exception($"Failed to retrieve customer with the ID {id}", ex);
+                throw new Exception("Failed to retrieve customer", ex);
             }
         }
 
@@ -101,6 +103,7 @@ namespace IMS.DAO.CustomerDao
             try
             {
                 var customer = await _session.GetAsync<Customer>(id);
+
                 if (customer != null)
                 {
                     using (var transaction = _session.BeginTransaction())

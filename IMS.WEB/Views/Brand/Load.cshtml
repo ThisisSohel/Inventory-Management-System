@@ -170,18 +170,18 @@
 
         function showErrorAlertMessage(message) {
             return `
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <p> ${message} </p>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>`
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <p> ${message} </p>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>`
         }
 
         function showSuccessAlertMessage(message) {
             return `
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <p> ${message} </p>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>`
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <p> ${message} </p>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>`
         }
 
         function createBrandFun() {
@@ -241,13 +241,13 @@
                         console.log("Deatils of Brand", response.Details)
                         $("#brandTabledetailsBodyId").empty();
                         const trMake = `
-                                        <tr>
-                                            <td>${response.Details.CreatedBy}</td>
-                                            <td>${response.Details.CreatedDate}</td>
-                                            <td>${response.Details.ModifyBy}</td>
-                                            <td>${response.Details.ModifyDate}</td>
-                                        </tr>
-                                    `;
+                                            <tr>
+                                                <td>${response.Details.CreatedBy}</td>
+                                                <td>${response.Details.CreatedDate}</td>
+                                                <td>${response.Details.ModifyBy}</td>
+                                                <td>${response.Details.ModifyDate}</td>
+                                            </tr>
+                                        `;
                         $("#brandTabledetailsBodyId").append(trMake);
                         $('#detailsBrand').modal('show');
                     }
@@ -279,6 +279,8 @@
                             const msgAlertMake = showSuccessAlertMessage(response.Message);
                             $("#successMessageShow").html(msgAlertMake);
                             $("#deleteBrandModal").modal('hide');
+                            const table = $("#brandInfoTable").DataTable();
+                            table.ajax.reload();
                         } else {
                             const msgAlertMake = showErrorAlertMessage(response.Message);
                             $("#errorMessageShow").html(msgAlertMake);
@@ -341,6 +343,8 @@
                             const msgAlertMake = showSuccessAlertMessage(response.Message);
                             $("#successMessageShow").html(msgAlertMake);
                             $("#updateBrand").modal('hide');
+                            const table = $("#brandInfoTable").DataTable();
+                            table.ajax.reload();
                         } else {
                             const msgAlertMake = showErrorAlertMessage(response.Message);
                             $("#errorMessageShow").html(msgAlertMake);
@@ -358,48 +362,36 @@
 
         $(document).ready(function () {
 
-            $.ajax({
-                url: "/Brand/LoadBrandData",
-                datatype: 'json',
-                type: 'GET',
-                success: function (response) {
-                    if (response.IsValid == true) {
-                        $("#brandInfoTable").DataTable(
-                            {
-                                data: response.BrandList,
-                                'scrollY': 200,
-                                "columns": [
-                                    { "data": "Id", name: "Id" },
-                                    { "data": "BrandName", "name": "BrandName" },
-                                    {
-                                        "data": "Id", "render": function (brandId) {
-                                            return `
-                                                    <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "brandDetails(${brandId})">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>Details</button></a>
-                                                    <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "brandDelete(${brandId})">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>Delete</button></a>
-                                                    <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "brandUpdate(${brandId})">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>Update</button></a>
-                                                    
-                                                    `
-                                        }
-                                    },
-                                ]
-                            })
+            $("#brandInfoTable").DataTable(
+                {
+                    "processing": true,
+                    "serverSide": true,
+                    "ajax": {
+                        "url": "/Brand/LoadBrandData",
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                        { "data": "Id", name: "Id" },       
+                        { "data": "BrandName", "name": "BrandName" },
+                        {
+                            "data": "Id", "render": function (brandId) {
+                                return `
+                    <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "brandDetails(${brandId})">
+                    <i class="fas fa-pencil-alt">
+                    </i>Details</button></a>
+                    <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "brandDelete(${brandId})">
+                    <i class="fas fa-pencil-alt">
+                    </i>Delete</button></a>
+                    <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "brandUpdate(${brandId})">
+                    <i class="fas fa-pencil-alt">
+                    </i>Update</button></a>
 
-                    } else {
-                        const msgAlertMake = showErrorAlertMessage(response.Message);
-                        $("#errorMessageShow").html(msgAlertMake);
-                    }
-                },
-                error: function (err) {
-                    const msgAlertMake = showErrorAlertMessage(err + " Error!");
-                    $("#errorMessageShow").html(msgAlertMake);
-                }
-            });
+                    `
+                            }
+                        },
+                    ]
+                })
 
             $("#employeeSubmitId").click(function () {
 

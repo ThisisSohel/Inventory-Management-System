@@ -4,18 +4,3 @@ C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Entity\obj\Debug\IMS.Entity.csp
 C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Entity\obj\Debug\IMS.Entity.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Entity\obj\Debug\IMS.Entity.dll
 C:\Users\User\Desktop\IMSMainProject\ims-soh\IMS.Entity\obj\Debug\IMS.Entity.pdb
-<<<<<<< HEAD
-=======
-F:\Professional Project\New folder (2)\Inventory-Management-System\IMS.Entity\bin\Debug\IMS.Entity.dll
-F:\Professional Project\New folder (2)\Inventory-Management-System\IMS.Entity\bin\Debug\IMS.Entity.pdb
-F:\Professional Project\New folder (2)\Inventory-Management-System\IMS.Entity\obj\Debug\IMS.Entity.csproj.AssemblyReference.cache
-F:\Professional Project\New folder (2)\Inventory-Management-System\IMS.Entity\obj\Debug\IMS.Entity.csproj.CoreCompileInputs.cache
-F:\Professional Project\New folder (2)\Inventory-Management-System\IMS.Entity\obj\Debug\IMS.Entity.dll
-F:\Professional Project\New folder (2)\Inventory-Management-System\IMS.Entity\obj\Debug\IMS.Entity.pdb
-F:\Professional Project\New folder (3)\Inventory-Management-System\IMS.Entity\bin\Debug\IMS.Entity.dll
-F:\Professional Project\New folder (3)\Inventory-Management-System\IMS.Entity\bin\Debug\IMS.Entity.pdb
-F:\Professional Project\New folder (3)\Inventory-Management-System\IMS.Entity\obj\Debug\IMS.Entity.csproj.AssemblyReference.cache
-F:\Professional Project\New folder (3)\Inventory-Management-System\IMS.Entity\obj\Debug\IMS.Entity.csproj.CoreCompileInputs.cache
-F:\Professional Project\New folder (3)\Inventory-Management-System\IMS.Entity\obj\Debug\IMS.Entity.dll
-F:\Professional Project\New folder (3)\Inventory-Management-System\IMS.Entity\obj\Debug\IMS.Entity.pdb
->>>>>>> c04ef5bf7a9a7bb23e9ecd76cf1aafc6335228d7

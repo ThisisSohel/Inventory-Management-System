@@ -207,9 +207,7 @@
                         const msgAlertMake = showSuccessAlertMessage(response.Message);
                         $("#successMessageShow").html(msgAlertMake);
                         $("#createModal").modal('hide');
-
-                        //Reload the DataTable after added a new brand.
-                        const table = $("#brandInfoTable").DataTable();
+                        const table = $("#InfoTable").DataTable();
                         table.ajax.reload();
 
                     } else {
@@ -277,6 +275,8 @@
                             const msgAlertMake = showSuccessAlertMessage(response.Message);
                             $("#successMessageShow").html(msgAlertMake);
                             $("#deleteModal").modal('hide');
+                            const table = $("#InfoTable").DataTable();
+                            table.ajax.reload();
                         } else {
                             const msgAlertMake = showErrorAlertMessage(response.Message);
                             $("#errorMessageShow").html(msgAlertMake);
@@ -343,6 +343,8 @@
                             const msgAlertMake = showSuccessAlertMessage(response.Message);
                             $("#successMessageShow").html(msgAlertMake);
                             $("#updateModal").modal('hide');
+                            const table = $("#InfoTable").DataTable();
+                            table.ajax.reload();
                         } else {
                             const msgAlertMake = showErrorAlertMessage(response.Message);
                             $("#errorMessageShow").html(msgAlertMake);
@@ -360,48 +362,38 @@
 
         $(document).ready(function () {
 
-            $.ajax({
-                url: "/Sku/LoadSkuData",
-                datatype: 'json',
-                type: 'GET',
-                success: function (response) {
-                    if (response.IsValid == true) {
-                        $("#InfoTable").DataTable(
-                            {
-                                data: response.SkuList,
-                                'scrollY': 200,
-                                "columns": [
-                                    { "data": "Id", name: "Id" },
-                                    { "data": "SKUsName", "name": "SKUsName" },
-                                    {
-                                        "data": "Id", "render": function (skuId) {
-                                            return `
-                                                    <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "Details(${skuId})">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>Details</button></a>
-                                                    <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "Delete(${skuId})">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>Delete</button></a>
-                                                    <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "Update(${skuId})">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>Update</button></a>
+            $("#InfoTable").DataTable(
+                {
+                    "processing": true,
+                    "serverSide": true,
+                    "ajax": {
+                        "url": "/Sku/LoadSkuData",
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                        { "data": "Id", name: "Id" },
+                        { "data": "SKUsName", "name": "SKUsName" },
+                        {
+                            "data": "Id", "render": function (skuId) {
+                                return `
+                                        <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "Details(${skuId})">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>Details</button></a>
+                                        <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "Delete(${skuId})">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>Delete</button></a>
+                                        <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "Update(${skuId})">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>Update</button></a>
 
-                                                    `
-                                        }
-                                    },
-                                ]
-                            })
+                                        `
+                            }
+                        },
+                    ]
+                });
 
-                    } else {
-                        const msgAlertMake = showErrorAlertMessage(response.Message);
-                        $("#errorMessageShow").html(msgAlertMake);
-                    }
-                },
-                error: function (err) {
-                    const msgAlertMake = showErrorAlertMessage(err + " Error!");
-                    $("#errorMessageShow").html(msgAlertMake);
-                }
-            });
+
 
             $("#submitId").click(function () {
 

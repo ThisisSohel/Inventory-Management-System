@@ -18,13 +18,13 @@ namespace IMS.WEB.Controllers
     {
 
         private readonly IBrandService _brandService;
-        private readonly ApplicationUserManager _applicatinUserManager;
-        private static readonly ILog _logger = LogManager.GetLogger(typeof(BrandController));
+        //private readonly ApplicationUserManager _applicationUserManager;
+        //private static readonly ILog _logger = LogManager.GetLogger(typeof(BrandController));
 
         public BrandController()
         {
             _brandService = new BrandService();
-            _applicatinUserManager = new ApplicationUserManager(new CustomUserStore(new ApplicationDbContext()));
+            //_applicationUserManager = new ApplicationUserManager(new CustomUserStore(new ApplicationDbContext()));
         }
 
         public ActionResult CreateBrand()
@@ -50,13 +50,13 @@ namespace IMS.WEB.Controllers
                 {
                     message = "Something is wrong! Please try again!";
                 }
-                
+
             }
-            catch(DuplicateValueException ex)
+            catch (DuplicateValueException ex)
             {
                 message = ex.Message;
             }
-            catch(InvalidNameException ex)
+            catch (InvalidNameException ex)
             {
                 message = ex.Message;
             }
@@ -64,67 +64,53 @@ namespace IMS.WEB.Controllers
             {
                 message = "Internal server error!";
             }
-            return Json(new {Message = message, IsValid = isValid}, JsonRequestBehavior.AllowGet);
+            return Json(new { Message = message, IsValid = isValid }, JsonRequestBehavior.AllowGet);
         }
-
 
         public ActionResult Load()
         {
             return View();
         }
 
-
         [HttpGet]
         public async Task<ActionResult> LoadBrandData()
         {
             var brandViewModelList = new List<BrandViewModel>();
-            string message = string.Empty;
-            bool isValid = false;
             try
             {
 
                 var brand = await _brandService.GetAll();
 
-                if (brand != null)
+                //foreach (var item in brand)
+                //{
+                //    new BrandViewModel
+                //    {
+                //        Id = item.Id,
+                //        BrandName = item.BrandName,
+                //        CreatedDate = DateTime.Now,
+                //        ModifyBy = item.ModifyBy,
+                //    };
+                //}
+                brandViewModelList = brand.Select(b => new BrandViewModel
                 {
-                    //foreach (var item in brand)
-                    //{
-                    //    new BrandViewModel
-                    //    {
-                    //        Id = item.Id,
-                    //        BrandName = item.BrandName,
-                    //        CreatedDate = DateTime.Now,
-                    //        ModifyBy = item.ModifyBy,
-                    //    };
-                    //}
-                    brandViewModelList = brand.Select(b => new BrandViewModel
-                    {
-                        Id = b.Id,
-                        BrandName = b.BrandName,
-                        CreatedDate = b.CreatedDate,
-                        ModifyDate = b.ModifyDate
-                    }).ToList();
-                    isValid = true;
-                }
-                else
-                {
-                    message = "No brand is available!";
-                }
+                    Id = b.Id,
+                    BrandName = b.BrandName,
+                    CreatedDate = b.CreatedDate,
+                    ModifyDate = b.ModifyDate
+                }).ToList();
+
             }
             catch (Exception ex)
             {
-                message = "Internal Server Error!";
+
             }
 
-            return Json(new 
-            { 
-                BrandList = brandViewModelList, 
-                IsValid = isValid, 
-                Message = message 
-            }, 
-            JsonRequestBehavior.AllowGet);
+            return Json(new
+            {
+                recorsTotal = brandViewModelList.Count,
+                data = brandViewModelList,
+            }, JsonRequestBehavior.AllowGet);
         }
-
 
         [HttpGet]
         public async Task<ActionResult> BrandDetails(long id)
@@ -132,6 +118,7 @@ namespace IMS.WEB.Controllers
             bool isSuccess = false;
             string message = string.Empty;
             var brandDetails = new BrandViewModel();
+
             try
             {
                 brandDetails = await _brandService.BrandDetailsService(id);
@@ -147,8 +134,10 @@ namespace IMS.WEB.Controllers
             }
             catch (Exception ex)
             {
+                message = "Something went wrong!";
                 //_logger.Error(ex.Message);
             }
+
             return Json(new
             {
                 Details = new
@@ -163,16 +152,17 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
-
         [HttpGet]
         public async Task<ActionResult> Update(long id)
         {
             bool isSuccess = false;
             string message = string.Empty;
             var updateBrand = new BrandViewModel();
+
             try
             {
                 updateBrand = await _brandService.GetById(id);
+
                 if (updateBrand == null)
                 {
                     message = "Brand is not found!";
@@ -181,12 +171,12 @@ namespace IMS.WEB.Controllers
                 {
                     isSuccess = true;
                 }
-
             }
             catch (Exception ex)
             {
-                message = "Internal server error!";
+                message = "Something went wrong!";
             }
+
             return Json(new
             {
                 UpdateBrandData = updateBrand,
@@ -195,17 +185,18 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
-
         [HttpPost]
         public async Task<ActionResult> Update(long id, BrandViewModel brand)
         {
             string message = string.Empty;
             bool isSuccess = false;
+
             if (brand == null)
             {
                 message = "Brand is not found! Try again";
             }
-            else{
+            else
+            {
                 try
                 {
                     //brand.ModifyBy = long.Parse(User.Identity.GetUserId());
@@ -214,15 +205,16 @@ namespace IMS.WEB.Controllers
                     isSuccess = true;
                     message = "Brand is updated successfully!";
                 }
-                catch(InvalidNameException ex)
+                catch (InvalidNameException ex)
                 {
-                    message = ex.Message;   
+                    message = ex.Message;
                 }
                 catch (Exception ex)
                 {
-                    message = "Internal server error!";
+                    message = "Something went wrong!";
                 }
             }
+
             return Json(new
             {
                 IsSuccess = isSuccess,
@@ -230,37 +222,32 @@ namespace IMS.WEB.Controllers
             });
         }
 
-
         [HttpPost]
         public async Task<ActionResult> Delete(long id)
         {
             string message = string.Empty;
             bool isSuccess = false;
-            var brand = await _brandService.GetById(id);
-            if (brand == null)
+
+            try
             {
-                message = "Brand not found to delete!";
-            }
-            else
-            {
-                try
+                var brand = await _brandService.GetById(id);
+
+                if (brand.Id != 0)
                 {
-                    if (brand.Id != 0)
-                    {
-                        await _brandService.DeleteAsync(id);
-                        message = "Brand is deleted successfully!";
-                        isSuccess = true;
-                    }
-                    else
-                    {
-                        message = "Brand is not found!";
-                    }
+                    await _brandService.DeleteAsync(id);
+                    message = "Brand is deleted successfully!";
+                    isSuccess = true;
                 }
-                catch (Exception ex)
+                else
                 {
-                    message = "Internal server error!";
+                    message = "Brand is not found!";
                 }
             }
+            catch (Exception ex)
+            {
+                message = "Something went wrong!";
+            }
+
             return Json(new
             {
                 Message = message,

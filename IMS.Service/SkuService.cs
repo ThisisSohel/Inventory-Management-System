@@ -43,10 +43,11 @@ namespace IMS.Service
 
         public async Task<List<SkuViewModel>> GetAll()
         {
-            var skuViewList = new List<SkuViewModel>();
-            var skuList = new List<SKU>();
             try
             {
+                var skuViewList = new List<SkuViewModel>();
+                var skuList = new List<SKU>();
+
                 skuList =  await _skuDao.Load();
 
                 if(skuList.Count > 0)
@@ -60,6 +61,7 @@ namespace IMS.Service
                         ModifyBy = s.ModifyBy,
                         ModifyDate = s.ModifyDate,
                     }).ToList();
+
                     return skuViewList;
                 }
                 else
@@ -76,13 +78,15 @@ namespace IMS.Service
 
         public async Task<SkuViewModel> GetById(long id)
         {
-            var skuView = new SkuViewModel();
+
             try
             {
+                var skuView = new SkuViewModel();
                 var individualProductSku = await _skuDao.Get(id);
+
                 if (individualProductSku == null)
                 {
-                    throw new ObjectNotFoundException(individualProductSku, $"The product SKU with the id {id} is not found");
+                    throw new Exception("The product SKU is not found");
                 }
                 else
                 {
@@ -104,9 +108,22 @@ namespace IMS.Service
 
         public async Task CreateSkuService(SkuViewModel skuViewModelEntity)
         {
-            var skuMainEntity = new SKU();
             try
             {
+                var skuMainEntity = new SKU();
+                var sku = await _skuDao.Load();
+
+                if (sku.Count != 0)
+                {
+                    foreach (var item in sku)
+                    {
+                        if (skuViewModelEntity.SKUsName.Contains(item.SKUsName))
+                        {
+                            throw new DuplicateValueException("SKU name can not be duplicate!");
+                        }
+                    }
+                }
+
                 ModelValidatorMethod(skuViewModelEntity);
 
                 skuMainEntity.SKUsName = skuViewModelEntity.SKUsName.Trim();
@@ -162,6 +179,7 @@ namespace IMS.Service
             try
             {
                 var individualSkuDelete = _skuDao.Get(id);
+
                 if (individualSkuDelete != null)
                 {
                     await _skuDao.SkuDelete(id);
@@ -175,11 +193,11 @@ namespace IMS.Service
 
         public async Task<SkuViewModel> SkuDetailsService(long id)
         {
-            var skuDetails = new SkuViewModel();
-
             try
             {
+                var skuDetails = new SkuViewModel();
                 var sku = await _skuDao.Get(id);
+
                 if(sku != null)
                 {
                     skuDetails.Id = sku.Id;
@@ -193,7 +211,9 @@ namespace IMS.Service
                 {
                     throw new Exception("Brand is null!");
                 }
+
                 return skuDetails;
+
             }catch (Exception ex)
             {
                 throw ex;
@@ -206,7 +226,7 @@ namespace IMS.Service
             {
                 throw new InvalidNameException("Name can not be null!");
             }
-            if (modelToValidate.SKUsName.Trim().Length < 3 || modelToValidate.SKUsName.Trim().Length > 30)
+            if (modelToValidate.SKUsName?.Trim().Length < 1 || modelToValidate.SKUsName?.Trim().Length > 4)
             {
                 //ModelState.AddModelError("sorry! your input field is empty.");
                 throw new InvalidNameException("Name character should be in between 3 to 30!");

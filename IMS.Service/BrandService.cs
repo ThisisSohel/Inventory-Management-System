@@ -30,7 +30,7 @@ namespace IMS.Service
         private readonly IBrandDao _brandDao;
         private readonly ISession _session;
         private readonly ISessionFactory _sessionFactory;
-        private static readonly ILog _logger = LogManager.GetLogger(typeof(BrandService));
+        //private static readonly ILog _logger = LogManager.GetLogger(typeof(BrandService));
         public BrandService(IBrandDao brandDao)
         {
             _brandDao = brandDao;
@@ -46,10 +46,10 @@ namespace IMS.Service
 
         public async Task<List<BrandViewModel>> GetAll()
         {
-            var brandView = new List<BrandViewModel>();
-            var brand = new List<Brand>();
             try
             {
+                var brandView = new List<BrandViewModel>();
+                var brand = new List<Brand>();
                 brand =  await _brandDao.Load();
 
                 if (brand != null)
@@ -68,6 +68,7 @@ namespace IMS.Service
                 {
                     throw new Exception("Brand not found!");
                 }
+
                 return brandView;
             }
             catch (Exception ex)
@@ -78,15 +79,14 @@ namespace IMS.Service
 
         public async Task<BrandViewModel> GetById(long id)
         {
-            var brandView = new BrandViewModel();
-
             try
             {
+                var brandView = new BrandViewModel();
                 var brand = await _brandDao.Get(id);
 
                 if (brand == null)
                 {
-                    throw new ObjectNotFoundException(brand, "Brand is not found");
+                    throw new Exception("Brand is not found");
                 }
                 else
                 {
@@ -99,7 +99,6 @@ namespace IMS.Service
 
                     return brandView;
                 }
-
             }
             catch (Exception ex)
             {
@@ -109,11 +108,11 @@ namespace IMS.Service
 
         public async Task Update(long id, BrandViewModel brand)
         {
-
             try
             {
                 ModelValidatorMethod(brand);
                 var valueForUpdate = await _brandDao.Get(brand.Id);
+
                 if (valueForUpdate != null)
                 {
                         valueForUpdate.BrandName = brand.BrandName.Trim();
@@ -123,7 +122,7 @@ namespace IMS.Service
                 }
                 else
                 {
-                    throw new ObjectNotFoundException(valueForUpdate, "brand");
+                    throw new Exception( "Brand not found!");
                 }
             }
             catch(InvalidNameException ex)
@@ -141,6 +140,7 @@ namespace IMS.Service
             try
             {
                 var individualBrand = await _brandDao.Get(id);
+
                 if (individualBrand != null)
                 {
                     await _brandDao.BrandDelete(id);
@@ -154,7 +154,6 @@ namespace IMS.Service
 
         public async Task CreateBrandService(BrandViewModel brandViewModelEntity)
         {
-
             try
             {
                 var brandDuplicateCheck = new List<Brand>();
@@ -162,44 +161,42 @@ namespace IMS.Service
 
                 if (brand.Count != 0)
                 {
-                    foreach(var item in brand)
+                    foreach (var item in brand)
                     {
                         if (brandViewModelEntity.BrandName.Contains(item.BrandName))
                         {
-                            throw new DuplicateValueException ("Brand name can not be duplicate!");
+                            throw new DuplicateValueException("Brand name can not be duplicate!");
                         }
                     }
                 }
-                else
+
+                ModelValidatorMethod(brandViewModelEntity);
+                var brandMainEntity = new Brand();
+
+                try
                 {
-                    ModelValidatorMethod(brandViewModelEntity);
-
-                    var brandMainEntity = new Brand();
-                    try
-                    {
-                        brandMainEntity.BrandName = brandViewModelEntity.BrandName.Trim();
-                        brandMainEntity.CreatedBy = 100;
-                        brandMainEntity.CreatedDate = DateTime.Now;
-                        brandMainEntity.ModifyBy = 100;
-                        brandMainEntity.ModifyDate = DateTime.Now;
-                        await _brandDao.BrandCreate(brandMainEntity);
-
-                    }
-                    catch (InvalidNameException ex)
-                    {
-                        throw ex;
-                    }
-                    catch (Exception ex)
-                    {
-                        throw ex;
-                    }
+                    brandMainEntity.BrandName = brandViewModelEntity.BrandName.Trim();
+                    brandMainEntity.CreatedBy = 100;
+                    brandMainEntity.CreatedDate = DateTime.Now;
+                    brandMainEntity.ModifyBy = 100;
+                    brandMainEntity.ModifyDate = DateTime.Now;
+                    await _brandDao.BrandCreate(brandMainEntity);
                 }
+                catch (InvalidNameException ex)
+                {
+                    throw ex;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
             }
-            catch(DuplicateValueException ex)
+            catch (DuplicateValueException ex)
             {
                 throw ex;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -208,6 +205,7 @@ namespace IMS.Service
         public async Task<BrandViewModel> BrandDetailsService(long id)
         {
             var brandDetails = new BrandViewModel();
+
             try
             {
                 var brand = await _brandDao.Get(id);
@@ -220,12 +218,12 @@ namespace IMS.Service
                     brandDetails.CreatedDate = brand.CreatedDate;
                     brandDetails.ModifyBy = brand.ModifyBy;
                     brandDetails.ModifyDate = brand.ModifyDate;
-                    
                 }
                 else
                 {
                     throw new Exception("Brand is null!");
                 }
+
                 return brandDetails;
             }
             catch (Exception ex)
@@ -234,10 +232,9 @@ namespace IMS.Service
             }
         }
 
-
         private void ModelValidatorMethod (BrandViewModel modelToValidate)
         {
-            if (String.IsNullOrWhiteSpace(modelToValidate.BrandName))
+            if (string.IsNullOrWhiteSpace(modelToValidate.BrandName))
             {
                 throw new InvalidNameException("Name can not be null!");
             }
