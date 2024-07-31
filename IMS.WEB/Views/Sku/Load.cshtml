@@ -2,14 +2,6 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
 
-<div id="errorMessageShow">
-    <p></p>
-</div>
-
-<div id="successMessageShow">
-    <p></p>
-</div>
-
 <style>
     body {
         background-color: white;
@@ -18,24 +10,31 @@
 </style>
 
 @*DataTable View*@
-<div class="row" style="padding: 5%">
-    <div class="container my-3 p-2 text-center bg-gradient text-bg-light">
+<div class="row" style="padding: 3%; border:1px solid">
+    <div id="errorMessageShow">
+        <p></p>
+    </div>
+
+    <div id="successMessageShow">
+        <p></p>
+    </div>
+
+    <div class="container my-3 p-2 text-center" style="background-color: #91c0e3">
         <h2>List of SKUs</h2>
     </div>
-    <a href="#" class="btn btn-dark col-sm-2 m-2" onclick="createNewFun()">Add New</a>
+
+    <a href="#" class="btn btn-dark col-sm-2 mb-2" onclick="createNewFun()">Add New</a>
 
     <div style="border:1px solid black; padding:10px; width: 1300px; text-align:center" class="col-lg-4">
         <table id="InfoTable" class="cell-border" style="width:100%">
             <thead>
                 <tr>
-                    <th>Id</th>
                     <th>SKU Name</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
-                    <th>Id</th>
                     <th>SKU Name</th>
                     <th>Actions</th>
                 </tr>
@@ -372,7 +371,6 @@
                         "datatype": "json"
                     },
                     "columns": [
-                        { "data": "Id", name: "Id" },
                         { "data": "SKUsName", "name": "SKUsName" },
                         {
                             "data": "Id", "render": function (skuId) {

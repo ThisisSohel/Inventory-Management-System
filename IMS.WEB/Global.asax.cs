@@ -17,6 +17,7 @@ namespace IMS.WEB
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             //NHibernateConfig.CreateSessionFactory();
+            log4net.Config.XmlConfigurator.Configure();
         }
     }
 }

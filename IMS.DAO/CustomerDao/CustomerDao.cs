@@ -63,7 +63,6 @@ namespace IMS.DAO.CustomerDao
                     {
                         transaction.Rollback();
                         throw new Exception("Customer is not created! Internal issue!", ex);
-
                     }
                 }
             }

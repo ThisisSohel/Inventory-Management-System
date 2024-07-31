@@ -12,25 +12,25 @@
 </style>
 
 @*DataTable View*@
-<div class="row" style="padding: 5%">
+<div class="row" style="padding: 3%; border:1px solid">
+    <div id="errorMessageShow">
+        <p></p>
+    </div>
 
-    <div class="container my-3 p-2 text-center bg-gradient text-bg-light">
-        <div id="errorMessageShow">
-            <p></p>
-        </div>
+    <div id="successMessageShow">
+        <p></p>
+    </div>
 
-        <div id="successMessageShow">
-            <p></p>
-        </div>
+    <div class="container my-3 p-2 text-center" style="background-color: #91c0e3">
         <h2>List of Customers</h2>
     </div>
-    <a href="#" class="btn btn-dark col-sm-2 m-2" onclick="createNewFun()">Add New</a>
+
+    <a href="#" class="btn btn-dark col-sm-2 mb-2" onclick="createNewFun()">Add New</a>
 
     <div style="border:1px solid black; padding:10px; width: 1300px; text-align:center" class="col-lg-4">
         <table id="InfoTable" class="cell-border" style="width:100%">
             <thead>
                 <tr>
-                    <th>Id</th>
                     <th>Customer Name</th>
                     <th>Customer Number</th>
                     <th>Customer Email</th>
@@ -40,7 +40,6 @@
             </thead>
             <tfoot>
                 <tr>
-                    <th>Id</th>
                     <th>Customer Name</th>
                     <th>Customer Number</th>
                     <th>Customer Email</th>
@@ -421,7 +420,6 @@
                             "datatype": "json"
                         },
                         "columns": [
-                            { "data": "Id", name: "Id" },
                             { "data": "CustomerName", "name": "CustomerName" },
                             { "data": "CustomerNumber", "name": "CustomerNumber" },
                             { "data": "EmailAddress", "name": "EmailAddress" },

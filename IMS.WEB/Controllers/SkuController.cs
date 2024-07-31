@@ -16,7 +16,7 @@ namespace IMS.WEB.Controllers
     public class SkuController : Controller
     {
         private readonly ISkuService _skuService;
-        //public static readonly ILog _logger = LogManager.GetLogger(typeof(HomeController));
+        public static readonly ILog _logger = LogManager.GetLogger(typeof(SkuController));
         public SkuController()
         {
             _skuService = new SkuService();
@@ -57,6 +57,7 @@ namespace IMS.WEB.Controllers
             }
             catch (Exception ex)
             {
+                _logger.Error(message, ex);
                 message = "Something went wrong!";
             }
 
@@ -91,12 +92,13 @@ namespace IMS.WEB.Controllers
             }
             catch (Exception ex)
             {
-             
+                _logger.Error(ex);
             }
 
             return Json(new
             {
                 recorsTotal = skuViewModelList.Count,
+                recordsFiltered = skuViewModelList.Count,
                 data = skuViewModelList,
             },
             JsonRequestBehavior.AllowGet);
@@ -125,7 +127,7 @@ namespace IMS.WEB.Controllers
             catch (Exception ex)
             {
                 message = "Something went wrong!";
-                //_logger.Error(ex.Message);
+                _logger.Error(ex.Message);
             }
 
             return Json(new
@@ -165,6 +167,7 @@ namespace IMS.WEB.Controllers
             }
             catch (Exception ex)
             {
+                _logger.Error(message, ex);
                 message = "Something went wrong!";
             }
 
@@ -202,6 +205,7 @@ namespace IMS.WEB.Controllers
                 }
                 catch (Exception ex)
                 {
+                    _logger.Error(message, ex);
                     message = "Something went wrong!";
                 }
             }
@@ -242,6 +246,7 @@ namespace IMS.WEB.Controllers
                 }
                 catch (Exception ex)
                 {
+                    _logger.Error(message, ex);
                     message = "Something went wrong!";
                 }
             }

@@ -17,7 +17,7 @@ namespace IMS.WEB.Controllers
     public class SupplierController : Controller
     {
         private readonly ISupplierService _supplierService;
-        //public static readonly ILog _logger = LogManager.GetLogger(typeof(SupplierController));
+        public static readonly ILog _logger = LogManager.GetLogger(typeof(SupplierController));
 
         public SupplierController()
         {
@@ -59,6 +59,7 @@ namespace IMS.WEB.Controllers
             }
             catch (Exception ex)
             {
+                _logger.Error(message, ex);
                 message = "Something went wrong!";
             }
 
@@ -104,12 +105,13 @@ namespace IMS.WEB.Controllers
             }
             catch (Exception ex)
             {
-
+                _logger.Error(ex);
             }
 
             return Json(new
             {
                 recordsTotal = supplierViewModelList.Count,
+                recordsFiltered = supplierViewModelList.Count,
                 data = supplierViewModelList,
             }, JsonRequestBehavior.AllowGet);
         }
@@ -134,6 +136,7 @@ namespace IMS.WEB.Controllers
             }
             catch (Exception ex)
             {
+                _logger.Error(message, ex);
                 message = "Something went wrong!";
             }
 
@@ -173,6 +176,7 @@ namespace IMS.WEB.Controllers
             }
             catch (Exception ex)
             {
+                _logger.Error(message, ex);
                 message = "Something went wrong!";
             }
 
@@ -213,6 +217,7 @@ namespace IMS.WEB.Controllers
                 }
                 catch (Exception ex)
                 {
+                    _logger.Error(message, ex);
                     message = "Something went wrong!";
                 }
             }
@@ -247,6 +252,7 @@ namespace IMS.WEB.Controllers
             }
             catch (Exception ex)
             {
+                _logger.Error(message, ex);
                 message = "Internal server error!";
             }
 

@@ -19,7 +19,8 @@ namespace IMS.WEB.Controllers
 
         private readonly IBrandService _brandService;
         //private readonly ApplicationUserManager _applicationUserManager;
-        //private static readonly ILog _logger = LogManager.GetLogger(typeof(BrandController));
+        private static readonly ILog _logger = LogManager.GetLogger(typeof(BrandController));
+        //private static readonly ILog _logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public BrandController()
         {
@@ -40,6 +41,7 @@ namespace IMS.WEB.Controllers
 
             try
             {
+                throw new Exception();
                 if (brand != null)
                 {
                     await _brandService.CreateBrandService(brand);
@@ -62,9 +64,15 @@ namespace IMS.WEB.Controllers
             }
             catch (Exception ex)
             {
-                message = "Internal server error!";
+                _logger.Error(message, ex);
+                message = "Something went wrong!";
             }
-            return Json(new { Message = message, IsValid = isValid }, JsonRequestBehavior.AllowGet);
+
+            return Json(new 
+            { 
+                Message = message, 
+                IsValid = isValid 
+            }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Load()
@@ -102,12 +110,13 @@ namespace IMS.WEB.Controllers
             }
             catch (Exception ex)
             {
-
+                _logger.Error(ex.Message, ex);
             }
 
             return Json(new
             {
                 recorsTotal = brandViewModelList.Count,
+                recordsFiltered = brandViewModelList.Count,
                 data = brandViewModelList,
             }, JsonRequestBehavior.AllowGet);
         }
@@ -135,7 +144,7 @@ namespace IMS.WEB.Controllers
             catch (Exception ex)
             {
                 message = "Something went wrong!";
-                //_logger.Error(ex.Message);
+                _logger.Error(ex.Message, ex);
             }
 
             return Json(new
@@ -174,6 +183,7 @@ namespace IMS.WEB.Controllers
             }
             catch (Exception ex)
             {
+                _logger.Error(ex.Message, ex);
                 message = "Something went wrong!";
             }
 
@@ -211,6 +221,7 @@ namespace IMS.WEB.Controllers
                 }
                 catch (Exception ex)
                 {
+                    _logger.Error(message, ex);
                     message = "Something went wrong!";
                 }
             }
@@ -245,6 +256,7 @@ namespace IMS.WEB.Controllers
             }
             catch (Exception ex)
             {
+                _logger.Error(message, ex);
                 message = "Something went wrong!";
             }
 
