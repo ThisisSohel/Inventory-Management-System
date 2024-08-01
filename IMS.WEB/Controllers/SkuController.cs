@@ -47,11 +47,11 @@ namespace IMS.WEB.Controllers
                     message = "Something is wrong! Please try again!";
                 }
             }
-            catch(DuplicateValueException ex)
+            catch (DuplicateValueException ex)
             {
                 message = ex.Message;
             }
-            catch(InvalidNameException ex)
+            catch (InvalidNameException ex)
             {
                 message = ex.Message;
             }
@@ -61,10 +61,10 @@ namespace IMS.WEB.Controllers
                 message = "Something went wrong!";
             }
 
-            return Json(new 
-            { 
-                Message = message, 
-                IsValid = isValid 
+            return Json(new
+            {
+                Message = message,
+                IsValid = isValid
             }, JsonRequestBehavior.AllowGet);
         }
 
@@ -78,6 +78,7 @@ namespace IMS.WEB.Controllers
         public async Task<ActionResult> LoadSkuData()
         {
             var skuViewModelList = new List<SkuViewModel>();
+
             try
             {
                 var sku = await _skuService.GetAll();
@@ -97,7 +98,7 @@ namespace IMS.WEB.Controllers
 
             return Json(new
             {
-                recorsTotal = skuViewModelList.Count,
+                recordsTotal = skuViewModelList.Count,
                 recordsFiltered = skuViewModelList.Count,
                 data = skuViewModelList,
             },
@@ -163,7 +164,6 @@ namespace IMS.WEB.Controllers
                 {
                     isSuccess = true;
                 }
-
             }
             catch (Exception ex)
             {
@@ -180,7 +180,7 @@ namespace IMS.WEB.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Update(long id, SkuViewModel sKU )
+        public async Task<ActionResult> Update(long id, SkuViewModel sKU)
         {
             string message = string.Empty;
             bool isSuccess = false;
@@ -199,7 +199,7 @@ namespace IMS.WEB.Controllers
                     isSuccess = true;
                     message = "SKU is updated successfully!";
                 }
-                catch(InvalidNameException ex)
+                catch (InvalidNameException ex)
                 {
                     message = ex.Message;
                 }
@@ -223,33 +223,27 @@ namespace IMS.WEB.Controllers
             bool isSuccess = false;
             var sku = new SkuViewModel();
 
-            if (sku == null)
+            try
             {
-                message = "SKU not found to delete!";
-            }
-            else
-            {
-                try
-                {
-                    sku = await _skuService.GetById(id);
+                sku = await _skuService.GetById(id);
 
-                    if (sku.Id != 0)
-                    {
-                        await _skuService.DeleteAsync(id);
-                        message = "SKU is deleted successfully!";
-                        isSuccess = true;
-                    }
-                    else
-                    {
-                        message = "SKU is not found!";
-                    }
-                }
-                catch (Exception ex)
+                if (sku != null)
                 {
-                    _logger.Error(message, ex);
-                    message = "Something went wrong!";
+                    await _skuService.DeleteAsync(id);
+                    message = "SKU is deleted successfully!";
+                    isSuccess = true;
+                }
+                else
+                {
+                    message = "SKU is not found!";
                 }
             }
+            catch (Exception ex)
+            {
+                _logger.Error(message, ex);
+                message = "Something went wrong!";
+            }
+
 
             return Json(new
             {

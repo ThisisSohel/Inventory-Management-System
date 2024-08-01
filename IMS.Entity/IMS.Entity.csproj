@@ -54,8 +54,9 @@
     <Compile Include="Entities\UserRegistration.cs" />
     <Compile Include="Entities\UserRole.cs" />
     <Compile Include="EntityViewModels\BrandViewModel.cs" />
-    <Compile Include="EntityViewModels\CategoryViewModel.cs" />
+    <Compile Include="EntityViewModels\ProductCategoryViewModel.cs" />
     <Compile Include="EntityViewModels\CustomerViewModel.cs" />
+    <Compile Include="EntityViewModels\ProductTypeViewModel.cs" />
     <Compile Include="EntityViewModels\SkuViewModel.cs" />
     <Compile Include="EntityViewModels\SupplierViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

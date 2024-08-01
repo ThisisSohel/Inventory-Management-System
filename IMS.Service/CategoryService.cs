@@ -12,24 +12,27 @@ using NHibernate;
 using ISession = NHibernate.ISession;
 using System.Runtime.Serialization;
 using IMS.CustomException;
+using IMS.Entity.EntityViewModels;
+using System.Text.RegularExpressions;
 
 namespace IMS.Service
 {
     public interface ICategoryService
     {
-        Task CreateAsync (ProductCategory category);
-        Task<IEnumerable<ProductCategory>> GetAllAsync();
-        Task<ProductCategory> GetById(long id);
-        Task UpdateAsync (long id, ProductCategory category);
+        Task CreateAsync (ProductCategoryViewModel productCategoryViewModel);
+        Task<List<ProductCategoryViewModel>> LoadAllAsync();
+        Task<ProductCategoryViewModel> GetByIdAsync(long id);
+        Task UpdateAsync (long id, ProductCategoryViewModel productCategoryViewModel);
         Task DeleteAsync (long id);
 
     }
+
     public class CategoryService : ICategoryService
     {
         private readonly ICategoryDao _categoryDao;
         private readonly ISession _session;
         private readonly ISessionFactory _sessionFactory;
-        private static readonly ILog _logger = LogManager.GetLogger(typeof(BrandService));
+        private static readonly ILog _logger = LogManager.GetLogger(typeof(CategoryService));
         public CategoryService(ICategoryDao categoryDao) 
         { 
             _categoryDao = categoryDao;
@@ -41,96 +44,153 @@ namespace IMS.Service
             _session = _sessionFactory.OpenSession();
             _categoryDao = new CategoryDao(_session);
         }
-        private void CategoryValidator(ProductCategory categoryToValidate)
-        {
-            if (categoryToValidate.CategoryName.Trim().Length == 0)
-            {
-                throw new InvalidNameException("sorry! your input feild is empty.");
-            }
-            if (String.IsNullOrWhiteSpace(categoryToValidate.CategoryName))
-            {
-                throw new InvalidNameException("sorry! only white space is not allowed");
-            }
-            if (categoryToValidate.CategoryName.Trim().Length < 3 || categoryToValidate.CategoryName.Trim().Length > 20)
-            {
-                throw new InvalidNameException("Sorry! You have to input your name more than 3 character and less than 20 characters");
-            }
-        }
 
-        public async Task<IEnumerable<ProductCategory>> GetAllAsync()
+        public async Task<List<ProductCategoryViewModel>> LoadAllAsync()
         {
             try
             {
-                return await _categoryDao.GetAll();
+                var categoryViewList = new List<ProductCategoryViewModel>();
+
+                var categoryList =  await _categoryDao.LoadAll();
+
+                if(categoryList.Count > 0)
+                {
+                    categoryViewList = categoryList.Select(c => new ProductCategoryViewModel
+                    {
+                        Id = c.Id,
+                        CategoryName = c.CategoryName,
+                        CategoryDescription = c.CategoryDescription,
+                        CreatedBy = c.CreatedBy,
+                        CreatedDate = c.CreatedDate,
+                        ModifyBy = c.ModifyBy,
+                        ModifyDate = c.ModifyDate,
+                    }).ToList();
+
+                    return categoryViewList;
+                }
+                else
+                {
+                    throw new Exception("Product category is not found!");
+                }
             }
             catch (Exception ex)
             {
-                _logger.Error(ex);
                 throw new Exception(ex.Message);
             }
         }
 
-        public async Task<ProductCategory> GetById(long id)
+        public async Task<ProductCategoryViewModel> GetByIdAsync(long id)
         {
             try
             {
-                var individualCategory = await _categoryDao.GetById(id);
-                if (individualCategory == null)
+                var categoryViewModel = new ProductCategoryViewModel();
+                var category = await _categoryDao.GetByIdAsync(id);
+
+                if (category == null)
                 {
-                    throw new ObjectNotFoundException(individualCategory, $"The category with the id {id} is not found");
+                    throw new Exception("The category is not found");
                 }
-                return individualCategory;
+                else
+                {
+                    categoryViewModel.Id = category.Id;
+                    categoryViewModel.CategoryDescription = category.CategoryDescription;
+                    categoryViewModel.CategoryName = category.CategoryName;
+                    categoryViewModel.CreatedBy = category.CreatedBy;
+                    categoryViewModel.CreatedDate = category.CreatedDate;
+                    categoryViewModel.ModifyBy = category.ModifyBy;
+                    categoryViewModel.ModifyDate = category.ModifyDate; 
+                }
+
+                return categoryViewModel;
+
             }catch (Exception ex)
             {
                 _logger.Error(ex);
                 throw new Exception(ex.Message);
             }
         }
-        public async Task CreateAsync (ProductCategory category)
+
+        public async Task CreateAsync (ProductCategoryViewModel productCategoryViewModel)
         {
             try
             {
-                CategoryValidator(category);
-                var newCategory = new ProductCategory
+                var categoryMainEntity = new ProductCategory();
+                var category = await _categoryDao.LoadAll();
+                
+                if(category.Count > 0)
                 {
-                    CategoryName = category.CategoryName,
-                    CategoryDescription = category.CategoryDescription,
-                    CreatedBy = 100.ToString(),
-                    CreatedDate = DateTime.Now,
-                    ModifyBy = 100.ToString(),
-                    ModifyDate = DateTime.Now,
-                };
+                    foreach (var item in category)
+                    {
+                        if (productCategoryViewModel.CategoryName.Contains(item.CategoryName))
+                        {
+                            throw new DuplicateValueException("Category can not be duplicate");
+                        }
+                    }
+                }
+
+                ModelValidatorMethod(productCategoryViewModel);
+
                 using (var transaction = _session.BeginTransaction())
                 {
-                    await _categoryDao.CreateCategory(newCategory);
-                    await transaction.CommitAsync();
+                    try
+                    {
+                        categoryMainEntity.CategoryName = productCategoryViewModel.CategoryName;
+                        categoryMainEntity.CategoryDescription = productCategoryViewModel.CategoryDescription;
+                        categoryMainEntity.CreatedBy = 100;
+                        categoryMainEntity.CreatedDate = productCategoryViewModel.CreatedDate;
+                        categoryMainEntity.ModifyBy = 100;
+                        categoryMainEntity.ModifyDate = productCategoryViewModel.ModifyDate;
+
+                        await _categoryDao.CreateAsync(categoryMainEntity);
+                        await transaction.CommitAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw ex;
+                    }
                 }
+            }
+            catch(DuplicateValueException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
-                _logger.Error(ex.Message, ex);
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
-        public async Task UpdateAsync (long id, ProductCategory category)
+
+        public async Task UpdateAsync (long id, ProductCategoryViewModel productCategoryViewModel)
         {
             try
             {
-                var updateProductCategory = await _categoryDao.GetById(id);
-                if (updateProductCategory != null)
+                ModelValidatorMethod (productCategoryViewModel);
+
+                var productCategoryToUpdate = await _categoryDao.GetByIdAsync(id);
+
+                if (productCategoryToUpdate != null)
                 {
                     using (var transaction = _session.BeginTransaction())
                     {
-                        updateProductCategory.CategoryName = category.CategoryName;
-                        updateProductCategory.CategoryDescription = category.CategoryDescription;
-                        //updateProductCategory.ModifyBy = category.ModifyBy;
-                        updateProductCategory.ModifyDate = DateTime.Now;
-                        await _categoryDao.Update(updateProductCategory);
-                        await transaction.CommitAsync();
+                        try
+                        {
+                            productCategoryToUpdate.CategoryName = productCategoryViewModel.CategoryName;
+                            productCategoryToUpdate.CategoryDescription = productCategoryViewModel.CategoryDescription;
+                            productCategoryToUpdate.ModifyBy = 200;
+                            productCategoryToUpdate.ModifyDate = DateTime.Now;
+                            await _categoryDao.UpdateAsync(productCategoryToUpdate);
+                            await transaction.CommitAsync();
+                        }
+                        catch(Exception ex)
+                        {
+                            transaction.Rollback();
+                            throw ex;
+                        }
                     }
                 }else
                 {
-                    throw new ObjectNotFoundException(updateProductCategory, "category");
+                    throw new Exception("Category not found to Update!");
                 }
             }catch (Exception ex)
             {
@@ -138,19 +198,56 @@ namespace IMS.Service
                 throw new Exception(ex.Message);
             }
         }
+
         public async Task DeleteAsync(long id)
         {
             try
             {
-                var individualCategoryDelete = await _categoryDao.GetById(id);
-                if (individualCategoryDelete != null)
+                using(var transaction = _session.BeginTransaction()) 
                 {
-                    await _categoryDao.DeleteById(id);
+                    try
+                    {
+                        var individualCategoryDelete = await _categoryDao.GetByIdAsync(id);
+                        if (individualCategoryDelete != null)
+                        {
+                            await _categoryDao.DeleteAsync(id);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw ex;
+                    }
                 }
             }catch(Exception ex) 
             { 
                 _logger.Error(ex);
                 throw new Exception(ex.Message);
+            }
+        }
+
+        private void ModelValidatorMethod(ProductCategoryViewModel modelToValidate)
+        {
+            if (String.IsNullOrWhiteSpace(modelToValidate.CategoryName))
+            {
+                throw new InvalidNameException("Name can not be null!");
+            }
+            if (modelToValidate.CategoryName?.Trim().Length < 1 || modelToValidate.CategoryName?.Trim().Length > 4)
+            {
+                //ModelState.AddModelError("sorry! your input field is empty.");
+                throw new InvalidNameException("Name character should be in between 3 to 30!");
+            }
+            if (!Regex.IsMatch(modelToValidate.CategoryName, @"^[a-zA-Z ]+$"))
+            {
+                throw new InvalidNameException("Name can not contain numbers or special characters! Please input alphabetic characters and space only!");
+            }
+            if (modelToValidate.CategoryDescription?.Trim().Length == 0)
+            {
+                throw new InvalidNameException("Description can not be empty!");
+            }
+            if (modelToValidate.CategoryDescription?.Trim().Length > 10 || modelToValidate.CategoryDescription?.Trim().Length >= 250)
+            {
+                throw new InvalidNameException("Description character length should be between 10 to 250");
             }
         }
     }

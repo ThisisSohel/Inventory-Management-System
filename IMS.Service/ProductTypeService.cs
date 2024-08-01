@@ -92,9 +92,7 @@ namespace IMS.Service
                 var newType = new ProductType
                 {
                     TypeName = productType.TypeName,
-                    CreatedBy = 100.ToString(),
                     CreatedDate = DateTime.Now,
-                    ModifyBy = 100.ToString(),
                     ModifyDate = DateTime.Now,
                 };
                 using (var transaction = _session.BeginTransaction())

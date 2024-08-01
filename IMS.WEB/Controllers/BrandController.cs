@@ -115,7 +115,7 @@ namespace IMS.WEB.Controllers
 
             return Json(new
             {
-                recorsTotal = brandViewModelList.Count,
+                recordsTotal = brandViewModelList.Count,
                 recordsFiltered = brandViewModelList.Count,
                 data = brandViewModelList,
             }, JsonRequestBehavior.AllowGet);

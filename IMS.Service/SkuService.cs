@@ -134,6 +134,10 @@ namespace IMS.Service
 
                 await _skuDao.SkuCreate(skuMainEntity);
             }
+            catch (DuplicateValueException ex)
+            {
+                throw ex;
+            }
             catch(InvalidNameException ex)
             {
                 throw ex;

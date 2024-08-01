@@ -2,8 +2,6 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
 
-
-
 <style>
     body {
         background-color: white;
@@ -20,22 +18,24 @@
     <div id="successMessageShow">
         <p></p>
     </div>
+
     <div class="container my-3 p-2 text-center" style="background-color: #91c0e3">
-        <h2>List of Brands</h2>
+        <h2>List of Categories</h2>
     </div>
-    <a href="#" class="btn btn-dark col-sm-2 mb-2" onclick="createBrandFun()">Add New</a>
+
+    <a href="#" class="btn btn-dark col-sm-2 mb-2" onclick="createNewFun()">Add New</a>
 
     <div style="border:1px solid black; padding:10px; width: 1300px; text-align:center" class="col-lg-4">
-        <table id="brandInfoTable" class="cell-border" style="width:100%">
+        <table id="InfoTable" class="cell-border" style="width:100%">
             <thead>
                 <tr>
-                    <th>Brand Name</th>
+                    <th>Category Name</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
-                    <th>Brand</th>
+                    <th>Category Name</th>
                     <th>Actions</th>
                 </tr>
             </tfoot>
@@ -45,25 +45,31 @@
 
 
 
-@*Create New Brand Modal*@
-<div class="modal fade" id="createBrand" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+@*Create New  Modal*@
+<div class="modal fade" id="createModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #1d4552">
-                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">Create New Brand</h1>
+                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">Create New Category</h1>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="background-color: darkgray">
                 <div class="container my-3 p-2 text-center">
                     <div class="row mb-3">
-                        <label for="BrandName" class="col-sm-3 col-form-label text-start" style="color:black;">Brand Name</label>
+                        <label for="CategoryName" class="col-sm-3 col-form-label text-start" style="color:black;">Category Name</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="BrandName" name="BrandName" placeholder="Enter the brand name" style="background-color:#f5f5f5">
+                            <input type="text" class="form-control" id="CategoryName" name="CategoryName" placeholder="Enter the category" style="background-color:#f5f5f5">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="CategoryDescription" class="col-sm-3 col-form-label text-start" style="color:black;">Category Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="CategoryDescription" name="CategoryDescription" placeholder="Enter the description" style="background-color:#f5f5f5">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col text-center">
-                            <input type="submit" id="employeeSubmitId" class="btn btn-primary" value="Create" style="background-color: #1d4552">
+                            <input type="submit" id="submitId" class="btn btn-primary" value="Create" style="background-color: #1d4552">
                         </div>
                     </div>
                 </div>
@@ -76,12 +82,12 @@
 </div>
 
 
-@*Brand Details Modal*@
-<div class="modal fade" id="detailsBrand" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+@* Details Modal*@
+<div class="modal fade" id="detailsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #1d4552">
-                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">--Details about the brand--</h1>
+                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">--Details about the SKU--</h1>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="background-color: darkgray">
@@ -95,7 +101,7 @@
                                 <th>ModifyAt</th>
                             </tr>
                         </thead>
-                        <tbody id="brandTabledetailsBodyId">
+                        <tbody id="detailsBodyId">
                         </tbody>
                     </table>
                 </div>
@@ -109,7 +115,7 @@
 
 
 @*Delete Modal*@
-<div class="modal fade" id="deleteBrandModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #1d4552">
@@ -117,37 +123,37 @@
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="background-color: darkgray">
-                <h4>Are you sure to delete the brand - <span id="deleteBrandName"></span>?</h4>
-                <input type="hidden" value="" id="brandId" />
+                <h4>Are you sure to delete the SKU - <span id="nameId"></span>?</h4>
+                <input type="hidden" value="" id="Id" />
             </div>
             <div class="modal-footer" style="background-color: #1d4552">
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" style="background-color:#a9a9a9">Close</button>
-                <button type="button" id="btnBrandDelete" class="btn btn-outline-danger">Delete</button>
+                <button type="button" id="btnDelete" class="btn btn-outline-danger">Delete</button>
             </div>
         </div>
     </div>
 </div>
 
-@*Update Brand Modal*@
-<div class="modal fade" id="updateBrand" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+@*Update  Modal*@
+<div class="modal fade" id="updateModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #1d4552">
-                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">Update Brand</h1>
+                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">Update SKU</h1>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="background-color: darkgray">
                 <div class="container my-3 p-2 text-center">
                     <div class="row mb-3">
-                        <label for="UpdateBrandName" class="col-sm-3 col-form-label text-start" style="color:black;">Brand Name</label>
+                        <label for="SKUsName" class="col-sm-3 col-form-label text-start" style="color:black;">SKU Name</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="updateBrandName" name="BrandName" style="background-color:#f5f5f5">
+                            <input type="text" class="form-control" id="updateNameId" name="SKUsName" style="background-color:#f5f5f5">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col text-center">
-                            <input type="hidden" id="updateBrandId" name="Id">
-                            <input type="submit" id="updateBrandSaveId" class="btn btn-primary" value="Save" style="background-color: #1d4552">
+                            <input type="hidden" id="updateId" name="Id">
+                            <input type="submit" id="updateSaveId" class="btn btn-primary" value="Save" style="background-color: #1d4552">
                         </div>
                     </div>
                 </div>
@@ -161,7 +167,6 @@
 
 
 @section scripts{
-
     <script src="//cdn.datatables.net/2.0.5/js/dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/2.0.5/js/dataTables.bootstrap5.js"></script>
 
@@ -169,40 +174,38 @@
 
         function showErrorAlertMessage(message) {
             return `
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <p> ${message} </p>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>`
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <p> ${message} </p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>`
         }
-
 
         function showSuccessAlertMessage(message) {
             return `
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <p> ${message} </p>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>`
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <p> ${message} </p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>`
         }
 
-
-        function createBrandFun() {
-            $("#createBrand").modal('show')
+        function createNewFun() {
+            $("#createModal").modal('show')
         }
 
+        function DataBinding() {
+            const name = $("#CategoryName").val();
+            const description = $("#CategoryDescription").val();
 
-        function brandDataBinding() {
-            const brandName = $("#BrandName").val();
-
-            const brandObject = {
-                BrandName: brandName
+            const obj = {
+                SKUsName: name,
+                CategoryDescription: description
             }
-            return brandObject;
+            return obj;
         }
 
-
-        function submitBrand(obj) {
+        function submitData(obj) {
             $.ajax({
-                url: "/Brand/CreateBrand",
+                url: "/Category/CreateAsync",
                 method: "POST",
                 data: obj,
                 dataType: 'json',
@@ -210,81 +213,81 @@
                     if (response.IsValid == true) {
                         const msgAlertMake = showSuccessAlertMessage(response.Message);
                         $("#successMessageShow").html(msgAlertMake);
-                        $("#createBrand").modal('hide');
-                        const table = $("#brandInfoTable").DataTable();
+                        $("#createModal").modal('hide');
+                        const table = $("#InfoTable").DataTable();
                         table.ajax.reload();
+
                     } else {
                         const msgAlertMake = showErrorAlertMessage(response.Message);
                         $("#errorMessageShow").html(msgAlertMake);
-                        $("#createBrand").modal('hide');
+                        $("#createModal").modal('hide');
                     }
                 },
                 error: function (error) {
                     const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
                     $("#errorMessageShow").html(msgAlertMake);
-                    $("#createBrand").modal('hide');
+                    $("#createModal").modal('hide');
                 }
             });
         }
 
-
-        function brandDetails(brandId) {
-            $("#detailsBrand").modal('show')
+        function Details(id) {
+            $("#detailsModal").modal('show')
             $.ajax({
-                url: "/Brand/BrandDetails",
+                url: "/Sku/SkuDetails",
                 type: 'GET',
-                data: { id: brandId },
+                data: { id: id },
                 dataType: 'json',
                 success: function (response) {
                     if (response.IsSuccess == true) {
-
-                        $("#brandTabledetailsBodyId").empty();
-
+                        $("#detailsBodyId").empty();
                         const trMake = `
-                                            <tr>
-                                                <td>${response.Details.CreatedBy}</td>
-                                                <td>${response.Details.CreatedDate}</td>
-                                                <td>${response.Details.ModifyBy}</td>
-                                                <td>${response.Details.ModifyDate}</td>
-                                            </tr>
-                                        `;
-                        $("#brandTabledetailsBodyId").append(trMake);
-                        $('#detailsBrand').modal('show');
+                                        <tr>
+                                            <td>${response.Details.CreatedBy}</td>
+                                            <td>${response.Details.CreatedDate}</td>
+                                            <td>${response.Details.ModifyBy}</td>
+                                            <td>${response.Details.ModifyDate}</td>
+                                        </tr>
+                                    `;
+                        $("#detailsBodyId").append(trMake);
+                        $('#detailsModal').modal('show');
                     }
                     else {
                         const msgAlertMake = showErrorAlertMessage(response.Message);
                         $("#errorMessageShow").html(msgAlertMake);
+                        $('#detailsModal').modal('hide');
                     }
                 },
                 error: function (error) {
                     const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
                     $("#errorMessageShow").html(msgAlertMake);
+                    $('#detailsModal').modal('hide');
                 }
             });
         }
 
 
-        function brandDelete(deleteId) {
-            $("#deleteBrandModal").modal("show");
+        function Delete(id) {
+            $("#deleteModal").modal("show");
 
-            $("#btnBrandDelete").click(function () {
+            $("#btnDelete").click(function () {
                 $.ajax({
-                    url: "/Brand/Delete",
+                    url: "/Sku/Delete",
                     type: 'POST',
-                    data: { id: deleteId },
+                    data: { id: id },
                     success: function (response) {
                         console.log(response);
                         if (response.IsSuccess == true) {
-                            $("#deleteBrandModal").modal('hide');
+                            $("#deleteModal").modal('hide');
                             const msgAlertMake = showSuccessAlertMessage(response.Message);
                             $("#successMessageShow").html(msgAlertMake);
-                            $("#deleteBrandModal").modal('hide');
-                            const table = $("#brandInfoTable").DataTable();
+                            $("#deleteModal").modal('hide');
+                            const table = $("#InfoTable").DataTable();
                             table.ajax.reload();
                         } else {
                             const msgAlertMake = showErrorAlertMessage(response.Message);
                             $("#errorMessageShow").html(msgAlertMake);
-                            $("#deleteBrandModal").modal('hide');
+                            $("#deleteModal").modal('hide');
                         }
                     },
                     error: function (error) {
@@ -299,93 +302,95 @@
         }
 
 
-        function brandUpdate(updateId) {
-            $("#updateBrand").modal('show');
+        function Update(updateId) {
+            $("#updateModal").modal('show');
 
             $.ajax({
-                url: "/Brand/Update",
+                url: "/Sku/Update",
                 dataType: 'json',
                 type: 'GET',
                 data: { id: updateId },
                 success: function (response) {
+                    console.log(response)
                     if (response.IsSuccess == true) {
-                        $("#updateBrandId").val(response.UpdateBrandData.Id);
-                        $("#updateBrandName").val(response.UpdateBrandData.BrandName);
-                        $("#updateBrand").modal('show');
+                        $("#updateId").val(response.UpdateSkuData.Id);
+                        $("#updateNameId").val(response.UpdateSkuData.SKUsName);
+                        $("#updateModal").modal('show');
                     }
                     else {
                         const msgAlertMake = showErrorAlertMessage(response.Message);
                         $("#errorMessageShow").html(msgAlertMake);
+                        $("#updateModal").modal('hide');
                     }
                 },
                 error: function (error) {
                     const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
                     $("#errorMessageShow").html(msgAlertMake);
+                    $("#updateModal").modal('hide');
                 }
             });
 
-            $("#updateBrandSaveId").click(function () {
+            $("#updateSaveId").click(function () {
 
-                const brandId = $("#updateBrandId").val();
-                const brandName = $("#updateBrandName").val();
+                const id = $("#updateId").val();
+                const name = $("#updateNameId").val();
 
                 var formdata = {
-                    Id: brandId,
-                    BrandName: brandName
+                    Id: id,
+                    SKUsName: name
                 }
 
                 $.ajax({
-                    url: "/Brand/Update",
+                    url: "/Sku/Update",
                     dataType: 'json',
                     type: 'POST',
-                    data: { id: formdata.Id, brand: formdata },
+                    data: { id: formdata.Id, sKU: formdata },
                     success: function (response) {
                         if (response.IsSuccess == true) {
                             const msgAlertMake = showSuccessAlertMessage(response.Message);
                             $("#successMessageShow").html(msgAlertMake);
-                            $("#updateBrand").modal('hide');
-                            const table = $("#brandInfoTable").DataTable();
+                            $("#updateModal").modal('hide');
+                            const table = $("#InfoTable").DataTable();
                             table.ajax.reload();
                         } else {
                             const msgAlertMake = showErrorAlertMessage(response.Message);
                             $("#errorMessageShow").html(msgAlertMake);
-                            $("#updateBrand").modal('hide');
+                            $("#updateModal").modal('hide');
                         }
                     },
                     error: function (error) {
                         const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
                         $("#errorMessageShow").html(msgAlertMake);
-                        $("#updateBrand").modal('hide');
+                        $("#updateModal").modal('hide');
                     }
                 });
             });
         }
 
-
         $(document).ready(function () {
 
-            $("#brandInfoTable").DataTable(
+            $("#InfoTable").DataTable(
                 {
                     "processing": true,
                     "serverSide": true,
-                    "searching": true,
                     "ajax": {
-                        "url": "/Brand/LoadBrandData",
+                        "url": "/Category/LoadCategoryData",
                         "type": "GET",
                         "datatype": "json"
                     },
-                    "columns": [     
-                        { "data": "BrandName", "name": "BrandName" },
+                    "columns": [
+                        { "data": "CategoryName", "name": "CategoryName" },
+                        { "data": "CategoryDescription", "name": "CategoryDescription" },
                         {
-                            "data": "Id", "render": function (brandId) {
+                            "data": "Id", "render": function (id) {
                                 return `
-                                        <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "brandDetails(${brandId})">
+                                        <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "Details(${id})">
                                         <i class="fas fa-pencil-alt">
                                         </i>Details</button></a>
-                                        <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "brandDelete(${brandId})">
+                                        <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "Delete(${id})">
                                         <i class="fas fa-pencil-alt">
                                         </i>Delete</button></a>
-                                        <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "brandUpdate(${brandId})">
+                                        <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "Update(${id})">
                                         <i class="fas fa-pencil-alt">
                                         </i>Update</button></a>
 
@@ -393,12 +398,14 @@
                             }
                         },
                     ]
-                })
+                });
 
-            $("#employeeSubmitId").click(function () {
 
-                var formData = brandDataBinding();
-                submitBrand(formData);
+
+            $("#submitId").click(function () {
+
+                var formData = DataBinding();
+                submitData(formData);
 
             });
         })

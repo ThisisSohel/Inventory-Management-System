@@ -193,7 +193,6 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\ProductCategoryController.cs" />
     <Compile Include="Controllers\ProductTypeController.cs" />
     <Compile Include="Controllers\SkuController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
@@ -318,6 +317,7 @@
     <Content Include="Views\Sku\Load.cshtml" />
     <Content Include="Views\Customer\Load.cshtml" />
     <Content Include="Views\Supplier\Load.cshtml" />
+    <Content Include="Views\Category\LoadAll.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
