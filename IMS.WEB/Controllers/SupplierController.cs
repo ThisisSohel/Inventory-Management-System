@@ -24,12 +24,14 @@ namespace IMS.WEB.Controllers
             _supplierService = new SupplierService();
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult> Create(SupplierViewModel supplierViewModel)
         {
@@ -70,12 +72,14 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult Load()
         {
             return View();
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult> LoadSupplierData()
         {
@@ -116,6 +120,8 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
+        [HttpGet]
         public async Task<ActionResult> Details(long id)
         {
             bool isSuccess = false;
@@ -154,6 +160,7 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult> Update(long id)
         {
@@ -188,6 +195,7 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult> Update(long id, SupplierViewModel supplierViewModel)
         {
@@ -229,6 +237,8 @@ namespace IMS.WEB.Controllers
             });
         }
 
+        [Authorize]
+        [HttpPost]
         public async Task<ActionResult> Delete(long id)
         {
             string message = string.Empty;

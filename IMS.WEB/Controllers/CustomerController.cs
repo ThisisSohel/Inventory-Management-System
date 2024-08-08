@@ -20,12 +20,14 @@ namespace IMS.WEB.Controllers
             _customerService = new CustomerService();
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult> Create(CustomerViewModel customerViewModel)
         {
@@ -67,12 +69,14 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult Load()
         {
             return View();
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult> LoadCustomerData()
         {
@@ -110,6 +114,7 @@ namespace IMS.WEB.Controllers
             JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult> Details(long id)
         {
@@ -150,6 +155,7 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult> Update(long id)
         {
@@ -184,6 +190,7 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult> Update(long id, CustomerViewModel customerViewModel)
         {
@@ -226,6 +233,8 @@ namespace IMS.WEB.Controllers
             });
         }
 
+        [Authorize]
+        [HttpPost]
         public async Task<ActionResult> Delete(long id)
         {
             string message = string.Empty;

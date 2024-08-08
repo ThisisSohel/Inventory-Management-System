@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using IMS.CustomException;
 using IMS.Entity.Entities;
 using IMS.Entity.EntityViewModels;
@@ -22,12 +23,14 @@ namespace IMS.WEB.Controllers
             _categoryService = new CategoryService();
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult> CreateAsync(ProductCategoryViewModel productCategoryViewModel)
         {
@@ -68,12 +71,14 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult LoadAll()
         {
             return View();
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult> LoadCategoryData()
         {
@@ -100,6 +105,7 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult> DetailsAsync(long id)
         {
@@ -140,6 +146,7 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult> UpdateAsync(long id)
         {
@@ -173,6 +180,7 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult> UpdateAsync(long id, ProductCategoryViewModel productCategoryViewModel)
         {
@@ -209,6 +217,7 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult> DeleteAsync(long id)
         {

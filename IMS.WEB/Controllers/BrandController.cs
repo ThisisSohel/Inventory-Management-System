@@ -33,6 +33,7 @@ namespace IMS.WEB.Controllers
             return View(new BrandViewModel());
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult> CreateBrand(BrandViewModel brand)
         {
@@ -41,7 +42,6 @@ namespace IMS.WEB.Controllers
 
             try
             {
-                throw new Exception();
                 if (brand != null)
                 {
                     await _brandService.CreateBrandService(brand);
@@ -75,11 +75,13 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         public ActionResult Load()
         {
             return View();
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult> LoadBrandData()
         {
@@ -121,6 +123,7 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult> BrandDetails(long id)
         {
@@ -161,6 +164,7 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult> Update(long id)
         {
@@ -195,6 +199,7 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult> Update(long id, BrandViewModel brand)
         {
@@ -233,6 +238,7 @@ namespace IMS.WEB.Controllers
             });
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult> Delete(long id)
         {

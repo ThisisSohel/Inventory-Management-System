@@ -22,11 +22,13 @@ namespace IMS.WEB.Controllers
             _skuService = new SkuService();
         }
 
+        [Authorize]
         public ActionResult CreateSKU()
         {
             return View(new SkuViewModel());
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult> CreateSKU(SkuViewModel skuViewModel)
 
@@ -68,12 +70,14 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult Load()
         {
             return View();
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult> LoadSkuData()
         {
@@ -105,6 +109,7 @@ namespace IMS.WEB.Controllers
             JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult> SkuDetails(long id)
         {
@@ -145,6 +150,7 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult> Update(long id)
         {
@@ -179,6 +185,7 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult> Update(long id, SkuViewModel sKU)
         {
@@ -217,6 +224,8 @@ namespace IMS.WEB.Controllers
             });
         }
 
+        [Authorize]
+        [HttpPost]
         public async Task<ActionResult> Delete(long id)
         {
             string message = string.Empty;
