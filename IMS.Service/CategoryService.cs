@@ -45,6 +45,7 @@ namespace IMS.Service
             _categoryDao = new CategoryDao(_session);
         }
 
+        
         public async Task<List<ProductCategoryViewModel>> LoadAllAsync()
         {
             try
@@ -137,9 +138,9 @@ namespace IMS.Service
                         categoryMainEntity.CategoryName = productCategoryViewModel.CategoryName;
                         categoryMainEntity.CategoryDescription = productCategoryViewModel.CategoryDescription;
                         categoryMainEntity.CreatedBy = 100;
-                        categoryMainEntity.CreatedDate = productCategoryViewModel.CreatedDate;
+                        categoryMainEntity.CreatedDate = DateTime.Now;
                         categoryMainEntity.ModifyBy = 100;
-                        categoryMainEntity.ModifyDate = productCategoryViewModel.ModifyDate;
+                        categoryMainEntity.ModifyDate = DateTime.Now; 
 
                         await _categoryDao.CreateAsync(categoryMainEntity);
                         await transaction.CommitAsync();
@@ -192,10 +193,14 @@ namespace IMS.Service
                 {
                     throw new Exception("Category not found to Update!");
                 }
-            }catch (Exception ex)
+            }catch(InvalidNameException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
             {
                 _logger.Error(ex);
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
 
@@ -232,9 +237,8 @@ namespace IMS.Service
             {
                 throw new InvalidNameException("Name can not be null!");
             }
-            if (modelToValidate.CategoryName?.Trim().Length < 1 || modelToValidate.CategoryName?.Trim().Length > 4)
+            if (modelToValidate.CategoryName?.Trim().Length < 3 || modelToValidate.CategoryName?.Trim().Length > 30)
             {
-                //ModelState.AddModelError("sorry! your input field is empty.");
                 throw new InvalidNameException("Name character should be in between 3 to 30!");
             }
             if (!Regex.IsMatch(modelToValidate.CategoryName, @"^[a-zA-Z ]+$"))
@@ -245,10 +249,11 @@ namespace IMS.Service
             {
                 throw new InvalidNameException("Description can not be empty!");
             }
-            if (modelToValidate.CategoryDescription?.Trim().Length > 10 || modelToValidate.CategoryDescription?.Trim().Length >= 250)
+            if (modelToValidate.CategoryDescription.Length < 10 || modelToValidate.CategoryDescription.Length > 250 || !modelToValidate.CategoryDescription.Contains(' '))
             {
-                throw new InvalidNameException("Description character length should be between 10 to 250");
+                throw new InvalidNameException("Description character length should be between 10 to 250 and must contain at least two words.");
             }
+            
         }
     }
 

@@ -17,7 +17,7 @@ namespace IMS.WEB.Controllers
         private readonly ICategoryService _categoryService;
         public static readonly ILog _logger = LogManager.GetLogger(typeof(CategoryController));
 
-        public CategoryController() 
+        public CategoryController()
         {
             _categoryService = new CategoryService();
         }
@@ -36,7 +36,7 @@ namespace IMS.WEB.Controllers
 
             try
             {
-                if (productCategoryViewModel == null)
+                if (productCategoryViewModel != null)
                 {
                     await _categoryService.CreateAsync(productCategoryViewModel);
                     isValid = true;
@@ -51,7 +51,7 @@ namespace IMS.WEB.Controllers
             {
                 message = ex.Message;
             }
-            catch(InvalidNameException ex)
+            catch (InvalidNameException ex)
             {
                 message = ex.Message;
             }
@@ -61,7 +61,7 @@ namespace IMS.WEB.Controllers
                 message = "Something went wrong!";
             }
 
-            return Json(new 
+            return Json(new
             {
                 IsValid = isValid,
                 Message = message
@@ -69,7 +69,7 @@ namespace IMS.WEB.Controllers
         }
 
         [HttpGet]
-        public ActionResult LoadAll ()
+        public ActionResult LoadAll()
         {
             return View();
         }
@@ -100,6 +100,7 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpGet]
         public async Task<ActionResult> DetailsAsync(long id)
         {
             bool isSuccess = false;
@@ -116,7 +117,7 @@ namespace IMS.WEB.Controllers
                 }
                 else
                 {
-                    message = "SKU is not found!";
+                    message = "Category is not found!";
                 }
             }
             catch (Exception ex)
@@ -148,7 +149,7 @@ namespace IMS.WEB.Controllers
 
             try
             {
-                 updateCategory = await _categoryService.GetByIdAsync(id);
+                updateCategory = await _categoryService.GetByIdAsync(id);
                 if (updateCategory != null)
                 {
                     isSuccess = true;
@@ -173,7 +174,7 @@ namespace IMS.WEB.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Update(long id, ProductCategoryViewModel productCategoryViewModel)
+        public async Task<ActionResult> UpdateAsync(long id, ProductCategoryViewModel productCategoryViewModel)
         {
             string message = string.Empty;
             bool isSuccess = false;
@@ -186,14 +187,13 @@ namespace IMS.WEB.Controllers
             {
                 try
                 {
-                    productCategoryViewModel.ModifyBy = 200;
                     await _categoryService.UpdateAsync(id, productCategoryViewModel);
                     isSuccess = true;
                     message = "Category is updated successfully!";
                 }
-                catch(InvalidNameException ex)
+                catch (InvalidNameException ex)
                 {
-                    message = ex.Message;   
+                    message = ex.Message;  
                 }
                 catch (Exception ex)
                 {
@@ -205,12 +205,12 @@ namespace IMS.WEB.Controllers
             return Json(new
             {
                 IsSuccess = isSuccess,
-                Message = message,  
+                Message = message,
             }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public async Task<ActionResult> Delete(long id)
+        public async Task<ActionResult> DeleteAsync(long id)
         {
             string message = string.Empty;
             bool isSuccess = false;

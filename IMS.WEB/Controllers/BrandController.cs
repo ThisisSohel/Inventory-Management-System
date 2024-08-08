@@ -41,6 +41,7 @@ namespace IMS.WEB.Controllers
 
             try
             {
+                throw new Exception();
                 if (brand != null)
                 {
                     await _brandService.CreateBrandService(brand);
