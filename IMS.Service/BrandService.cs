@@ -176,9 +176,9 @@ namespace IMS.Service
                 try
                 {
                     brandMainEntity.BrandName = brandViewModelEntity.BrandName.Trim();
-                    brandMainEntity.CreatedBy = 100;
+                    brandMainEntity.CreatedBy = brandViewModelEntity.CreatedBy;
                     brandMainEntity.CreatedDate = DateTime.Now;
-                    brandMainEntity.ModifyBy = 100;
+                    brandMainEntity.ModifyBy = brandViewModelEntity.ModifyBy;
                     brandMainEntity.ModifyDate = DateTime.Now;
                     await _brandDao.BrandCreate(brandMainEntity);
                 }

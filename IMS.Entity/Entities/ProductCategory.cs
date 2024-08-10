@@ -21,11 +21,11 @@ namespace IMS.Entity.Entities
         [RegularExpression(@"^(([A-za-z]+[\s]{1}[A-za-z]+)|([A-Za-z]+))$", ErrorMessage = "Please enter upper and lower case only!")]
         [StringLength(120, MinimumLength = 12, ErrorMessage = "The name field must be a minimum length of 12 and a maximum lenght of 60!")]
         public virtual string CategoryDescription { get; set; }
-        public virtual long CreatedBy { get; set; }
+        public virtual string CreatedBy { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public virtual DateTime? CreatedDate { get; set; }
-        public virtual long ModifyBy { get; set; }
+        public virtual string ModifyBy { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public virtual DateTime? ModifyDate { get; set; }

@@ -79,7 +79,7 @@ namespace IMS.WEB
             }
             return manager;
         }
-    }
+    } 
     public class ApplicationSignInManager : SignInManager<ApplicationUser, long>
     {
         public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager)

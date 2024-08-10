@@ -127,9 +127,9 @@ namespace IMS.Service
                 ModelValidatorMethod(skuViewModelEntity);
 
                 skuMainEntity.SKUsName = skuViewModelEntity.SKUsName.Trim();
-                skuMainEntity.CreatedBy = 100;
+                skuMainEntity.CreatedBy = skuViewModelEntity.CreatedBy;
                 skuMainEntity.CreatedDate = DateTime.Now;
-                skuMainEntity.ModifyBy = 100;
+                skuMainEntity.ModifyBy = skuViewModelEntity.ModifyBy;
                 skuMainEntity.ModifyDate = DateTime.Now;
 
                 await _skuDao.SkuCreate(skuMainEntity);

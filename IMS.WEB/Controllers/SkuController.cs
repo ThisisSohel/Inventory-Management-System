@@ -40,6 +40,8 @@ namespace IMS.WEB.Controllers
             {
                 if (skuViewModel != null)
                 {
+                    skuViewModel.CreatedBy = User.Identity.Name;
+                    skuViewModel.ModifyBy = User.Identity.Name;
                     await _skuService.CreateSkuService(skuViewModel);
                     isValid = true;
                     message = "SKU is added successfully!";
@@ -201,7 +203,7 @@ namespace IMS.WEB.Controllers
                 try
                 {
                     //brand.ModifyBy = long.Parse(User.Identity.GetUserId());
-                    sKU.ModifyBy = 200;
+                    sKU.ModifyBy = User.Identity.Name;
                     await _skuService.UpdateAsync(id, sKU);
                     isSuccess = true;
                     message = "SKU is updated successfully!";

@@ -27,9 +27,9 @@ namespace IMS.Entity.EntityViewModels
 
         [Required(ErrorMessage = "Supplier address is required!")]
         public virtual string SupplierAddress { get; set; }
-        public virtual long CreatedBy { get; set; }
+        public virtual string CreatedBy { get; set; }
         public virtual DateTime? CreatedDate { get; set; }
-        public virtual long ModifyBy { get; set; }
+        public virtual string ModifyBy { get; set; }
         public virtual DateTime? ModifyDate { get; set; }
     }
 }

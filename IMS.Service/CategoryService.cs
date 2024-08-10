@@ -117,6 +117,11 @@ namespace IMS.Service
             {
                 var categoryMainEntity = new ProductCategory();
                 var category = await _categoryDao.LoadAll();
+
+                //if(category.Contains(productCategoryViewModel.CategoryName))
+                //{
+
+                //}
                 
                 if(category.Count > 0)
                 {
@@ -137,9 +142,9 @@ namespace IMS.Service
                     {
                         categoryMainEntity.CategoryName = productCategoryViewModel.CategoryName;
                         categoryMainEntity.CategoryDescription = productCategoryViewModel.CategoryDescription;
-                        categoryMainEntity.CreatedBy = 100;
+                        categoryMainEntity.CreatedBy = productCategoryViewModel.CreatedBy;
                         categoryMainEntity.CreatedDate = DateTime.Now;
-                        categoryMainEntity.ModifyBy = 100;
+                        categoryMainEntity.ModifyBy = productCategoryViewModel.ModifyBy;
                         categoryMainEntity.ModifyDate = DateTime.Now; 
 
                         await _categoryDao.CreateAsync(categoryMainEntity);
@@ -178,7 +183,7 @@ namespace IMS.Service
                         {
                             productCategoryToUpdate.CategoryName = productCategoryViewModel.CategoryName;
                             productCategoryToUpdate.CategoryDescription = productCategoryViewModel.CategoryDescription;
-                            productCategoryToUpdate.ModifyBy = 200;
+                            productCategoryToUpdate.ModifyBy = productCategoryViewModel.ModifyBy;
                             productCategoryToUpdate.ModifyDate = DateTime.Now;
                             await _categoryDao.UpdateAsync(productCategoryToUpdate);
                             await transaction.CommitAsync();
@@ -216,6 +221,7 @@ namespace IMS.Service
                         if (individualCategoryDelete != null)
                         {
                             await _categoryDao.DeleteAsync(id);
+                            await transaction.CommitAsync();
                         }
                     }
                     catch (Exception ex)

@@ -14,9 +14,9 @@ namespace IMS.Entity.EntityViewModels
         [Required(ErrorMessage = "The name can not be blank")]
         //[RegularExpression(@"[A-Z]{3,50}$", ErrorMessage = "Only uppercase Characters are allowed.")]
         public  string SKUsName { get; set; }
-        public  long CreatedBy { get; set; }
+        public  string CreatedBy { get; set; }
         public DateTime? CreatedDate { get; set; }
-        public long ModifyBy { get; set; }
+        public string ModifyBy { get; set; }
         public DateTime? ModifyDate { get; set; }
     }
 }

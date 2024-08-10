@@ -38,6 +38,8 @@ namespace IMS.WEB.Controllers
             {
                 if (customerViewModel != null)
                 {
+                    customerViewModel.CreatedBy = User.Identity.Name;
+                    customerViewModel.ModifyBy = User.Identity.Name;    
                     await _customerService.CreateAsync(customerViewModel);
                     isValid = true;
                     message = "Customer is added successfully!";
@@ -205,8 +207,7 @@ namespace IMS.WEB.Controllers
             {
                 try
                 {
-                    //brand.ModifyBy = long.Parse(User.Identity.GetUserId());
-                    customerViewModel.ModifyBy = 200;
+                    customerViewModel.ModifyBy = User.Identity.Name;
                     await _customerService.UpdateAsync(id, customerViewModel);
                     isSuccess = true;
                     message = "Customer is updated successfully!";

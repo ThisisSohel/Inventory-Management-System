@@ -118,9 +118,9 @@ namespace IMS.Service
                 supplierMainEntity.SupplierNumber = supplierViewModel.SupplierNumber;
                 supplierMainEntity.EmailAddress = supplierViewModel.EmailAddress;
                 supplierMainEntity.SupplierAddress = supplierViewModel.SupplierAddress;
-                supplierMainEntity.CreatedBy = 100;
+                supplierMainEntity.CreatedBy = supplierViewModel.CreatedBy;
                 supplierMainEntity.CreatedDate = DateTime.Now;
-                supplierMainEntity.ModifyBy = 100;
+                supplierMainEntity.ModifyBy = supplierViewModel.ModifyBy;
                 supplierMainEntity.ModifyDate = DateTime.Now;
 
                 await _supplierDao.Create(supplierMainEntity);
@@ -152,7 +152,7 @@ namespace IMS.Service
                     individualSupplierUpdate.SupplierNumber = supplierViewModel.SupplierNumber;
                     individualSupplierUpdate.EmailAddress = supplierViewModel.EmailAddress;
                     individualSupplierUpdate.SupplierAddress = supplierViewModel.SupplierAddress;
-                    //individualSupplierUpdate.ModifyBy = supplier.ModifyBy;
+                    individualSupplierUpdate.ModifyBy = supplierViewModel.ModifyBy;
                     individualSupplierUpdate.ModifyDate = DateTime.Now;
                     await _supplierDao.Update(individualSupplierUpdate);
                 }

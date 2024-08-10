@@ -59,6 +59,7 @@ namespace IMS.WEB.Controllers
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
+
         }
 
         //
@@ -150,7 +151,8 @@ namespace IMS.WEB.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser 
-                { UserName = model.Email, 
+                { 
+                    UserName = model.Email, 
                     Email = model.Email, 
                     PhoneNumber = model.PhoneNumber 
                 };

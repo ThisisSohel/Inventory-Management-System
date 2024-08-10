@@ -44,6 +44,8 @@ namespace IMS.WEB.Controllers
             {
                 if (brand != null)
                 {
+                    brand.CreatedBy = User.Identity.Name;
+                    brand.ModifyBy = User.Identity.Name;
                     await _brandService.CreateBrandService(brand);
                     isValid = true;
                     message = "Brand is added successfully!";
@@ -215,7 +217,7 @@ namespace IMS.WEB.Controllers
                 try
                 {
                     //brand.ModifyBy = long.Parse(User.Identity.GetUserId());
-                    brand.ModifyBy = 200;
+                    brand.ModifyBy = User.Identity.Name;
                     await _brandService.Update(brand.Id, brand);
                     isSuccess = true;
                     message = "Brand is updated successfully!";

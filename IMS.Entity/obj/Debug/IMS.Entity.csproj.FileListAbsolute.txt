@@ -10,3 +10,9 @@ F:\Professional Project\New folder (6)\ims-soh\IMS.Entity\obj\Debug\IMS.Entity.d
 F:\Professional Project\New folder (6)\ims-soh\IMS.Entity\obj\Debug\IMS.Entity.pdb
 F:\Professional Project\New folder (6)\ims-soh\IMS.Entity\bin\Debug\IMS.Entity.dll
 F:\Professional Project\New folder (6)\ims-soh\IMS.Entity\bin\Debug\IMS.Entity.pdb
+C:\Users\User\Desktop\IMSMainProject\New folder\ims-soh\IMS.Entity\bin\Debug\IMS.Entity.dll
+C:\Users\User\Desktop\IMSMainProject\New folder\ims-soh\IMS.Entity\bin\Debug\IMS.Entity.pdb
+C:\Users\User\Desktop\IMSMainProject\New folder\ims-soh\IMS.Entity\obj\Debug\IMS.Entity.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\IMSMainProject\New folder\ims-soh\IMS.Entity\obj\Debug\IMS.Entity.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\IMSMainProject\New folder\ims-soh\IMS.Entity\obj\Debug\IMS.Entity.dll
+C:\Users\User\Desktop\IMSMainProject\New folder\ims-soh\IMS.Entity\obj\Debug\IMS.Entity.pdb

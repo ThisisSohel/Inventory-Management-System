@@ -41,6 +41,8 @@ namespace IMS.WEB.Controllers
             {
                 if (productCategoryViewModel != null)
                 {
+                    productCategoryViewModel.CreatedBy = User.Identity.Name;
+                    productCategoryViewModel.ModifyBy = User.Identity.Name;
                     await _categoryService.CreateAsync(productCategoryViewModel);
                     isValid = true;
                     message = "Category is created successfully!";
@@ -195,6 +197,7 @@ namespace IMS.WEB.Controllers
             {
                 try
                 {
+                    productCategoryViewModel.ModifyBy = User.Identity.Name;
                     await _categoryService.UpdateAsync(id, productCategoryViewModel);
                     isSuccess = true;
                     message = "Category is updated successfully!";

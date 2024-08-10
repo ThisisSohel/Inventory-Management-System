@@ -42,6 +42,8 @@ namespace IMS.WEB.Controllers
             {
                 if (supplierViewModel != null)
                 {
+                    supplierViewModel.CreatedBy = User.Identity.Name;
+                    supplierViewModel.ModifyBy = User.Identity.Name;
                     await _supplierService.CreateAsync(supplierViewModel);
                     isValid = true;
                     message = "Supplier is added successfully!";
@@ -210,7 +212,7 @@ namespace IMS.WEB.Controllers
             {
                 try
                 {
-                    supplierViewModel.ModifyBy = 200;
+                    supplierViewModel.ModifyBy = User.Identity.Name;
                     await _supplierService.UpdateAsync(id, supplierViewModel);
                     isSuccess = true;
                     message = "Supplier is updated successfully!";
