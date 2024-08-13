@@ -20,7 +20,7 @@
     </div>
 
     <div class="container my-3 p-2 text-center" style="background-color: #91c0e3">
-        <h2>List of Types</h2>
+        <h2>List of Product Types</h2>
     </div>
 
     <a href="#" class="btn btn-dark col-sm-2 mb-2" onclick="createNewFun()">Add New</a>
@@ -46,11 +46,12 @@
 
 
 @*Create New  Modal*@
+@* Create New Modal *@
 <div class="modal fade" id="createModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #1d4552">
-                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">Create New Type</h1>
+                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">Create New Product Type</h1>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="background-color: darkgray">
@@ -58,14 +59,15 @@
                     <div class="row mb-3">
                         <label for="TypeName" class="col-sm-3 col-form-label text-start" style="color:black;">Type Name</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control typeName" id="TypeName" name="TypeName" placeholder="Enter the type" style="background-color:#f5f5f5">
+                            <input type="text" class="form-control" id="TypeName" name="TypeName" placeholder="Enter the type" style="background-color:#f5f5f5">
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="CategoryDescription" class="col-sm-3 col-form-label text-start" style="color:black;">Category</label>
+                        <label for="CategoryDropdown" class="col-sm-3 col-form-label text-start" style="color:black;">Category</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="CategoryDescription" name="CategoryDescription" placeholder="Enter the description" style="background-color:#f5f5f5">
-                            <span id="descriptionError" class="text-danger" style="display: none;">Description character length should be between 10 to 250 and must contain at least two words.</span>
+                            <select class="form-select" id="CategoryDropdown" name="CategoryId" style="background-color:red">
+                                <option selected disabled>Choose a Category</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row">
@@ -81,6 +83,7 @@
         </div>
     </div>
 </div>
+
 
 
 @* Details Modal*@
@@ -181,22 +184,44 @@
 
         function showErrorAlertMessage(message) {
             return `
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        <p> ${message} </p>
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                    </div>`
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <p> ${message} </p>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        </div>`
         }
 
         function showSuccessAlertMessage(message) {
             return `
-                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                        <p> ${message} </p>
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                    </div>`
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                            <p> ${message} </p>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        </div>`
+        }
+
+        function loadCategories() {
+            $.ajax({
+                url: "/Category/LoadCategoryData", 
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data)
+                    var dropdown = $('#CategoryDropdown');
+                    dropdown.empty();
+                    dropdown.append('<option selected disabled>Choose a Category</option>');
+
+                    $.each(data, function (category) {
+                        dropdown.append($('<option></option>').attr('value', category.Id).text(category.CategoryName));
+                    });
+                },
+                error: function (error) {
+                    console.log("Error loading categories: ", error);
+                }
+            });
         }
 
         function createNewFun() {
             $("#createModal").modal('show')
+            loadCategories();
         }
 
         function DataBinding() {
@@ -249,13 +274,13 @@
                     if (response.IsSuccess == true) {
                         $("#detailsBodyId").empty();
                         const trMake = `
-                                                    <tr>
-                                                        <td>${response.Details.CreatedBy}</td>
-                                                        <td>${response.Details.CreatedDate}</td>
-                                                        <td>${response.Details.ModifyBy}</td>
-                                                        <td>${response.Details.ModifyDate}</td>
-                                                    </tr>
-                                                `;
+                                                        <tr>
+                                                            <td>${response.Details.CreatedBy}</td>
+                                                            <td>${response.Details.CreatedDate}</td>
+                                                            <td>${response.Details.ModifyBy}</td>
+                                                            <td>${response.Details.ModifyDate}</td>
+                                                        </tr>
+                                                    `;
                         $("#detailsBodyId").append(trMake);
                         $('#detailsModal').modal('show');
                     }
@@ -382,10 +407,6 @@
             });
         }
 
-        $(document).on('change', '.typeName', function () {
-
-        });
-
         $(document).ready(function () {
 
             $("#InfoTable").DataTable(
@@ -402,17 +423,17 @@
                         {
                             "data": "Id", "render": function (id) {
                                 return `
-                                                    <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "Details(${id})">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>Details</button></a>
-                                                    <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "Delete(${id})">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>Delete</button></a>
-                                                    <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "Update(${id})">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>Update</button></a>
+                                                        <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "Details(${id})">
+                                                        <i class="fas fa-pencil-alt">
+                                                        </i>Details</button></a>
+                                                        <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "Delete(${id})">
+                                                        <i class="fas fa-pencil-alt">
+                                                        </i>Delete</button></a>
+                                                        <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "Update(${id})">
+                                                        <i class="fas fa-pencil-alt">
+                                                        </i>Update</button></a>
 
-                                                    `
+                                                        `
                             }
                         },
                     ]

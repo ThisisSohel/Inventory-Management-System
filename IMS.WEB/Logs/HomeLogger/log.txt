@@ -12375,3 +12375,133 @@ NHibernate.Exceptions.GenericADOException: could not delete collection: [IMS.Ent
 2024-08-13 16:35:15,185 [6] INFO  NHibernate.Cfg.Configuration - processing filters (second pass)
 2024-08-13 16:35:15,199 [6] INFO  NHibernate.Impl.SessionFactoryImpl - building session factory
 2024-08-13 16:35:15,246 [6] INFO  NHibernate.Impl.SessionFactoryObjectFactory - no name configured
+2024-08-13 21:32:42,763 [6] INFO  NHibernate.Cfg.Environment - NHibernate 5.5.1+f25b398d897d937a21eda9ae065638f029256e3b (assembly 5.5.0.0)
+2024-08-13 21:32:42,770 [6] INFO  NHibernate.Cfg.Environment - hibernate-configuration section not found in application configuration file
+2024-08-13 21:32:42,771 [6] INFO  NHibernate.Cfg.Environment - Bytecode provider name : lcg
+2024-08-13 21:32:42,772 [6] INFO  NHibernate.Cfg.Environment - Objects factory class : NHibernate.Bytecode.ActivatorObjectsFactory
+2024-08-13 21:32:42,772 [6] INFO  NHibernate.Cfg.Environment - Using reflection optimizer
+2024-08-13 21:32:43,035 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Brand -> Brand
+2024-08-13 21:32:43,064 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Customer -> Customers
+2024-08-13 21:32:43,072 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.ProductCategory -> ProductCategory
+2024-08-13 21:32:43,082 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.ProductType -> ProductType
+2024-08-13 21:32:43,085 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Supplier -> Suppliers
+2024-08-13 21:32:43,085 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.SKU -> SKU
+2024-08-13 21:32:43,091 [6] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-13 21:32:43,107 [6] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-13 21:32:43,135 [6] INFO  NHibernate.Exceptions.SQLExceptionConverterFactory - Using dialect defined converter
+2024-08-13 21:32:43,135 [6] INFO  NHibernate.Cfg.SettingsFactory - Generate SQL with comments: disabled
+2024-08-13 21:32:43,135 [6] INFO  NHibernate.Cfg.SettingsFactory - Detect fetch loops: enabled
+2024-08-13 21:32:43,136 [6] INFO  NHibernate.Connection.ConnectionProviderFactory - Initializing connection provider: NHibernate.Connection.DriverConnectionProvider
+2024-08-13 21:32:43,136 [6] INFO  NHibernate.Connection.ConnectionProvider - Configuring ConnectionProvider
+2024-08-13 21:32:43,137 [6] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-13 21:32:43,137 [6] INFO  NHibernate.Cfg.SettingsFactory - Transaction factory: NHibernate.Transaction.AdoNetWithSystemTransactionFactory
+2024-08-13 21:32:43,137 [6] INFO  NHibernate.Cfg.SettingsFactory - Optimize cache for minimal puts: False
+2024-08-13 21:32:43,137 [6] INFO  NHibernate.Cfg.SettingsFactory - Connection release mode: auto
+2024-08-13 21:32:43,137 [6] INFO  NHibernate.Cfg.SettingsFactory - Default batch fetch size: 1
+2024-08-13 21:32:43,137 [6] INFO  NHibernate.Cfg.SettingsFactory - Statistics: disabled
+2024-08-13 21:32:43,137 [6] INFO  NHibernate.Cfg.SettingsFactory - Deleted entity synthetic identifier rollback: disabled
+2024-08-13 21:32:43,137 [6] INFO  NHibernate.Cfg.SettingsFactory - Query translator: NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory
+2024-08-13 21:32:43,138 [6] INFO  NHibernate.Cfg.SettingsFactory - Query provider: NHibernate.Linq.DefaultQueryProvider
+2024-08-13 21:32:43,140 [6] INFO  NHibernate.Cfg.SettingsFactory - Query language substitutions: {'true'='1', 'false'='0', 'yes'=''Y'', 'no'=''N''}
+2024-08-13 21:32:43,140 [6] INFO  NHibernate.Cfg.SettingsFactory - cache provider: NHibernate.Cache.NoCacheProvider, NHibernate, Version=5.5.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-08-13 21:32:43,140 [6] INFO  NHibernate.Cfg.SettingsFactory - Order SQL inserts for batching: enabled
+2024-08-13 21:32:43,140 [6] INFO  NHibernate.Cfg.SettingsFactory - Order SQL updates for batching: disabled
+2024-08-13 21:32:43,141 [6] INFO  NHibernate.Cfg.SettingsFactory - Batcher factory: NHibernate.AdoNet.SqlClientBatchingBatcherFactory, NHibernate, Version=5.5.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-08-13 21:32:43,141 [6] INFO  NHibernate.Cfg.SettingsFactory - Default flush mode: Auto
+2024-08-13 21:32:43,141 [6] INFO  NHibernate.Cfg.SettingsFactory - Named query checking : enabled
+2024-08-13 21:32:43,141 [6] INFO  NHibernate.Cfg.SettingsFactory - Never cached entities/collections query cache throws exception : enabled
+2024-08-13 21:32:43,144 [6] INFO  NHibernate.Cfg.Configuration - checking mappings queue
+2024-08-13 21:32:43,144 [6] INFO  NHibernate.Cfg.Configuration - processing one-to-many association mappings
+2024-08-13 21:32:43,146 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - mapping collection: IMS.Entity.Entities.ProductCategory.ProductType -> ProductType
+2024-08-13 21:32:43,148 [6] INFO  NHibernate.Cfg.Configuration - processing one-to-one association property references
+2024-08-13 21:32:43,148 [6] INFO  NHibernate.Cfg.Configuration - processing foreign key constraints
+2024-08-13 21:32:43,151 [6] INFO  NHibernate.Cfg.Configuration - processing filters (second pass)
+2024-08-13 21:32:43,168 [6] INFO  NHibernate.Impl.SessionFactoryImpl - building session factory
+2024-08-13 21:32:43,225 [6] INFO  NHibernate.Impl.SessionFactoryObjectFactory - no name configured
+2024-08-13 22:38:28,385 [6] INFO  NHibernate.Cfg.Environment - NHibernate 5.5.1+f25b398d897d937a21eda9ae065638f029256e3b (assembly 5.5.0.0)
+2024-08-13 22:38:28,394 [6] INFO  NHibernate.Cfg.Environment - hibernate-configuration section not found in application configuration file
+2024-08-13 22:38:28,395 [6] INFO  NHibernate.Cfg.Environment - Bytecode provider name : lcg
+2024-08-13 22:38:28,396 [6] INFO  NHibernate.Cfg.Environment - Objects factory class : NHibernate.Bytecode.ActivatorObjectsFactory
+2024-08-13 22:38:28,396 [6] INFO  NHibernate.Cfg.Environment - Using reflection optimizer
+2024-08-13 22:38:28,630 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Brand -> Brand
+2024-08-13 22:38:28,655 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Customer -> Customers
+2024-08-13 22:38:28,663 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.ProductCategory -> ProductCategory
+2024-08-13 22:38:28,671 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.ProductType -> ProductType
+2024-08-13 22:38:28,674 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Supplier -> Suppliers
+2024-08-13 22:38:28,675 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.SKU -> SKU
+2024-08-13 22:38:28,679 [6] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-13 22:38:28,693 [6] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-13 22:38:28,720 [6] INFO  NHibernate.Exceptions.SQLExceptionConverterFactory - Using dialect defined converter
+2024-08-13 22:38:28,721 [6] INFO  NHibernate.Cfg.SettingsFactory - Generate SQL with comments: disabled
+2024-08-13 22:38:28,721 [6] INFO  NHibernate.Cfg.SettingsFactory - Detect fetch loops: enabled
+2024-08-13 22:38:28,721 [6] INFO  NHibernate.Connection.ConnectionProviderFactory - Initializing connection provider: NHibernate.Connection.DriverConnectionProvider
+2024-08-13 22:38:28,721 [6] INFO  NHibernate.Connection.ConnectionProvider - Configuring ConnectionProvider
+2024-08-13 22:38:28,722 [6] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-13 22:38:28,723 [6] INFO  NHibernate.Cfg.SettingsFactory - Transaction factory: NHibernate.Transaction.AdoNetWithSystemTransactionFactory
+2024-08-13 22:38:28,723 [6] INFO  NHibernate.Cfg.SettingsFactory - Optimize cache for minimal puts: False
+2024-08-13 22:38:28,723 [6] INFO  NHibernate.Cfg.SettingsFactory - Connection release mode: auto
+2024-08-13 22:38:28,723 [6] INFO  NHibernate.Cfg.SettingsFactory - Default batch fetch size: 1
+2024-08-13 22:38:28,723 [6] INFO  NHibernate.Cfg.SettingsFactory - Statistics: disabled
+2024-08-13 22:38:28,723 [6] INFO  NHibernate.Cfg.SettingsFactory - Deleted entity synthetic identifier rollback: disabled
+2024-08-13 22:38:28,723 [6] INFO  NHibernate.Cfg.SettingsFactory - Query translator: NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory
+2024-08-13 22:38:28,723 [6] INFO  NHibernate.Cfg.SettingsFactory - Query provider: NHibernate.Linq.DefaultQueryProvider
+2024-08-13 22:38:28,724 [6] INFO  NHibernate.Cfg.SettingsFactory - Query language substitutions: {'true'='1', 'false'='0', 'yes'=''Y'', 'no'=''N''}
+2024-08-13 22:38:28,725 [6] INFO  NHibernate.Cfg.SettingsFactory - cache provider: NHibernate.Cache.NoCacheProvider, NHibernate, Version=5.5.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-08-13 22:38:28,725 [6] INFO  NHibernate.Cfg.SettingsFactory - Order SQL inserts for batching: enabled
+2024-08-13 22:38:28,725 [6] INFO  NHibernate.Cfg.SettingsFactory - Order SQL updates for batching: disabled
+2024-08-13 22:38:28,725 [6] INFO  NHibernate.Cfg.SettingsFactory - Batcher factory: NHibernate.AdoNet.SqlClientBatchingBatcherFactory, NHibernate, Version=5.5.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-08-13 22:38:28,726 [6] INFO  NHibernate.Cfg.SettingsFactory - Default flush mode: Auto
+2024-08-13 22:38:28,726 [6] INFO  NHibernate.Cfg.SettingsFactory - Named query checking : enabled
+2024-08-13 22:38:28,726 [6] INFO  NHibernate.Cfg.SettingsFactory - Never cached entities/collections query cache throws exception : enabled
+2024-08-13 22:38:28,728 [6] INFO  NHibernate.Cfg.Configuration - checking mappings queue
+2024-08-13 22:38:28,728 [6] INFO  NHibernate.Cfg.Configuration - processing one-to-many association mappings
+2024-08-13 22:38:28,730 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - mapping collection: IMS.Entity.Entities.ProductCategory.ProductType -> ProductType
+2024-08-13 22:38:28,732 [6] INFO  NHibernate.Cfg.Configuration - processing one-to-one association property references
+2024-08-13 22:38:28,732 [6] INFO  NHibernate.Cfg.Configuration - processing foreign key constraints
+2024-08-13 22:38:28,735 [6] INFO  NHibernate.Cfg.Configuration - processing filters (second pass)
+2024-08-13 22:38:28,749 [6] INFO  NHibernate.Impl.SessionFactoryImpl - building session factory
+2024-08-13 22:38:28,787 [6] INFO  NHibernate.Impl.SessionFactoryObjectFactory - no name configured
+2024-08-13 22:57:21,767 [9] INFO  LoggerConfiguration - Index page visited.
+2024-08-13 22:57:49,147 [7] ERROR IMS.WEB.Controllers.CategoryController - System.Exception: Invalid Cast (check your mapping for property type mismatches); setter of IMS.Entity.Entities.ProductCategory
+   at IMS.Service.CategoryService.<LoadAllAsync>d__6.MoveNext() in C:\Users\User\Desktop\IMSMainProject\New folder\ims-soh\IMS.Service\CategoryService.cs:line 79
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at IMS.WEB.Controllers.CategoryController.<LoadCategoryData>d__6.MoveNext() in C:\Users\User\Desktop\IMSMainProject\New folder\ims-soh\IMS.WEB\Controllers\CategoryController.cs:line 91
+2024-08-13 23:00:44,767 [7] ERROR IMS.WEB.Controllers.CategoryController - System.Exception: Invalid Cast (check your mapping for property type mismatches); setter of IMS.Entity.Entities.ProductCategory
+   at IMS.Service.CategoryService.<LoadAllAsync>d__6.MoveNext() in C:\Users\User\Desktop\IMSMainProject\New folder\ims-soh\IMS.Service\CategoryService.cs:line 79
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at IMS.WEB.Controllers.CategoryController.<LoadCategoryData>d__6.MoveNext() in C:\Users\User\Desktop\IMSMainProject\New folder\ims-soh\IMS.WEB\Controllers\CategoryController.cs:line 91
+2024-08-13 23:01:07,553 [74] ERROR IMS.WEB.Controllers.CategoryController - Invalid Cast (check your mapping for property type mismatches); setter of IMS.Entity.Entities.ProductCategory
+2024-08-13 23:01:11,405 [7] ERROR IMS.WEB.Controllers.CategoryController - System.Exception: Invalid Cast (check your mapping for property type mismatches); setter of IMS.Entity.Entities.ProductCategory
+   at IMS.Service.CategoryService.<LoadAllAsync>d__6.MoveNext() in C:\Users\User\Desktop\IMSMainProject\New folder\ims-soh\IMS.Service\CategoryService.cs:line 79
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at IMS.WEB.Controllers.CategoryController.<LoadCategoryData>d__6.MoveNext() in C:\Users\User\Desktop\IMSMainProject\New folder\ims-soh\IMS.WEB\Controllers\CategoryController.cs:line 91
+2024-08-13 23:01:54,082 [78] ERROR IMS.WEB.Controllers.CategoryController - System.Exception: Invalid Cast (check your mapping for property type mismatches); setter of IMS.Entity.Entities.ProductCategory
+   at IMS.Service.CategoryService.<LoadAllAsync>d__6.MoveNext() in C:\Users\User\Desktop\IMSMainProject\New folder\ims-soh\IMS.Service\CategoryService.cs:line 79
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at IMS.WEB.Controllers.CategoryController.<LoadCategoryData>d__6.MoveNext() in C:\Users\User\Desktop\IMSMainProject\New folder\ims-soh\IMS.WEB\Controllers\CategoryController.cs:line 91
+2024-08-13 23:03:36,219 [78] ERROR IMS.WEB.Controllers.CategoryController - System.Exception: Invalid Cast (check your mapping for property type mismatches); setter of IMS.Entity.Entities.ProductCategory
+   at IMS.Service.CategoryService.<LoadAllAsync>d__6.MoveNext() in C:\Users\User\Desktop\IMSMainProject\New folder\ims-soh\IMS.Service\CategoryService.cs:line 79
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at IMS.WEB.Controllers.CategoryController.<LoadCategoryData>d__6.MoveNext() in C:\Users\User\Desktop\IMSMainProject\New folder\ims-soh\IMS.WEB\Controllers\CategoryController.cs:line 91
+2024-08-13 23:03:38,976 [81] ERROR IMS.WEB.Controllers.CategoryController - System.Exception: Invalid Cast (check your mapping for property type mismatches); setter of IMS.Entity.Entities.ProductCategory
+   at IMS.Service.CategoryService.<LoadAllAsync>d__6.MoveNext() in C:\Users\User\Desktop\IMSMainProject\New folder\ims-soh\IMS.Service\CategoryService.cs:line 79
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at IMS.WEB.Controllers.CategoryController.<LoadCategoryData>d__6.MoveNext() in C:\Users\User\Desktop\IMSMainProject\New folder\ims-soh\IMS.WEB\Controllers\CategoryController.cs:line 91
