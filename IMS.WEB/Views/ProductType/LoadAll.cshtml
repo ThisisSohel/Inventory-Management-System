@@ -1,0 +1,433 @@
+﻿@*DataTable and Bootstrap CDN*@
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
+
+<style>
+    body {
+        background-color: white;
+        font-family: Arial;
+    }
+</style>
+
+@*DataTable View*@
+<div class="row" style="padding: 3%; border:1px solid">
+    <div id="errorMessageShow">
+        <p></p>
+    </div>
+
+    <div id="successMessageShow">
+        <p></p>
+    </div>
+
+    <div class="container my-3 p-2 text-center" style="background-color: #91c0e3">
+        <h2>List of Types</h2>
+    </div>
+
+    <a href="#" class="btn btn-dark col-sm-2 mb-2" onclick="createNewFun()">Add New</a>
+
+    <div style="border:1px solid black; padding:10px; width: 1300px; text-align:center" class="col-lg-4">
+        <table id="InfoTable" class="cell-border" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Type Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Category Name</th>
+                    <th>Actions</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+
+
+@*Create New  Modal*@
+<div class="modal fade" id="createModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #1d4552">
+                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">Create New Type</h1>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="background-color: darkgray">
+                <div class="container my-3 p-2 text-center">
+                    <div class="row mb-3">
+                        <label for="TypeName" class="col-sm-3 col-form-label text-start" style="color:black;">Type Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control typeName" id="TypeName" name="TypeName" placeholder="Enter the type" style="background-color:#f5f5f5">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="CategoryDescription" class="col-sm-3 col-form-label text-start" style="color:black;">Category</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="CategoryDescription" name="CategoryDescription" placeholder="Enter the description" style="background-color:#f5f5f5">
+                            <span id="descriptionError" class="text-danger" style="display: none;">Description character length should be between 10 to 250 and must contain at least two words.</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                            <input type="button" id="submitId" class="btn btn-primary" value="Create" style="background-color: #1d4552">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="background-color: #1d4552;">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color:#a9a9a9">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@* Details Modal*@
+<div class="modal fade" id="detailsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #1d4552">
+                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">--Details about the category--</h1>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="background-color: darkgray">
+                <div class="container my-3 p-2 text-center">
+                    <table class="table">
+                        <thead>
+                            <tr style="color:black;">
+                                <th>CreatedBy</th>
+                                <th>CreatedAt</th>
+                                <th>ModifyBy</th>
+                                <th>ModifyAt</th>
+                            </tr>
+                        </thead>
+                        <tbody id="detailsBodyId">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer" style="background-color: #1d4552;">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color:#a9a9a9">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*Delete Modal*@
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #1d4552">
+                <h5 class="modal-title w-100 text-center" style="color: white">Confirm...</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="background-color: darkgray">
+                <h4>Are you sure to delete the SKU - <span id="nameId"></span>?</h4>
+                <input type="hidden" value="" id="Id" />
+            </div>
+            <div class="modal-footer" style="background-color: #1d4552">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" style="background-color:#a9a9a9">Close</button>
+                <button type="button" id="btnDelete" class="btn btn-outline-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Update  Modal*@
+<div class="modal fade" id="updateModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #1d4552">
+                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">Update SKU</h1>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="background-color: darkgray">
+                <div class="container my-3 p-2 text-center">
+                    <div class="row mb-3">
+                        <label for="CategoryName" class="col-sm-3 col-form-label text-start" style="color:black;">Category Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="updateNameId" name="CategoryName" style="background-color:#f5f5f5">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="CategoryDescription" class="col-sm-3 col-form-label text-start" style="color:black;">Category Desciption</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="updateDescriptionId" name="CategoryDescription" style="background-color:#f5f5f5">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                            <input type="hidden" id="updateId" name="Id">
+                            <input type="submit" id="updateSaveId" class="btn btn-primary" value="Save" style="background-color: #1d4552">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="background-color: #1d4552">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color:#a9a9a9">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="//cdn.datatables.net/2.0.5/js/dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.5/js/dataTables.bootstrap5.js"></script>
+
+    <script>
+
+        function showErrorAlertMessage(message) {
+            return `
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <p> ${message} </p>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>`
+        }
+
+        function showSuccessAlertMessage(message) {
+            return `
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <p> ${message} </p>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>`
+        }
+
+        function createNewFun() {
+            $("#createModal").modal('show')
+        }
+
+        function DataBinding() {
+            const name = $("#CategoryName").val();
+            const description = $("#CategoryDescription").val();
+
+            const obj = {
+                CategoryName: name,
+                CategoryDescription: description
+            }
+            return obj;
+        }
+
+        function submitData(obj) {
+            $.ajax({
+                url: "/Category/CreateAsync",
+                method: "POST",
+                data: obj,
+                dataType: 'json',
+                success: function (response) {
+                    if (response.IsValid == true) {
+                        const msgAlertMake = showSuccessAlertMessage(response.Message);
+                        $("#successMessageShow").html(msgAlertMake);
+                        $("#createModal").modal('hide');
+                        const table = $("#InfoTable").DataTable();
+                        table.ajax.reload();
+
+                    } else {
+                        const msgAlertMake = showErrorAlertMessage(response.Message);
+                        $("#errorMessageShow").html(msgAlertMake);
+                        $("#createModal").modal('hide');
+                    }
+                },
+                error: function (error) {
+                    const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
+                    $("#errorMessageShow").html(msgAlertMake);
+                    $("#createModal").modal('hide');
+                }
+            });
+        }
+
+        function Details(id) {
+            $("#detailsModal").modal('show')
+            $.ajax({
+                url: "/Category/DetailsAsync",
+                type: 'GET',
+                data: { id: id },
+                dataType: 'json',
+                success: function (response) {
+                    if (response.IsSuccess == true) {
+                        $("#detailsBodyId").empty();
+                        const trMake = `
+                                                    <tr>
+                                                        <td>${response.Details.CreatedBy}</td>
+                                                        <td>${response.Details.CreatedDate}</td>
+                                                        <td>${response.Details.ModifyBy}</td>
+                                                        <td>${response.Details.ModifyDate}</td>
+                                                    </tr>
+                                                `;
+                        $("#detailsBodyId").append(trMake);
+                        $('#detailsModal').modal('show');
+                    }
+                    else {
+                        const msgAlertMake = showErrorAlertMessage(response.Message);
+                        $("#errorMessageShow").html(msgAlertMake);
+                        $('#detailsModal').modal('hide');
+                    }
+                },
+                error: function (error) {
+                    const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
+                    $("#errorMessageShow").html(msgAlertMake);
+                    $('#detailsModal').modal('hide');
+                }
+            });
+        }
+
+
+        function Delete(id) {
+            $("#deleteModal").modal("show");
+
+            $("#btnDelete").click(function () {
+                $.ajax({
+                    url: "/Category/DeleteAsync",
+                    type: 'POST',
+                    data: { id: id },
+                    success: function (response) {
+                        console.log(response);
+                        if (response.IsSuccess == true) {
+
+                            $("#deleteModal").modal('hide');
+                            const msgAlertMake = showSuccessAlertMessage(response.Message);
+                            $("#successMessageShow").html(msgAlertMake);
+                            $("#deleteModal").modal('hide');
+
+                            const table = $("#InfoTable").DataTable();
+                            table.ajax.reload();
+                        } else {
+                            const msgAlertMake = showErrorAlertMessage(response.Message);
+                            $("#errorMessageShow").html(msgAlertMake);
+                            $("#deleteModal").modal('hide');
+                        }
+                    },
+                    error: function (error) {
+                        const msgAlertMake = showErrorAlertMessage(response.Message);
+                        $("#errorMessageShow").html(msgAlertMake);
+                        $("#deleteBrandModal").modal('hide');
+                    }
+
+                })
+            })
+
+        }
+
+
+        function Update(updateId) {
+            $("#updateModal").modal('show');
+
+            $.ajax({
+                url: "/Category/UpdateAsync",
+                dataType: 'json',
+                type: 'GET',
+                data: { id: updateId },
+                success: function (response) {
+                    console.log(response)
+                    if (response.IsSuccess == true) {
+                        $("#updateId").val(response.UpdateCategoryData.Id);
+                        $("#updateNameId").val(response.UpdateCategoryData.CategoryName);
+                        $("#updateDescriptionId").val(response.UpdateCategoryData.CategoryDescription);
+                        $("#updateModal").modal('show');
+                    }
+                    else {
+                        const msgAlertMake = showErrorAlertMessage(response.Message);
+                        $("#errorMessageShow").html(msgAlertMake);
+                        $("#updateModal").modal('hide');
+                    }
+                },
+                error: function (error) {
+                    const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
+                    $("#errorMessageShow").html(msgAlertMake);
+                    $("#updateModal").modal('hide');
+                }
+            });
+
+            $("#updateSaveId").click(function () {
+
+                const id = $("#updateId").val();
+                const name = $("#updateNameId").val();
+                const description = $("#updateDescriptionId").val();
+
+                var formdata = {
+                    Id: id,
+                    CategoryName: name,
+                    CategoryDescription: description
+                }
+
+                $.ajax({
+                    url: "/Category/UpdateAsync",
+                    dataType: 'json',
+                    type: 'POST',
+                    data: { id: formdata.Id, productCategoryViewModel: formdata },
+                    success: function (response) {
+                        if (response.IsSuccess == true) {
+                            const msgAlertMake = showSuccessAlertMessage(response.Message);
+
+                            $("#successMessageShow").html(msgAlertMake);
+                            $("#updateModal").modal('hide');
+
+                            const table = $("#InfoTable").DataTable();
+                            table.ajax.reload();
+                        } else {
+                            const msgAlertMake = showErrorAlertMessage(response.Message);
+                            $("#errorMessageShow").html(msgAlertMake);
+
+                            $("#updateModal").modal('hide');
+                        }
+                    },
+                    error: function (error) {
+                        const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
+                        $("#errorMessageShow").html(msgAlertMake);
+                        $("#updateModal").modal('hide');
+                    }
+                });
+            });
+        }
+
+        $(document).on('change', '.typeName', function () {
+
+        });
+
+        $(document).ready(function () {
+
+            $("#InfoTable").DataTable(
+                {
+                    "processing": true,
+                    "serverSide": true,
+                    "ajax": {
+                        "url": "/ProductType/LoadTypeData",
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                        { "data": "TypeName", "name": "CategoryName" },
+                        {
+                            "data": "Id", "render": function (id) {
+                                return `
+                                                    <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "Details(${id})">
+                                                    <i class="fas fa-pencil-alt">
+                                                    </i>Details</button></a>
+                                                    <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "Delete(${id})">
+                                                    <i class="fas fa-pencil-alt">
+                                                    </i>Delete</button></a>
+                                                    <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "Update(${id})">
+                                                    <i class="fas fa-pencil-alt">
+                                                    </i>Update</button></a>
+
+                                                    `
+                            }
+                        },
+                    ]
+                });
+
+
+
+            $("#submitId").click(function () {
+
+                var formData = DataBinding();
+                submitData(formData);
+
+            });
+        })
+
+
+    </script>
+}

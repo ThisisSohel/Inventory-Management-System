@@ -318,6 +318,7 @@
     <Content Include="Views\Customer\Load.cshtml" />
     <Content Include="Views\Supplier\Load.cshtml" />
     <Content Include="Views\Category\LoadAll.cshtml" />
+    <Content Include="Views\ProductType\LoadAll.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

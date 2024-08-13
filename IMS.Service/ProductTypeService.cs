@@ -10,23 +10,24 @@ using System.Threading.Tasks;
 using ISession = NHibernate.ISession;
 using IMS.Entity.Entities;
 using IMS.CustomException;
+using IMS.Entity.EntityViewModels;
 
 namespace IMS.Service
 {
     public interface IProductTypeService
     {
-        Task CreateAsync (ProductType productType);
-        Task<IEnumerable<ProductType>> GetAllAsync();
-        Task <ProductType> GetById (long id);
-        Task UpdateAsync (long id, ProductType productType);
-        Task DeleteAsync (long id);
-    } 
+        Task CreateAsync(ProductTypeViewModel productType);
+        Task<List<ProductTypeViewModel>> GetAllAsync();
+        Task<ProductType> GetById(long id);
+        Task UpdateAsync(long id, ProductType productType);
+        Task DeleteAsync(long id);
+    }
     public class ProductTypeService : IProductTypeService
     {
         private readonly IProductTypeDao _productTypeDao;
-        private readonly ISession  _session;
+        private readonly ISession _session;
         private readonly ISessionFactory _sessionFactory;
-        private static readonly ILog _logger = LogManager.GetLogger (typeof (ProductTypeService));
+        private static readonly ILog _logger = LogManager.GetLogger(typeof(ProductTypeService));
         public ProductTypeService(IProductTypeDao productTypeDao)
         {
             _productTypeDao = productTypeDao;
@@ -55,18 +56,35 @@ namespace IMS.Service
             }
         }
 
-        public async Task<IEnumerable<ProductType>> GetAllAsync()
+        public async Task<List<ProductTypeViewModel>> GetAllAsync()
         {
             try
             {
-                return await _productTypeDao.GetAll();
+                var productTypeViewList = new List<ProductTypeViewModel>();
+                var productType = await _productTypeDao.GetAll();
 
-            }catch (Exception ex)
+                if(productType.Count > 0)
+                {
+                    productTypeViewList = productType.Select(t => new ProductTypeViewModel
+                    {
+                        Id = t.Id,
+                        TypeName = t.TypeName,
+                        CreatedBy = t.CreatedBy,
+                        CreatedDate = t.CreatedDate,
+                        ModifyBy = t.ModifyBy,
+                        ModifyDate = t.ModifyDate,
+                    }).ToList();
+                }
+
+                return productTypeViewList;
+            }
+            catch (Exception ex)
             {
-                _logger.Error (ex);
+                _logger.Error(ex);
                 throw new InvalidNameException(ex.Message);
             }
         }
+
         public async Task<ProductType> GetById(long id)
         {
             try
@@ -84,21 +102,41 @@ namespace IMS.Service
                 throw new InvalidNameException(ex.Message);
             }
         }
-        public async Task CreateAsync(ProductType productType)
+
+        public async Task CreateAsync(ProductTypeViewModel productTypeViewModel)
         {
             try
             {
-                TypeValidator(productType);
-                var newType = new ProductType
-                {
-                    TypeName = productType.TypeName,
-                    CreatedDate = DateTime.Now,
-                    ModifyDate = DateTime.Now,
-                };
+                var productTypeMainEntity = new ProductType();
+
+                productTypeMainEntity.TypeName = productTypeViewModel.TypeName;
+                productTypeMainEntity.CreatedBy = productTypeViewModel.CreatedBy;
+                productTypeMainEntity.CreatedDate = DateTime.Now;
+                productTypeMainEntity.ModifyBy = productTypeViewModel.ModifyBy;
+                productTypeMainEntity.ModifyDate = DateTime.Now;
+
+                //foreach (var categoryView in productTypeViewModel.Category)
+                //{
+                //    var category = new ProductCategory
+                //    {
+
+                //    };
+                //}
+
                 using (var transaction = _session.BeginTransaction())
                 {
-                    await _productTypeDao.Create(newType);
-                    await transaction.CommitAsync();
+                    try
+                    {
+                        await _productTypeDao.Create(productTypeMainEntity);
+                        await transaction.CommitAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        _logger.Error(ex);
+                        throw ex;
+                    }
+
                 }
             }
             catch (Exception ex)
@@ -107,11 +145,12 @@ namespace IMS.Service
                 throw new Exception(ex.Message);
             }
         }
-        public async Task UpdateAsync(long  id, ProductType productType)
+
+        public async Task UpdateAsync(long id, ProductType productType)
         {
             try
             {
-                  var individualProductUpdate = await _productTypeDao.GetById(id);
+                var individualProductUpdate = await _productTypeDao.GetById(id);
                 if (individualProductUpdate != null)
                 {
                     using (var transaction = _session.BeginTransaction())
@@ -134,16 +173,18 @@ namespace IMS.Service
                 throw new Exception(ex.Message);
             }
         }
+
         public async Task DeleteAsync(long id)
         {
             try
             {
                 var individualTypeDelete = _productTypeDao.GetById(id);
-                if(individualTypeDelete != null)
+                if (individualTypeDelete != null)
                 {
                     await _productTypeDao.DeleteById(id);
                 }
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 _logger.Error(ex);
                 throw new Exception(ex.Message);

@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using IMS.CustomException;
 using IMS.Entity.Entities;
+using IMS.Entity.EntityViewModels;
 using IMS.Service;
 using log4net;
 
@@ -27,39 +29,82 @@ namespace IMS.WEB.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(ProductType  productType)
+        public async Task<ActionResult> Create(ProductTypeViewModel productTypeViewModel)
         {
+            bool isValid = false;
+            string message = string.Empty;
             try
             {
-                if (ModelState.IsValid == false)
+                if (productTypeViewModel != null)
                 {
-                    return View(productType);
+                    productTypeViewModel.CreatedBy = User.Identity.Name;
+                    productTypeViewModel.ModifyBy = User.Identity.Name;
+                    await _productTypeService.CreateAsync(productTypeViewModel);
+
+                    message = "Type is created successfully!";
+                    isValid = true;
                 }
-                await _productTypeService.CreateAsync(productType);
+                else
+                {
+                    message = "Something is wrong! Please try again!";
+                }
+
+            }
+            catch (DuplicateValueException ex)
+            {
+                message = ex.Message;
+            }
+            catch (InvalidNameException ex)
+            {
+                message = ex.Message;
             }
             catch (Exception ex)
             {
-                _logger.Error(ex.Message);
-                ViewBag.Error = ex.Message;
+                _logger.Error(message, ex);
+                message = "Something went wrong!";
             }
-            TempData["AlertMessage"] = "Type is Created successfully!";
-            return RedirectToAction("Index");
+
+            return Json(new
+            {
+                Message = message,
+                IsValid = isValid
+            }, JsonRequestBehavior.AllowGet);
         }
+
+
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult LoadAll()
         {
             return View();
         }
+
         [HttpGet]
-        public async Task<JsonResult> DataTableView()
+        public async Task<ActionResult> LoadTypeData()
         {
-            var typeList = await _productTypeService.GetAllAsync();
+            var typeViewList = new List<ProductTypeViewModel>();
+
+            try
+            {
+                var categoryList = await _productTypeService.GetAllAsync();
+                var categoryCount = categoryList.Count();
+
+                typeViewList.AddRange(categoryList);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+            }
+
             return Json(new
             {
-                data = typeList
+                draw = 1,
+                recordsTotal = typeViewList.Count,
+                recordsFiltered = typeViewList.Count,
+                data = typeViewList
             }, JsonRequestBehavior.AllowGet);
         }
+
+
         public async Task<ActionResult> Details(long id)
         {
             try

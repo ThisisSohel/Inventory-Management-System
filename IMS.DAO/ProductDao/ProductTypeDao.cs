@@ -11,8 +11,8 @@ namespace IMS.DAO.ProductDao
 {
     public interface IProductTypeDao
     {
-        Task<IEnumerable<ProductType>> GetAll();
-        Task<ProductType>GetById(long id);
+        Task<List<ProductType>> GetAll();
+        Task<ProductType> GetById(long id);
         Task Create(ProductType productType);
         Task Update(ProductType productType);
         Task DeleteById(long id);
@@ -21,17 +21,18 @@ namespace IMS.DAO.ProductDao
     {
         private readonly ISession _session;
 
-        public ProductTypeDao( ISession session)
+        public ProductTypeDao(ISession session)
         {
             _session = session;
         }
 
-        public async Task<IEnumerable<ProductType>> GetAll()
+        public async Task<List<ProductType>> GetAll()
         {
             try
             {
                 return await _session.Query<ProductType>().ToListAsync();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw new Exception("Faild to retrieve Product Type", ex);
             }
@@ -47,30 +48,23 @@ namespace IMS.DAO.ProductDao
                 throw new Exception($"Faild to retrieve the product with the ID {id}", ex);
             }
         }
+
         public async Task Create(ProductType productType)
+        {
+            await _session.SaveAsync(productType);
+        }
+
+        public async Task Update(ProductType productType)
         {
             try
             {
                 using (var transaction = _session.BeginTransaction())
                 {
-                    await _session.SaveAsync(productType);
-                    await transaction.CommitAsync();
-                }
-            }catch (Exception ex)
-            {
-                throw new Exception("Failed to create ProductType", ex);
-            }
-        }
-        public async Task Update(ProductType productType)
-        {
-            try
-            {
-                using(var transaction = _session.BeginTransaction())
-                {
                     await _session.UpdateAsync(productType);
                     await transaction.CommitAsync();
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw new Exception($"Faild to update the Type", ex);
             }

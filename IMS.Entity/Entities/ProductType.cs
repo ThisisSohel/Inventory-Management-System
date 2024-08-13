@@ -9,11 +9,10 @@ namespace IMS.Entity.Entities
     {
         public virtual long Id { get; set; }
         public virtual string TypeName { get; set; }
-        public virtual long CreatedBy { get; set; }
+        public virtual string CreatedBy { get; set; }
         public virtual DateTime? CreatedDate { get; set; }
-        public virtual long ModifyBy { get; set; }
+        public virtual string ModifyBy { get; set; }
         public virtual DateTime? ModifyDate { get; set; }
-        public virtual Product Product { get; set; }
-        public virtual IList<Product> Products { get; set; }
+        public virtual ProductCategory ProductCategory { get; set; }
     }
 }

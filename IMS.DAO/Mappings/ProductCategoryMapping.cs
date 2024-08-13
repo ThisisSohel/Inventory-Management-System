@@ -20,6 +20,11 @@ namespace IMS.DAO.Mappings
             Map(x => x.CreatedDate);
             Map(x => x.ModifyBy);
             Map(x => x.ModifyDate);
+
+            HasMany(x => x.ProductType)
+                .Cascade.All()
+                .Inverse()
+                .KeyColumn("CategoryId");
         }
     }
 }

@@ -20,6 +20,10 @@ namespace IMS.DAO.Mappings
             Map(x => x.CreatedDate);
             Map(x => x.ModifyBy);
             Map(x => x.ModifyDate);
+
+            References(x => x.ProductCategory)
+                .Column("CategoryId")
+                .Not.Nullable();
         }
     }
 }
