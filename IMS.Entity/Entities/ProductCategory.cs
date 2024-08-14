@@ -17,6 +17,6 @@ namespace IMS.Entity.Entities
         public virtual DateTime? CreatedDate { get; set; }
         public virtual string ModifyBy { get; set; }
         public virtual DateTime? ModifyDate { get; set; }
-        public virtual List<ProductType> ProductType { get; set; } = new List<ProductType>();
+        public virtual IList<ProductType> ProductType { get; set; } = new List<ProductType>();
     }
 }

@@ -45,7 +45,7 @@
 
 
 
-@*Create New  Modal*@
+
 @* Create New Modal *@
 <div class="modal fade" id="createModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -65,7 +65,7 @@
                     <div class="row mb-3">
                         <label for="CategoryDropdown" class="col-sm-3 col-form-label text-start" style="color:black;">Category</label>
                         <div class="col-sm-9">
-                            <select class="form-select" id="CategoryDropdown" name="CategoryId" style="background-color:red">
+                            <select class="form-select category_dropdown_name" id="CategoryDropdown" name="CategoryId" style="background-color: #f5f5f5">
                                 <option selected disabled>Choose a Category</option>
                             </select>
                         </div>
@@ -203,18 +203,32 @@
                 url: "/Category/LoadCategoryData", 
                 type: 'GET',
                 dataType: 'json',
-                success: function (data) {
-                    console.log(data)
-                    var dropdown = $('#CategoryDropdown');
-                    dropdown.empty();
-                    dropdown.append('<option selected disabled>Choose a Category</option>');
+                success: function (response) {
+                    console.log(response)
+                    if (response.data.length == 0) {
+                        $("#createModal").modal('hide');
+                        const msgAlertMake = showErrorAlertMessage(response.Message);
+                        $("#errorMessageShow").html(msgAlertMake);
+                    }
+                    else {
+                        var dropdown = $('#CategoryDropdown');
+                        dropdown.empty();
+                        dropdown.append('<option selected disabled>Choose a Category</option>');
 
-                    $.each(data, function (category) {
-                        dropdown.append($('<option></option>').attr('value', category.Id).text(category.CategoryName));
-                    });
+                        $.each(response.data, function (index, category) {
+                            var newDropDownData = `
+                           <option value = ${category.Id}>${category.CategoryName}</option>
+                        `
+                            dropdown.append(newDropDownData);
+                        });
+                    }
+
                 },
                 error: function (error) {
-                    console.log("Error loading categories: ", error);
+                    $("#createModal").modal('hide');
+                    const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
+                    $("#errorMessageShow").html(msgAlertMake);
+                    $("#createModal").modal('hide');
                 }
             });
         }
@@ -225,19 +239,25 @@
         }
 
         function DataBinding() {
-            const name = $("#CategoryName").val();
-            const description = $("#CategoryDescription").val();
+
+            categoryList = [];
+            const name = $("#TypeName").val();
+            const category = $("#CategoryDropdown").find(":selected").val();
+
+            //categoryList.push({
+            //    CategoryName: category
+            //});
 
             const obj = {
-                CategoryName: name,
-                CategoryDescription: description
+                TypeName: name,
+                CategoryId: category
             }
             return obj;
         }
 
         function submitData(obj) {
             $.ajax({
-                url: "/Category/CreateAsync",
+                url: "/ProductType/Create",
                 method: "POST",
                 data: obj,
                 dataType: 'json',
@@ -246,8 +266,7 @@
                         const msgAlertMake = showSuccessAlertMessage(response.Message);
                         $("#successMessageShow").html(msgAlertMake);
                         $("#createModal").modal('hide');
-                        const table = $("#InfoTable").DataTable();
-                        table.ajax.reload();
+                        DataTableLoad();
 
                     } else {
                         const msgAlertMake = showErrorAlertMessage(response.Message);
@@ -409,10 +428,24 @@
 
         $(document).ready(function () {
 
+
+            DataTableLoad();
+
+
+            $("#submitId").click(function () {
+
+                var formData = DataBinding();
+                submitData(formData);
+
+            });
+        })
+
+        function DataTableLoad() {
             $("#InfoTable").DataTable(
                 {
                     "processing": true,
                     "serverSide": true,
+                    "bDestroy": true,
                     "ajax": {
                         "url": "/ProductType/LoadTypeData",
                         "type": "GET",
@@ -438,16 +471,7 @@
                         },
                     ]
                 });
-
-
-
-            $("#submitId").click(function () {
-
-                var formData = DataBinding();
-                submitData(formData);
-
-            });
-        })
+        }
 
 
     </script>

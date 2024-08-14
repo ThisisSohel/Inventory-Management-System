@@ -16,7 +16,7 @@ namespace IMS.Service
 {
     public interface IProductTypeService
     {
-        Task CreateAsync(ProductTypeViewModel productType);
+        Task CreateAsync(CategoryTypeCreateViewModel productType);
         Task<List<ProductTypeViewModel>> GetAllAsync();
         Task<ProductType> GetById(long id);
         Task UpdateAsync(long id, ProductType productType);
@@ -103,25 +103,22 @@ namespace IMS.Service
             }
         }
 
-        public async Task CreateAsync(ProductTypeViewModel productTypeViewModel)
+        public async Task CreateAsync(CategoryTypeCreateViewModel categoryTypeCreateView )
         {
             try
             {
                 var productTypeMainEntity = new ProductType();
 
-                productTypeMainEntity.TypeName = productTypeViewModel.TypeName;
-                productTypeMainEntity.CreatedBy = productTypeViewModel.CreatedBy;
+                productTypeMainEntity.TypeName = categoryTypeCreateView.TypeName;
+                productTypeMainEntity.CreatedBy = categoryTypeCreateView.CreatedBy;
                 productTypeMainEntity.CreatedDate = DateTime.Now;
-                productTypeMainEntity.ModifyBy = productTypeViewModel.ModifyBy;
+                productTypeMainEntity.ModifyBy = categoryTypeCreateView.ModifyBy;
                 productTypeMainEntity.ModifyDate = DateTime.Now;
 
-                //foreach (var categoryView in productTypeViewModel.Category)
-                //{
-                //    var category = new ProductCategory
-                //    {
-
-                //    };
-                //}
+                productTypeMainEntity.ProductCategory = new ProductCategory()
+                {
+                    Id = categoryTypeCreateView.CategoryId
+                };
 
                 using (var transaction = _session.BeginTransaction())
                 {
@@ -142,7 +139,7 @@ namespace IMS.Service
             catch (Exception ex)
             {
                 _logger.Error(ex.Message, ex);
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
 

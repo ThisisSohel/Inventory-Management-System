@@ -85,17 +85,19 @@ namespace IMS.WEB.Controllers
         public async Task<ActionResult> LoadCategoryData()
         {
             var categoryViewList = new List<ProductCategoryViewModel>();
+            string message = string.Empty;
 
             try
             {
                 var categoryList = await _categoryService.LoadAllAsync();
-                var categoryCount = categoryList.Count();
-
                 categoryViewList.AddRange(categoryList);
+
             }
             catch (Exception ex)
             {
+                message = "No Product-Category is not available! Please add your new product category!";
                 _logger.Error(ex);
+
             }
 
             return Json(new
@@ -103,7 +105,8 @@ namespace IMS.WEB.Controllers
                 draw = 1,
                 recordsTotal = categoryViewList.Count,
                 recordsFiltered = categoryViewList.Count,
-                data = categoryViewList
+                data = categoryViewList,
+                Message = message
             }, JsonRequestBehavior.AllowGet);
         }
 
@@ -204,7 +207,7 @@ namespace IMS.WEB.Controllers
                 }
                 catch (InvalidNameException ex)
                 {
-                    message = ex.Message;  
+                    message = ex.Message;
                 }
                 catch (Exception ex)
                 {

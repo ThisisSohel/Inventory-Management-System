@@ -15,6 +15,6 @@ namespace IMS.Entity.EntityViewModels
         public DateTime? CreatedDate { get; set; }
         public string ModifyBy { get; set; }
         public DateTime? ModifyDate { get; set; }
-        public List<ProductCategoryTypeViewModel> Category { get; set; } = new List<ProductCategoryTypeViewModel>();
+        public IList<ProductCategoryTypeViewModel> Category { get; set; } = new List<ProductCategoryTypeViewModel>();
     }
 }

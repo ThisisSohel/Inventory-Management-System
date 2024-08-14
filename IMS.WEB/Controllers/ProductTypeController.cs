@@ -29,7 +29,7 @@ namespace IMS.WEB.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(ProductTypeViewModel productTypeViewModel)
+        public async Task<ActionResult> Create(CategoryTypeCreateViewModel productTypeViewModel)
         {
             bool isValid = false;
             string message = string.Empty;

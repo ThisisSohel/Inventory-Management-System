@@ -7,7 +7,15 @@
       "RelativeMoniker": "D:0:0:{AA73D6AC-391E-495A-AA13-06CBF31DC5B3}|IMS.WEB\\IMS.WEB.csproj|solutionrelative:ims.web\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AA73D6AC-391E-495A-AA13-06CBF31DC5B3}|IMS.WEB\\IMS.WEB.csproj|c:\\users\\user\\desktop\\imsmainproject\\new folder\\ims-soh\\ims.web\\views\\producttype\\loadall.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{AA73D6AC-391E-495A-AA13-06CBF31DC5B3}|IMS.WEB\\IMS.WEB.csproj|c:\\users\\user\\desktop\\imsmainproject\\new folder\\ims-soh\\ims.web\\views\\category\\loadall.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AA73D6AC-391E-495A-AA13-06CBF31DC5B3}|IMS.WEB\\IMS.WEB.csproj|solutionrelative:ims.web\\views\\category\\loadall.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC8A8F2D-BFCF-4141-9679-4F1467E8E903}|IMS.Entity\\IMS.Entity.csproj|c:\\users\\user\\desktop\\imsmainproject\\new folder\\ims-soh\\ims.entity\\entityviewmodels\\categorytypecreateviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC8A8F2D-BFCF-4141-9679-4F1467E8E903}|IMS.Entity\\IMS.Entity.csproj|solutionrelative:ims.entity\\entityviewmodels\\categorytypecreateviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA73D6AC-391E-495A-AA13-06CBF31DC5B3}|IMS.WEB\\IMS.WEB.csproj|C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\ims.web\\views\\producttype\\loadall.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{AA73D6AC-391E-495A-AA13-06CBF31DC5B3}|IMS.WEB\\IMS.WEB.csproj|solutionrelative:ims.web\\views\\producttype\\loadall.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
@@ -19,32 +27,16 @@
       "RelativeMoniker": "D:0:0:{6155A650-5BA0-404C-8446-73B45C4A5DAD}|IMS.Service\\IMS.Service.csproj|solutionrelative:ims.service\\producttypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5AF4B352-09D6-486F-98D2-5D0406DFCF5F}|IMS.DAO\\IMS.DAO.csproj|c:\\users\\user\\desktop\\imsmainproject\\new folder\\ims-soh\\ims.dao\\productdao\\producttypedao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5AF4B352-09D6-486F-98D2-5D0406DFCF5F}|IMS.DAO\\IMS.DAO.csproj|C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\ims.dao\\productdao\\producttypedao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5AF4B352-09D6-486F-98D2-5D0406DFCF5F}|IMS.DAO\\IMS.DAO.csproj|solutionrelative:ims.dao\\productdao\\producttypedao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5AF4B352-09D6-486F-98D2-5D0406DFCF5F}|IMS.DAO\\IMS.DAO.csproj|C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\ims.dao\\mappings\\productcategorymapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5AF4B352-09D6-486F-98D2-5D0406DFCF5F}|IMS.DAO\\IMS.DAO.csproj|solutionrelative:ims.dao\\mappings\\productcategorymapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5AF4B352-09D6-486F-98D2-5D0406DFCF5F}|IMS.DAO\\IMS.DAO.csproj|C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\ims.dao\\mappings\\producttypemapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5AF4B352-09D6-486F-98D2-5D0406DFCF5F}|IMS.DAO\\IMS.DAO.csproj|solutionrelative:ims.dao\\mappings\\producttypemapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FC8A8F2D-BFCF-4141-9679-4F1467E8E903}|IMS.Entity\\IMS.Entity.csproj|C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\ims.entity\\entityviewmodels\\productcategorytypeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FC8A8F2D-BFCF-4141-9679-4F1467E8E903}|IMS.Entity\\IMS.Entity.csproj|solutionrelative:ims.entity\\entityviewmodels\\productcategorytypeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FC8A8F2D-BFCF-4141-9679-4F1467E8E903}|IMS.Entity\\IMS.Entity.csproj|C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\ims.entity\\entityviewmodels\\producttypeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FC8A8F2D-BFCF-4141-9679-4F1467E8E903}|IMS.Entity\\IMS.Entity.csproj|c:\\users\\user\\desktop\\imsmainproject\\new folder\\ims-soh\\ims.entity\\entityviewmodels\\producttypeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FC8A8F2D-BFCF-4141-9679-4F1467E8E903}|IMS.Entity\\IMS.Entity.csproj|solutionrelative:ims.entity\\entityviewmodels\\producttypeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FC8A8F2D-BFCF-4141-9679-4F1467E8E903}|IMS.Entity\\IMS.Entity.csproj|C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\ims.entity\\entities\\producttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FC8A8F2D-BFCF-4141-9679-4F1467E8E903}|IMS.Entity\\IMS.Entity.csproj|solutionrelative:ims.entity\\entities\\producttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FC8A8F2D-BFCF-4141-9679-4F1467E8E903}|IMS.Entity\\IMS.Entity.csproj|C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\ims.entity\\entities\\productcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FC8A8F2D-BFCF-4141-9679-4F1467E8E903}|IMS.Entity\\IMS.Entity.csproj|solutionrelative:ims.entity\\entities\\productcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FC8A8F2D-BFCF-4141-9679-4F1467E8E903}|IMS.Entity\\IMS.Entity.csproj|c:\\users\\user\\desktop\\imsmainproject\\new folder\\ims-soh\\ims.entity\\entityviewmodels\\productcategoryviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC8A8F2D-BFCF-4141-9679-4F1467E8E903}|IMS.Entity\\IMS.Entity.csproj|solutionrelative:ims.entity\\entityviewmodels\\productcategoryviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -64,138 +56,114 @@
               "RelativeDocumentMoniker": "IMS.WEB\\Controllers\\CategoryController.cs",
               "ToolTip": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.WEB\\Controllers\\CategoryController.cs",
               "RelativeToolTip": "IMS.WEB\\Controllers\\CategoryController.cs",
-              "ViewState": "AQIAAE0AAAAAAAAAAAA8wFYAAAAMAAAA",
+              "ViewState": "AQIAAFMAAAAAAAAAAAAIwFUAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T16:43:58.272Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ProductTypeDao.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.DAO\\ProductDao\\ProductTypeDao.cs",
-              "RelativeDocumentMoniker": "IMS.DAO\\ProductDao\\ProductTypeDao.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.DAO\\ProductDao\\ProductTypeDao.cs",
-              "RelativeToolTip": "IMS.DAO\\ProductDao\\ProductTypeDao.cs",
-              "ViewState": "AQIAAEwAAAAAAAAAAAAmwFwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T16:31:47.593Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ProductTypeController.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.WEB\\Controllers\\ProductTypeController.cs",
-              "RelativeDocumentMoniker": "IMS.WEB\\Controllers\\ProductTypeController.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.WEB\\Controllers\\ProductTypeController.cs",
-              "RelativeToolTip": "IMS.WEB\\Controllers\\ProductTypeController.cs",
-              "ViewState": "AQIAAKYAAAAAAAAAAAAmwLYAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T06:48:44.563Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ProductTypeMapping.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.DAO\\Mappings\\ProductTypeMapping.cs",
-              "RelativeDocumentMoniker": "IMS.DAO\\Mappings\\ProductTypeMapping.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.DAO\\Mappings\\ProductTypeMapping.cs",
-              "RelativeToolTip": "IMS.DAO\\Mappings\\ProductTypeMapping.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAABcAAAAuAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T04:40:02.425Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ProductTypeService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.Service\\ProductTypeService.cs",
-              "RelativeDocumentMoniker": "IMS.Service\\ProductTypeService.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.Service\\ProductTypeService.cs",
-              "RelativeToolTip": "IMS.Service\\ProductTypeService.cs",
-              "ViewState": "AQIAAFQAAAAAAAAAAAAowMMAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T06:59:53.504Z",
+              "WhenOpened": "2024-08-14T10:54:50.895Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "LoadAll.cshtml",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.WEB\\Views\\ProductType\\LoadAll.cshtml",
-              "RelativeDocumentMoniker": "IMS.WEB\\Views\\ProductType\\LoadAll.cshtml",
-              "ToolTip": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.WEB\\Views\\ProductType\\LoadAll.cshtml",
-              "RelativeToolTip": "IMS.WEB\\Views\\ProductType\\LoadAll.cshtml",
-              "ViewState": "AQIAAMcAAAAAAAAAAAAAwM4AAAAlAAAA",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.WEB\\Views\\Category\\LoadAll.cshtml",
+              "RelativeDocumentMoniker": "IMS.WEB\\Views\\Category\\LoadAll.cshtml",
+              "ToolTip": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.WEB\\Views\\Category\\LoadAll.cshtml",
+              "RelativeToolTip": "IMS.WEB\\Views\\Category\\LoadAll.cshtml",
+              "ViewState": "AQIAAHkBAAAAAAAAAAAAAI4BAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-13T10:32:29.736Z",
+              "WhenOpened": "2024-08-14T10:53:28.366Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ProductType.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.Entity\\Entities\\ProductType.cs",
-              "RelativeDocumentMoniker": "IMS.Entity\\Entities\\ProductType.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.Entity\\Entities\\ProductType.cs",
-              "RelativeToolTip": "IMS.Entity\\Entities\\ProductType.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAABEAAAA",
+              "DocumentIndex": 2,
+              "Title": "CategoryTypeCreateViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.Entity\\EntityViewModels\\CategoryTypeCreateViewModel.cs",
+              "RelativeDocumentMoniker": "IMS.Entity\\EntityViewModels\\CategoryTypeCreateViewModel.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.Entity\\EntityViewModels\\CategoryTypeCreateViewModel.cs",
+              "RelativeToolTip": "IMS.Entity\\EntityViewModels\\CategoryTypeCreateViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwA4AAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T04:17:10.459Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ProductTypeViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.Entity\\EntityViewModels\\ProductTypeViewModel.cs",
-              "RelativeDocumentMoniker": "IMS.Entity\\EntityViewModels\\ProductTypeViewModel.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.Entity\\EntityViewModels\\ProductTypeViewModel.cs",
-              "RelativeToolTip": "IMS.Entity\\EntityViewModels\\ProductTypeViewModel.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAYwBAAAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T10:04:25.88Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ProductCategoryMapping.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.DAO\\Mappings\\ProductCategoryMapping.cs",
-              "RelativeDocumentMoniker": "IMS.DAO\\Mappings\\ProductCategoryMapping.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.DAO\\Mappings\\ProductCategoryMapping.cs",
-              "RelativeToolTip": "IMS.DAO\\Mappings\\ProductCategoryMapping.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAmwBkAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T04:40:07.281Z",
+              "WhenOpened": "2024-08-14T09:25:14.089Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "ProductCategoryTypeViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.Entity\\EntityViewModels\\ProductCategoryTypeViewModel.cs",
-              "RelativeDocumentMoniker": "IMS.Entity\\EntityViewModels\\ProductCategoryTypeViewModel.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.Entity\\EntityViewModels\\ProductCategoryTypeViewModel.cs",
-              "RelativeToolTip": "IMS.Entity\\EntityViewModels\\ProductCategoryTypeViewModel.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAYwBEAAAAsAAAA",
+              "Title": "ProductTypeViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.Entity\\EntityViewModels\\ProductTypeViewModel.cs",
+              "RelativeDocumentMoniker": "IMS.Entity\\EntityViewModels\\ProductTypeViewModel.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.Entity\\EntityViewModels\\ProductTypeViewModel.cs",
+              "RelativeToolTip": "IMS.Entity\\EntityViewModels\\ProductTypeViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T10:06:55.288Z",
+              "WhenOpened": "2024-08-14T08:59:34.384Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ProductCategory.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.Entity\\Entities\\ProductCategory.cs",
-              "RelativeDocumentMoniker": "IMS.Entity\\Entities\\ProductCategory.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.Entity\\Entities\\ProductCategory.cs",
-              "RelativeToolTip": "IMS.Entity\\Entities\\ProductCategory.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABIAAAA5AAAA",
+              "DocumentIndex": 8,
+              "Title": "ProductCategoryViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.Entity\\EntityViewModels\\ProductCategoryViewModel.cs",
+              "RelativeDocumentMoniker": "IMS.Entity\\EntityViewModels\\ProductCategoryViewModel.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.Entity\\EntityViewModels\\ProductCategoryViewModel.cs",
+              "RelativeToolTip": "IMS.Entity\\EntityViewModels\\ProductCategoryViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-10T11:50:31.948Z"
+              "WhenOpened": "2024-08-14T04:29:39.641Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ProductTypeDao.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.DAO\\ProductDao\\ProductTypeDao.cs",
+              "RelativeDocumentMoniker": "IMS.DAO\\ProductDao\\ProductTypeDao.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.DAO\\ProductDao\\ProductTypeDao.cs",
+              "RelativeToolTip": "IMS.DAO\\ProductDao\\ProductTypeDao.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAAACYAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-13T16:31:47.593Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProductTypeController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.WEB\\Controllers\\ProductTypeController.cs",
+              "RelativeDocumentMoniker": "IMS.WEB\\Controllers\\ProductTypeController.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.WEB\\Controllers\\ProductTypeController.cs",
+              "RelativeToolTip": "IMS.WEB\\Controllers\\ProductTypeController.cs",
+              "ViewState": "AQIAABwAAAAAAAAAAAAqwCEAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-13T06:48:44.563Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProductTypeService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.Service\\ProductTypeService.cs",
+              "RelativeDocumentMoniker": "IMS.Service\\ProductTypeService.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.Service\\ProductTypeService.cs",
+              "RelativeToolTip": "IMS.Service\\ProductTypeService.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAkwCkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-13T06:59:53.504Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LoadAll.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.WEB\\Views\\ProductType\\LoadAll.cshtml",
+              "RelativeDocumentMoniker": "IMS.WEB\\Views\\ProductType\\LoadAll.cshtml",
+              "ToolTip": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.WEB\\Views\\ProductType\\LoadAll.cshtml",
+              "RelativeToolTip": "IMS.WEB\\Views\\ProductType\\LoadAll.cshtml",
+              "ViewState": "AQIAABwBAAAAAAAAAAAuwL4BAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-13T10:32:29.736Z",
+              "EditorCaption": ""
             }
           ]
         }
