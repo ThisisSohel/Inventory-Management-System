@@ -39,14 +39,7 @@ namespace IMS.DAO.ProductDao
         }
         public async Task<ProductType> GetById(long id)
         {
-            try
-            {
-                return await _session.GetAsync<ProductType>(id);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Faild to retrieve the product with the ID {id}", ex);
-            }
+            return await _session.GetAsync<ProductType>(id);
         }
 
         public async Task Create(ProductType productType)

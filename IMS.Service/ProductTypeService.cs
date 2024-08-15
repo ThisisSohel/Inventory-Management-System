@@ -18,8 +18,8 @@ namespace IMS.Service
     {
         Task CreateAsync(CategoryTypeCreateViewModel productType);
         Task<List<ProductTypeViewModel>> GetAllAsync();
-        Task<ProductType> GetById(long id);
-        Task UpdateAsync(long id, ProductType productType);
+        Task<ProductTypeViewModel> GetByIdAsync(long id);
+        Task UpdateAsync(long id, ProductTypeUpdateViewModel productType);
         Task DeleteAsync(long id);
     }
     public class ProductTypeService : IProductTypeService
@@ -85,21 +85,32 @@ namespace IMS.Service
             }
         }
 
-        public async Task<ProductType> GetById(long id)
+        public async Task<ProductTypeViewModel> GetByIdAsync(long id)
         {
             try
             {
+                var productTypeViewModel = new ProductTypeViewModel();
                 var individualProductType = await _productTypeDao.GetById(id);
+
                 if (individualProductType == null)
                 {
-                    throw new ObjectNotFoundException(individualProductType, $"The product type with the id {id} is not found");
+                    throw new Exception("The type is not found");
                 }
-                return individualProductType;
+                else
+                {
+                    productTypeViewModel.Id = individualProductType.Id;
+                    productTypeViewModel.TypeName = individualProductType.TypeName;
+                    productTypeViewModel.CreatedBy = individualProductType.CreatedBy;
+                    productTypeViewModel.CreatedDate = individualProductType.CreatedDate;
+                    productTypeViewModel.ModifyBy = individualProductType.ModifyBy;
+                    productTypeViewModel.ModifyDate = individualProductType.ModifyDate; 
+                }
+                return productTypeViewModel;
             }
             catch (Exception ex)
             {
                 _logger.Error(ex);
-                throw new InvalidNameException(ex.Message);
+                throw new Exception(ex.Message);
             }
         }
 
@@ -143,26 +154,33 @@ namespace IMS.Service
             }
         }
 
-        public async Task UpdateAsync(long id, ProductType productType)
+        public async Task UpdateAsync(long id, ProductTypeUpdateViewModel productTypeUpdateViewModel)
         {
             try
             {
-                var individualProductUpdate = await _productTypeDao.GetById(id);
-                if (individualProductUpdate != null)
+                var individualProductTypeUpdate = await _productTypeDao.GetById(id);
+                if (individualProductTypeUpdate == null)
                 {
-                    using (var transaction = _session.BeginTransaction())
-                    {
-                        individualProductUpdate.TypeName = productType.TypeName;
-                        //individualProductUpdate.ModifyBy = productType.ModifyBy;
-                        individualProductUpdate.ModifyDate = DateTime.Now;
-                        await _productTypeDao.Update(individualProductUpdate);
-                        await transaction.CommitAsync();
-                    }
+
                 }
                 else
                 {
-                    throw new ObjectNotFoundException(individualProductUpdate, "ProductType Not Found!");
+                    using (var transaction = _session.BeginTransaction())
+                    {
+                        individualProductTypeUpdate.TypeName = productTypeUpdateViewModel.TypeName;
+                        individualProductTypeUpdate.ModifyBy = productTypeUpdateViewModel.ModifyBy;
+                        individualProductTypeUpdate.ModifyDate = DateTime.Now;
+
+                        individualProductTypeUpdate.ProductCategory = new ProductCategory()
+                        {
+                            Id = productTypeUpdateViewModel.CategoryId
+                        };
+
+                        await _productTypeDao.Update(individualProductTypeUpdate);
+                        await transaction.CommitAsync();
+                    }
                 }
+
             }
             catch (Exception ex)
             {

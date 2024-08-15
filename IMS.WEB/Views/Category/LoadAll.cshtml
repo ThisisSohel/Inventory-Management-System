@@ -46,7 +46,6 @@
 </div>
 
 
-
 @*Create New  Modal*@
 <div class="modal fade" id="createModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -83,8 +82,6 @@
         </div>
     </div>
 </div>
-
-
 
 
 @* Details Modal*@
@@ -128,7 +125,7 @@
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="background-color: darkgray">
-                <h4>Are you sure to delete the SKU - <span id="nameId"></span>?</h4>
+                <h4>Are you sure to delete the Category - <span id="nameId"></span>?</h4>
                 <input type="hidden" value="" id="Id" />
             </div>
             <div class="modal-footer" style="background-color: #1d4552">
@@ -138,6 +135,7 @@
         </div>
     </div>
 </div>
+
 
 @*Update  Modal*@
 <div class="modal fade" id="updateModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -225,8 +223,7 @@
                         const msgAlertMake = showSuccessAlertMessage(response.Message);
                         $("#successMessageShow").html(msgAlertMake);
                         $("#createModal").modal('hide');
-                        const table = $("#InfoTable").DataTable();
-                        table.ajax.reload();
+                        DataTableLoad();
 
                     } else {
                         const msgAlertMake = showErrorAlertMessage(response.Message);
@@ -277,7 +274,6 @@
             });
         }
 
-
         function Delete(id) {
             $("#deleteModal").modal("show");
 
@@ -295,8 +291,7 @@
                             $("#successMessageShow").html(msgAlertMake);
                             $("#deleteModal").modal('hide');
 
-                            const table = $("#InfoTable").DataTable();
-                            table.ajax.reload();
+                            DataTableLoad();
                         } else {
                             const msgAlertMake = showErrorAlertMessage(response.Message);
                             $("#errorMessageShow").html(msgAlertMake);
@@ -313,7 +308,6 @@
             })
 
         }
-
 
         function Update(updateId) {
             $("#updateModal").modal('show');
@@ -368,8 +362,7 @@
                             $("#successMessageShow").html(msgAlertMake);
                             $("#updateModal").modal('hide');
 
-                            const table = $("#InfoTable").DataTable();
-                            table.ajax.reload();
+                            DataTableLoad();
                         } else {
                             const msgAlertMake = showErrorAlertMessage(response.Message);
                             $("#errorMessageShow").html(msgAlertMake);
@@ -388,6 +381,18 @@
 
         $(document).ready(function () {
 
+           
+            DataTableLoad();
+
+            $("#submitId").click(function () {
+
+                var formData = DataBinding();
+                submitData(formData);
+
+            });
+        })
+
+        function DataTableLoad() {
             $("#InfoTable").DataTable(
                 {
                     "processing": true,
@@ -404,32 +409,22 @@
                         {
                             "data": "Id", "render": function (id) {
                                 return `
-                                                    <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "Details(${id})">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>Details</button></a>
-                                                    <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "Delete(${id})">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>Delete</button></a>
-                                                    <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "Update(${id})">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>Update</button></a>
+                                         <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "Details(${id})">
+                                         <i class="fas fa-pencil-alt">
+                                         </i>Details</button></a>
+                                         <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "Delete(${id})">
+                                         <i class="fas fa-pencil-alt">
+                                         </i>Delete</button></a>
+                                         <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "Update(${id})">
+                                         <i class="fas fa-pencil-alt">
+                                         </i>Update</button></a>
 
-                                                    `
+                                         `
                             }
                         },
                     ]
                 });
-
-
-
-            $("#submitId").click(function () {
-
-                var formData = DataBinding();
-                submitData(formData);
-
-            });
-        })
-
+        }
 
     </script>
 }

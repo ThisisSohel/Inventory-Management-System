@@ -54,6 +54,8 @@ namespace IMS.Service
 
                 var categoryList =  await _categoryDao.LoadAll();
 
+                var categoryModifyList = new List<ProductCategory>();
+
                 if(categoryList.Count > 0)
                 {
                     categoryViewList = categoryList.Select(c => new ProductCategoryViewModel

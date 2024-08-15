@@ -90,8 +90,8 @@ namespace IMS.WEB.Controllers
             try
             {
                 var categoryList = await _categoryService.LoadAllAsync();
+                //categoryViewList = categoryList.Where(c => c.CategoryName.StartsWith("A")).ToList();
                 categoryViewList.AddRange(categoryList);
-
             }
             catch (Exception ex)
             {

@@ -104,67 +104,126 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
-
-        public async Task<ActionResult> Details(long id)
+        [HttpGet]
+        public async Task<ActionResult> DetailsAsync(long id)
         {
+            bool isSuccess = false;
+            string message = string.Empty;
+            var productTypeDetails = new ProductTypeViewModel();
             try
             {
-                var individualType = await _productTypeService.GetById(id);
-                return View(individualType);
+                productTypeDetails = await _productTypeService.GetByIdAsync(id);
+
+                if (productTypeDetails != null)
+                {
+                    isSuccess = true;
+                }
+                else
+                {
+                    message = "Category Type is not found!";
+                }
 
             }
             catch (Exception ex)
             {
                 _logger.Error(ex.Message);
+                message = ex.Message;
             }
-            return View();
+
+            return Json(new
+            {
+                IsSuccess = isSuccess,
+                Message = message,
+                Details = new
+                {
+                    productTypeDetails.CreatedBy,
+                    CreatedDate = productTypeDetails.CreatedDate?.ToString("yyyy-MM-dd HH:mm:ss tt"),
+                    productTypeDetails.ModifyBy,
+                    ModifyDate = productTypeDetails.ModifyDate?.ToString("yyyy-MM-dd HH:mm:ss tt")
+                }
+            }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
-        public async Task<ActionResult> Update(long id)
+        public async Task<ActionResult> UpdateAsync(long id)
         {
-            var updateProductType = new ProductType();
+            bool isSuccess = false;
+            string message = string.Empty;
+            var updateProductTypeViewModel = new ProductTypeViewModel();
+
             try
             {
-                updateProductType = await _productTypeService.GetById(id);
+                updateProductTypeViewModel = await _productTypeService.GetByIdAsync(id);
+
+                if (updateProductTypeViewModel != null)
+                {
+                    isSuccess = true;
+                }
+                else
+                {
+                    message = "Product Type is not found to update!";
+                }
             }
             catch (Exception ex)
             {
                 _logger.Error(ex.Message);
+                message = "Something went wrong!";
             }
-            return View(updateProductType);
+
+            return Json(new
+            {
+                UpdateProductTypeData = updateProductTypeViewModel,
+                IsSuccess = isSuccess,
+                Message = message,
+            }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public async Task<ActionResult> Update(long id, ProductType productType)
+        public async Task<ActionResult> UpdateAsync(long id, ProductTypeUpdateViewModel productTypeUpdateViewModel)
         {
-            var typeToUpdate = await _productTypeService.GetById(id);
-            if (typeToUpdate == null)
+            string message = string.Empty;
+            bool isSuccess = false;
+
+            if(productTypeUpdateViewModel == null)
             {
-                return RedirectToAction("Index");
+                message = "ProductType is not found! Try again!";
             }
-            try
+            else
             {
-                if (ModelState.IsValid == false)
+                try
                 {
-                    return View(typeToUpdate);
+                    productTypeUpdateViewModel.ModifyBy = User.Identity.Name;
+                    await _productTypeService.UpdateAsync(id, productTypeUpdateViewModel);
+                    isSuccess = true;
+                    message = "Product Category is updated successfully!";
                 }
-                await _productTypeService.UpdateAsync(id, productType);
+                catch (InvalidNameException ex)
+                {
+                    message = ex.Message;
+                }
+                catch (Exception ex)
+                {
+                    message = "Something went wrong!";
+                    _logger.Error(ex.Message);
+                }
             }
-            catch (Exception ex)
+
+            return Json(new
             {
-                _logger.Error(ex.Message);
-            }
-            TempData["AlertMessage"] = "Type is updated successfully!";
-            return RedirectToAction("Index");
+                IsSuccess = isSuccess,
+                Message = message,
+            }, JsonRequestBehavior.AllowGet);
+
         }
-        public async Task<ActionResult> Delete(long id)
+
+        [HttpPost]
+        public async Task<ActionResult> DeleteAsync(long id)
         {
-            var individualTypeDelete = await _productTypeService.GetById(id);
-            if (individualTypeDelete == null)
-            {
-                return RedirectToAction("Index");
-            }
+            //var individualTypeDelete = await _productTypeService.GetById(id);
+            //if (individualTypeDelete == null)
+            //{
+            //    return RedirectToAction("Index");
+            //}
             try
             {
                 await _productTypeService.DeleteAsync(id);
@@ -177,7 +236,7 @@ namespace IMS.WEB.Controllers
                 //ViewBag.Error = ex.Message;
                 //TempData["DeleteAlertMessage"] = "Brand is not found!";
             }
-            return View(individualTypeDelete);
+            return View();
         }
     }
 }

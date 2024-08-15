@@ -44,8 +44,6 @@
 </div>
 
 
-
-
 @* Create New Modal *@
 <div class="modal fade" id="createModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -91,7 +89,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #1d4552">
-                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">--Details about the category--</h1>
+                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">--Details about the product type--</h1>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="background-color: darkgray">
@@ -138,6 +136,7 @@
     </div>
 </div>
 
+
 @*Update  Modal*@
 <div class="modal fade" id="updateModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -149,15 +148,17 @@
             <div class="modal-body" style="background-color: darkgray">
                 <div class="container my-3 p-2 text-center">
                     <div class="row mb-3">
-                        <label for="CategoryName" class="col-sm-3 col-form-label text-start" style="color:black;">Category Name</label>
+                        <label for="CategoryName" class="col-sm-3 col-form-label text-start" style="color:black;">Type Name</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="updateNameId" name="CategoryName" style="background-color:#f5f5f5">
+                            <input type="text" class="form-control" id="updateNameId" name="TypeName" style="background-color:#f5f5f5">
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="CategoryDescription" class="col-sm-3 col-form-label text-start" style="color:black;">Category Desciption</label>
+                        <label for="CategoryDropdown" class="col-sm-3 col-form-label text-start" style="color:black;">Category</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="updateDescriptionId" name="CategoryDescription" style="background-color:#f5f5f5">
+                            <select class="form-select category_dropdown_name" id="CategoryDropdown" name="CategoryId" style="background-color: #f5f5f5">
+                                <option selected disabled>Choose a Category</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row">
@@ -211,7 +212,7 @@
                         $("#errorMessageShow").html(msgAlertMake);
                     }
                     else {
-                        var dropdown = $('#CategoryDropdown');
+                        var dropdown = $('.category_dropdown_name');
                         dropdown.empty();
                         dropdown.append('<option selected disabled>Choose a Category</option>');
 
@@ -240,7 +241,7 @@
 
         function DataBinding() {
 
-            categoryList = [];
+            //categoryList = [];
             const name = $("#TypeName").val();
             const category = $("#CategoryDropdown").find(":selected").val();
 
@@ -285,7 +286,7 @@
         function Details(id) {
             $("#detailsModal").modal('show')
             $.ajax({
-                url: "/Category/DetailsAsync",
+                url: "/ProductType/DetailsAsync",
                 type: 'GET',
                 data: { id: id },
                 dataType: 'json',
@@ -316,7 +317,6 @@
                 }
             });
         }
-
 
         function Delete(id) {
             $("#deleteModal").modal("show");
@@ -355,20 +355,20 @@
         }
 
 
+
         function Update(updateId) {
             $("#updateModal").modal('show');
 
             $.ajax({
-                url: "/Category/UpdateAsync",
+                url: "/ProductType/UpdateAsync",
                 dataType: 'json',
                 type: 'GET',
                 data: { id: updateId },
                 success: function (response) {
-                    console.log(response)
                     if (response.IsSuccess == true) {
-                        $("#updateId").val(response.UpdateCategoryData.Id);
-                        $("#updateNameId").val(response.UpdateCategoryData.CategoryName);
-                        $("#updateDescriptionId").val(response.UpdateCategoryData.CategoryDescription);
+                        $("#updateId").val(response.UpdateProductTypeData.Id);
+                        $("#updateNameId").val(response.UpdateProductTypeData.TypeName);
+                        loadCategories();
                         $("#updateModal").modal('show');
                     }
                     else {
@@ -388,16 +388,16 @@
 
                 const id = $("#updateId").val();
                 const name = $("#updateNameId").val();
-                const description = $("#updateDescriptionId").val();
+                const category = $("#CategoryDropdown").find(":selected").val();
 
                 var formdata = {
                     Id: id,
-                    CategoryName: name,
-                    CategoryDescription: description
+                    TypeName: name,
+                    CategoryId: category
                 }
 
                 $.ajax({
-                    url: "/Category/UpdateAsync",
+                    url: "/ProductType/UpdateAsync",
                     dataType: 'json',
                     type: 'POST',
                     data: { id: formdata.Id, productCategoryViewModel: formdata },
@@ -425,6 +425,7 @@
                 });
             });
         }
+
 
         $(document).ready(function () {
 
@@ -472,7 +473,6 @@
                     ]
                 });
         }
-
 
     </script>
 }
