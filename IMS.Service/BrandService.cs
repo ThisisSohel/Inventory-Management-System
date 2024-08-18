@@ -35,14 +35,13 @@ namespace IMS.Service
         {
             _brandDao = brandDao;
         }
+
         public BrandService()
         {
             _sessionFactory = NHibernateConfig.GetSession();
             _session = _sessionFactory.OpenSession();
             _brandDao = new BrandDao(_session);
         }
-
-
 
         public async Task<List<BrandViewModel>> GetAll()
         {
@@ -110,22 +109,36 @@ namespace IMS.Service
         {
             try
             {
-                ModelValidatorMethod(brand);
                 var valueForUpdate = await _brandDao.Get(brand.Id);
+                ModelValidatorMethod(brand);
+
+                var brandAll = await _brandDao.Load();
+
+                foreach (var item in brandAll)
+                {
+                    if (item.BrandName == brand.BrandName &&  item.Id != brand.Id)
+                    {
+                        throw new DuplicateValueException("Brand can not be duplicate!");
+                    }
+                }
 
                 if (valueForUpdate != null)
                 {
-                        valueForUpdate.BrandName = brand.BrandName.Trim();
-                        valueForUpdate.ModifyBy = brand.ModifyBy;
-                        valueForUpdate.ModifyDate = DateTime.Now;
-                        await _brandDao.BrandUpdate(valueForUpdate);                  
+                    valueForUpdate.BrandName = brand.BrandName.Trim();
+                    valueForUpdate.ModifyBy = brand.ModifyBy;
+                    valueForUpdate.ModifyDate = DateTime.Now;
+                    await _brandDao.BrandUpdate(valueForUpdate);                  
                 }
                 else
                 {
                     throw new Exception( "Brand not found!");
                 }
             }
-            catch(InvalidNameException ex)
+            catch (DuplicateValueException ex)
+            {
+                throw ex;
+            }
+            catch (InvalidNameException ex)
             {
                 throw ex;
             }

@@ -49,54 +49,13 @@ namespace IMS.DAO.ProductDao
         }
 
         public async Task SkuCreate(SKU sKU)
-        {
-            try
-            {
-                using (var transaction = _session.BeginTransaction())
-                {
-                    try
-                    {
-                        await _session.SaveAsync(sKU);
-                        await transaction.CommitAsync();
-                    }
-                    catch (Exception ex)
-                    {
-                        transaction.Rollback();
-                        throw new Exception("SKU is not created! Internal issue!", ex);
-
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Failed to create brand", ex);
-
-            }
+        { 
+             await _session.SaveAsync(sKU);
         }
 
         public async Task SkuUpdate(SKU sKU)
         {
-            try
-            {
-                using (var transaction = _session.BeginTransaction())
-                {
-                    try
-                    {
-                        await _session.UpdateAsync(sKU);
-                        await transaction.CommitAsync();
-                    }
-                    catch (Exception ex)
-                    {
-                        transaction.Rollback();
-                        throw new Exception("SKU is not updated! Internal Error!", ex);
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Failed to update the SKU", ex);
-            }
+            await _session.UpdateAsync(sKU);  
         }
 
         public async Task SkuDelete(long id)

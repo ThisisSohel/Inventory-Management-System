@@ -61,6 +61,14 @@
                             <input type="text" class="form-control" id="SKUsName" name="SKUsName" placeholder="Enter the SKU" style="background-color:#f5f5f5">
                         </div>
                     </div>
+                    <div class="row mb-3">
+                        <label for="TypeDropdown" class="col-sm-3 col-form-label text-start" style="color:black;">ProductType</label>
+                        <div class="col-sm-9">
+                            <select class="form-select dropdown_name" id="TypeDropdown" name="TypeId" style="background-color: #f5f5f5">
+                                <option selected disabled>Choose a Product Type</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col text-center">
                             <input type="submit" id="submitId" class="btn btn-primary" value="Create" style="background-color: #1d4552">
@@ -144,6 +152,14 @@
                             <input type="text" class="form-control" id="updateNameId" name="SKUsName" style="background-color:#f5f5f5">
                         </div>
                     </div>
+                    <div class="row mb-3">
+                        <label for="TypeDropdown" class="col-sm-3 col-form-label text-start" style="color:black;">ProductType</label>
+                        <div class="col-sm-9">
+                            <select class="form-select dropdown_name selected" id="TypeDropdown" name="TypeId" style="background-color: #f5f5f5">
+                                <option selected disabled>Choose a Product Type</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col text-center">
                             <input type="hidden" id="updateId" name="Id">
@@ -184,13 +200,18 @@
 
         function createNewFun() {
             $("#createModal").modal('show')
+            loadTypes();
         }
 
         function DataBinding() {
+
             const name = $("#SKUsName").val();
+            const typeId = $(".dropdown_name").find(":selected").val();
+
 
             const obj = {
-                SKUsName: name
+                SKUsName: name,
+                TypeId: typeId
             }
             return obj;
         }
@@ -303,10 +324,10 @@
                 type: 'GET',
                 data: { id: updateId },
                 success: function (response) {
-                    console.log(response)
                     if (response.IsSuccess == true) {
                         $("#updateId").val(response.UpdateSkuData.Id);
                         $("#updateNameId").val(response.UpdateSkuData.SKUsName);
+                        loadTypes()
                         $("#updateModal").modal('show');
                     }
                     else {
@@ -326,17 +347,19 @@
 
                 const id = $("#updateId").val();
                 const name = $("#updateNameId").val();
+                const typeId = $(".selected").find(":selected").val();
 
                 var formdata = {
                     Id: id,
-                    SKUsName: name
+                    SKUsName: name,
+                    TypeId: typeId
                 }
 
                 $.ajax({
                     url: "/Sku/Update",
                     dataType: 'json',
                     type: 'POST',
-                    data: { id: formdata.Id, sKU: formdata },
+                    data: { id: formdata.Id, skuUpdateViewModel: formdata },
                     success: function (response) {
                         if (response.IsSuccess == true) {
                             const msgAlertMake = showSuccessAlertMessage(response.Message);
@@ -356,6 +379,39 @@
                         $("#updateModal").modal('hide');
                     }
                 });
+            });
+        }
+
+        function loadTypes() {
+            $.ajax({
+                url: "/ProductType/LoadTypeData",
+                type: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    if (response.data.length == 0) {
+                        $("#createModal").modal('hide');
+                        const msgAlertMake = showErrorAlertMessage(response.Message);
+                        $("#errorMessageShow").html(msgAlertMake);
+                    }
+                    else {
+                        var dropdown = $('.dropdown_name');
+                        dropdown.empty();
+                        dropdown.append('<option selected disabled>Choose a Product Type</option>');
+
+                        $.each(response.data, function (index, type) {
+                            var newDropDownData = `
+                           <option value = ${type.Id}>${type.TypeName}</option>
+                        `
+                            dropdown.append(newDropDownData);
+                        });
+                    }
+                },
+                error: function (error) {
+                    $("#createModal").modal('hide');
+                    const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
+                    $("#errorMessageShow").html(msgAlertMake);
+                    $("#createModal").modal('hide');
+                }
             });
         }
 

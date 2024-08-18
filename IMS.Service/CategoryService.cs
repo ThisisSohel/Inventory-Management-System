@@ -159,6 +159,10 @@ namespace IMS.Service
                     }
                 }
             }
+            catch(InvalidNameException ex) 
+            {
+                throw ex;
+            }
             catch(DuplicateValueException ex)
             {
                 throw ex;
@@ -176,6 +180,15 @@ namespace IMS.Service
                 ModelValidatorMethod (productCategoryViewModel);
 
                 var productCategoryToUpdate = await _categoryDao.GetByIdAsync(id);
+                var categoryAllToCheckDuplicate = await _categoryDao.LoadAll();
+
+                foreach (var item in categoryAllToCheckDuplicate)
+                {
+                    if(item.CategoryName == productCategoryViewModel.CategoryName && item.Id != productCategoryViewModel.Id)
+                    {
+                        throw new DuplicateValueException("Category can not be duplicate!");
+                    }
+                }
 
                 if (productCategoryToUpdate != null)
                 {
@@ -187,6 +200,7 @@ namespace IMS.Service
                             productCategoryToUpdate.CategoryDescription = productCategoryViewModel.CategoryDescription;
                             productCategoryToUpdate.ModifyBy = productCategoryViewModel.ModifyBy;
                             productCategoryToUpdate.ModifyDate = DateTime.Now;
+
                             await _categoryDao.UpdateAsync(productCategoryToUpdate);
                             await transaction.CommitAsync();
                         }
@@ -200,7 +214,12 @@ namespace IMS.Service
                 {
                     throw new Exception("Category not found to Update!");
                 }
-            }catch(InvalidNameException ex)
+            }
+            catch(InvalidNameException ex)
+            {
+                throw ex;
+            }
+            catch (DuplicateValueException ex)
             {
                 throw ex;
             }

@@ -21,6 +21,11 @@ namespace IMS.DAO.Mappings
             Map(x => x.ModifyBy);
             Map(x => x.ModifyDate);
 
+            HasMany(x => x.SKUs)
+               .Cascade.All()
+               .Inverse()
+               .KeyColumn("SkuId");
+
             References(x => x.ProductCategory)
                 .Column("CategoryId")
                 .Not.Nullable();

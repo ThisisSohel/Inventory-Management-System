@@ -19,6 +19,10 @@ namespace IMS.DAO
             Map(x => x.CreatedDate);
             Map(x => x.ModifyBy);
             Map(x => x.ModifyDate);
+
+            References(x => x.ProductType)
+                .Column("TypeId")
+                .Not.Nullable();
         }
     }
 }

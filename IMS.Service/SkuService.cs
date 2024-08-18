@@ -11,16 +11,17 @@ using IMS.Entity.EntityViewModels;
 using System.Linq;
 using System.Web.UI;
 using System.Text.RegularExpressions;
+using IMS.Entity.EntityViewModels.SKUViewModel;
 
 namespace IMS.Service
 {
     public interface ISkuService
     {
-        Task CreateSkuService(SkuViewModel skuViewModel);
+        Task CreateSkuService(SkuCreateViewModel skuViewModel);
         Task<List<SkuViewModel>> GetAll();
         Task<SkuViewModel> GetById(long id);
         Task<SkuViewModel> SkuDetailsService(long id);
-        Task UpdateAsync(long id, SkuViewModel sKU);
+        Task UpdateAsync(long id, SkuUpdateViewModel sKU);
         Task DeleteAsync(long id);
     }
     public class SkuService : ISkuService
@@ -34,6 +35,7 @@ namespace IMS.Service
         {
             _skuDao = skuDao;
         }
+
         public SkuService()
         {
             _sessionFactory = NHibernateConfig.GetSession();
@@ -106,12 +108,14 @@ namespace IMS.Service
             }
         }
 
-        public async Task CreateSkuService(SkuViewModel skuViewModelEntity)
+        public async Task CreateSkuService(SkuCreateViewModel  skuViewModelEntity)
         {
             try
             {
                 var skuMainEntity = new SKU();
                 var sku = await _skuDao.Load();
+
+                //ModelValidatorMethod(skuViewModelEntity);
 
                 if (sku.Count != 0)
                 {
@@ -124,15 +128,23 @@ namespace IMS.Service
                     }
                 }
 
-                ModelValidatorMethod(skuViewModelEntity);
 
-                skuMainEntity.SKUsName = skuViewModelEntity.SKUsName.Trim();
-                skuMainEntity.CreatedBy = skuViewModelEntity.CreatedBy;
-                skuMainEntity.CreatedDate = DateTime.Now;
-                skuMainEntity.ModifyBy = skuViewModelEntity.ModifyBy;
-                skuMainEntity.ModifyDate = DateTime.Now;
 
-                await _skuDao.SkuCreate(skuMainEntity);
+                using (var transaction = _session.BeginTransaction())
+                {
+                    skuMainEntity.SKUsName = skuViewModelEntity.SKUsName.Trim();
+                    skuMainEntity.CreatedBy = skuViewModelEntity.CreatedBy;
+                    skuMainEntity.CreatedDate = DateTime.Now;
+                    skuMainEntity.ModifyBy = skuViewModelEntity.ModifyBy;
+                    skuMainEntity.ModifyDate = DateTime.Now;
+
+                    skuMainEntity.ProductType = new ProductType()
+                    {
+                        Id = skuViewModelEntity.TypeId
+                    };
+                    await _skuDao.SkuCreate(skuMainEntity);
+                    await transaction.CommitAsync();
+                }
             }
             catch (DuplicateValueException ex)
             {
@@ -148,27 +160,45 @@ namespace IMS.Service
             }
         }
 
-        public async Task UpdateAsync(long id, SkuViewModel sKU)
+        public async Task UpdateAsync(long id, SkuUpdateViewModel skuUpdateViewModel )
         {
             try
             {
-                ModelValidatorMethod(sKU);
+                ModelValidatorMethod(skuUpdateViewModel);
                 var updateSku = await _skuDao.Get(id);
 
-                if (updateSku != null)
+                var typeAllToCheckDuplicate = await _skuDao.Load();
+
+
+                foreach (var item in typeAllToCheckDuplicate)
                 {
-                    updateSku.SKUsName = sKU.SKUsName;
-                    updateSku.ModifyBy = sKU.ModifyBy;
+                    if(item.SKUsName == skuUpdateViewModel.SKUsName && item.ProductType.Id != skuUpdateViewModel.TypeId)
+                    {
+                        throw new DuplicateValueException("SKU can not be duplicate!");
+                    }
+                }
+
+                using(var transaction = _session.BeginTransaction())
+                {
+                    updateSku.SKUsName = skuUpdateViewModel.SKUsName;
+                    updateSku.ModifyBy = skuUpdateViewModel.ModifyBy;
                     updateSku.ModifyDate = DateTime.Now;
+
+                    updateSku.ProductType = new ProductType
+                    {
+                        Id = skuUpdateViewModel.TypeId
+                    };
+
                     await _skuDao.SkuUpdate(updateSku);
+                    await transaction.CommitAsync();
 
                 }
-                else
-                {
-                    throw new ObjectNotFoundException(updateSku, "skU");
-                }
             }
-            catch(InvalidNameException ex)
+            catch (DuplicateValueException ex)
+            {
+                throw ex;
+            }
+            catch (InvalidNameException ex)
             {
                 throw ex;
             }
@@ -225,6 +255,23 @@ namespace IMS.Service
         }
 
         private void ModelValidatorMethod(SkuViewModel modelToValidate)
+        {
+            if (String.IsNullOrWhiteSpace(modelToValidate.SKUsName))
+            {
+                throw new InvalidNameException("Name can not be null!");
+            }
+            if (modelToValidate.SKUsName?.Trim().Length < 1 || modelToValidate.SKUsName?.Trim().Length > 4)
+            {
+                //ModelState.AddModelError("sorry! your input field is empty.");
+                throw new InvalidNameException("Name character should be in between 3 to 30!");
+            }
+            if (!Regex.IsMatch(modelToValidate.SKUsName, @"^[a-zA-Z ]+$"))
+            {
+                throw new InvalidNameException("Name can not contain numbers or special characters! Please input alphabetic characters and space only!");
+            }
+        }
+
+        private void ModelValidatorMethod(SkuUpdateViewModel modelToValidate)
         {
             if (String.IsNullOrWhiteSpace(modelToValidate.SKUsName))
             {

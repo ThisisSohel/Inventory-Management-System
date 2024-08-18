@@ -205,6 +205,10 @@ namespace IMS.WEB.Controllers
                     isSuccess = true;
                     message = "Category is updated successfully!";
                 }
+                catch (DuplicateValueException ex)
+                {
+                    message = ex.Message;
+                }
                 catch (InvalidNameException ex)
                 {
                     message = ex.Message;

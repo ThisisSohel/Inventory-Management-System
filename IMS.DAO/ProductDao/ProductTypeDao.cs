@@ -49,36 +49,17 @@ namespace IMS.DAO.ProductDao
 
         public async Task Update(ProductType productType)
         {
-            try
-            {
-                using (var transaction = _session.BeginTransaction())
-                {
-                    await _session.UpdateAsync(productType);
-                    await transaction.CommitAsync();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Faild to update the Type", ex);
-            }
+            await _session.UpdateAsync(productType);
         }
+
         public async Task DeleteById(long id)
         {
-            try
+
+            var deleteIndividualType = await _session.GetAsync<ProductType>(id);
+
+            if (deleteIndividualType != null)
             {
-                var deleteIndividualType = await _session.GetAsync<ProductType>(id);
-                if (deleteIndividualType != null)
-                {
-                    using (var transaction = _session.BeginTransaction())
-                    {
-                        await _session.DeleteAsync(deleteIndividualType);
-                        await transaction.CommitAsync();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Failed to delete category with ID {id}", ex);
+                await _session.DeleteAsync(deleteIndividualType);
             }
         }
     }

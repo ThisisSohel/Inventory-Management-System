@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using IMS.Entity.EntityViewModels.SKUViewModel;
 
 namespace IMS.WEB.Controllers
 {
@@ -30,7 +31,7 @@ namespace IMS.WEB.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<ActionResult> CreateSKU(SkuViewModel skuViewModel)
+        public async Task<ActionResult> CreateSKU(SkuCreateViewModel skuCreateViewModel)
 
         {
             string message = string.Empty;
@@ -38,11 +39,11 @@ namespace IMS.WEB.Controllers
 
             try
             {
-                if (skuViewModel != null)
+                if (skuCreateViewModel != null)
                 {
-                    skuViewModel.CreatedBy = User.Identity.Name;
-                    skuViewModel.ModifyBy = User.Identity.Name;
-                    await _skuService.CreateSkuService(skuViewModel);
+                    skuCreateViewModel.CreatedBy = User.Identity.Name;
+                    skuCreateViewModel.ModifyBy = User.Identity.Name;
+                    await _skuService.CreateSkuService(skuCreateViewModel);
                     isValid = true;
                     message = "SKU is added successfully!";
                 }
@@ -189,12 +190,12 @@ namespace IMS.WEB.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<ActionResult> Update(long id, SkuViewModel sKU)
+        public async Task<ActionResult> Update(long id, SkuUpdateViewModel skuUpdateViewModel)
         {
             string message = string.Empty;
             bool isSuccess = false;
 
-            if (sKU == null)
+            if (skuUpdateViewModel == null)
             {
                 message = "SKU is not found! Try again";
             }
@@ -203,12 +204,16 @@ namespace IMS.WEB.Controllers
                 try
                 {
                     //brand.ModifyBy = long.Parse(User.Identity.GetUserId());
-                    sKU.ModifyBy = User.Identity.Name;
-                    await _skuService.UpdateAsync(id, sKU);
+                    skuUpdateViewModel.ModifyBy = User.Identity.Name;
+                    await _skuService.UpdateAsync(id, skuUpdateViewModel);
                     isSuccess = true;
                     message = "SKU is updated successfully!";
                 }
                 catch (InvalidNameException ex)
+                {
+                    message = ex.Message;
+                }
+                catch (DuplicateValueException ex)
                 {
                     message = ex.Message;
                 }

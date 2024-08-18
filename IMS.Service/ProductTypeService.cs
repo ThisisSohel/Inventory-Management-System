@@ -11,6 +11,7 @@ using ISession = NHibernate.ISession;
 using IMS.Entity.Entities;
 using IMS.CustomException;
 using IMS.Entity.EntityViewModels;
+using System.Text.RegularExpressions;
 
 namespace IMS.Service
 {
@@ -114,30 +115,47 @@ namespace IMS.Service
             }
         }
 
-        public async Task CreateAsync(CategoryTypeCreateViewModel categoryTypeCreateView )
+        public async Task CreateAsync(CategoryTypeCreateViewModel categoryTypeCreateViewModel )
         {
             try
             {
                 var productTypeMainEntity = new ProductType();
+                var productTypeAll = await _productTypeDao.GetAll();
 
-                productTypeMainEntity.TypeName = categoryTypeCreateView.TypeName;
-                productTypeMainEntity.CreatedBy = categoryTypeCreateView.CreatedBy;
-                productTypeMainEntity.CreatedDate = DateTime.Now;
-                productTypeMainEntity.ModifyBy = categoryTypeCreateView.ModifyBy;
-                productTypeMainEntity.ModifyDate = DateTime.Now;
+                ModelValidatorMethod(categoryTypeCreateViewModel);
 
-                productTypeMainEntity.ProductCategory = new ProductCategory()
+                if (productTypeAll.Count > 0)
                 {
-                    Id = categoryTypeCreateView.CategoryId
-                };
+                    foreach ( var productType in productTypeAll)
+                    {
+                        if (categoryTypeCreateViewModel.TypeName.Contains(productType.TypeName))
+                        {
+                            throw new DuplicateValueException("Product type can not be duplicate!");
+                        }
+                    }
+                }
+
+
 
                 using (var transaction = _session.BeginTransaction())
                 {
                     try
                     {
+                        productTypeMainEntity.TypeName = categoryTypeCreateViewModel.TypeName;
+                        productTypeMainEntity.CreatedBy = categoryTypeCreateViewModel.CreatedBy;
+                        productTypeMainEntity.CreatedDate = DateTime.Now;
+                        productTypeMainEntity.ModifyBy = categoryTypeCreateViewModel.ModifyBy;
+                        productTypeMainEntity.ModifyDate = DateTime.Now;
+
+                        productTypeMainEntity.ProductCategory = new ProductCategory()
+                        {
+                            Id = categoryTypeCreateViewModel.CategoryId
+                        };
+
                         await _productTypeDao.Create(productTypeMainEntity);
                         await transaction.CommitAsync();
                     }
+
                     catch (Exception ex)
                     {
                         transaction.Rollback();
@@ -146,6 +164,14 @@ namespace IMS.Service
                     }
 
                 }
+            }
+            catch (InvalidNameException ex)
+            {
+                throw ex;
+            }
+            catch (DuplicateValueException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
@@ -159,33 +185,45 @@ namespace IMS.Service
             try
             {
                 var individualProductTypeUpdate = await _productTypeDao.GetById(id);
-                if (individualProductTypeUpdate == null)
-                {
 
-                }
-                else
+                ModelValidatorMethod(productTypeUpdateViewModel);
+
+                var productTypeAll = await _productTypeDao.GetAll();
+                //var productTypeDuplicateCount = productTypeAll.Count(p => p.TypeName == productTypeUpdateViewModel.TypeName );
+
+                foreach (var item in productTypeAll)
                 {
-                    using (var transaction = _session.BeginTransaction())
+                    if (item.TypeName == productTypeUpdateViewModel.TypeName && item.ProductCategory.Id != productTypeUpdateViewModel.CategoryId)
                     {
-                        individualProductTypeUpdate.TypeName = productTypeUpdateViewModel.TypeName;
-                        individualProductTypeUpdate.ModifyBy = productTypeUpdateViewModel.ModifyBy;
-                        individualProductTypeUpdate.ModifyDate = DateTime.Now;
-
-                        individualProductTypeUpdate.ProductCategory = new ProductCategory()
-                        {
-                            Id = productTypeUpdateViewModel.CategoryId
-                        };
-
-                        await _productTypeDao.Update(individualProductTypeUpdate);
-                        await transaction.CommitAsync();
+                        throw new DuplicateValueException("Product type can not be duplicate!");
                     }
                 }
 
+
+                using (var transaction = _session.BeginTransaction())
+                {
+                    individualProductTypeUpdate.TypeName = productTypeUpdateViewModel.TypeName;
+                    individualProductTypeUpdate.ModifyBy = productTypeUpdateViewModel.ModifyBy;
+                    individualProductTypeUpdate.ModifyDate = DateTime.Now;
+
+                    individualProductTypeUpdate.ProductCategory = new ProductCategory()
+                    {
+                        Id = productTypeUpdateViewModel.CategoryId
+                    };
+
+                    await _productTypeDao.Update(individualProductTypeUpdate);
+                    await transaction.CommitAsync();
+                }
+                
+            }
+            catch(DuplicateValueException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
                 _logger.Error(ex);
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
 
@@ -193,16 +231,68 @@ namespace IMS.Service
         {
             try
             {
-                var individualTypeDelete = _productTypeDao.GetById(id);
-                if (individualTypeDelete != null)
+                using (var transaction = _session.BeginTransaction())
                 {
-                    await _productTypeDao.DeleteById(id);
+                    try
+                    {
+                        var individualTypeDelete = _productTypeDao.GetById(id);
+                        if (individualTypeDelete != null)
+                        {
+                            await _productTypeDao.DeleteById(id);
+                            await transaction.CommitAsync();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw ex;
+                    }
                 }
             }
             catch (Exception ex)
             {
                 _logger.Error(ex);
-                throw new Exception(ex.Message);
+                throw ex;
+            }
+        }
+
+        private void ModelValidatorMethod(CategoryTypeCreateViewModel modelToValidate)
+        {
+            if (string.IsNullOrWhiteSpace(modelToValidate.TypeName))
+            {
+                throw new InvalidNameException("Name can not be null!");
+            }
+            if (modelToValidate.TypeName?.Trim().Length < 3 || modelToValidate.TypeName?.Trim().Length > 30)
+            {
+                throw new InvalidNameException("Name character should be in between 3 to 30!");
+            }
+            if (!Regex.IsMatch(modelToValidate.TypeName, @"^[a-zA-Z ]+$"))
+            {
+                throw new InvalidNameException("Name can not contain numbers or special characters! Please input alphabetic characters and space only!");
+            }
+            if (modelToValidate.CategoryId == 0)
+            {
+                throw new InvalidNameException("Please select a category!");
+            }
+        }
+
+        private void ModelValidatorMethod(ProductTypeUpdateViewModel modelToValidate)
+        {
+            if (string.IsNullOrWhiteSpace(modelToValidate.TypeName))
+            {
+                throw new InvalidNameException("Name can not be null!");
+            }
+            if (modelToValidate.TypeName?.Trim().Length < 3 || modelToValidate.TypeName?.Trim().Length > 30)
+            {
+                throw new InvalidNameException("Name character should be in between 3 to 30!");
+            }
+            if (!Regex.IsMatch(modelToValidate.TypeName, @"^[a-zA-Z ]+$"))
+            {
+                throw new InvalidNameException("Name can not contain numbers or special characters! Please input alphabetic characters and space only!");
+            }
+            if (modelToValidate.CategoryId == 0)
+            {
+                throw new InvalidNameException("Please select a category!");
             }
         }
     }

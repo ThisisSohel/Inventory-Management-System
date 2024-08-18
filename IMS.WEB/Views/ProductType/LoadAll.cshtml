@@ -83,7 +83,6 @@
 </div>
 
 
-
 @* Details Modal*@
 <div class="modal fade" id="detailsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -125,7 +124,7 @@
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="background-color: darkgray">
-                <h4>Are you sure to delete the SKU - <span id="nameId"></span>?</h4>
+                <h4>Are you sure to delete the product type - <span id="nameId"></span>?</h4>
                 <input type="hidden" value="" id="Id" />
             </div>
             <div class="modal-footer" style="background-color: #1d4552">
@@ -142,7 +141,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #1d4552">
-                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">Update SKU</h1>
+                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">Update Product Type</h1>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="background-color: darkgray">
@@ -156,7 +155,7 @@
                     <div class="row mb-3">
                         <label for="CategoryDropdown" class="col-sm-3 col-form-label text-start" style="color:black;">Category</label>
                         <div class="col-sm-9">
-                            <select class="form-select category_dropdown_name" id="CategoryDropdown" name="CategoryId" style="background-color: #f5f5f5">
+                            <select class="form-select selected category_dropdown_name" id="CategoryDropdown" name="CategoryId" style="background-color: #f5f5f5">
                                 <option selected disabled>Choose a Category</option>
                             </select>
                         </div>
@@ -243,7 +242,7 @@
 
             //categoryList = [];
             const name = $("#TypeName").val();
-            const category = $("#CategoryDropdown").find(":selected").val();
+            const categoryId = $(".category_dropdown_name").find(":selected").val();
 
             //categoryList.push({
             //    CategoryName: category
@@ -251,7 +250,7 @@
 
             const obj = {
                 TypeName: name,
-                CategoryId: category
+                CategoryId: categoryId
             }
             return obj;
         }
@@ -323,11 +322,10 @@
 
             $("#btnDelete").click(function () {
                 $.ajax({
-                    url: "/Category/DeleteAsync",
+                    url: "/ProductType/DeleteAsync",
                     type: 'POST',
                     data: { id: id },
                     success: function (response) {
-                        console.log(response);
                         if (response.IsSuccess == true) {
 
                             $("#deleteModal").modal('hide');
@@ -335,8 +333,7 @@
                             $("#successMessageShow").html(msgAlertMake);
                             $("#deleteModal").modal('hide');
 
-                            const table = $("#InfoTable").DataTable();
-                            table.ajax.reload();
+                            DataTableLoad();
                         } else {
                             const msgAlertMake = showErrorAlertMessage(response.Message);
                             $("#errorMessageShow").html(msgAlertMake);
@@ -353,8 +350,6 @@
             })
 
         }
-
-
 
         function Update(updateId) {
             $("#updateModal").modal('show');
@@ -388,19 +383,20 @@
 
                 const id = $("#updateId").val();
                 const name = $("#updateNameId").val();
-                const category = $("#CategoryDropdown").find(":selected").val();
+                const categoryId = $(".selected").find(":selected").val();
+
 
                 var formdata = {
                     Id: id,
                     TypeName: name,
-                    CategoryId: category
+                    CategoryId: categoryId
                 }
 
                 $.ajax({
                     url: "/ProductType/UpdateAsync",
                     dataType: 'json',
                     type: 'POST',
-                    data: { id: formdata.Id, productCategoryViewModel: formdata },
+                    data: { id: formdata.Id, productTypeUpdateViewModel: formdata },
                     success: function (response) {
                         if (response.IsSuccess == true) {
                             const msgAlertMake = showSuccessAlertMessage(response.Message);
@@ -408,12 +404,10 @@
                             $("#successMessageShow").html(msgAlertMake);
                             $("#updateModal").modal('hide');
 
-                            const table = $("#InfoTable").DataTable();
-                            table.ajax.reload();
+                            DataTableLoad();
                         } else {
                             const msgAlertMake = showErrorAlertMessage(response.Message);
                             $("#errorMessageShow").html(msgAlertMake);
-
                             $("#updateModal").modal('hide');
                         }
                     },

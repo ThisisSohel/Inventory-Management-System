@@ -61,6 +61,8 @@
     <Compile Include="EntityViewModels\ProductTypeUpdateViewModel.cs" />
     <Compile Include="EntityViewModels\ProductTypeViewModel.cs" />
     <Compile Include="EntityViewModels\SkuViewModel.cs" />
+    <Compile Include="EntityViewModels\SKUViewModel\SkuCreateViewModel.cs" />
+    <Compile Include="EntityViewModels\SKUViewModel\SkuUpdateViewModel.cs" />
     <Compile Include="EntityViewModels\SupplierViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

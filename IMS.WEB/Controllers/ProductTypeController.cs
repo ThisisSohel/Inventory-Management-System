@@ -22,24 +22,26 @@ namespace IMS.WEB.Controllers
             _productTypeService = new ProductTypeService();
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
-        public async Task<ActionResult> Create(CategoryTypeCreateViewModel productTypeViewModel)
+        public async Task<ActionResult> Create(CategoryTypeCreateViewModel productTypeCreateViewModel)
         {
             bool isValid = false;
             string message = string.Empty;
             try
             {
-                if (productTypeViewModel != null)
+                if (productTypeCreateViewModel != null)
                 {
-                    productTypeViewModel.CreatedBy = User.Identity.Name;
-                    productTypeViewModel.ModifyBy = User.Identity.Name;
-                    await _productTypeService.CreateAsync(productTypeViewModel);
+                    productTypeCreateViewModel.CreatedBy = User.Identity.Name;
+                    productTypeCreateViewModel.ModifyBy = User.Identity.Name;
+                    await _productTypeService.CreateAsync(productTypeCreateViewModel);
 
                     message = "Type is created successfully!";
                     isValid = true;
@@ -71,13 +73,14 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
-
+        [Authorize]
         [HttpGet]
         public ActionResult LoadAll()
         {
             return View();
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult> LoadTypeData()
         {
@@ -104,6 +107,7 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult> DetailsAsync(long id)
         {
@@ -144,6 +148,7 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult> UpdateAsync(long id)
         {
@@ -178,6 +183,7 @@ namespace IMS.WEB.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult> UpdateAsync(long id, ProductTypeUpdateViewModel productTypeUpdateViewModel)
         {
@@ -196,6 +202,10 @@ namespace IMS.WEB.Controllers
                     await _productTypeService.UpdateAsync(id, productTypeUpdateViewModel);
                     isSuccess = true;
                     message = "Product Category is updated successfully!";
+                }
+                catch(DuplicateValueException ex)
+                {
+                    message = ex.Message;
                 }
                 catch (InvalidNameException ex)
                 {
@@ -216,27 +226,39 @@ namespace IMS.WEB.Controllers
 
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult> DeleteAsync(long id)
         {
-            //var individualTypeDelete = await _productTypeService.GetById(id);
-            //if (individualTypeDelete == null)
-            //{
-            //    return RedirectToAction("Index");
-            //}
+            string message = string.Empty;
+            bool isSuccess = false;
+
             try
             {
-                await _productTypeService.DeleteAsync(id);
-                TempData["AlertMessage"] = "Type is Deleted successfully!";
-                return RedirectToAction("Index");
+                var productTypeToBeDelete = await _productTypeService.GetByIdAsync(id);
+
+                if (productTypeToBeDelete != null)
+                {
+                    await _productTypeService.DeleteAsync(id);
+                    isSuccess = true;
+                    message = "Product type is deleted successfully";
+                }
+                else
+                {
+                    message = "Product type is not deleted! Please try again!";
+                }
             }
             catch (Exception ex)
             {
                 _logger.Error(ex.Message);
-                //ViewBag.Error = ex.Message;
-                //TempData["DeleteAlertMessage"] = "Brand is not found!";
+                message = "Something went wrong!";
             }
-            return View();
+
+            return Json(new
+            {
+                IsSuccess = isSuccess,
+                Message = message,
+            }, JsonRequestBehavior.AllowGet);
         }
     }
 }
