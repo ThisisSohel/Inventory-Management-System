@@ -116,7 +116,7 @@ namespace IMS.Service
 
                 foreach (var item in brandAll)
                 {
-                    if (item.BrandName == brand.BrandName &&  item.Id != brand.Id)
+                    if (item.BrandName == brand.BrandName)
                     {
                         throw new DuplicateValueException("Brand can not be duplicate!");
                     }
@@ -171,7 +171,7 @@ namespace IMS.Service
             {
                 var brandDuplicateCheck = new List<Brand>();
                 var brand = await _brandDao.Load();
-
+                ModelValidatorMethod(brandViewModelEntity);
                 if (brand.Count != 0)
                 {
                     foreach (var item in brand)
@@ -183,7 +183,7 @@ namespace IMS.Service
                     }
                 }
 
-                ModelValidatorMethod(brandViewModelEntity);
+
                 var brandMainEntity = new Brand();
 
                 try

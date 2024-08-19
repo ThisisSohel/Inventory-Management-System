@@ -184,7 +184,7 @@ namespace IMS.Service
 
                 foreach (var item in categoryAllToCheckDuplicate)
                 {
-                    if(item.CategoryName == productCategoryViewModel.CategoryName && item.Id != productCategoryViewModel.Id)
+                    if(item.CategoryName == productCategoryViewModel.CategoryName)
                     {
                         throw new DuplicateValueException("Category can not be duplicate!");
                     }

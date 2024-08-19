@@ -18766,3 +18766,812 @@ Invalid column name 'SkuId'.
 2024-08-18 17:48:14,803 [13] INFO  NHibernate.Cfg.Configuration - processing filters (second pass)
 2024-08-18 17:48:14,817 [13] INFO  NHibernate.Impl.SessionFactoryImpl - building session factory
 2024-08-18 17:48:14,834 [13] INFO  NHibernate.Impl.SessionFactoryObjectFactory - no name configured
+2024-08-19 11:20:14,517 [6] INFO  NHibernate.Cfg.Environment - NHibernate 5.5.1+f25b398d897d937a21eda9ae065638f029256e3b (assembly 5.5.0.0)
+2024-08-19 11:20:14,524 [6] INFO  NHibernate.Cfg.Environment - hibernate-configuration section not found in application configuration file
+2024-08-19 11:20:14,525 [6] INFO  NHibernate.Cfg.Environment - Bytecode provider name : lcg
+2024-08-19 11:20:14,526 [6] INFO  NHibernate.Cfg.Environment - Objects factory class : NHibernate.Bytecode.ActivatorObjectsFactory
+2024-08-19 11:20:14,526 [6] INFO  NHibernate.Cfg.Environment - Using reflection optimizer
+2024-08-19 11:20:14,760 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Brand -> Brand
+2024-08-19 11:20:14,787 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Customer -> Customers
+2024-08-19 11:20:14,795 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.ProductCategory -> ProductCategory
+2024-08-19 11:20:14,804 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.ProductType -> ProductType
+2024-08-19 11:20:14,807 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Supplier -> Suppliers
+2024-08-19 11:20:14,807 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.SKU -> SKU
+2024-08-19 11:20:14,811 [6] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-19 11:20:14,826 [6] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-19 11:20:14,853 [6] INFO  NHibernate.Exceptions.SQLExceptionConverterFactory - Using dialect defined converter
+2024-08-19 11:20:14,853 [6] INFO  NHibernate.Cfg.SettingsFactory - Generate SQL with comments: disabled
+2024-08-19 11:20:14,853 [6] INFO  NHibernate.Cfg.SettingsFactory - Detect fetch loops: enabled
+2024-08-19 11:20:14,853 [6] INFO  NHibernate.Connection.ConnectionProviderFactory - Initializing connection provider: NHibernate.Connection.DriverConnectionProvider
+2024-08-19 11:20:14,854 [6] INFO  NHibernate.Connection.ConnectionProvider - Configuring ConnectionProvider
+2024-08-19 11:20:14,854 [6] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-19 11:20:14,855 [6] INFO  NHibernate.Cfg.SettingsFactory - Transaction factory: NHibernate.Transaction.AdoNetWithSystemTransactionFactory
+2024-08-19 11:20:14,855 [6] INFO  NHibernate.Cfg.SettingsFactory - Optimize cache for minimal puts: False
+2024-08-19 11:20:14,855 [6] INFO  NHibernate.Cfg.SettingsFactory - Connection release mode: auto
+2024-08-19 11:20:14,855 [6] INFO  NHibernate.Cfg.SettingsFactory - Default batch fetch size: 1
+2024-08-19 11:20:14,855 [6] INFO  NHibernate.Cfg.SettingsFactory - Statistics: disabled
+2024-08-19 11:20:14,855 [6] INFO  NHibernate.Cfg.SettingsFactory - Deleted entity synthetic identifier rollback: disabled
+2024-08-19 11:20:14,855 [6] INFO  NHibernate.Cfg.SettingsFactory - Query translator: NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory
+2024-08-19 11:20:14,856 [6] INFO  NHibernate.Cfg.SettingsFactory - Query provider: NHibernate.Linq.DefaultQueryProvider
+2024-08-19 11:20:14,857 [6] INFO  NHibernate.Cfg.SettingsFactory - Query language substitutions: {'true'='1', 'false'='0', 'yes'=''Y'', 'no'=''N''}
+2024-08-19 11:20:14,857 [6] INFO  NHibernate.Cfg.SettingsFactory - cache provider: NHibernate.Cache.NoCacheProvider, NHibernate, Version=5.5.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-08-19 11:20:14,858 [6] INFO  NHibernate.Cfg.SettingsFactory - Order SQL inserts for batching: enabled
+2024-08-19 11:20:14,858 [6] INFO  NHibernate.Cfg.SettingsFactory - Order SQL updates for batching: disabled
+2024-08-19 11:20:14,858 [6] INFO  NHibernate.Cfg.SettingsFactory - Batcher factory: NHibernate.AdoNet.SqlClientBatchingBatcherFactory, NHibernate, Version=5.5.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-08-19 11:20:14,858 [6] INFO  NHibernate.Cfg.SettingsFactory - Default flush mode: Auto
+2024-08-19 11:20:14,858 [6] INFO  NHibernate.Cfg.SettingsFactory - Named query checking : enabled
+2024-08-19 11:20:14,858 [6] INFO  NHibernate.Cfg.SettingsFactory - Never cached entities/collections query cache throws exception : enabled
+2024-08-19 11:20:14,861 [6] INFO  NHibernate.Cfg.Configuration - checking mappings queue
+2024-08-19 11:20:14,861 [6] INFO  NHibernate.Cfg.Configuration - processing one-to-many association mappings
+2024-08-19 11:20:14,862 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - mapping collection: IMS.Entity.Entities.ProductCategory.ProductType -> ProductType
+2024-08-19 11:20:14,864 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - mapping collection: IMS.Entity.Entities.ProductType.SKUs -> SKU
+2024-08-19 11:20:14,864 [6] INFO  NHibernate.Cfg.Configuration - processing one-to-one association property references
+2024-08-19 11:20:14,864 [6] INFO  NHibernate.Cfg.Configuration - processing foreign key constraints
+2024-08-19 11:20:14,867 [6] INFO  NHibernate.Cfg.Configuration - processing filters (second pass)
+2024-08-19 11:20:14,882 [6] INFO  NHibernate.Impl.SessionFactoryImpl - building session factory
+2024-08-19 11:20:14,926 [6] INFO  NHibernate.Impl.SessionFactoryObjectFactory - no name configured
+2024-08-19 11:21:24,857 [9] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:24,859 [6] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:24,864 [6] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:24,865 [9] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:24,865 [6] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:24,865 [6] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:24,865 [6] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:24,865 [6] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:24,865 [6] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:24,865 [6] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:24,865 [6] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:24,865 [6] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:24,865 [6] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:24,865 [6] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:24,865 [6] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:24,865 [6] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:24,865 [6] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:24,865 [6] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:24,865 [6] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:24,865 [6] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:24,865 [6] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:24,865 [6] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:24,865 [9] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:24,865 [9] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:24,865 [9] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:24,865 [9] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:24,865 [9] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:24,865 [9] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:24,865 [9] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:24,865 [9] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:24,865 [9] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:24,865 [9] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:24,865 [9] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:24,865 [9] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:24,865 [9] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:24,865 [9] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:24,865 [9] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:24,865 [9] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:24,865 [9] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:24,865 [9] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,545 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,545 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,545 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,545 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,545 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,545 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,545 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,545 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,545 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,545 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,545 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,545 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,545 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,545 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,545 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,545 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,545 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,545 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,545 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,545 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,548 [13] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,548 [13] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,548 [13] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,548 [13] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,548 [13] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,548 [13] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,548 [13] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,548 [13] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,548 [13] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,548 [13] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,548 [13] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,548 [13] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,548 [13] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,548 [13] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,548 [13] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,548 [13] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,548 [13] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,548 [13] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,548 [13] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,548 [13] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,550 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,550 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,550 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,550 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,550 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,550 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,550 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,550 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,550 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,550 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,550 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,550 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,550 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,550 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,550 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,550 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,550 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:32,550 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,550 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:32,550 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,578 [12] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,578 [12] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,578 [12] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,578 [12] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,578 [12] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,578 [12] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,578 [12] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,578 [12] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,578 [12] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,578 [12] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,578 [12] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,578 [12] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,578 [12] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,578 [12] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,578 [12] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,578 [12] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,578 [12] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,578 [12] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,578 [12] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,578 [12] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,580 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,580 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,580 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,580 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,580 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,580 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,580 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,580 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,580 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,580 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,580 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,580 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,580 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,580 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,580 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,580 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,580 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,580 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,580 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,580 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,587 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,587 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,587 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,587 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,587 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,587 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,587 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,587 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,587 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,587 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,587 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,587 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,587 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,587 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,587 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,587 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,587 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,587 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,587 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,587 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,587 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,587 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,587 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,587 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,587 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,587 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,587 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,587 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,587 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,587 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,587 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,587 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,587 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,587 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,587 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,587 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,587 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:40,587 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,588 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:40,588 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,857 [11] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,857 [11] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,857 [11] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,857 [11] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,857 [11] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,857 [11] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,857 [11] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,857 [11] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,857 [11] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,858 [11] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,858 [11] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,858 [11] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,858 [11] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,858 [11] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,858 [11] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,858 [11] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,858 [11] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,858 [11] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,858 [11] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,858 [11] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,860 [13] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,860 [13] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,861 [13] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,861 [13] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,861 [13] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,861 [13] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,861 [13] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,861 [13] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,861 [13] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,861 [13] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,861 [13] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,861 [13] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,861 [13] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,861 [13] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,861 [13] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,861 [13] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,861 [13] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,861 [13] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,861 [13] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,861 [13] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,863 [9] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,863 [9] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,863 [9] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,863 [9] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,863 [9] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,863 [9] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,863 [9] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,863 [9] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,863 [9] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,863 [9] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,863 [9] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,863 [9] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,863 [9] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,863 [9] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,863 [9] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,863 [9] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,863 [9] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,863 [9] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,863 [9] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,863 [9] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,866 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,866 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,866 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,866 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,866 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,866 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,866 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,866 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,866 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,866 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,866 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,866 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,866 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,866 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,866 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,866 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,866 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,866 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,866 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,866 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,869 [10] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,869 [10] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,869 [10] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,869 [10] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,869 [10] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,869 [10] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,869 [10] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,869 [10] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,869 [10] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,869 [10] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,869 [10] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,869 [10] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,869 [10] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,869 [10] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,869 [10] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,869 [10] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,869 [10] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:21:44,869 [10] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,869 [10] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:21:44,869 [10] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,074 [11] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,074 [11] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,074 [11] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,074 [11] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,074 [11] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,074 [11] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,074 [11] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,074 [11] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,074 [11] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,074 [11] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,074 [11] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,074 [11] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,074 [11] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,074 [11] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,074 [11] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,074 [11] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,074 [11] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,074 [11] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,074 [11] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,074 [11] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,080 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,080 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,080 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,080 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,080 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,080 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,080 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,080 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,080 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,080 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,080 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,080 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,080 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,080 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,081 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,081 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,081 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,081 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,081 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,081 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,084 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,084 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,084 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,084 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,084 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,084 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,084 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,084 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,084 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,084 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,084 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,084 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,084 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,084 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,084 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,084 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,084 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,084 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,084 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,084 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,085 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,085 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,085 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,085 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,085 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,085 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,085 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,085 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,085 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,085 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,086 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,086 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,086 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,086 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,086 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,086 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,086 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,086 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,086 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,086 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,091 [15] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,091 [15] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,091 [15] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,091 [15] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,091 [15] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,091 [15] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,091 [15] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,091 [15] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,091 [15] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,091 [15] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,091 [15] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,091 [15] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,091 [15] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,091 [15] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,091 [15] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,091 [15] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,091 [15] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,091 [15] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,091 [15] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,091 [15] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,093 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,094 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,094 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,094 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,094 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,094 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,094 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,094 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,094 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,094 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,094 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,094 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,094 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,094 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,094 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,094 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,094 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,094 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,094 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,094 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,094 [12] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,094 [12] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,094 [12] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,094 [12] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,094 [12] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,094 [12] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,094 [12] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,094 [12] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,094 [12] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,094 [12] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,094 [12] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,094 [12] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,094 [12] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,094 [12] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,094 [12] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,094 [12] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,094 [12] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,094 [12] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,094 [12] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,094 [12] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,106 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,106 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,106 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,106 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,106 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,106 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,106 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,106 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,106 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,106 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,106 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,106 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,106 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,106 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,106 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,106 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,106 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:20,106 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,106 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:20,106 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,322 [9] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,322 [9] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,322 [9] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,322 [9] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,322 [9] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,322 [9] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,322 [9] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,322 [9] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,322 [9] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,322 [9] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,322 [9] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,322 [9] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,322 [9] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,322 [9] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,322 [9] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,322 [9] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,322 [9] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,322 [9] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,322 [9] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,322 [9] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,326 [11] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,326 [11] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,326 [11] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,326 [11] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,326 [11] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,326 [11] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,326 [11] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,326 [11] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,326 [11] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,326 [11] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,326 [11] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,326 [11] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,326 [11] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,327 [11] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,327 [11] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,327 [11] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,327 [11] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,327 [11] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,327 [11] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,327 [11] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,329 [9] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,329 [9] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,329 [9] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,329 [9] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,329 [9] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,329 [9] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,329 [9] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,329 [9] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,329 [9] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,330 [9] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,330 [9] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,330 [9] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,330 [9] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,330 [9] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,330 [9] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,330 [9] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,330 [9] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,330 [9] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,330 [9] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,330 [9] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,333 [10] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,333 [10] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,333 [10] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,333 [10] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,333 [10] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,333 [10] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,333 [10] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,333 [10] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,333 [10] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,333 [10] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,333 [10] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,333 [10] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,333 [10] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,333 [10] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,333 [10] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,333 [10] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,333 [10] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,333 [10] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,333 [10] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,333 [10] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,335 [11] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,335 [11] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,335 [11] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,335 [11] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,335 [11] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,335 [11] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,335 [11] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,335 [11] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,335 [11] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,335 [11] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,335 [11] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,335 [11] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,335 [11] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,335 [11] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,335 [11] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,336 [11] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,336 [11] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,336 [11] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,336 [11] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,336 [11] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,336 [12] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,336 [12] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,336 [12] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,336 [12] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,336 [12] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,337 [12] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,337 [12] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,337 [12] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,337 [12] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,337 [12] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,337 [12] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,337 [12] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,337 [12] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,337 [12] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,337 [12] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,337 [12] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,337 [12] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,337 [12] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,337 [12] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,337 [12] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,346 [12] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,346 [12] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,346 [12] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,346 [12] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,346 [12] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,346 [12] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,346 [12] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,346 [12] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,346 [12] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,346 [12] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,346 [12] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,346 [12] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,346 [12] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,346 [12] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,346 [12] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,346 [12] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,346 [12] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,346 [12] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,346 [12] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,346 [12] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,346 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,346 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,346 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,346 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,346 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,346 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,346 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,346 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,346 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,346 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,346 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,346 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,346 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,346 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,346 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,346 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,346 [7] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,346 [7] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,346 [7] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,346 [7] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,351 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,352 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,352 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,352 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,352 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,352 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,352 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,352 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,352 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,352 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,352 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,352 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,352 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,352 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,352 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,352 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,352 [8] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:22:25,352 [8] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,352 [8] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-19 11:22:25,352 [8] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-19 11:23:04,997 [10] ERROR IMS.WEB.Controllers.BrandController - 
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at IMS.Service.BrandService.<CreateBrandService>d__9.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at IMS.WEB.Controllers.BrandController.<CreateBrand>d__4.MoveNext() in C:\Users\User\Desktop\IMSMainProject\New folder\ims-soh\IMS.WEB\Controllers\BrandController.cs:line 49
+2024-08-19 11:38:50,338 [77] INFO  LoggerConfiguration - Index page visited.
+2024-08-19 11:39:03,744 [92] INFO  LoggerConfiguration - Index page visited.
+2024-08-19 11:40:02,192 [77] INFO  LoggerConfiguration - Index page visited.
+2024-08-19 11:40:05,120 [62] INFO  LoggerConfiguration - Index page visited.
+2024-08-19 12:24:44,689 [78] INFO  NHibernate.Cfg.Environment - NHibernate 5.5.1+f25b398d897d937a21eda9ae065638f029256e3b (assembly 5.5.0.0)
+2024-08-19 12:24:44,696 [78] INFO  NHibernate.Cfg.Environment - hibernate-configuration section not found in application configuration file
+2024-08-19 12:24:44,697 [78] INFO  NHibernate.Cfg.Environment - Bytecode provider name : lcg
+2024-08-19 12:24:44,697 [78] INFO  NHibernate.Cfg.Environment - Objects factory class : NHibernate.Bytecode.ActivatorObjectsFactory
+2024-08-19 12:24:44,698 [78] INFO  NHibernate.Cfg.Environment - Using reflection optimizer
+2024-08-19 12:24:44,932 [78] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Brand -> Brand
+2024-08-19 12:24:44,961 [78] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Customer -> Customers
+2024-08-19 12:24:44,969 [78] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.ProductCategory -> ProductCategory
+2024-08-19 12:24:44,978 [78] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.ProductType -> ProductType
+2024-08-19 12:24:44,981 [78] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Supplier -> Suppliers
+2024-08-19 12:24:44,981 [78] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.SKU -> SKU
+2024-08-19 12:24:44,985 [78] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-19 12:24:44,997 [78] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-19 12:24:45,018 [78] INFO  NHibernate.Exceptions.SQLExceptionConverterFactory - Using dialect defined converter
+2024-08-19 12:24:45,019 [78] INFO  NHibernate.Cfg.SettingsFactory - Generate SQL with comments: disabled
+2024-08-19 12:24:45,019 [78] INFO  NHibernate.Cfg.SettingsFactory - Detect fetch loops: enabled
+2024-08-19 12:24:45,019 [78] INFO  NHibernate.Connection.ConnectionProviderFactory - Initializing connection provider: NHibernate.Connection.DriverConnectionProvider
+2024-08-19 12:24:45,019 [78] INFO  NHibernate.Connection.ConnectionProvider - Configuring ConnectionProvider
+2024-08-19 12:24:45,020 [78] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-19 12:24:45,021 [78] INFO  NHibernate.Cfg.SettingsFactory - Transaction factory: NHibernate.Transaction.AdoNetWithSystemTransactionFactory
+2024-08-19 12:24:45,021 [78] INFO  NHibernate.Cfg.SettingsFactory - Optimize cache for minimal puts: False
+2024-08-19 12:24:45,021 [78] INFO  NHibernate.Cfg.SettingsFactory - Connection release mode: auto
+2024-08-19 12:24:45,021 [78] INFO  NHibernate.Cfg.SettingsFactory - Default batch fetch size: 1
+2024-08-19 12:24:45,021 [78] INFO  NHibernate.Cfg.SettingsFactory - Statistics: disabled
+2024-08-19 12:24:45,021 [78] INFO  NHibernate.Cfg.SettingsFactory - Deleted entity synthetic identifier rollback: disabled
+2024-08-19 12:24:45,022 [78] INFO  NHibernate.Cfg.SettingsFactory - Query translator: NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory
+2024-08-19 12:24:45,022 [78] INFO  NHibernate.Cfg.SettingsFactory - Query provider: NHibernate.Linq.DefaultQueryProvider
+2024-08-19 12:24:45,023 [78] INFO  NHibernate.Cfg.SettingsFactory - Query language substitutions: {'true'='1', 'false'='0', 'yes'=''Y'', 'no'=''N''}
+2024-08-19 12:24:45,024 [78] INFO  NHibernate.Cfg.SettingsFactory - cache provider: NHibernate.Cache.NoCacheProvider, NHibernate, Version=5.5.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-08-19 12:24:45,024 [78] INFO  NHibernate.Cfg.SettingsFactory - Order SQL inserts for batching: enabled
+2024-08-19 12:24:45,024 [78] INFO  NHibernate.Cfg.SettingsFactory - Order SQL updates for batching: disabled
+2024-08-19 12:24:45,024 [78] INFO  NHibernate.Cfg.SettingsFactory - Batcher factory: NHibernate.AdoNet.SqlClientBatchingBatcherFactory, NHibernate, Version=5.5.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-08-19 12:24:45,024 [78] INFO  NHibernate.Cfg.SettingsFactory - Default flush mode: Auto
+2024-08-19 12:24:45,024 [78] INFO  NHibernate.Cfg.SettingsFactory - Named query checking : enabled
+2024-08-19 12:24:45,024 [78] INFO  NHibernate.Cfg.SettingsFactory - Never cached entities/collections query cache throws exception : enabled
+2024-08-19 12:24:45,027 [78] INFO  NHibernate.Cfg.Configuration - checking mappings queue
+2024-08-19 12:24:45,027 [78] INFO  NHibernate.Cfg.Configuration - processing one-to-many association mappings
+2024-08-19 12:24:45,028 [78] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - mapping collection: IMS.Entity.Entities.ProductCategory.ProductType -> ProductType
+2024-08-19 12:24:45,031 [78] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - mapping collection: IMS.Entity.Entities.ProductType.SKUs -> SKU
+2024-08-19 12:24:45,031 [78] INFO  NHibernate.Cfg.Configuration - processing one-to-one association property references
+2024-08-19 12:24:45,031 [78] INFO  NHibernate.Cfg.Configuration - processing foreign key constraints
+2024-08-19 12:24:45,033 [78] INFO  NHibernate.Cfg.Configuration - processing filters (second pass)
+2024-08-19 12:24:45,048 [78] INFO  NHibernate.Impl.SessionFactoryImpl - building session factory
+2024-08-19 12:24:45,066 [78] INFO  NHibernate.Impl.SessionFactoryObjectFactory - no name configured
+2024-08-19 12:24:58,057 [7] INFO  NHibernate.Cfg.Environment - NHibernate 5.5.1+f25b398d897d937a21eda9ae065638f029256e3b (assembly 5.5.0.0)
+2024-08-19 12:24:58,063 [7] INFO  NHibernate.Cfg.Environment - hibernate-configuration section not found in application configuration file
+2024-08-19 12:24:58,064 [7] INFO  NHibernate.Cfg.Environment - Bytecode provider name : lcg
+2024-08-19 12:24:58,065 [7] INFO  NHibernate.Cfg.Environment - Objects factory class : NHibernate.Bytecode.ActivatorObjectsFactory
+2024-08-19 12:24:58,065 [7] INFO  NHibernate.Cfg.Environment - Using reflection optimizer
+2024-08-19 12:24:58,295 [7] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Brand -> Brand
+2024-08-19 12:24:58,319 [7] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Customer -> Customers
+2024-08-19 12:24:58,327 [7] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.ProductCategory -> ProductCategory
+2024-08-19 12:24:58,335 [7] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.ProductType -> ProductType
+2024-08-19 12:24:58,337 [7] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Supplier -> Suppliers
+2024-08-19 12:24:58,338 [7] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.SKU -> SKU
+2024-08-19 12:24:58,344 [7] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-19 12:24:58,362 [7] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-19 12:24:58,388 [7] INFO  NHibernate.Exceptions.SQLExceptionConverterFactory - Using dialect defined converter
+2024-08-19 12:24:58,388 [7] INFO  NHibernate.Cfg.SettingsFactory - Generate SQL with comments: disabled
+2024-08-19 12:24:58,388 [7] INFO  NHibernate.Cfg.SettingsFactory - Detect fetch loops: enabled
+2024-08-19 12:24:58,388 [7] INFO  NHibernate.Connection.ConnectionProviderFactory - Initializing connection provider: NHibernate.Connection.DriverConnectionProvider
+2024-08-19 12:24:58,389 [7] INFO  NHibernate.Connection.ConnectionProvider - Configuring ConnectionProvider
+2024-08-19 12:24:58,390 [7] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-19 12:24:58,390 [7] INFO  NHibernate.Cfg.SettingsFactory - Transaction factory: NHibernate.Transaction.AdoNetWithSystemTransactionFactory
+2024-08-19 12:24:58,391 [7] INFO  NHibernate.Cfg.SettingsFactory - Optimize cache for minimal puts: False
+2024-08-19 12:24:58,391 [7] INFO  NHibernate.Cfg.SettingsFactory - Connection release mode: auto
+2024-08-19 12:24:58,391 [7] INFO  NHibernate.Cfg.SettingsFactory - Default batch fetch size: 1
+2024-08-19 12:24:58,391 [7] INFO  NHibernate.Cfg.SettingsFactory - Statistics: disabled
+2024-08-19 12:24:58,391 [7] INFO  NHibernate.Cfg.SettingsFactory - Deleted entity synthetic identifier rollback: disabled
+2024-08-19 12:24:58,391 [7] INFO  NHibernate.Cfg.SettingsFactory - Query translator: NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory
+2024-08-19 12:24:58,391 [7] INFO  NHibernate.Cfg.SettingsFactory - Query provider: NHibernate.Linq.DefaultQueryProvider
+2024-08-19 12:24:58,392 [7] INFO  NHibernate.Cfg.SettingsFactory - Query language substitutions: {'true'='1', 'false'='0', 'yes'=''Y'', 'no'=''N''}
+2024-08-19 12:24:58,393 [7] INFO  NHibernate.Cfg.SettingsFactory - cache provider: NHibernate.Cache.NoCacheProvider, NHibernate, Version=5.5.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-08-19 12:24:58,393 [7] INFO  NHibernate.Cfg.SettingsFactory - Order SQL inserts for batching: enabled
+2024-08-19 12:24:58,393 [7] INFO  NHibernate.Cfg.SettingsFactory - Order SQL updates for batching: disabled
+2024-08-19 12:24:58,393 [7] INFO  NHibernate.Cfg.SettingsFactory - Batcher factory: NHibernate.AdoNet.SqlClientBatchingBatcherFactory, NHibernate, Version=5.5.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-08-19 12:24:58,393 [7] INFO  NHibernate.Cfg.SettingsFactory - Default flush mode: Auto
+2024-08-19 12:24:58,393 [7] INFO  NHibernate.Cfg.SettingsFactory - Named query checking : enabled
+2024-08-19 12:24:58,393 [7] INFO  NHibernate.Cfg.SettingsFactory - Never cached entities/collections query cache throws exception : enabled
+2024-08-19 12:24:58,396 [7] INFO  NHibernate.Cfg.Configuration - checking mappings queue
+2024-08-19 12:24:58,396 [7] INFO  NHibernate.Cfg.Configuration - processing one-to-many association mappings
+2024-08-19 12:24:58,397 [7] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - mapping collection: IMS.Entity.Entities.ProductCategory.ProductType -> ProductType
+2024-08-19 12:24:58,399 [7] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - mapping collection: IMS.Entity.Entities.ProductType.SKUs -> SKU
+2024-08-19 12:24:58,399 [7] INFO  NHibernate.Cfg.Configuration - processing one-to-one association property references
+2024-08-19 12:24:58,399 [7] INFO  NHibernate.Cfg.Configuration - processing foreign key constraints
+2024-08-19 12:24:58,402 [7] INFO  NHibernate.Cfg.Configuration - processing filters (second pass)
+2024-08-19 12:24:58,416 [7] INFO  NHibernate.Impl.SessionFactoryImpl - building session factory
+2024-08-19 12:24:58,445 [7] INFO  NHibernate.Impl.SessionFactoryObjectFactory - no name configured
+2024-08-19 12:26:21,048 [6] INFO  NHibernate.Cfg.Environment - NHibernate 5.5.1+f25b398d897d937a21eda9ae065638f029256e3b (assembly 5.5.0.0)
+2024-08-19 12:26:21,055 [6] INFO  NHibernate.Cfg.Environment - hibernate-configuration section not found in application configuration file
+2024-08-19 12:26:21,056 [6] INFO  NHibernate.Cfg.Environment - Bytecode provider name : lcg
+2024-08-19 12:26:21,057 [6] INFO  NHibernate.Cfg.Environment - Objects factory class : NHibernate.Bytecode.ActivatorObjectsFactory
+2024-08-19 12:26:21,057 [6] INFO  NHibernate.Cfg.Environment - Using reflection optimizer
+2024-08-19 12:26:21,297 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Brand -> Brand
+2024-08-19 12:26:21,326 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Customer -> Customers
+2024-08-19 12:26:21,335 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.ProductCategory -> ProductCategory
+2024-08-19 12:26:21,344 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.ProductType -> ProductType
+2024-08-19 12:26:21,347 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Supplier -> Suppliers
+2024-08-19 12:26:21,347 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.SKU -> SKU
+2024-08-19 12:26:21,352 [6] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-19 12:26:21,366 [6] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-19 12:26:21,393 [6] INFO  NHibernate.Exceptions.SQLExceptionConverterFactory - Using dialect defined converter
+2024-08-19 12:26:21,393 [6] INFO  NHibernate.Cfg.SettingsFactory - Generate SQL with comments: disabled
+2024-08-19 12:26:21,393 [6] INFO  NHibernate.Cfg.SettingsFactory - Detect fetch loops: enabled
+2024-08-19 12:26:21,393 [6] INFO  NHibernate.Connection.ConnectionProviderFactory - Initializing connection provider: NHibernate.Connection.DriverConnectionProvider
+2024-08-19 12:26:21,394 [6] INFO  NHibernate.Connection.ConnectionProvider - Configuring ConnectionProvider
+2024-08-19 12:26:21,394 [6] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-19 12:26:21,395 [6] INFO  NHibernate.Cfg.SettingsFactory - Transaction factory: NHibernate.Transaction.AdoNetWithSystemTransactionFactory
+2024-08-19 12:26:21,395 [6] INFO  NHibernate.Cfg.SettingsFactory - Optimize cache for minimal puts: False
+2024-08-19 12:26:21,395 [6] INFO  NHibernate.Cfg.SettingsFactory - Connection release mode: auto
+2024-08-19 12:26:21,395 [6] INFO  NHibernate.Cfg.SettingsFactory - Default batch fetch size: 1
+2024-08-19 12:26:21,395 [6] INFO  NHibernate.Cfg.SettingsFactory - Statistics: disabled
+2024-08-19 12:26:21,395 [6] INFO  NHibernate.Cfg.SettingsFactory - Deleted entity synthetic identifier rollback: disabled
+2024-08-19 12:26:21,396 [6] INFO  NHibernate.Cfg.SettingsFactory - Query translator: NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory
+2024-08-19 12:26:21,396 [6] INFO  NHibernate.Cfg.SettingsFactory - Query provider: NHibernate.Linq.DefaultQueryProvider
+2024-08-19 12:26:21,397 [6] INFO  NHibernate.Cfg.SettingsFactory - Query language substitutions: {'true'='1', 'false'='0', 'yes'=''Y'', 'no'=''N''}
+2024-08-19 12:26:21,398 [6] INFO  NHibernate.Cfg.SettingsFactory - cache provider: NHibernate.Cache.NoCacheProvider, NHibernate, Version=5.5.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-08-19 12:26:21,398 [6] INFO  NHibernate.Cfg.SettingsFactory - Order SQL inserts for batching: enabled
+2024-08-19 12:26:21,398 [6] INFO  NHibernate.Cfg.SettingsFactory - Order SQL updates for batching: disabled
+2024-08-19 12:26:21,398 [6] INFO  NHibernate.Cfg.SettingsFactory - Batcher factory: NHibernate.AdoNet.SqlClientBatchingBatcherFactory, NHibernate, Version=5.5.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-08-19 12:26:21,398 [6] INFO  NHibernate.Cfg.SettingsFactory - Default flush mode: Auto
+2024-08-19 12:26:21,398 [6] INFO  NHibernate.Cfg.SettingsFactory - Named query checking : enabled
+2024-08-19 12:26:21,398 [6] INFO  NHibernate.Cfg.SettingsFactory - Never cached entities/collections query cache throws exception : enabled
+2024-08-19 12:26:21,401 [6] INFO  NHibernate.Cfg.Configuration - checking mappings queue
+2024-08-19 12:26:21,401 [6] INFO  NHibernate.Cfg.Configuration - processing one-to-many association mappings
+2024-08-19 12:26:21,403 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - mapping collection: IMS.Entity.Entities.ProductCategory.ProductType -> ProductType
+2024-08-19 12:26:21,405 [6] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - mapping collection: IMS.Entity.Entities.ProductType.SKUs -> SKU
+2024-08-19 12:26:21,405 [6] INFO  NHibernate.Cfg.Configuration - processing one-to-one association property references
+2024-08-19 12:26:21,405 [6] INFO  NHibernate.Cfg.Configuration - processing foreign key constraints
+2024-08-19 12:26:21,408 [6] INFO  NHibernate.Cfg.Configuration - processing filters (second pass)
+2024-08-19 12:26:21,425 [6] INFO  NHibernate.Impl.SessionFactoryImpl - building session factory
+2024-08-19 12:26:21,460 [6] INFO  NHibernate.Impl.SessionFactoryObjectFactory - no name configured
+2024-08-19 12:26:42,043 [14] INFO  LoggerConfiguration - Index page visited.

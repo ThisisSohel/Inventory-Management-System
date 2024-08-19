@@ -1,7 +1,7 @@
 ﻿@*DataTable and Bootstrap CDN*@
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
 
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
 
 
 <style>
@@ -59,11 +59,12 @@
                         <label for="BrandName" class="col-sm-3 col-form-label text-start" style="color:black;">Brand Name</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="BrandName" name="BrandName" placeholder="Enter the brand name" style="background-color:#f5f5f5">
+                            <span class="text-danger text-center align-text-bottom " id="brand_name_validation"></span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col text-center">
-                            <input type="submit" id="employeeSubmitId" class="btn btn-primary" value="Create" style="background-color: #1d4552">
+                            <input type="submit" id="submit_id" class="btn btn-primary" value="Create" style="background-color: #1d4552">
                         </div>
                     </div>
                 </div>
@@ -192,6 +193,12 @@
 
         function brandDataBinding() {
             const brandName = $("#BrandName").val();
+            //isValid = false;
+
+            //if (brandName.trim().length == 0) {
+            //    $("#brand_name_validation").text("Name is required!")
+            //} 
+
 
             const brandObject = {
                 BrandName: brandName
@@ -395,11 +402,10 @@
                     ]
                 })
 
-            $("#employeeSubmitId").click(function () {
-
+            $("#submit_id").click(function () {
+                
                 var formData = brandDataBinding();
                 submitBrand(formData);
-
             });
         })
 

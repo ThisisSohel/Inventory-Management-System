@@ -1,16 +1,12 @@
-﻿using FluentNHibernate.Testing.Values;
-using IMS.CustomException;
-using IMS.Entity.Entities;
+﻿using IMS.CustomException;
+using IMS.Entity.EntityViewModels;
 using IMS.Service;
-using IMS.WEB.Database;
 using log4net;
-using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using IMS.Entity.EntityViewModels;
 
 namespace IMS.WEB.Controllers
 {
@@ -70,10 +66,10 @@ namespace IMS.WEB.Controllers
                 message = "Something went wrong!";
             }
 
-            return Json(new 
-            { 
-                Message = message, 
-                IsValid = isValid 
+            return Json(new
+            {
+                Message = message,
+                IsValid = isValid
             }, JsonRequestBehavior.AllowGet);
         }
 
