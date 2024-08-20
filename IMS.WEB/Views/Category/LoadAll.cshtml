@@ -56,17 +56,18 @@
             </div>
             <div class="modal-body" style="background-color: darkgray">
                 <div class="container my-3 p-2 text-center">
-                    <div class="row mb-3">
+                    <div class="row mb-3 needs-validation" novalidate">
                         <label for="CategoryName" class="col-sm-3 col-form-label text-start" style="color:black;">Category Name</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="CategoryName" name="CategoryName" placeholder="Enter the category" style="background-color:#f5f5f5">
+                            <input type="text" class="form-control name" id="CategoryName" name="CategoryName" placeholder="Enter the category" style="background-color:#f5f5f5">
+                            <span class="text-danger text-start name_validation " id="name_validation"></span>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="CategoryDescription" class="col-sm-3 col-form-label text-start" style="color:black;">Category Description</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="CategoryDescription" name="CategoryDescription" placeholder="Enter the description" style="background-color:#f5f5f5">
-                            <span id="descriptionError" class="text-danger" style="display: none;">Description character length should be between 10 to 250 and must contain at least two words.</span>
+                            <input type="text" class="form-control description" id="CategoryDescription" name="CategoryDescription" placeholder="Enter the description" style="background-color:#f5f5f5">
+                            <span class="text-danger text-center description_validation" id="description_validation"></span>
                         </div>
                     </div>
                     <div class="row">
@@ -150,13 +151,15 @@
                     <div class="row mb-3">
                         <label for="CategoryName" class="col-sm-3 col-form-label text-start" style="color:black;">Category Name</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="updateNameId" name="CategoryName" style="background-color:#f5f5f5">
+                            <input type="text" class="form-control name" id="updateNameId" name="CategoryName" style="background-color:#f5f5f5">
+                            <span class="text-danger text-start name_validation " id="name_validation"></span>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="CategoryDescription" class="col-sm-3 col-form-label text-start" style="color:black;">Category Desciption</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="updateDescriptionId" name="CategoryDescription" style="background-color:#f5f5f5">
+                            <input type="text" class="form-control description" id="updateDescriptionId" name="CategoryDescription" style="background-color:#f5f5f5">
+                            <span class="text-danger text-center description_validation " id="description_validation"></span>
                         </div>
                     </div>
                     <div class="row">
@@ -201,16 +204,114 @@
             $("#createModal").modal('show')
         }
 
+        //function objectValidator(objToValidate) {
+
+        //    const regex = new RegExp("^[a-zA-Z ]+$");
+        //    isValid = true;
+
+        //    if (objToValidate.CategoryName.trim().length == 0) {
+        //        $(".name_validation").text("Name can not be empty!");
+        //        isValid = false;
+        //    }if (!regex.test(objToValidate.CategoryName)) {
+        //        $(".name_validation").text("Name contains only alphabetic characters!");
+        //        isValid = false;
+        //    }if (objToValidate.CategoryName.trim().length < 3 || objToValidate.CategoryName.trim().length > 30) {
+        //        $(".name_validation").text("Length should be in between 3 to 30!");
+        //        isValid = false;
+        //    }if (objToValidate.CategoryDescription.trim().length == 0) {
+        //        $(".description_validation").text("Description can not be empty!");
+        //        isValid = false;
+        //    }if (objToValidate.CategoryDescription.trim().length < 10 || objToValidate.CategoryDescription.trim().length > 225) {
+        //        $(".description_validation").text("Length should be in between 10 to 225!");
+        //        isValid = false;
+        //    } else {
+        //        $(".name_validation").text("");
+        //        $(".description_validation").text("");
+        //    }
+
+        //    return isValid;
+        //}
+
+        function nameValidator(name) {
+            const regex = new RegExp("^[a-zA-Z ]+$");
+            isValid = true;
+
+            if (name.trim().length == 0) {
+                $(".name_validation").text("Name can not be empty!");
+                isValid = false;
+            } else if (!regex.test(name)) {
+                $(".name_validation").text("Name contains only alphabetic characters!");
+                isValid = false;
+            } else if (name.trim().length < 3 || name.trim().length > 30) {
+                $(".name_validation").text("Length should be in between 3 to 30!");
+                isValid = false;
+            } else {
+                $(".name_validation").text("");
+            }
+
+            return isValid;
+        }
+
+        function descriptionValidator(description) {
+            isValid = true;
+
+            if (description.trim().length == 0) {
+                $(".description_validation").text("Description can not be empty!");
+                isValid = false;
+            } else if (description.trim().length < 10 || description.trim().length > 225) {
+                $(".description_validation").text("Length should be in between 10 to 225!");
+                isValid = false;
+            } else {
+                $(".description_validation").text("");
+            }
+
+            return isValid;
+        }
+
+        $(".name").on('change input propertychange', function () {
+            const name = $(this).val();
+            const regex = new RegExp("^[a-zA-Z ]+$");
+
+            if (name.trim().length == 0) {
+                $(".name_validation").text("Name can not be empty!");
+            } else if (!regex.test(name)) {
+                $(".name_validation").text("Name contains only alphabetic characters!");
+            } else if (name.trim().length < 3 || name.trim().length > 30) {
+                $(".name_validation").text("Length should be in between 3 to 30!");
+            } else {
+                $(".name_validation").text("");
+            }
+        });
+
+        $(".description").on('change input propertychange', function () {
+            const description = $(this).val();
+
+            if (description.trim().length == 0) {
+                $(".description_validation").text("Description can not be empty!");
+            } else if (description.trim().length < 10 || description.trim().length > 225) {
+                $(".description_validation").text("Length should be in between 10 to 225!");
+            } else {
+                $(".description_validation").text("");
+            }
+        });
+
         function DataBinding() {
             const name = $("#CategoryName").val();
             const description = $("#CategoryDescription").val();
 
-            const obj = {
-                CategoryName: name,
-                CategoryDescription: description
+            const isNameValid = nameValidator(name);
+            const isDescriptionValid = descriptionValidator(description);
+
+            if (isNameValid && isDescriptionValid) {
+                const obj = {
+                    CategoryName: name,
+                    CategoryDescription: description
+                };
+
+                submitData(obj);
             }
-            return obj;
         }
+
 
         function submitData(obj) {
             $.ajax({
@@ -339,43 +440,44 @@
             });
 
             $("#updateSaveId").click(function () {
-
                 const id = $("#updateId").val();
                 const name = $("#updateNameId").val();
                 const description = $("#updateDescriptionId").val();
 
-                var formdata = {
-                    Id: id,
-                    CategoryName: name,
-                    CategoryDescription: description
-                }
+                const isNameValid = nameValidator(name);
+                const isDescriptionValid = descriptionValidator(description);
 
-                $.ajax({
-                    url: "/Category/UpdateAsync",
-                    dataType: 'json',
-                    type: 'POST',
-                    data: { id: formdata.Id, productCategoryViewModel: formdata },
-                    success: function (response) {
-                        if (response.IsSuccess == true) {
-                            const msgAlertMake = showSuccessAlertMessage(response.Message);
+                if (isNameValid && isDescriptionValid) {
+                    const formdata = {
+                        Id: id,
+                        CategoryName: name,
+                        CategoryDescription: description
+                    };
 
-                            $("#successMessageShow").html(msgAlertMake);
-                            $("#updateModal").modal('hide');
-
-                            DataTableLoad();
-                        } else {
-                            const msgAlertMake = showErrorAlertMessage(response.Message);
+                    $.ajax({
+                        url: "/Category/UpdateAsync",
+                        dataType: 'json',
+                        type: 'POST',
+                        data: { id: formdata.Id, productCategoryViewModel: formdata },
+                        success: function (response) {
+                            if (response.IsSuccess) {
+                                const msgAlertMake = showSuccessAlertMessage(response.Message);
+                                $("#successMessageShow").html(msgAlertMake);
+                                $("#updateModal").modal('hide');
+                                DataTableLoad();
+                            } else {
+                                const msgAlertMake = showErrorAlertMessage(response.Message);
+                                $("#errorMessageShow").html(msgAlertMake);
+                                $("#updateModal").modal('hide');
+                            }
+                        },
+                        error: function (error) {
+                            const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
                             $("#errorMessageShow").html(msgAlertMake);
-
                             $("#updateModal").modal('hide');
                         }
-                    },
-                    error: function (error) {
-                        const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
-                        $("#errorMessageShow").html(msgAlertMake);
-                        $("#updateModal").modal('hide');
-                    }
-                });
+                    });
+                }
             });
         }
 
@@ -385,10 +487,7 @@
             DataTableLoad();
 
             $("#submitId").click(function () {
-
-                var formData = DataBinding();
-                submitData(formData);
-
+                DataBinding();
             });
         })
 

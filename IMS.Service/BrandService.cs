@@ -116,7 +116,7 @@ namespace IMS.Service
 
                 foreach (var item in brandAll)
                 {
-                    if (item.BrandName == brand.BrandName)
+                    if (item.BrandName == brand.BrandName && item.Id != brand.Id)
                     {
                         throw new DuplicateValueException("Brand can not be duplicate!");
                     }
@@ -176,7 +176,7 @@ namespace IMS.Service
                 {
                     foreach (var item in brand)
                     {
-                        if (brandViewModelEntity.BrandName.Contains(item.BrandName))
+                        if (brandViewModelEntity.BrandName == item.BrandName)
                         {
                             throw new DuplicateValueException("Brand name can not be duplicate!");
                         }

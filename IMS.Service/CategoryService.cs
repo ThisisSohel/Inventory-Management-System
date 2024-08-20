@@ -184,7 +184,7 @@ namespace IMS.Service
 
                 foreach (var item in categoryAllToCheckDuplicate)
                 {
-                    if(item.CategoryName == productCategoryViewModel.CategoryName)
+                    if(item.CategoryName == productCategoryViewModel.CategoryName && item.Id != productCategoryViewModel.Id)
                     {
                         throw new DuplicateValueException("Category can not be duplicate!");
                     }
@@ -260,7 +260,7 @@ namespace IMS.Service
 
         private void ModelValidatorMethod(ProductCategoryViewModel modelToValidate)
         {
-            if (String.IsNullOrWhiteSpace(modelToValidate.CategoryName))
+            if (string.IsNullOrWhiteSpace(modelToValidate.CategoryName))
             {
                 throw new InvalidNameException("Name can not be null!");
             }

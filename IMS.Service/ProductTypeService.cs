@@ -41,22 +41,6 @@ namespace IMS.Service
             _productTypeDao = new ProductTypeDao(_session);
         }
 
-        private void TypeValidator(ProductType productTypeToValidate)
-        {
-            if (productTypeToValidate.TypeName.Trim().Length == 0)
-            {
-                throw new InvalidNameException("sorry! your input feild is empty.");
-            }
-            if (String.IsNullOrWhiteSpace(productTypeToValidate.TypeName))
-            {
-                throw new InvalidNameException("sorry! only white space is not allowed");
-            }
-            if (productTypeToValidate.TypeName.Trim().Length < 5 || productTypeToValidate.TypeName.Trim().Length > 60)
-            {
-                throw new InvalidNameException("Sorry! You have to input your name more than 5 character and less than 60 characters");
-            }
-        }
-
         public async Task<List<ProductTypeViewModel>> GetAllAsync()
         {
             try

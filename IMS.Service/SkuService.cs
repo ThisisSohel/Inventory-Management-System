@@ -172,7 +172,7 @@ namespace IMS.Service
 
                 foreach (var item in typeAllToCheckDuplicate)
                 {
-                    if(item.SKUsName == skuUpdateViewModel.SKUsName)
+                    if(item.SKUsName == skuUpdateViewModel.SKUsName && item.ProductType.Id != skuUpdateViewModel.TypeId)
                     {
                         throw new DuplicateValueException("SKU can not be duplicate!");
                     }

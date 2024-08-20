@@ -66,34 +66,39 @@
                     <div class="row mb-6 ps-lg-5">
                         <label for="CustomerName" class="col-form-label text-start" style="color:black;">Name</label>
                         <div class="col-sm-6 pb-2">
-                            <input type="text" class="form-control" id="CustomerName" name="CustomerName" placeholder="Enter customer name" style="background-color:#f5f5f5">
+                            <input type="text" class="form-control customer_name" id="CustomerName" name="CustomerName" placeholder="Enter customer name" style="background-color:#f5f5f5">
+                            <span class="text-danger customer_name_validation validation-message" style="display: block; text-align: left; padding-top: 5px;"></span>
                         </div>
-                        <label for="CustomerNumber" class=" col-form-label text-start" style="color:black;">Number</label>
+                        <label for="CustomerNumber" class="col-form-label text-start" style="color:black;">Number</label>
                         <div class="col-md-6 pb-2">
-                            <input type="text" class="form-control" id="CustomerNumber" name="CustomerNumber" placeholder="Enter customer number" style="background-color:#f5f5f5">
+                            <input type="text" class="form-control customer_number" id="CustomerNumber" name="CustomerNumber" placeholder="Enter customer number" style="background-color:#f5f5f5">
+                            <span class="text-danger customer_number_validation validation-message" style="display: block; text-align: left; padding-top: 5px;"></span>
                         </div>
-                        <label for="EmailAddress" class=" col-form-label text-start" style="color:black;">Email</label>
+                        <label for="EmailAddress" class="col-form-label text-start" style="color:black;">Email</label>
                         <div class="col-md-6 pb-2">
-                            <input type="text" class="form-control" id="EmailAddress" name="EmailAddress" placeholder="Enter customer email" style="background-color:#f5f5f5">
+                            <input type="text" class="form-control email_address" id="EmailAddress" name="EmailAddress" placeholder="Enter customer email" style="background-color:#f5f5f5">
+                            <span class="text-danger email_validation validation-message" style="display: block; text-align: left; padding-top: 5px;"></span>
                         </div>
-                        <label for="CustomerAddress" class=" col-form-label text-start" style="color:black;">Address</label>
+                        <label for="CustomerAddress" class="col-form-label text-start" style="color:black;">Address</label>
                         <div class="col-md-6 pb-2">
-                            <input type="text" class="form-control" id="CustomerAddress" name="CustomerAddress" placeholder="Enter customer address" style="background-color:#f5f5f5">
+                            <input type="text" class="form-control customer_address" id="CustomerAddress" name="CustomerAddress" placeholder="Enter customer address" style="background-color:#f5f5f5">
+                            <span class="text-danger address_validation validation-message" style="display: block; text-align: left; padding-top: 5px;"></span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col text-center">
-                            <input type="submit" id="submitId" class="btn btn-primary" value="Create" style="background-color: #1d4552">
+                            <input type="submit" class="btn btn-primary submit_customer" value="Create" style="background-color: #1d4552">
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer" style="background-color: #1d4552; ">
+            <div class="modal-footer" style="background-color: #1d4552;">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color:#a9a9a9">Close</button>
             </div>
         </div>
     </div>
 </div>
+
 
 
 @* Details Modal*@
@@ -220,20 +225,127 @@
             $("#createModal").modal('show')
         }
 
-        function DataBinding() {
-            const name = $("#CustomerName").val();
-            const number = $("#CustomerNumber").val();
-            const email = $("#EmailAddress").val();
-            const address = $("#CustomerAddress").val();
 
+    // Function to validate customer name
+    function nameValidator(name) {
+        const regex = new RegExp("^[a-zA-Z ]+$");
+        let isValid = true;
+
+        if (name.trim().length === 0) {
+            $(".customer_name_validation").text("Name cannot be empty!");
+            isValid = false;
+        } else if (!regex.test(name)) {
+            $(".customer_name_validation").text("Name should contain only alphabetic characters!");
+            isValid = false;
+        } else if (name.trim().length < 3 || name.trim().length > 30) {
+            $(".customer_name_validation").text("Length should be between 3 and 30 characters!");
+            isValid = false;
+        } else {
+            $(".customer_name_validation").text("");
+        }
+
+        return isValid;
+    }
+
+    // Function to validate customer number
+    function numberValidator(number) {
+        const regex = new RegExp("^[0-9]+$");
+        let isValid = true;
+
+        if (number.trim().length === 0) {
+            $(".customer_number_validation").text("Number cannot be empty!");
+            isValid = false;
+        } else if (!regex.test(number)) {
+            $(".customer_number_validation").text("Number should contain only digits!");
+            isValid = false;
+        } else {
+            $(".customer_number_validation").text("");
+        }
+
+        return isValid;
+    }
+
+    // Function to validate email address
+    function emailValidator(email) {
+        const regex = new RegExp("^[a-zA-Z0-9._%+-]+[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+        let isValid = true;
+
+        if (email.trim().length === 0) {
+            $(".email_validation").text("Email cannot be empty!");
+            isValid = false;
+        } else if (!regex.test(email)) {
+            $(".email_validation").text("Email is not valid!");
+            isValid = false;
+        } else {
+            $(".email_validation").text("");
+        }
+
+        return isValid;
+    }
+
+    // Function to validate customer address
+    function addressValidator(address) {
+        let isValid = true;
+
+        if (address.trim().length === 0) {
+            $(".address_validation").text("Address cannot be empty!");
+            isValid = false;
+        } else {
+            $(".address_validation").text("");
+        }
+
+        return isValid;
+    }
+
+
+    $(".customer_name").on('input', function () {
+        const name = $(this).val();
+        nameValidator(name);
+    });
+
+    $(".customer_number").on('input', function () {
+        const number = $(this).val();
+        numberValidator(number);
+    });
+
+    $(".email_address").on('input', function () {
+        const email = $(this).val();
+        emailValidator(email);
+    });
+
+    $(".customer_address").on('input', function () {
+        const address = $(this).val();
+        addressValidator(address);
+    });
+
+
+    function DataBinding() {
+
+        const name = $(".customer_name").val();
+        const number = $(".customer_number").val();
+        const email = $(".email_address").val();
+        const address = $(".customer_address").val();
+
+
+        const isNameValid = nameValidator(name);
+        const isNumberValid = numberValidator(number);
+        const isEmailValid = emailValidator(email);
+        const isAddressValid = addressValidator(address);
+
+
+        if (isNameValid && isNumberValid && isEmailValid && isAddressValid) {
             const obj = {
                 CustomerName: name,
                 CustomerNumber: number,
                 EmailAddress: email,
                 CustomerAddress: address
-            }
-            return obj;
+            };
+
+
+            submitData(obj);
         }
+    }
+
 
         function submitData(obj) {
             $.ajax({
@@ -446,9 +558,7 @@
 
             $("#submitId").click(function () {
 
-                var formData = DataBinding();
-                submitData(formData);
-
+               DataBinding();
             });
         })
 

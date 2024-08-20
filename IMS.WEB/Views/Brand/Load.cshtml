@@ -58,8 +58,8 @@
                     <div class="row mb-3">
                         <label for="BrandName" class="col-sm-3 col-form-label text-start" style="color:black;">Brand Name</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="BrandName" name="BrandName" placeholder="Enter the brand name" style="background-color:#f5f5f5">
-                            <span class="text-danger text-center align-text-bottom " id="brand_name_validation"></span>
+                            <input type="text" class="form-control brand_name" id="BrandName" name="BrandName" placeholder="Enter the brand name" style="background-color:#f5f5f5">
+                            <span class="text-danger name_validation" id="brand_name_validation" style="display: block; text-align: left; padding-top: 5px;"></span>
                         </div>
                     </div>
                     <div class="row">
@@ -142,7 +142,8 @@
                     <div class="row mb-3">
                         <label for="UpdateBrandName" class="col-sm-3 col-form-label text-start" style="color:black;">Brand Name</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="updateBrandName" name="BrandName" style="background-color:#f5f5f5">
+                            <input type="text" class="form-control brand_name" id="updateBrandName" name="BrandName" style="background-color:#f5f5f5">
+                            <span class="text-danger text-center name_validation" id="brand_name_validation" style="display: block; text-align: left; padding-top: 5px;"></span>
                         </div>
                     </div>
                     <div class="row">
@@ -168,6 +169,7 @@
 
     <script>
 
+        //showing error alert message 
         function showErrorAlertMessage(message) {
             return `
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -176,7 +178,7 @@
                     </div>`
         }
 
-
+        //showing success alert message 
         function showSuccessAlertMessage(message) {
             return `
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -185,28 +187,58 @@
                             </div>`
         }
 
+        $('#createBrand').on('hidden.bs.modal', function () {
+            $(this).find('input[type="text"]').val('');
+            $(this).find('.name_validation').text('');
+        });
 
+        //create modal show to recieve brand data
         function createBrandFun() {
             $("#createBrand").modal('show')
         }
 
+        //name validation
+        function nameValidator(name) {
 
-        function brandDataBinding() {
-            const brandName = $("#BrandName").val();
-            //isValid = false;
+            const regex = new RegExp("^[a-zA-Z ]+$");
+            isValid = true;
 
-            //if (brandName.trim().length == 0) {
-            //    $("#brand_name_validation").text("Name is required!")
-            //} 
-
-
-            const brandObject = {
-                BrandName: brandName
+            if (name.trim().length == 0) {
+                $(".name_validation").text("Name can not be null!");
+                isValid = false;
+            } else if (!regex.test(name)) {
+                $(".name_validation").text("Name contains only alphabetic characters!");
+                isValid = false;
+            } else if (name.trim().length < 3 || name.trim().length > 30) {
+                $(".name_validation").text("Length should be in between 3 to 30!");
+                isValid = false;
+            } else {
+                $(".name_validation").text("");
             }
-            return brandObject;
+
+            return isValid;
         }
 
+        //on input validation check
+        $(".brand_name").on('change input propertychange', function () {
+            const name = $(this).val();
+            nameValidator(name);
+        });
 
+        //data binding from create brand modal 
+        function brandDataBinding() {
+
+            const name = $("#BrandName").val();
+
+            if (nameValidator(name) == true) {
+                const brandObject = {
+                    BrandName: name
+                }
+                submitBrand(brandObject);
+            }
+        }
+
+        //create brand and submit binding data
         function submitBrand(obj) {
             $.ajax({
                 url: "/Brand/CreateBrand",
@@ -234,7 +266,7 @@
             });
         }
 
-
+        //ajax call for retrive brand details 
         function brandDetails(brandId) {
             $("#detailsBrand").modal('show')
             $.ajax({
@@ -270,7 +302,7 @@
             });
         }
 
-
+        //ajax call for delete a brand
         function brandDelete(deleteId) {
             $("#deleteBrandModal").modal("show");
 
@@ -305,8 +337,9 @@
 
         }
 
-
+        //ajax call for update a brand
         function brandUpdate(updateId) {
+
             $("#updateBrand").modal('show');
 
             $.ajax({
@@ -336,35 +369,38 @@
                 const brandId = $("#updateBrandId").val();
                 const brandName = $("#updateBrandName").val();
 
-                var formdata = {
-                    Id: brandId,
-                    BrandName: brandName
-                }
+                if (nameValidator(brandName) == true) {
 
-                $.ajax({
-                    url: "/Brand/Update",
-                    dataType: 'json',
-                    type: 'POST',
-                    data: { id: formdata.Id, brand: formdata },
-                    success: function (response) {
-                        if (response.IsSuccess == true) {
-                            const msgAlertMake = showSuccessAlertMessage(response.Message);
-                            $("#successMessageShow").html(msgAlertMake);
-                            $("#updateBrand").modal('hide');
-                            const table = $("#brandInfoTable").DataTable();
-                            table.ajax.reload();
-                        } else {
-                            const msgAlertMake = showErrorAlertMessage(response.Message);
+                    var formdata = {
+                        Id: brandId,
+                        BrandName: brandName
+                    }
+
+                    $.ajax({
+                        url: "/Brand/Update",
+                        dataType: 'json',
+                        type: 'POST',
+                        data: { id: formdata.Id, brand: formdata },
+                        success: function (response) {
+                            if (response.IsSuccess == true) {
+                                const msgAlertMake = showSuccessAlertMessage(response.Message);
+                                $("#successMessageShow").html(msgAlertMake);
+                                $("#updateBrand").modal('hide');
+                                const table = $("#brandInfoTable").DataTable();
+                                table.ajax.reload();
+                            } else {
+                                const msgAlertMake = showErrorAlertMessage(response.Message);
+                                $("#errorMessageShow").html(msgAlertMake);
+                                $("#updateBrand").modal('hide');
+                            }
+                        },
+                        error: function (error) {
+                            const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
                             $("#errorMessageShow").html(msgAlertMake);
                             $("#updateBrand").modal('hide');
                         }
-                    },
-                    error: function (error) {
-                        const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
-                        $("#errorMessageShow").html(msgAlertMake);
-                        $("#updateBrand").modal('hide');
-                    }
-                });
+                    });
+                }
             });
         }
 
@@ -381,7 +417,7 @@
                         "type": "GET",
                         "datatype": "json"
                     },
-                    "columns": [     
+                    "columns": [
                         { "data": "BrandName", "name": "BrandName" },
                         {
                             "data": "Id", "render": function (brandId) {
@@ -403,10 +439,16 @@
                 })
 
             $("#submit_id").click(function () {
-                
-                var formData = brandDataBinding();
-                submitBrand(formData);
+
+                brandDataBinding();
+                //submitBrand(formData);
             });
+
+            $(".modal").on("hidden.bs.modal", function () {
+                $(this).removeData();
+            });
+
+
         })
 
 

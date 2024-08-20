@@ -58,15 +58,17 @@
                     <div class="row mb-3">
                         <label for="SKUsName" class="col-sm-3 col-form-label text-start" style="color:black;">SKU Name</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="SKUsName" name="SKUsName" placeholder="Enter the SKU" style="background-color:#f5f5f5">
+                            <input type="text" class="form-control name" id="SKUsName" name="SKUsName" placeholder="Enter the SKU" style="background-color:#f5f5f5">
+                            <span class="text-danger text-center name_validation" id="name_validation"></span>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="TypeDropdown" class="col-sm-3 col-form-label text-start" style="color:black;">ProductType</label>
                         <div class="col-sm-9">
-                            <select class="form-select dropdown_name" id="TypeDropdown" name="TypeId" style="background-color: #f5f5f5">
-                                <option selected disabled>Choose a Product Type</option>
+                            <select class="form-select dropdown_name type_name" id="TypeDropdown" name="TypeId" style="background-color: #f5f5f5">
+                                <option selected disabled value="">Choose a Product Type</option>
                             </select>
+                            <span class="text-danger text-center type_validation" id="type_validation"></span>
                         </div>
                     </div>
                     <div class="row">
@@ -149,15 +151,17 @@
                     <div class="row mb-3">
                         <label for="SKUsName" class="col-sm-3 col-form-label text-start" style="color:black;">SKU Name</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="updateNameId" name="SKUsName" style="background-color:#f5f5f5">
+                            <input type="text" class="form-control name" id="updateNameId" name="SKUsName" style="background-color:#f5f5f5">
+                            <span class="text-danger text-center name_validation" id="name_validation"></span>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="TypeDropdown" class="col-sm-3 col-form-label text-start" style="color:black;">ProductType</label>
                         <div class="col-sm-9">
-                            <select class="form-select dropdown_name selected" id="TypeDropdown" name="TypeId" style="background-color: #f5f5f5">
+                            <select class="form-select dropdown_name selected type" id="TypeDropdown" name="TypeId" style="background-color: #f5f5f5">
                                 <option selected disabled>Choose a Product Type</option>
                             </select>
+                            <span class="text-danger text-center type_validation" id="name_validation"></span>
                         </div>
                     </div>
                     <div class="row">
@@ -203,17 +207,66 @@
             loadTypes();
         }
 
+        function nameValidator(name) {
+
+            const regex = new RegExp("^[a-zA-Z ]+$");
+            isValid = true;
+
+            if (name.trim().length == 0) {
+                $(".name_validation").text("Name can not be empty!");
+                isValid = false;
+            } else if (!regex.test(name)) {
+                $(".name_validation").text("Name contains only alphabetic characters!");
+                isValid = false;
+            } else if (name.trim().length < 1 || name.trim().length > 3) {
+                $(".name_validation").text("Length should be in between 1 to 3!");
+                isValid = false;
+            } else {
+                $(".name_validation").text("");
+            }
+
+            return isValid;
+        }
+
+        function typeValidator(id) {
+
+            isValid = true;
+
+            if (id == "") {
+                $(".type_validation").text("Please select a product type!");
+                isValid = false;
+            } else {
+                $(".type_validation").text("");
+            }
+
+            return isValid;
+        }
+
+        $(".name").on('change input propertychange', function () {
+            const name = $(this).val();
+            nameValidator(name);
+        });
+
+        //$(".type").on('change input propertychange', function () {
+        //    const name = $(this).val();
+        //    typeValidator(name);
+        //});
+
         function DataBinding() {
 
             const name = $("#SKUsName").val();
             const typeId = $(".dropdown_name").find(":selected").val();
 
+            const isNameValid = nameValidator(name);
+            const isTypeValid = typeValidator(typeId);
 
-            const obj = {
-                SKUsName: name,
-                TypeId: typeId
+            if (isNameValid && isTypeValid) {
+                const obj = {
+                    SKUsName: name,
+                    TypeId: typeId
+                };
+                submitData(obj);
             }
-            return obj;
         }
 
         function submitData(obj) {
@@ -349,36 +402,42 @@
                 const name = $("#updateNameId").val();
                 const typeId = $(".selected").find(":selected").val();
 
-                var formdata = {
-                    Id: id,
-                    SKUsName: name,
-                    TypeId: typeId
-                }
+                const isNameValid = nameValidator(name);
+                const isTypeValid = typeValidator(typeId);
 
-                $.ajax({
-                    url: "/Sku/Update",
-                    dataType: 'json',
-                    type: 'POST',
-                    data: { id: formdata.Id, skuUpdateViewModel: formdata },
-                    success: function (response) {
-                        if (response.IsSuccess == true) {
-                            const msgAlertMake = showSuccessAlertMessage(response.Message);
-                            $("#successMessageShow").html(msgAlertMake);
-                            $("#updateModal").modal('hide');
-                            const table = $("#InfoTable").DataTable();
-                            table.ajax.reload();
-                        } else {
-                            const msgAlertMake = showErrorAlertMessage(response.Message);
+                if (isNameValid && isTypeValid) {
+
+                    var formdata = {
+                        Id: id,
+                        SKUsName: name,
+                        TypeId: typeId
+                    }
+
+                    $.ajax({
+                        url: "/Sku/Update",
+                        dataType: 'json',
+                        type: 'POST',
+                        data: { id: formdata.Id, skuUpdateViewModel: formdata },
+                        success: function (response) {
+                            if (response.IsSuccess == true) {
+                                const msgAlertMake = showSuccessAlertMessage(response.Message);
+                                $("#successMessageShow").html(msgAlertMake);
+                                $("#updateModal").modal('hide');
+                                const table = $("#InfoTable").DataTable();
+                                table.ajax.reload();
+                            } else {
+                                const msgAlertMake = showErrorAlertMessage(response.Message);
+                                $("#errorMessageShow").html(msgAlertMake);
+                                $("#updateModal").modal('hide');
+                            }
+                        },
+                        error: function (error) {
+                            const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
                             $("#errorMessageShow").html(msgAlertMake);
                             $("#updateModal").modal('hide');
                         }
-                    },
-                    error: function (error) {
-                        const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
-                        $("#errorMessageShow").html(msgAlertMake);
-                        $("#updateModal").modal('hide');
-                    }
-                });
+                    });
+                }
             });
         }
 
@@ -396,7 +455,7 @@
                     else {
                         var dropdown = $('.dropdown_name');
                         dropdown.empty();
-                        dropdown.append('<option selected disabled>Choose a Product Type</option>');
+                        dropdown.append('<option selected disabled value = "">Choose a Product Type</option>');
 
                         $.each(response.data, function (index, type) {
                             var newDropDownData = `
@@ -452,8 +511,6 @@
             $("#submitId").click(function () {
 
                 var formData = DataBinding();
-                submitData(formData);
-
             });
         })
 
