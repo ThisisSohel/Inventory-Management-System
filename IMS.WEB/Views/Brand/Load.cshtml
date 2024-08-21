@@ -44,7 +44,6 @@
 </div>
 
 
-
 @*Create New Brand Modal*@
 <div class="modal fade" id="createBrand" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -192,6 +191,12 @@
             $(this).find('.name_validation').text('');
         });
 
+        $('#updateBrand').on('hidden.bs.modal', function () {
+            $(this).find('input[type="text"]').val('');
+            $(this).find('.name_validation').text('');
+        });
+
+
         //create modal show to recieve brand data
         function createBrandFun() {
             $("#createBrand").modal('show')
@@ -337,6 +342,11 @@
 
         }
 
+        //reset the updateMoadl validation message befor loading the data to the update modal.
+        function updateModalValidationMessageReset() {
+            $(".name_validation").empty();
+        }
+
         //ajax call for update a brand
         function brandUpdate(updateId) {
 
@@ -348,6 +358,7 @@
                 type: 'GET',
                 data: { id: updateId },
                 success: function (response) {
+                    updateModalValidationMessageReset();
                     if (response.IsSuccess == true) {
                         $("#updateBrandId").val(response.UpdateBrandData.Id);
                         $("#updateBrandName").val(response.UpdateBrandData.BrandName);

@@ -20559,3 +20559,621 @@ System.Exception: Brand is not found
 2024-08-20 23:14:07,212 [35] INFO  NHibernate.Cfg.Configuration - processing filters (second pass)
 2024-08-20 23:14:07,229 [35] INFO  NHibernate.Impl.SessionFactoryImpl - building session factory
 2024-08-20 23:14:07,249 [35] INFO  NHibernate.Impl.SessionFactoryObjectFactory - no name configured
+2024-08-21 10:00:55,332 [7] INFO  NHibernate.Cfg.Environment - NHibernate 5.5.1+f25b398d897d937a21eda9ae065638f029256e3b (assembly 5.5.0.0)
+2024-08-21 10:00:55,337 [7] INFO  NHibernate.Cfg.Environment - hibernate-configuration section not found in application configuration file
+2024-08-21 10:00:55,339 [7] INFO  NHibernate.Cfg.Environment - Bytecode provider name : lcg
+2024-08-21 10:00:55,340 [7] INFO  NHibernate.Cfg.Environment - Objects factory class : NHibernate.Bytecode.ActivatorObjectsFactory
+2024-08-21 10:00:55,340 [7] INFO  NHibernate.Cfg.Environment - Using reflection optimizer
+2024-08-21 10:00:55,579 [7] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Brand -> Brand
+2024-08-21 10:00:55,603 [7] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Customer -> Customers
+2024-08-21 10:00:55,610 [7] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.ProductCategory -> ProductCategory
+2024-08-21 10:00:55,619 [7] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.ProductType -> ProductType
+2024-08-21 10:00:55,623 [7] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Supplier -> Suppliers
+2024-08-21 10:00:55,623 [7] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.SKU -> SKU
+2024-08-21 10:00:55,628 [7] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-21 10:00:55,645 [7] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-21 10:00:55,671 [7] INFO  NHibernate.Exceptions.SQLExceptionConverterFactory - Using dialect defined converter
+2024-08-21 10:00:55,672 [7] INFO  NHibernate.Cfg.SettingsFactory - Generate SQL with comments: disabled
+2024-08-21 10:00:55,672 [7] INFO  NHibernate.Cfg.SettingsFactory - Detect fetch loops: enabled
+2024-08-21 10:00:55,672 [7] INFO  NHibernate.Connection.ConnectionProviderFactory - Initializing connection provider: NHibernate.Connection.DriverConnectionProvider
+2024-08-21 10:00:55,672 [7] INFO  NHibernate.Connection.ConnectionProvider - Configuring ConnectionProvider
+2024-08-21 10:00:55,673 [7] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-21 10:00:55,674 [7] INFO  NHibernate.Cfg.SettingsFactory - Transaction factory: NHibernate.Transaction.AdoNetWithSystemTransactionFactory
+2024-08-21 10:00:55,674 [7] INFO  NHibernate.Cfg.SettingsFactory - Optimize cache for minimal puts: False
+2024-08-21 10:00:55,674 [7] INFO  NHibernate.Cfg.SettingsFactory - Connection release mode: auto
+2024-08-21 10:00:55,674 [7] INFO  NHibernate.Cfg.SettingsFactory - Default batch fetch size: 1
+2024-08-21 10:00:55,674 [7] INFO  NHibernate.Cfg.SettingsFactory - Statistics: disabled
+2024-08-21 10:00:55,674 [7] INFO  NHibernate.Cfg.SettingsFactory - Deleted entity synthetic identifier rollback: disabled
+2024-08-21 10:00:55,674 [7] INFO  NHibernate.Cfg.SettingsFactory - Query translator: NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory
+2024-08-21 10:00:55,674 [7] INFO  NHibernate.Cfg.SettingsFactory - Query provider: NHibernate.Linq.DefaultQueryProvider
+2024-08-21 10:00:55,675 [7] INFO  NHibernate.Cfg.SettingsFactory - Query language substitutions: {'true'='1', 'false'='0', 'yes'=''Y'', 'no'=''N''}
+2024-08-21 10:00:55,676 [7] INFO  NHibernate.Cfg.SettingsFactory - cache provider: NHibernate.Cache.NoCacheProvider, NHibernate, Version=5.5.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-08-21 10:00:55,676 [7] INFO  NHibernate.Cfg.SettingsFactory - Order SQL inserts for batching: enabled
+2024-08-21 10:00:55,676 [7] INFO  NHibernate.Cfg.SettingsFactory - Order SQL updates for batching: disabled
+2024-08-21 10:00:55,677 [7] INFO  NHibernate.Cfg.SettingsFactory - Batcher factory: NHibernate.AdoNet.SqlClientBatchingBatcherFactory, NHibernate, Version=5.5.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-08-21 10:00:55,677 [7] INFO  NHibernate.Cfg.SettingsFactory - Default flush mode: Auto
+2024-08-21 10:00:55,677 [7] INFO  NHibernate.Cfg.SettingsFactory - Named query checking : enabled
+2024-08-21 10:00:55,677 [7] INFO  NHibernate.Cfg.SettingsFactory - Never cached entities/collections query cache throws exception : enabled
+2024-08-21 10:00:55,680 [7] INFO  NHibernate.Cfg.Configuration - checking mappings queue
+2024-08-21 10:00:55,680 [7] INFO  NHibernate.Cfg.Configuration - processing one-to-many association mappings
+2024-08-21 10:00:55,682 [7] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - mapping collection: IMS.Entity.Entities.ProductCategory.ProductType -> ProductType
+2024-08-21 10:00:55,684 [7] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - mapping collection: IMS.Entity.Entities.ProductType.SKUs -> SKU
+2024-08-21 10:00:55,684 [7] INFO  NHibernate.Cfg.Configuration - processing one-to-one association property references
+2024-08-21 10:00:55,684 [7] INFO  NHibernate.Cfg.Configuration - processing foreign key constraints
+2024-08-21 10:00:55,687 [7] INFO  NHibernate.Cfg.Configuration - processing filters (second pass)
+2024-08-21 10:00:55,702 [7] INFO  NHibernate.Impl.SessionFactoryImpl - building session factory
+2024-08-21 10:00:55,757 [7] INFO  NHibernate.Impl.SessionFactoryObjectFactory - no name configured
+2024-08-21 10:50:29,285 [73] INFO  NHibernate.Cfg.Environment - NHibernate 5.5.1+f25b398d897d937a21eda9ae065638f029256e3b (assembly 5.5.0.0)
+2024-08-21 10:50:29,292 [73] INFO  NHibernate.Cfg.Environment - hibernate-configuration section not found in application configuration file
+2024-08-21 10:50:29,293 [73] INFO  NHibernate.Cfg.Environment - Bytecode provider name : lcg
+2024-08-21 10:50:29,293 [73] INFO  NHibernate.Cfg.Environment - Objects factory class : NHibernate.Bytecode.ActivatorObjectsFactory
+2024-08-21 10:50:29,293 [73] INFO  NHibernate.Cfg.Environment - Using reflection optimizer
+2024-08-21 10:50:29,529 [73] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Brand -> Brand
+2024-08-21 10:50:29,555 [73] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Customer -> Customers
+2024-08-21 10:50:29,564 [73] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.ProductCategory -> ProductCategory
+2024-08-21 10:50:29,572 [73] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.ProductType -> ProductType
+2024-08-21 10:50:29,576 [73] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Supplier -> Suppliers
+2024-08-21 10:50:29,576 [73] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.SKU -> SKU
+2024-08-21 10:50:29,580 [73] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-21 10:50:29,592 [73] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-21 10:50:29,614 [73] INFO  NHibernate.Exceptions.SQLExceptionConverterFactory - Using dialect defined converter
+2024-08-21 10:50:29,614 [73] INFO  NHibernate.Cfg.SettingsFactory - Generate SQL with comments: disabled
+2024-08-21 10:50:29,614 [73] INFO  NHibernate.Cfg.SettingsFactory - Detect fetch loops: enabled
+2024-08-21 10:50:29,615 [73] INFO  NHibernate.Connection.ConnectionProviderFactory - Initializing connection provider: NHibernate.Connection.DriverConnectionProvider
+2024-08-21 10:50:29,615 [73] INFO  NHibernate.Connection.ConnectionProvider - Configuring ConnectionProvider
+2024-08-21 10:50:29,616 [73] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-21 10:50:29,616 [73] INFO  NHibernate.Cfg.SettingsFactory - Transaction factory: NHibernate.Transaction.AdoNetWithSystemTransactionFactory
+2024-08-21 10:50:29,617 [73] INFO  NHibernate.Cfg.SettingsFactory - Optimize cache for minimal puts: False
+2024-08-21 10:50:29,617 [73] INFO  NHibernate.Cfg.SettingsFactory - Connection release mode: auto
+2024-08-21 10:50:29,617 [73] INFO  NHibernate.Cfg.SettingsFactory - Default batch fetch size: 1
+2024-08-21 10:50:29,617 [73] INFO  NHibernate.Cfg.SettingsFactory - Statistics: disabled
+2024-08-21 10:50:29,617 [73] INFO  NHibernate.Cfg.SettingsFactory - Deleted entity synthetic identifier rollback: disabled
+2024-08-21 10:50:29,617 [73] INFO  NHibernate.Cfg.SettingsFactory - Query translator: NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory
+2024-08-21 10:50:29,617 [73] INFO  NHibernate.Cfg.SettingsFactory - Query provider: NHibernate.Linq.DefaultQueryProvider
+2024-08-21 10:50:29,618 [73] INFO  NHibernate.Cfg.SettingsFactory - Query language substitutions: {'true'='1', 'false'='0', 'yes'=''Y'', 'no'=''N''}
+2024-08-21 10:50:29,619 [73] INFO  NHibernate.Cfg.SettingsFactory - cache provider: NHibernate.Cache.NoCacheProvider, NHibernate, Version=5.5.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-08-21 10:50:29,619 [73] INFO  NHibernate.Cfg.SettingsFactory - Order SQL inserts for batching: enabled
+2024-08-21 10:50:29,619 [73] INFO  NHibernate.Cfg.SettingsFactory - Order SQL updates for batching: disabled
+2024-08-21 10:50:29,620 [73] INFO  NHibernate.Cfg.SettingsFactory - Batcher factory: NHibernate.AdoNet.SqlClientBatchingBatcherFactory, NHibernate, Version=5.5.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-08-21 10:50:29,620 [73] INFO  NHibernate.Cfg.SettingsFactory - Default flush mode: Auto
+2024-08-21 10:50:29,620 [73] INFO  NHibernate.Cfg.SettingsFactory - Named query checking : enabled
+2024-08-21 10:50:29,620 [73] INFO  NHibernate.Cfg.SettingsFactory - Never cached entities/collections query cache throws exception : enabled
+2024-08-21 10:50:29,622 [73] INFO  NHibernate.Cfg.Configuration - checking mappings queue
+2024-08-21 10:50:29,623 [73] INFO  NHibernate.Cfg.Configuration - processing one-to-many association mappings
+2024-08-21 10:50:29,624 [73] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - mapping collection: IMS.Entity.Entities.ProductCategory.ProductType -> ProductType
+2024-08-21 10:50:29,627 [73] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - mapping collection: IMS.Entity.Entities.ProductType.SKUs -> SKU
+2024-08-21 10:50:29,627 [73] INFO  NHibernate.Cfg.Configuration - processing one-to-one association property references
+2024-08-21 10:50:29,627 [73] INFO  NHibernate.Cfg.Configuration - processing foreign key constraints
+2024-08-21 10:50:29,629 [73] INFO  NHibernate.Cfg.Configuration - processing filters (second pass)
+2024-08-21 10:50:29,644 [73] INFO  NHibernate.Impl.SessionFactoryImpl - building session factory
+2024-08-21 10:50:29,664 [73] INFO  NHibernate.Impl.SessionFactoryObjectFactory - no name configured
+2024-08-21 11:15:30,552 [127] INFO  NHibernate.Cfg.Environment - NHibernate 5.5.1+f25b398d897d937a21eda9ae065638f029256e3b (assembly 5.5.0.0)
+2024-08-21 11:15:30,555 [127] INFO  NHibernate.Cfg.Environment - hibernate-configuration section not found in application configuration file
+2024-08-21 11:15:30,555 [127] INFO  NHibernate.Cfg.Environment - Bytecode provider name : lcg
+2024-08-21 11:15:30,555 [127] INFO  NHibernate.Cfg.Environment - Objects factory class : NHibernate.Bytecode.ActivatorObjectsFactory
+2024-08-21 11:15:30,555 [127] INFO  NHibernate.Cfg.Environment - Using reflection optimizer
+2024-08-21 11:15:30,743 [127] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Brand -> Brand
+2024-08-21 11:15:30,746 [127] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Customer -> Customers
+2024-08-21 11:15:30,752 [127] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.ProductCategory -> ProductCategory
+2024-08-21 11:15:30,755 [127] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.ProductType -> ProductType
+2024-08-21 11:15:30,755 [127] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Supplier -> Suppliers
+2024-08-21 11:15:30,756 [127] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.SKU -> SKU
+2024-08-21 11:15:30,756 [127] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-21 11:15:30,756 [127] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Exceptions.SQLExceptionConverterFactory - Using dialect defined converter
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.SettingsFactory - Generate SQL with comments: disabled
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.SettingsFactory - Detect fetch loops: enabled
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Connection.ConnectionProviderFactory - Initializing connection provider: NHibernate.Connection.DriverConnectionProvider
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Connection.ConnectionProvider - Configuring ConnectionProvider
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.SettingsFactory - Transaction factory: NHibernate.Transaction.AdoNetWithSystemTransactionFactory
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.SettingsFactory - Optimize cache for minimal puts: False
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.SettingsFactory - Connection release mode: auto
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.SettingsFactory - Default batch fetch size: 1
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.SettingsFactory - Statistics: disabled
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.SettingsFactory - Deleted entity synthetic identifier rollback: disabled
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.SettingsFactory - Query translator: NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.SettingsFactory - Query provider: NHibernate.Linq.DefaultQueryProvider
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.SettingsFactory - Query language substitutions: {'true'='1', 'false'='0', 'yes'=''Y'', 'no'=''N''}
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.SettingsFactory - cache provider: NHibernate.Cache.NoCacheProvider, NHibernate, Version=5.5.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.SettingsFactory - Order SQL inserts for batching: enabled
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.SettingsFactory - Order SQL updates for batching: disabled
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.SettingsFactory - Batcher factory: NHibernate.AdoNet.SqlClientBatchingBatcherFactory, NHibernate, Version=5.5.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.SettingsFactory - Default flush mode: Auto
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.SettingsFactory - Named query checking : enabled
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.SettingsFactory - Never cached entities/collections query cache throws exception : enabled
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.Configuration - checking mappings queue
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.Configuration - processing one-to-many association mappings
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - mapping collection: IMS.Entity.Entities.ProductCategory.ProductType -> ProductType
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - mapping collection: IMS.Entity.Entities.ProductType.SKUs -> SKU
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.Configuration - processing one-to-one association property references
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.Configuration - processing foreign key constraints
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Cfg.Configuration - processing filters (second pass)
+2024-08-21 11:15:30,758 [127] INFO  NHibernate.Impl.SessionFactoryImpl - building session factory
+2024-08-21 11:15:30,785 [127] INFO  NHibernate.Impl.SessionFactoryObjectFactory - no name configured
+2024-08-21 11:56:21,196 [50] INFO  NHibernate.Cfg.Environment - NHibernate 5.5.1+f25b398d897d937a21eda9ae065638f029256e3b (assembly 5.5.0.0)
+2024-08-21 11:56:21,203 [50] INFO  NHibernate.Cfg.Environment - hibernate-configuration section not found in application configuration file
+2024-08-21 11:56:21,204 [50] INFO  NHibernate.Cfg.Environment - Bytecode provider name : lcg
+2024-08-21 11:56:21,205 [50] INFO  NHibernate.Cfg.Environment - Objects factory class : NHibernate.Bytecode.ActivatorObjectsFactory
+2024-08-21 11:56:21,205 [50] INFO  NHibernate.Cfg.Environment - Using reflection optimizer
+2024-08-21 11:56:21,438 [50] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Brand -> Brand
+2024-08-21 11:56:21,464 [50] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Customer -> Customers
+2024-08-21 11:56:21,473 [50] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.ProductCategory -> ProductCategory
+2024-08-21 11:56:21,481 [50] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.ProductType -> ProductType
+2024-08-21 11:56:21,485 [50] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Supplier -> Suppliers
+2024-08-21 11:56:21,485 [50] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.SKU -> SKU
+2024-08-21 11:56:21,490 [50] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-21 11:56:21,490 [50] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-21 11:56:21,523 [50] INFO  NHibernate.Exceptions.SQLExceptionConverterFactory - Using dialect defined converter
+2024-08-21 11:56:21,523 [50] INFO  NHibernate.Cfg.SettingsFactory - Generate SQL with comments: disabled
+2024-08-21 11:56:21,523 [50] INFO  NHibernate.Cfg.SettingsFactory - Detect fetch loops: enabled
+2024-08-21 11:56:21,523 [50] INFO  NHibernate.Connection.ConnectionProviderFactory - Initializing connection provider: NHibernate.Connection.DriverConnectionProvider
+2024-08-21 11:56:21,524 [50] INFO  NHibernate.Connection.ConnectionProvider - Configuring ConnectionProvider
+2024-08-21 11:56:21,524 [50] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-21 11:56:21,525 [50] INFO  NHibernate.Cfg.SettingsFactory - Transaction factory: NHibernate.Transaction.AdoNetWithSystemTransactionFactory
+2024-08-21 11:56:21,525 [50] INFO  NHibernate.Cfg.SettingsFactory - Optimize cache for minimal puts: False
+2024-08-21 11:56:21,525 [50] INFO  NHibernate.Cfg.SettingsFactory - Connection release mode: auto
+2024-08-21 11:56:21,525 [50] INFO  NHibernate.Cfg.SettingsFactory - Default batch fetch size: 1
+2024-08-21 11:56:21,525 [50] INFO  NHibernate.Cfg.SettingsFactory - Statistics: disabled
+2024-08-21 11:56:21,525 [50] INFO  NHibernate.Cfg.SettingsFactory - Deleted entity synthetic identifier rollback: disabled
+2024-08-21 11:56:21,525 [50] INFO  NHibernate.Cfg.SettingsFactory - Query translator: NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory
+2024-08-21 11:56:21,526 [50] INFO  NHibernate.Cfg.SettingsFactory - Query provider: NHibernate.Linq.DefaultQueryProvider
+2024-08-21 11:56:21,527 [50] INFO  NHibernate.Cfg.SettingsFactory - Query language substitutions: {'true'='1', 'false'='0', 'yes'=''Y'', 'no'=''N''}
+2024-08-21 11:56:21,527 [50] INFO  NHibernate.Cfg.SettingsFactory - cache provider: NHibernate.Cache.NoCacheProvider, NHibernate, Version=5.5.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-08-21 11:56:21,528 [50] INFO  NHibernate.Cfg.SettingsFactory - Order SQL inserts for batching: enabled
+2024-08-21 11:56:21,528 [50] INFO  NHibernate.Cfg.SettingsFactory - Order SQL updates for batching: disabled
+2024-08-21 11:56:21,528 [50] INFO  NHibernate.Cfg.SettingsFactory - Batcher factory: NHibernate.AdoNet.SqlClientBatchingBatcherFactory, NHibernate, Version=5.5.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-08-21 11:56:21,528 [50] INFO  NHibernate.Cfg.SettingsFactory - Default flush mode: Auto
+2024-08-21 11:56:21,528 [50] INFO  NHibernate.Cfg.SettingsFactory - Named query checking : enabled
+2024-08-21 11:56:21,528 [50] INFO  NHibernate.Cfg.SettingsFactory - Never cached entities/collections query cache throws exception : enabled
+2024-08-21 11:56:21,531 [50] INFO  NHibernate.Cfg.Configuration - checking mappings queue
+2024-08-21 11:56:21,531 [50] INFO  NHibernate.Cfg.Configuration - processing one-to-many association mappings
+2024-08-21 11:56:21,532 [50] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - mapping collection: IMS.Entity.Entities.ProductCategory.ProductType -> ProductType
+2024-08-21 11:56:21,534 [50] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - mapping collection: IMS.Entity.Entities.ProductType.SKUs -> SKU
+2024-08-21 11:56:21,534 [50] INFO  NHibernate.Cfg.Configuration - processing one-to-one association property references
+2024-08-21 11:56:21,535 [50] INFO  NHibernate.Cfg.Configuration - processing foreign key constraints
+2024-08-21 11:56:21,537 [50] INFO  NHibernate.Cfg.Configuration - processing filters (second pass)
+2024-08-21 11:56:21,539 [50] INFO  NHibernate.Impl.SessionFactoryImpl - building session factory
+2024-08-21 11:56:21,574 [50] INFO  NHibernate.Impl.SessionFactoryObjectFactory - no name configured
+2024-08-21 12:19:11,602 [91] INFO  NHibernate.Cfg.Environment - NHibernate 5.5.1+f25b398d897d937a21eda9ae065638f029256e3b (assembly 5.5.0.0)
+2024-08-21 12:19:11,617 [91] INFO  NHibernate.Cfg.Environment - hibernate-configuration section not found in application configuration file
+2024-08-21 12:19:11,617 [91] INFO  NHibernate.Cfg.Environment - Bytecode provider name : lcg
+2024-08-21 12:19:11,617 [91] INFO  NHibernate.Cfg.Environment - Objects factory class : NHibernate.Bytecode.ActivatorObjectsFactory
+2024-08-21 12:19:11,617 [91] INFO  NHibernate.Cfg.Environment - Using reflection optimizer
+2024-08-21 12:19:11,855 [91] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Brand -> Brand
+2024-08-21 12:19:11,882 [91] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Customer -> Customers
+2024-08-21 12:19:11,888 [91] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.ProductCategory -> ProductCategory
+2024-08-21 12:19:11,888 [91] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.ProductType -> ProductType
+2024-08-21 12:19:11,888 [91] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Supplier -> Suppliers
+2024-08-21 12:19:11,888 [91] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.SKU -> SKU
+2024-08-21 12:19:11,905 [91] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-21 12:19:11,905 [91] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-21 12:19:11,935 [91] INFO  NHibernate.Exceptions.SQLExceptionConverterFactory - Using dialect defined converter
+2024-08-21 12:19:11,935 [91] INFO  NHibernate.Cfg.SettingsFactory - Generate SQL with comments: disabled
+2024-08-21 12:19:11,935 [91] INFO  NHibernate.Cfg.SettingsFactory - Detect fetch loops: enabled
+2024-08-21 12:19:11,935 [91] INFO  NHibernate.Connection.ConnectionProviderFactory - Initializing connection provider: NHibernate.Connection.DriverConnectionProvider
+2024-08-21 12:19:11,935 [91] INFO  NHibernate.Connection.ConnectionProvider - Configuring ConnectionProvider
+2024-08-21 12:19:11,935 [91] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-21 12:19:11,935 [91] INFO  NHibernate.Cfg.SettingsFactory - Transaction factory: NHibernate.Transaction.AdoNetWithSystemTransactionFactory
+2024-08-21 12:19:11,935 [91] INFO  NHibernate.Cfg.SettingsFactory - Optimize cache for minimal puts: False
+2024-08-21 12:19:11,935 [91] INFO  NHibernate.Cfg.SettingsFactory - Connection release mode: auto
+2024-08-21 12:19:11,935 [91] INFO  NHibernate.Cfg.SettingsFactory - Default batch fetch size: 1
+2024-08-21 12:19:11,935 [91] INFO  NHibernate.Cfg.SettingsFactory - Statistics: disabled
+2024-08-21 12:19:11,935 [91] INFO  NHibernate.Cfg.SettingsFactory - Deleted entity synthetic identifier rollback: disabled
+2024-08-21 12:19:11,935 [91] INFO  NHibernate.Cfg.SettingsFactory - Query translator: NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory
+2024-08-21 12:19:11,935 [91] INFO  NHibernate.Cfg.SettingsFactory - Query provider: NHibernate.Linq.DefaultQueryProvider
+2024-08-21 12:19:11,935 [91] INFO  NHibernate.Cfg.SettingsFactory - Query language substitutions: {'true'='1', 'false'='0', 'yes'=''Y'', 'no'=''N''}
+2024-08-21 12:19:11,945 [91] INFO  NHibernate.Cfg.SettingsFactory - cache provider: NHibernate.Cache.NoCacheProvider, NHibernate, Version=5.5.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-08-21 12:19:11,945 [91] INFO  NHibernate.Cfg.SettingsFactory - Order SQL inserts for batching: enabled
+2024-08-21 12:19:11,945 [91] INFO  NHibernate.Cfg.SettingsFactory - Order SQL updates for batching: disabled
+2024-08-21 12:19:11,945 [91] INFO  NHibernate.Cfg.SettingsFactory - Batcher factory: NHibernate.AdoNet.SqlClientBatchingBatcherFactory, NHibernate, Version=5.5.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-08-21 12:19:11,945 [91] INFO  NHibernate.Cfg.SettingsFactory - Default flush mode: Auto
+2024-08-21 12:19:11,945 [91] INFO  NHibernate.Cfg.SettingsFactory - Named query checking : enabled
+2024-08-21 12:19:11,945 [91] INFO  NHibernate.Cfg.SettingsFactory - Never cached entities/collections query cache throws exception : enabled
+2024-08-21 12:19:11,946 [91] INFO  NHibernate.Cfg.Configuration - checking mappings queue
+2024-08-21 12:19:11,946 [91] INFO  NHibernate.Cfg.Configuration - processing one-to-many association mappings
+2024-08-21 12:19:11,946 [91] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - mapping collection: IMS.Entity.Entities.ProductCategory.ProductType -> ProductType
+2024-08-21 12:19:11,946 [91] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - mapping collection: IMS.Entity.Entities.ProductType.SKUs -> SKU
+2024-08-21 12:19:11,946 [91] INFO  NHibernate.Cfg.Configuration - processing one-to-one association property references
+2024-08-21 12:19:11,946 [91] INFO  NHibernate.Cfg.Configuration - processing foreign key constraints
+2024-08-21 12:19:11,946 [91] INFO  NHibernate.Cfg.Configuration - processing filters (second pass)
+2024-08-21 12:19:11,973 [91] INFO  NHibernate.Impl.SessionFactoryImpl - building session factory
+2024-08-21 12:19:11,988 [91] INFO  NHibernate.Impl.SessionFactoryObjectFactory - no name configured
+2024-08-21 13:06:36,957 [39] INFO  NHibernate.Cfg.Environment - NHibernate 5.5.1+f25b398d897d937a21eda9ae065638f029256e3b (assembly 5.5.0.0)
+2024-08-21 13:06:36,960 [39] INFO  NHibernate.Cfg.Environment - hibernate-configuration section not found in application configuration file
+2024-08-21 13:06:36,960 [39] INFO  NHibernate.Cfg.Environment - Bytecode provider name : lcg
+2024-08-21 13:06:36,960 [39] INFO  NHibernate.Cfg.Environment - Objects factory class : NHibernate.Bytecode.ActivatorObjectsFactory
+2024-08-21 13:06:36,960 [39] INFO  NHibernate.Cfg.Environment - Using reflection optimizer
+2024-08-21 13:06:37,136 [39] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Brand -> Brand
+2024-08-21 13:06:37,153 [39] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Customer -> Customers
+2024-08-21 13:06:37,158 [39] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.ProductCategory -> ProductCategory
+2024-08-21 13:06:37,158 [39] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.ProductType -> ProductType
+2024-08-21 13:06:37,158 [39] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.Supplier -> Suppliers
+2024-08-21 13:06:37,158 [39] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - Mapping class: IMS.Entity.Entities.SKU -> SKU
+2024-08-21 13:06:37,158 [39] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-21 13:06:37,158 [39] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-21 13:06:37,171 [39] INFO  NHibernate.Exceptions.SQLExceptionConverterFactory - Using dialect defined converter
+2024-08-21 13:06:37,171 [39] INFO  NHibernate.Cfg.SettingsFactory - Generate SQL with comments: disabled
+2024-08-21 13:06:37,171 [39] INFO  NHibernate.Cfg.SettingsFactory - Detect fetch loops: enabled
+2024-08-21 13:06:37,171 [39] INFO  NHibernate.Connection.ConnectionProviderFactory - Initializing connection provider: NHibernate.Connection.DriverConnectionProvider
+2024-08-21 13:06:37,171 [39] INFO  NHibernate.Connection.ConnectionProvider - Configuring ConnectionProvider
+2024-08-21 13:06:37,171 [39] INFO  NHibernate.Dialect.Dialect - Using dialect: NHibernate.Dialect.MsSql2012Dialect
+2024-08-21 13:06:37,171 [39] INFO  NHibernate.Cfg.SettingsFactory - Transaction factory: NHibernate.Transaction.AdoNetWithSystemTransactionFactory
+2024-08-21 13:06:37,171 [39] INFO  NHibernate.Cfg.SettingsFactory - Optimize cache for minimal puts: False
+2024-08-21 13:06:37,171 [39] INFO  NHibernate.Cfg.SettingsFactory - Connection release mode: auto
+2024-08-21 13:06:37,171 [39] INFO  NHibernate.Cfg.SettingsFactory - Default batch fetch size: 1
+2024-08-21 13:06:37,171 [39] INFO  NHibernate.Cfg.SettingsFactory - Statistics: disabled
+2024-08-21 13:06:37,171 [39] INFO  NHibernate.Cfg.SettingsFactory - Deleted entity synthetic identifier rollback: disabled
+2024-08-21 13:06:37,171 [39] INFO  NHibernate.Cfg.SettingsFactory - Query translator: NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory
+2024-08-21 13:06:37,171 [39] INFO  NHibernate.Cfg.SettingsFactory - Query provider: NHibernate.Linq.DefaultQueryProvider
+2024-08-21 13:06:37,171 [39] INFO  NHibernate.Cfg.SettingsFactory - Query language substitutions: {'true'='1', 'false'='0', 'yes'=''Y'', 'no'=''N''}
+2024-08-21 13:06:37,172 [39] INFO  NHibernate.Cfg.SettingsFactory - cache provider: NHibernate.Cache.NoCacheProvider, NHibernate, Version=5.5.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-08-21 13:06:37,172 [39] INFO  NHibernate.Cfg.SettingsFactory - Order SQL inserts for batching: enabled
+2024-08-21 13:06:37,172 [39] INFO  NHibernate.Cfg.SettingsFactory - Order SQL updates for batching: disabled
+2024-08-21 13:06:37,172 [39] INFO  NHibernate.Cfg.SettingsFactory - Batcher factory: NHibernate.AdoNet.SqlClientBatchingBatcherFactory, NHibernate, Version=5.5.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4
+2024-08-21 13:06:37,172 [39] INFO  NHibernate.Cfg.SettingsFactory - Default flush mode: Auto
+2024-08-21 13:06:37,172 [39] INFO  NHibernate.Cfg.SettingsFactory - Named query checking : enabled
+2024-08-21 13:06:37,172 [39] INFO  NHibernate.Cfg.SettingsFactory - Never cached entities/collections query cache throws exception : enabled
+2024-08-21 13:06:37,172 [39] INFO  NHibernate.Cfg.Configuration - checking mappings queue
+2024-08-21 13:06:37,172 [39] INFO  NHibernate.Cfg.Configuration - processing one-to-many association mappings
+2024-08-21 13:06:37,172 [39] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - mapping collection: IMS.Entity.Entities.ProductCategory.ProductType -> ProductType
+2024-08-21 13:06:37,172 [39] INFO  NHibernate.Cfg.XmlHbmBinding.Binder - mapping collection: IMS.Entity.Entities.ProductType.SKUs -> SKU
+2024-08-21 13:06:37,172 [39] INFO  NHibernate.Cfg.Configuration - processing one-to-one association property references
+2024-08-21 13:06:37,172 [39] INFO  NHibernate.Cfg.Configuration - processing foreign key constraints
+2024-08-21 13:06:37,173 [39] INFO  NHibernate.Cfg.Configuration - processing filters (second pass)
+2024-08-21 13:06:37,174 [39] INFO  NHibernate.Impl.SessionFactoryImpl - building session factory
+2024-08-21 13:06:37,191 [39] INFO  NHibernate.Impl.SessionFactoryObjectFactory - no name configured
+2024-08-21 17:36:37,861 [145] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:36:37,861 [145] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:36:37,937 [79] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:36:37,941 [79] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:36:37,942 [79] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:36:37,942 [79] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:36:37,959 [79] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:36:37,959 [79] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:36:37,960 [79] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:36:37,960 [79] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:36:37,960 [79] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:36:37,960 [79] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:36:37,960 [79] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:36:37,960 [79] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:36:37,960 [79] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:36:37,960 [79] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:36:37,960 [79] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:36:37,960 [79] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:36:37,960 [79] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:36:37,960 [79] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:36:37,960 [79] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:36:37,960 [79] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:36:37,960 [79] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:36:37,960 [79] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:36:37,960 [79] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:36:37,960 [79] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:36:37,960 [79] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:36:37,960 [79] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:36:37,960 [79] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:36:37,960 [79] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:36:44,912 [157] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+DeleteCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:36:44,912 [157] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+DeleteCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:36:44,922 [157] ERROR NHibernate.AdoNet.AbstractBatcher - Could not execute query: SELECT skus0_.SkuId as skuid8_5_1_, skus0_.Id as id1_5_1_, skus0_.Id as id1_5_0_, skus0_.SKUsName as skusname2_5_0_, skus0_.CreatedBy as createdby3_5_0_, skus0_.CreatedDate as createddate4_5_0_, skus0_.ModifyBy as modifyby5_5_0_, skus0_.ModifyDate as modifydate6_5_0_, skus0_.TypeId as typeid7_5_0_ FROM SKU skus0_ WHERE skus0_.SkuId=@p0
+System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'SkuId'.
+Invalid column name 'SkuId'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at NHibernate.AdoNet.AbstractBatcher.DoExecuteReader(DbCommand cmd)
+ClientConnectionId:31b89f48-5d9d-4059-a465-0510453ff1e0
+Error Number:207,State:1,Class:16
+2024-08-21 17:36:44,924 [157] WARN  NHibernate.Util.ADOExceptionReporter - Invalid column name 'SkuId'.
+Invalid column name 'SkuId'.
+System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'SkuId'.
+Invalid column name 'SkuId'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at NHibernate.AdoNet.AbstractBatcher.DoExecuteReader(DbCommand cmd)
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(DbCommand cmd)
+   at NHibernate.Loader.Loader.GetResultSet(DbCommand st, QueryParameters queryParameters, ISessionImplementor session, IResultTransformer forcedResultTransformer)
+ClientConnectionId:31b89f48-5d9d-4059-a465-0510453ff1e0
+Error Number:207,State:1,Class:16
+2024-08-21 17:36:44,925 [157] ERROR NHibernate.Util.ADOExceptionReporter - Invalid column name 'SkuId'.
+Invalid column name 'SkuId'.
+2024-08-21 17:36:44,927 [157] WARN  NHibernate.Util.ADOExceptionReporter - Invalid column name 'SkuId'.
+Invalid column name 'SkuId'.
+System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'SkuId'.
+Invalid column name 'SkuId'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at NHibernate.AdoNet.AbstractBatcher.DoExecuteReader(DbCommand cmd)
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(DbCommand cmd)
+   at NHibernate.Loader.Loader.GetResultSet(DbCommand st, QueryParameters queryParameters, ISessionImplementor session, IResultTransformer forcedResultTransformer)
+   at NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer, QueryCacheResultBuilder queryCacheResultBuilder)
+   at NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer, QueryCacheResultBuilder queryCacheResultBuilder)
+   at NHibernate.Loader.Loader.LoadCollection(ISessionImplementor session, Object id, IType type)
+ClientConnectionId:31b89f48-5d9d-4059-a465-0510453ff1e0
+Error Number:207,State:1,Class:16
+2024-08-21 17:36:44,927 [157] ERROR NHibernate.Util.ADOExceptionReporter - Invalid column name 'SkuId'.
+Invalid column name 'SkuId'.
+2024-08-21 17:36:44,943 [157] ERROR IMS.Service.ProductTypeService - NHibernate.Exceptions.GenericADOException: could not initialize a collection: [IMS.Entity.Entities.ProductType.SKUs#38][SQL: SELECT skus0_.SkuId as skuid8_5_1_, skus0_.Id as id1_5_1_, skus0_.Id as id1_5_0_, skus0_.SKUsName as skusname2_5_0_, skus0_.CreatedBy as createdby3_5_0_, skus0_.CreatedDate as createddate4_5_0_, skus0_.ModifyBy as modifyby5_5_0_, skus0_.ModifyDate as modifydate6_5_0_, skus0_.TypeId as typeid7_5_0_ FROM SKU skus0_ WHERE skus0_.SkuId=?] ---> System.Data.SqlClient.SqlException: Invalid column name 'SkuId'.
+Invalid column name 'SkuId'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at NHibernate.AdoNet.AbstractBatcher.DoExecuteReader(DbCommand cmd)
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(DbCommand cmd)
+   at NHibernate.Loader.Loader.GetResultSet(DbCommand st, QueryParameters queryParameters, ISessionImplementor session, IResultTransformer forcedResultTransformer)
+   at NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer, QueryCacheResultBuilder queryCacheResultBuilder)
+   at NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer, QueryCacheResultBuilder queryCacheResultBuilder)
+   at NHibernate.Loader.Loader.LoadCollection(ISessionImplementor session, Object id, IType type)
+   --- End of inner exception stack trace ---
+   at IMS.Service.ProductTypeService.<DeleteAsync>d__10.MoveNext() in C:\Users\User\Desktop\IMSMainProject\New folder\ims-soh\IMS.Service\ProductTypeService.cs:line 232
+2024-08-21 17:36:44,961 [157] ERROR IMS.WEB.Controllers.HomeController - could not initialize a collection: [IMS.Entity.Entities.ProductType.SKUs#38][SQL: SELECT skus0_.SkuId as skuid8_5_1_, skus0_.Id as id1_5_1_, skus0_.Id as id1_5_0_, skus0_.SKUsName as skusname2_5_0_, skus0_.CreatedBy as createdby3_5_0_, skus0_.CreatedDate as createddate4_5_0_, skus0_.ModifyBy as modifyby5_5_0_, skus0_.ModifyDate as modifydate6_5_0_, skus0_.TypeId as typeid7_5_0_ FROM SKU skus0_ WHERE skus0_.SkuId=?]
+2024-08-21 17:36:50,602 [154] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+DeleteCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:36:50,602 [154] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+DeleteCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:36:50,603 [154] ERROR NHibernate.AdoNet.AbstractBatcher - Could not execute query: SELECT skus0_.SkuId as skuid8_5_1_, skus0_.Id as id1_5_1_, skus0_.Id as id1_5_0_, skus0_.SKUsName as skusname2_5_0_, skus0_.CreatedBy as createdby3_5_0_, skus0_.CreatedDate as createddate4_5_0_, skus0_.ModifyBy as modifyby5_5_0_, skus0_.ModifyDate as modifydate6_5_0_, skus0_.TypeId as typeid7_5_0_ FROM SKU skus0_ WHERE skus0_.SkuId=@p0
+System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'SkuId'.
+Invalid column name 'SkuId'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at NHibernate.AdoNet.AbstractBatcher.DoExecuteReader(DbCommand cmd)
+ClientConnectionId:31b89f48-5d9d-4059-a465-0510453ff1e0
+Error Number:207,State:1,Class:16
+2024-08-21 17:36:50,603 [154] WARN  NHibernate.Util.ADOExceptionReporter - Invalid column name 'SkuId'.
+Invalid column name 'SkuId'.
+System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'SkuId'.
+Invalid column name 'SkuId'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at NHibernate.AdoNet.AbstractBatcher.DoExecuteReader(DbCommand cmd)
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(DbCommand cmd)
+   at NHibernate.Loader.Loader.GetResultSet(DbCommand st, QueryParameters queryParameters, ISessionImplementor session, IResultTransformer forcedResultTransformer)
+ClientConnectionId:31b89f48-5d9d-4059-a465-0510453ff1e0
+Error Number:207,State:1,Class:16
+2024-08-21 17:36:50,603 [154] ERROR NHibernate.Util.ADOExceptionReporter - Invalid column name 'SkuId'.
+Invalid column name 'SkuId'.
+2024-08-21 17:36:50,604 [154] WARN  NHibernate.Util.ADOExceptionReporter - Invalid column name 'SkuId'.
+Invalid column name 'SkuId'.
+System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'SkuId'.
+Invalid column name 'SkuId'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at NHibernate.AdoNet.AbstractBatcher.DoExecuteReader(DbCommand cmd)
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(DbCommand cmd)
+   at NHibernate.Loader.Loader.GetResultSet(DbCommand st, QueryParameters queryParameters, ISessionImplementor session, IResultTransformer forcedResultTransformer)
+   at NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer, QueryCacheResultBuilder queryCacheResultBuilder)
+   at NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer, QueryCacheResultBuilder queryCacheResultBuilder)
+   at NHibernate.Loader.Loader.LoadCollection(ISessionImplementor session, Object id, IType type)
+ClientConnectionId:31b89f48-5d9d-4059-a465-0510453ff1e0
+Error Number:207,State:1,Class:16
+2024-08-21 17:36:50,604 [154] ERROR NHibernate.Util.ADOExceptionReporter - Invalid column name 'SkuId'.
+Invalid column name 'SkuId'.
+2024-08-21 17:36:50,635 [154] ERROR IMS.Service.ProductTypeService - NHibernate.Exceptions.GenericADOException: could not initialize a collection: [IMS.Entity.Entities.ProductType.SKUs#38][SQL: SELECT skus0_.SkuId as skuid8_5_1_, skus0_.Id as id1_5_1_, skus0_.Id as id1_5_0_, skus0_.SKUsName as skusname2_5_0_, skus0_.CreatedBy as createdby3_5_0_, skus0_.CreatedDate as createddate4_5_0_, skus0_.ModifyBy as modifyby5_5_0_, skus0_.ModifyDate as modifydate6_5_0_, skus0_.TypeId as typeid7_5_0_ FROM SKU skus0_ WHERE skus0_.SkuId=?] ---> System.Data.SqlClient.SqlException: Invalid column name 'SkuId'.
+Invalid column name 'SkuId'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at NHibernate.AdoNet.AbstractBatcher.DoExecuteReader(DbCommand cmd)
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(DbCommand cmd)
+   at NHibernate.Loader.Loader.GetResultSet(DbCommand st, QueryParameters queryParameters, ISessionImplementor session, IResultTransformer forcedResultTransformer)
+   at NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer, QueryCacheResultBuilder queryCacheResultBuilder)
+   at NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer, QueryCacheResultBuilder queryCacheResultBuilder)
+   at NHibernate.Loader.Loader.LoadCollection(ISessionImplementor session, Object id, IType type)
+   --- End of inner exception stack trace ---
+   at IMS.Service.ProductTypeService.<DeleteAsync>d__10.MoveNext() in C:\Users\User\Desktop\IMSMainProject\New folder\ims-soh\IMS.Service\ProductTypeService.cs:line 232
+2024-08-21 17:36:50,643 [154] ERROR IMS.WEB.Controllers.HomeController - could not initialize a collection: [IMS.Entity.Entities.ProductType.SKUs#38][SQL: SELECT skus0_.SkuId as skuid8_5_1_, skus0_.Id as id1_5_1_, skus0_.Id as id1_5_0_, skus0_.SKUsName as skusname2_5_0_, skus0_.CreatedBy as createdby3_5_0_, skus0_.CreatedDate as createddate4_5_0_, skus0_.ModifyBy as modifyby5_5_0_, skus0_.ModifyDate as modifydate6_5_0_, skus0_.TypeId as typeid7_5_0_ FROM SKU skus0_ WHERE skus0_.SkuId=?]
+2024-08-21 17:45:21,100 [156] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [156] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [156] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [156] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [156] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [156] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [156] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [156] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [156] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [156] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [156] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [156] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [156] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [156] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [156] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [156] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [156] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [156] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [156] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [156] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [156] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [156] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [156] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [156] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [29] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [99] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [99] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [99] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [99] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [99] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [99] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [99] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [99] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [99] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [99] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [99] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [99] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [99] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [99] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [99] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [99] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [99] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [99] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [99] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [99] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [99] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [99] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [99] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [99] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [29] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [29] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [29] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [29] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [29] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [29] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [29] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [29] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [29] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [29] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [29] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [29] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [29] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [29] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [29] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [29] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [29] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [29] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [29] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [29] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:21,100 [29] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [29] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:21,100 [29] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:29,593 [156] INFO  NHibernate.Engine.Cascade - processing cascade NHibernate.Engine.CascadingAction+DeleteCascadingAction for: IMS.Entity.Entities.ProductType
+2024-08-21 17:45:29,593 [156] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+DeleteCascadingAction for collection: IMS.Entity.Entities.ProductType.SKUs
+2024-08-21 17:45:29,594 [156] ERROR NHibernate.AdoNet.AbstractBatcher - Could not execute query: SELECT skus0_.SkuId as skuid8_5_1_, skus0_.Id as id1_5_1_, skus0_.Id as id1_5_0_, skus0_.SKUsName as skusname2_5_0_, skus0_.CreatedBy as createdby3_5_0_, skus0_.CreatedDate as createddate4_5_0_, skus0_.ModifyBy as modifyby5_5_0_, skus0_.ModifyDate as modifydate6_5_0_, skus0_.TypeId as typeid7_5_0_ FROM SKU skus0_ WHERE skus0_.SkuId=@p0
+System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'SkuId'.
+Invalid column name 'SkuId'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at NHibernate.AdoNet.AbstractBatcher.DoExecuteReader(DbCommand cmd)
+ClientConnectionId:31b89f48-5d9d-4059-a465-0510453ff1e0
+Error Number:207,State:1,Class:16
+2024-08-21 17:45:29,594 [156] WARN  NHibernate.Util.ADOExceptionReporter - Invalid column name 'SkuId'.
+Invalid column name 'SkuId'.
+System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'SkuId'.
+Invalid column name 'SkuId'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at NHibernate.AdoNet.AbstractBatcher.DoExecuteReader(DbCommand cmd)
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(DbCommand cmd)
+   at NHibernate.Loader.Loader.GetResultSet(DbCommand st, QueryParameters queryParameters, ISessionImplementor session, IResultTransformer forcedResultTransformer)
+ClientConnectionId:31b89f48-5d9d-4059-a465-0510453ff1e0
+Error Number:207,State:1,Class:16
+2024-08-21 17:45:29,594 [156] ERROR NHibernate.Util.ADOExceptionReporter - Invalid column name 'SkuId'.
+Invalid column name 'SkuId'.
+2024-08-21 17:45:29,594 [156] WARN  NHibernate.Util.ADOExceptionReporter - Invalid column name 'SkuId'.
+Invalid column name 'SkuId'.
+System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'SkuId'.
+Invalid column name 'SkuId'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at NHibernate.AdoNet.AbstractBatcher.DoExecuteReader(DbCommand cmd)
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(DbCommand cmd)
+   at NHibernate.Loader.Loader.GetResultSet(DbCommand st, QueryParameters queryParameters, ISessionImplementor session, IResultTransformer forcedResultTransformer)
+   at NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer, QueryCacheResultBuilder queryCacheResultBuilder)
+   at NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer, QueryCacheResultBuilder queryCacheResultBuilder)
+   at NHibernate.Loader.Loader.LoadCollection(ISessionImplementor session, Object id, IType type)
+ClientConnectionId:31b89f48-5d9d-4059-a465-0510453ff1e0
+Error Number:207,State:1,Class:16
+2024-08-21 17:45:29,594 [156] ERROR NHibernate.Util.ADOExceptionReporter - Invalid column name 'SkuId'.
+Invalid column name 'SkuId'.
+2024-08-21 17:45:29,614 [156] ERROR IMS.Service.ProductTypeService - NHibernate.Exceptions.GenericADOException: could not initialize a collection: [IMS.Entity.Entities.ProductType.SKUs#38][SQL: SELECT skus0_.SkuId as skuid8_5_1_, skus0_.Id as id1_5_1_, skus0_.Id as id1_5_0_, skus0_.SKUsName as skusname2_5_0_, skus0_.CreatedBy as createdby3_5_0_, skus0_.CreatedDate as createddate4_5_0_, skus0_.ModifyBy as modifyby5_5_0_, skus0_.ModifyDate as modifydate6_5_0_, skus0_.TypeId as typeid7_5_0_ FROM SKU skus0_ WHERE skus0_.SkuId=?] ---> System.Data.SqlClient.SqlException: Invalid column name 'SkuId'.
+Invalid column name 'SkuId'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at NHibernate.AdoNet.AbstractBatcher.DoExecuteReader(DbCommand cmd)
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(DbCommand cmd)
+   at NHibernate.Loader.Loader.GetResultSet(DbCommand st, QueryParameters queryParameters, ISessionImplementor session, IResultTransformer forcedResultTransformer)
+   at NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer, QueryCacheResultBuilder queryCacheResultBuilder)
+   at NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies, IResultTransformer forcedResultTransformer, QueryCacheResultBuilder queryCacheResultBuilder)
+   at NHibernate.Loader.Loader.LoadCollection(ISessionImplementor session, Object id, IType type)
+   --- End of inner exception stack trace ---
+   at IMS.Service.ProductTypeService.<DeleteAsync>d__10.MoveNext() in C:\Users\User\Desktop\IMSMainProject\New folder\ims-soh\IMS.Service\ProductTypeService.cs:line 232
+2024-08-21 17:45:29,624 [156] ERROR IMS.WEB.Controllers.HomeController - could not initialize a collection: [IMS.Entity.Entities.ProductType.SKUs#38][SQL: SELECT skus0_.SkuId as skuid8_5_1_, skus0_.Id as id1_5_1_, skus0_.Id as id1_5_0_, skus0_.SKUsName as skusname2_5_0_, skus0_.CreatedBy as createdby3_5_0_, skus0_.CreatedDate as createddate4_5_0_, skus0_.ModifyBy as modifyby5_5_0_, skus0_.ModifyDate as modifydate6_5_0_, skus0_.TypeId as typeid7_5_0_ FROM SKU skus0_ WHERE skus0_.SkuId=?]

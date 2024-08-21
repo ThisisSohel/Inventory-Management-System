@@ -200,6 +200,13 @@
                                     </div>`
         }
 
+        $('#createModal').on('hidden.bs.modal', function () {
+            $(this).find('input[type="text"]').val('');
+            $(this).find('.name_validation').text('');
+            $(this).find('.description_validation').text('');
+        });
+
+
         function createNewFun() {
             $("#createModal").modal('show')
         }
@@ -410,6 +417,12 @@
 
         }
 
+        //reset the updateMoadl validation message befor loading the data to the update modal.
+        function updateModalValidationMessageReset() {
+            $(".name_validation").empty();
+            $(".description_validation").empty();
+        }
+
         function Update(updateId) {
             $("#updateModal").modal('show');
 
@@ -419,7 +432,7 @@
                 type: 'GET',
                 data: { id: updateId },
                 success: function (response) {
-                    console.log(response)
+                    updateModalValidationMessageReset();
                     if (response.IsSuccess == true) {
                         $("#updateId").val(response.UpdateCategoryData.Id);
                         $("#updateNameId").val(response.UpdateCategoryData.CategoryName);

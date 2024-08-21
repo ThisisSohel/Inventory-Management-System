@@ -57,15 +57,17 @@
                     <div class="row mb-3">
                         <label for="TypeName" class="col-sm-3 col-form-label text-start" style="color:black;">Type Name</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="TypeName" name="TypeName" placeholder="Enter the type" style="background-color:#f5f5f5">
+                            <input type="text" class="form-control name" id="TypeName" name="TypeName" placeholder="Enter the type" style="background-color:#f5f5f5">
+                            <span class="text-danger text-center name_validation" id="name_validation"></span>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="CategoryDropdown" class="col-sm-3 col-form-label text-start" style="color:black;">Category</label>
                         <div class="col-sm-9">
                             <select class="form-select category_dropdown_name" id="CategoryDropdown" name="CategoryId" style="background-color: #f5f5f5">
-                                <option selected disabled>Choose a Category</option>
+                                <option selected disabled value="">Choose a Category</option>
                             </select>
+                            <span class="text-danger text-center category_validation" id="type_validation"></span>
                         </div>
                     </div>
                     <div class="row">
@@ -149,7 +151,8 @@
                     <div class="row mb-3">
                         <label for="CategoryName" class="col-sm-3 col-form-label text-start" style="color:black;">Type Name</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="updateNameId" name="TypeName" style="background-color:#f5f5f5">
+                            <input type="text" class="form-control name" id="updateNameId" name="TypeName" style="background-color:#f5f5f5">
+                            <span class="text-danger text-center name_validation" id="name_validation"></span>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -159,6 +162,7 @@
                                 <option selected disabled>Choose a Category</option>
                             </select>
                         </div>
+                        <span class="text-danger text-center category_validation" id="type_validation"></span>
                     </div>
                     <div class="row">
                         <div class="col text-center">
@@ -198,6 +202,12 @@
                                         </div>`
         }
 
+        $('#createModal').on('hidden.bs.modal', function () {
+            $(this).find('input[type="text"]').val('');
+            $(this).find('.name_validation').text('');
+            $(this).find('.category_validation').text('');
+        });
+
         function loadCategories() {
             $.ajax({
                 url: "/Category/LoadCategoryData", 
@@ -213,7 +223,7 @@
                     else {
                         var dropdown = $('.category_dropdown_name');
                         dropdown.empty();
-                        dropdown.append('<option selected disabled>Choose a Category</option>');
+                        dropdown.append('<option selected disabled value="">Choose a Category</option>');
 
                         $.each(response.data, function (index, category) {
                             var newDropDownData = `
@@ -238,21 +248,61 @@
             loadCategories();
         }
 
+        function nameValidator(name) {
+
+            const regex = new RegExp("^[a-zA-Z ]+$");
+            isValid = true;
+
+            if (name.trim().length == 0) {
+                $(".name_validation").text("Name can not be empty!");
+                isValid = false;
+            } else if (!regex.test(name)) {
+                $(".name_validation").text("Name contains only alphabetic characters!");
+                isValid = false;
+            } else if (name.trim().length > 30 || name.trim().length < 3) {
+                $(".name_validation").text("Length should be in between 3 to 30!");
+                isValid = false;
+            } else {
+                $(".name_validation").text("");
+            }
+
+            return isValid;
+        }
+
+        function categoryValidator(id) {
+
+            isValid = true;
+
+            if (id == "") {
+                $(".category_validation").text("Please select a product type!");
+                isValid = false;
+            } else {
+                $(".category_validation").text("");
+            }
+
+            return isValid;
+        }
+
+        $(".name").on('change input propertychange', function () {
+            const name = $(this).val();
+            nameValidator(name);
+        });
+
         function DataBinding() {
 
-            //categoryList = [];
             const name = $("#TypeName").val();
             const categoryId = $(".category_dropdown_name").find(":selected").val();
 
-            //categoryList.push({
-            //    CategoryName: category
-            //});
+            const isNameValid = nameValidator(name);
+            const isTypeValid = categoryValidator(categoryId);
 
-            const obj = {
-                TypeName: name,
-                CategoryId: categoryId
+            if (isNameValid && isTypeValid) {
+                const obj = {
+                    TypeName: name,
+                    CategoryId: categoryId
+                }
+                submitData(obj);
             }
-            return obj;
         }
 
         function submitData(obj) {
@@ -351,6 +401,11 @@
 
         }
 
+        function updateModalValidationMessageReset() {
+            $(".name_validation").empty();
+            $(".category_validation").empty();
+        }
+
         function Update(updateId) {
             $("#updateModal").modal('show');
 
@@ -360,6 +415,7 @@
                 type: 'GET',
                 data: { id: updateId },
                 success: function (response) {
+                    updateModalValidationMessageReset();
                     if (response.IsSuccess == true) {
                         $("#updateId").val(response.UpdateProductTypeData.Id);
                         $("#updateNameId").val(response.UpdateProductTypeData.TypeName);
@@ -385,38 +441,43 @@
                 const name = $("#updateNameId").val();
                 const categoryId = $(".selected").find(":selected").val();
 
+                const isNameValid = nameValidator(name);
+                const isTypeValid = categoryValidator(categoryId);
 
-                var formdata = {
-                    Id: id,
-                    TypeName: name,
-                    CategoryId: categoryId
-                }
+                if (isNameValid && isTypeValid) {
+                    const formdata = {
+                        Id: id,
+                        TypeName: name,
+                        CategoryId: categoryId
+                    }
 
-                $.ajax({
-                    url: "/ProductType/UpdateAsync",
-                    dataType: 'json',
-                    type: 'POST',
-                    data: { id: formdata.Id, productTypeUpdateViewModel: formdata },
-                    success: function (response) {
-                        if (response.IsSuccess == true) {
-                            const msgAlertMake = showSuccessAlertMessage(response.Message);
+                    $.ajax({
+                        url: "/ProductType/UpdateAsync",
+                        dataType: 'json',
+                        type: 'POST',
+                        data: { id: formdata.Id, productTypeUpdateViewModel: formdata },
+                        success: function (response) {
+                            if (response.IsSuccess == true) {
+                                const msgAlertMake = showSuccessAlertMessage(response.Message);
 
-                            $("#successMessageShow").html(msgAlertMake);
-                            $("#updateModal").modal('hide');
+                                $("#successMessageShow").html(msgAlertMake);
+                                $("#updateModal").modal('hide');
 
-                            DataTableLoad();
-                        } else {
-                            const msgAlertMake = showErrorAlertMessage(response.Message);
+                                DataTableLoad();
+                            } else {
+                                const msgAlertMake = showErrorAlertMessage(response.Message);
+                                $("#errorMessageShow").html(msgAlertMake);
+                                $("#updateModal").modal('hide');
+                            }
+                        },
+                        error: function (error) {
+                            const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
                             $("#errorMessageShow").html(msgAlertMake);
                             $("#updateModal").modal('hide');
                         }
-                    },
-                    error: function (error) {
-                        const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
-                        $("#errorMessageShow").html(msgAlertMake);
-                        $("#updateModal").modal('hide');
-                    }
-                });
+                    });
+                }
+
             });
         }
 
@@ -428,10 +489,7 @@
 
 
             $("#submitId").click(function () {
-
-                var formData = DataBinding();
-                submitData(formData);
-
+                DataBinding();
             });
         })
 

@@ -66,19 +66,23 @@
                     <div class="row mb-3">
                         <label for="SupplierName" class="col-sm-3 col-form-label text-start" style="color:black;">Supplier Name</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="SupplierName" name="SupplierName" placeholder="Enter supplier name" style="background-color:#f5f5f5">
+                            <input type="text" class="form-control name" id="SupplierName" name="SupplierName" placeholder="Enter supplier name" style="background-color:#f5f5f5">
+                            <span class="text-danger name_validation" style="display: block; text-align: left; padding-top: 5px;"></span>
                         </div>
                         <label for="SupplierNumber" class="col-sm-3 col-form-label text-start" style="color:black;">Supplier Number</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="SupplierNumber" name="SupplierNumber" placeholder="Enter supplier number" style="background-color:#f5f5f5">
+                            <input type="text" class="form-control number" id="SupplierNumber" name="SupplierNumber" placeholder="Enter supplier number" style="background-color:#f5f5f5">
+                            <span class="text-danger number_validation" style="display: block; text-align: left; padding-top: 5px;"></span>
                         </div>
                         <label for="EmailAddress" class="col-sm-3 col-form-label text-start" style="color:black;">Supplier Email</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="EmailAddress" name="EmailAddress" placeholder="Enter customer email" style="background-color:#f5f5f5">
+                            <input type="text" class="form-control email_address" id="EmailAddress" name="EmailAddress" placeholder="Enter customer email" style="background-color:#f5f5f5">
+                            <span class="text-danger email_validation" style="display: block; text-align: left; padding-top: 5px;"></span>
                         </div>
                         <label for="SupplierAddress" class="col-sm-3 col-form-label text-start" style="color:black;">Supplier Address</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="SupplierAddress" name="SupplierAddress" placeholder="Enter supplier address" style="background-color:#f5f5f5">
+                            <input type="text" class="form-control address" id="SupplierAddress" name="SupplierAddress" placeholder="Enter supplier address" style="background-color:#f5f5f5">
+                            <span class="text-danger address_validation" style="display: block; text-align: left; padding-top: 5px;"></span>
                         </div>
                     </div>
                     <div class="row">
@@ -162,19 +166,23 @@
                         <div class="row mb-3">
                             <label for="SupplierName" class="col-sm-3 col-form-label text-start" style="color:black;">Supplier Name</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="updateSupplierName" name="SupplierName" style="background-color:#f5f5f5">
+                                <input type="text" class="form-control name" id="updateSupplierName" name="SupplierName" style="background-color:#f5f5f5">
+                                <span class="text-danger name_validation" style="display: block; text-align: left; padding-top: 5px;"></span>
                             </div>
                             <label for="SupplierNumber" class="col-sm-3 col-form-label text-start" style="color:black;">Supplier Number</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="updateSupplierNumber" name="SupplierNumber" style="background-color:#f5f5f5">
+                                <input type="text" class="form-control number" id="updateSupplierNumber" name="SupplierNumber" style="background-color:#f5f5f5">
+                                <span class="text-danger number_validation" style="display: block; text-align: left; padding-top: 5px;"></span>
                             </div>
                             <label for="EmailAddress" class="col-sm-3 col-form-label text-start" style="color:black;">Supplier Email</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="updateEmailAddress" name="EmailAddress" style="background-color:#f5f5f5">
+                                <input type="text" class="form-control email_address" id="updateEmailAddress" name="EmailAddress" style="background-color:#f5f5f5">
+                                <span class="text-danger email_validation" style="display: block; text-align: left; padding-top: 5px;"></span>
                             </div>
                             <label for="CustomerAddress" class="col-sm-3 col-form-label text-start" style="color:black;">Supplier Address</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="updateSupplierAddress" name="SupplierAddress" style="background-color:#f5f5f5">
+                                <input type="text" class="form-control address" id="updateSupplierAddress" name="SupplierAddress" style="background-color:#f5f5f5">
+                                <span class="text-danger address_validation" style="display: block; text-align: left; padding-top: 5px;"></span>
                             </div>
                         </div>
                     </div>
@@ -216,9 +224,118 @@
                             </div>`
         }
 
+        //Clear create modal after closing the modal
+        $('#createModal').on('hidden.bs.modal', function () {
+            $(this).find('input[type="text"]').val('');
+            $(this).find('.name_validation').text('');
+            $(this).find('.number_validation').text('');
+            $(this).find('.email_validation').text('');
+            $(this).find('.address_validation').text('');
+        });
+
         function createNewFun() {
             $("#createModal").modal('show')
         }
+
+        // method to validate customer name
+        function nameValidator(name) {
+            const regex = new RegExp("^[a-zA-Z ]+$");
+            isValid = true;
+
+            if (name.trim().length == 0) {
+                $(".name_validation").text("Name cannot be empty!");
+                isValid = false;
+            } else if (!regex.test(name)) {
+                $(".name_validation").text("Name should contain only alphabetic characters!");
+                isValid = false;
+            } else if (name.trim().length < 3 || name.trim().length > 30) {
+                $(".name_validation").text("Length should be between 3 and 30 characters!");
+                isValid = false;
+            } else {
+                $(".name_validation").text("");
+            }
+
+            return isValid;
+        }
+
+        // method to validate customer number
+        function numberValidator(number) {
+            const regex = new RegExp("^[0-9]+$");
+            isValid = true;
+
+            if (number.trim().length == 0) {
+                $(".number_validation").text("Number cannot be empty!");
+                isValid = false;
+            } else if (!regex.test(number)) {
+                $(".number_validation").text("Number should contain only digits!");
+                isValid = false;
+            } else if (number.trim().length > 18 || number.trim().length < 11) {
+                $(".number_validation").text("Length should be between 11 to 18!");
+                isValid = false;
+            } else {
+                $(".number_validation").text("");
+            }
+
+            return isValid;
+        }
+
+        // method to validate email address
+        function emailValidator(email) {
+            isValid = true;
+            emailExp = /^([a-zA-Z0-9_\.\-])+\@('@')(([a-zA-Z0-9\-])+\.)+([com\co\.\in])+$/;
+
+
+            if (email.trim().length == 0) {
+                $(".email_validation").text("Email cannot be empty!");
+                isValid = false;
+            } else if (!email.match(emailExp)) {
+                $(".email_validation").text("Email is not valid!");
+                isValid = false;
+            } else {
+                $(".email_validation").text("");
+            }
+
+            return isValid;
+        }
+
+        // method to validate customer address
+        function addressValidator(address) {
+            isValid = true;
+
+            if (address.trim().length == 0) {
+                $(".address_validation").text("Address cannot be empty!");
+                isValid = false;
+            } else if (address.trim().length > 225 || address.trim().length < 10) {
+                $(".address_validation").text("Length should be between 10 to 225!");
+                isValid = false;
+            } else {
+                $(".address_validation").text("");
+            }
+
+            return isValid;
+        }
+
+
+        $(".name").on('change input propertychange', function () {
+            const name = $(this).val();
+            nameValidator(name);
+        });
+
+        $(".number").on('change input propertychange', function () {
+            const number = $(this).val();
+            numberValidator(number);
+        });
+
+        $(".email_address").on('change input propertychange', function () {
+            const email = $(this).val();
+            emailValidator(email);
+        });
+
+        $(".address").on('change input propertychange', function () {
+            const address = $(this).val();
+            addressValidator(address);
+        });
+
 
         function DataBinding() {
             const name = $("#SupplierName").val();
@@ -226,13 +343,21 @@
             const email = $("#EmailAddress").val();
             const address = $("#SupplierAddress").val();
 
-            const obj = {
-                SupplierName: name,
-                SupplierNumber: number,
-                EmailAddress: email,
-                SupplierAddress: address
+            const isNameValid = nameValidator(name);
+            const isNumberValid = numberValidator(number);
+            const isEmailValid = emailValidator(email);
+            const isAddressValid = addressValidator(address);
+
+
+            if (isNameValid && isNumberValid && isEmailValid && isAddressValid) {
+                const obj = {
+                    SupplierName: name,
+                    SupplierNumber: number,
+                    EmailAddress: email,
+                    SupplierAddress: address
+                };
+                submitData(obj);
             }
-            return obj;
         }
 
         function submitData(obj) {
@@ -333,6 +458,13 @@
 
         }
 
+        //reset the updateMoadl validation message befor loading the data to the update modal.
+        function updateModalValidationMessageReset() {
+            $(".name_validation").empty();
+            $(".number_validation").empty();
+            $(".email_validation").empty();
+            $(".address_validation").empty();
+        }
 
         function Update(updateId) {
             $("#updateModal").modal('show');
@@ -343,7 +475,7 @@
                 type: 'GET',
                 data: { id: updateId },
                 success: function (response) {
-                    console.log(response)
+                    updateModalValidationMessageReset();
                     if (response.IsSuccess) {
                         $("#updateId").val(response.UpdateSupplierData.Id);
                         $("#updateSupplierName").val(response.UpdateSupplierData.SupplierName);
@@ -373,38 +505,45 @@
                 const email = $("#updateEmailAddress").val();
                 const address = $("#updateSupplierAddress").val();
 
-                var formdata = {
-                    Id: id,
-                    SupplierName: name,
-                    SupplierNumber: number,
-                    EmailAddress: email,
-                    SupplierAddress: address
-                }
+                const isNameValid = nameValidator(name);
+                const isNumberValid = numberValidator(number);
+                const isEmailValid = emailValidator(email);
+                const isAddressValid = addressValidator(address);
 
-                $.ajax({
-                    url: "/Supplier/Update",
-                    dataType: 'json',
-                    type: 'POST',
-                    data: { id: formdata.Id, supplierViewModel: formdata },
-                    success: function (response) {
-                        if (response.IsSuccess == true) {
-                            const msgAlertMake = showSuccessAlertMessage(response.Message);
-                            $("#successMessageShow").html(msgAlertMake);
-                            $("#updateModal").modal('hide');
-                            const table = $("#InfoTable").DataTable();
-                            table.ajax.reload();
-                        } else {
-                            const msgAlertMake = showErrorAlertMessage(response.Message);
+                if (isNameValid && isNumberValid && isEmailValid && isAddressValid) {
+                    const formdata = {
+                        Id: id,
+                        SupplierName: name,
+                        SupplierNumber: number,
+                        EmailAddress: email,
+                        SupplierAddress: address
+                    }
+
+                    $.ajax({
+                        url: "/Supplier/Update",
+                        dataType: 'json',
+                        type: 'POST',
+                        data: { id: formdata.Id, supplierViewModel: formdata },
+                        success: function (response) {
+                            if (response.IsSuccess == true) {
+                                const msgAlertMake = showSuccessAlertMessage(response.Message);
+                                $("#successMessageShow").html(msgAlertMake);
+                                $("#updateModal").modal('hide');
+                                const table = $("#InfoTable").DataTable();
+                                table.ajax.reload();
+                            } else {
+                                const msgAlertMake = showErrorAlertMessage(response.Message);
+                                $("#errorMessageShow").html(msgAlertMake);
+                                $("#updateModal").modal('hide');
+                            }
+                        },
+                        error: function (error) {
+                            const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
                             $("#errorMessageShow").html(msgAlertMake);
                             $("#updateModal").modal('hide');
                         }
-                    },
-                    error: function (error) {
-                        const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
-                        $("#errorMessageShow").html(msgAlertMake);
-                        $("#updateModal").modal('hide');
-                    }
-                });
+                    });
+                }
             });
         }
 
@@ -444,10 +583,7 @@
                 });
 
             $("#submitId").click(function () {
-
-                var formData = DataBinding();
-                submitData(formData);
-
+                DataBinding();
             });
         })
 

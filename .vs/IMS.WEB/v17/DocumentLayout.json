@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AA73D6AC-391E-495A-AA13-06CBF31DC5B3}|IMS.WEB\\IMS.WEB.csproj|c:\\users\\user\\desktop\\imsmainproject\\new folder\\ims-soh\\ims.web\\views\\customer\\load.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{AA73D6AC-391E-495A-AA13-06CBF31DC5B3}|IMS.WEB\\IMS.WEB.csproj|solutionrelative:ims.web\\views\\customer\\load.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{AA73D6AC-391E-495A-AA13-06CBF31DC5B3}|IMS.WEB\\IMS.WEB.csproj|c:\\users\\user\\desktop\\imsmainproject\\new folder\\ims-soh\\ims.web\\views\\producttype\\loadall.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AA73D6AC-391E-495A-AA13-06CBF31DC5B3}|IMS.WEB\\IMS.WEB.csproj|solutionrelative:ims.web\\views\\producttype\\loadall.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +14,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Load.cshtml",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.WEB\\Views\\Customer\\Load.cshtml",
-              "RelativeDocumentMoniker": "IMS.WEB\\Views\\Customer\\Load.cshtml",
-              "ToolTip": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.WEB\\Views\\Customer\\Load.cshtml",
-              "RelativeToolTip": "IMS.WEB\\Views\\Customer\\Load.cshtml",
-              "ViewState": "AQIAACgBAAAAAAAAAAAAACsBAAAAAAAA",
+              "Title": "LoadAll.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.WEB\\Views\\ProductType\\LoadAll.cshtml",
+              "RelativeDocumentMoniker": "IMS.WEB\\Views\\ProductType\\LoadAll.cshtml",
+              "ToolTip": "C:\\Users\\User\\Desktop\\IMSMainProject\\New folder\\ims-soh\\IMS.WEB\\Views\\ProductType\\LoadAll.cshtml",
+              "RelativeToolTip": "IMS.WEB\\Views\\ProductType\\LoadAll.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-20T16:53:18.613Z",
+              "WhenOpened": "2024-08-21T11:27:08.199Z",
               "EditorCaption": ""
             }
           ]
