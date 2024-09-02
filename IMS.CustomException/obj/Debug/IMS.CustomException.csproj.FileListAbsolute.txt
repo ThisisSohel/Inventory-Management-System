@@ -10,3 +10,9 @@ F:\Professional Project\New folder (6)\ims-soh\IMS.CustomException\obj\Debug\IMS
 F:\Professional Project\New folder (6)\ims-soh\IMS.CustomException\obj\Debug\IMS.CustomException.csproj.CoreCompileInputs.cache
 F:\Professional Project\New folder (6)\ims-soh\IMS.CustomException\obj\Debug\IMS.CustomException.dll
 F:\Professional Project\New folder (6)\ims-soh\IMS.CustomException\obj\Debug\IMS.CustomException.pdb
+F:\Professional Project\New folder\ims-soh\IMS.CustomException\bin\Debug\IMS.CustomException.dll
+F:\Professional Project\New folder\ims-soh\IMS.CustomException\bin\Debug\IMS.CustomException.pdb
+F:\Professional Project\New folder\ims-soh\IMS.CustomException\obj\Debug\IMS.CustomException.csproj.AssemblyReference.cache
+F:\Professional Project\New folder\ims-soh\IMS.CustomException\obj\Debug\IMS.CustomException.csproj.CoreCompileInputs.cache
+F:\Professional Project\New folder\ims-soh\IMS.CustomException\obj\Debug\IMS.CustomException.dll
+F:\Professional Project\New folder\ims-soh\IMS.CustomException\obj\Debug\IMS.CustomException.pdb

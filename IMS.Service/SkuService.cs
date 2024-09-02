@@ -121,7 +121,7 @@ namespace IMS.Service
                 {
                     foreach (var item in sku)
                     {
-                        if (skuViewModelEntity.SKUsName.Contains(item.SKUsName))
+                        if (skuViewModelEntity.SKUsName == item.SKUsName)
                         {
                             throw new DuplicateValueException("SKU name can not be duplicate!");
                         }

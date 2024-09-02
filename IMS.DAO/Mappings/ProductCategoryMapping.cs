@@ -25,6 +25,11 @@ namespace IMS.DAO.Mappings
                 .Cascade.All()
                 .Inverse()
                 .KeyColumn("CategoryId");
-        }
+
+			HasMany(x => x.Products)
+	            .Cascade.All()
+	            .Inverse()
+	            .KeyColumn("CategoryId");
+		}
     }
 }

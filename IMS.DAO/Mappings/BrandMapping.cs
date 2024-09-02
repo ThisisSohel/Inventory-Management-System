@@ -8,17 +8,22 @@ using IMS.Entity.Entities;
 
 namespace IMS.DAO.Mappings
 {
-    public class BrandMapping : ClassMap<Brand>
-    {
-         public BrandMapping()
-        {
-            Table("Brand");
-            Id(x => x.Id);
-            Map(x => x.BrandName);
-            Map(x => x.CreatedBy);
-            Map(x => x.CreatedDate);
-            Map(x => x.ModifyBy);
-            Map(x => x.ModifyDate);
-        }
-    }
+	public class BrandMapping : ClassMap<Brand>
+	{
+		public BrandMapping()
+		{
+			Table("Brand");
+			Id(x => x.Id);
+			Map(x => x.BrandName);
+			Map(x => x.CreatedBy);
+			Map(x => x.CreatedDate);
+			Map(x => x.ModifyBy);
+			Map(x => x.ModifyDate);
+
+			HasMany(x => x.Products)
+				.Cascade.All()
+				.Inverse()
+				.KeyColumn("BrandId");
+		}
+	}
 }

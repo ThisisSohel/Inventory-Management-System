@@ -60,6 +60,7 @@
     <Compile Include="EntityViewModels\ProductCategoryViewModel.cs" />
     <Compile Include="EntityViewModels\ProductTypeUpdateViewModel.cs" />
     <Compile Include="EntityViewModels\ProductTypeViewModel.cs" />
+    <Compile Include="EntityViewModels\ProductViewModels\ProductCreateViewModel.cs" />
     <Compile Include="EntityViewModels\SkuViewModel.cs" />
     <Compile Include="EntityViewModels\SKUViewModel\SkuCreateViewModel.cs" />
     <Compile Include="EntityViewModels\SKUViewModel\SkuUpdateViewModel.cs" />

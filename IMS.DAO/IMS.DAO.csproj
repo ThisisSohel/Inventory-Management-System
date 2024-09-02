@@ -71,6 +71,7 @@
     <Compile Include="Mappings\BrandMapping.cs" />
     <Compile Include="Mappings\CustomerMapping.cs" />
     <Compile Include="Mappings\ProductCategoryMapping.cs" />
+    <Compile Include="Mappings\ProductMapping.cs" />
     <Compile Include="Mappings\ProductTypeMapping.cs" />
     <Compile Include="Mappings\SupplierMapping.cs" />
     <Compile Include="NHibernateConfig.cs" />

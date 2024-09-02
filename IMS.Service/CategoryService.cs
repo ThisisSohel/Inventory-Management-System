@@ -129,7 +129,7 @@ namespace IMS.Service
                 {
                     foreach (var item in category)
                     {
-                        if (productCategoryViewModel.CategoryName.Contains(item.CategoryName))
+                        if (productCategoryViewModel.CategoryName == item.CategoryName)
                         {
                             throw new DuplicateValueException("Category can not be duplicate");
                         }
