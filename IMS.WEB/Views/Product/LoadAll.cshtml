@@ -29,6 +29,7 @@
         <table id="InfoTable" class="cell-border" style="width:100%">
             <thead>
                 <tr>
+<<<<<<< HEAD
                     <th>Image</th>
                     <th>Name</th>
                     <th>Quantity</th>
@@ -36,10 +37,17 @@
                     <th>Description</th>
                     <th>Brand</th>
                     <th>Category</th>
+=======
+                    <th>Product Name</th>
+                    <th>Product Quantity</th>
+                    <th>Product Price</th>
+                    <th>Product Description</th>
+>>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
                     <th>Actions</th>
                 </tr>
             </thead>
             <tfoot>
+<<<<<<< HEAD
 				<tr>
 					<th>Image</th>
 					<th>Name</th>
@@ -50,6 +58,15 @@
 					<th>Category</th>
 					<th>Actions</th>
 				</tr>
+=======
+                <tr>
+                    <th>Product Name</th>
+                    <th>Product Quantity</th>
+                    <th>Product Price</th>
+                    <th>Product Description</th>
+                    <th>Actions</th>
+                </tr>
+>>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
             </tfoot>
         </table>
     </div>
@@ -58,7 +75,11 @@
 
 @* Create New Modal *@
 <div class="modal fade" id="createModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<<<<<<< HEAD
     <div class="modal-dialog modal-lg">
+=======
+    <div class="modal-dialog modal-xl">
+>>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
         <div class="modal-content">
 
             <div class="modal-header" style="background-color: #1d4552">
@@ -90,7 +111,11 @@
                                     <label for="Quantity" class="form-label fw-bold">Quantity:</label>
                                 </div>
                                 <div class="col-sm-9">
+<<<<<<< HEAD
                                     <input type="number" class="form-control quantity" id="Quantity" name="Quantity" placeholder="Enter product quantity" style="background-color:#f5f5f5" min="0" step="1">
+=======
+                                    <input type="number" class="form-control quantity" id="Quantity" name="Quantity" placeholder="Enter product quantity" style="background-color:#f5f5f5" min="0" step="1" >
+>>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
                                     <span class="text-danger text-center quantity_validation" id="name_validation"></span>
                                 </div>
                             </div>
@@ -114,6 +139,7 @@
                                     <span class="text-danger text-center description_validation" id="description_validation"></span>
                                 </div>
                             </div>
+<<<<<<< HEAD
 
                             <div class="row mb-3 align-items-center">
                                 <div class="col-sm-3 text-start">
@@ -124,6 +150,8 @@
                                     <span class="text-danger text-center image_validation" id="image_validation"></span>
                                 </div>
                             </div>
+=======
+>>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
                         </div>
 
                         <div class="container my-3 p-2 text-center" style="background-color: #e9edf5">
@@ -174,7 +202,10 @@
 </div>
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
 @* Details Modal*@
 <div class="modal fade" id="detailsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -278,18 +309,32 @@
 
         function showErrorAlertMessage(message) {
             return `
+<<<<<<< HEAD
                                                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                                         <p> ${message} </p>
                                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                                     </div>`
+=======
+                                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                    <p> ${message} </p>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                </div>`
+>>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
         }
 
         function showSuccessAlertMessage(message) {
             return `
+<<<<<<< HEAD
                                                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                                                         <p> ${message} </p>
                                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                                     </div>`
+=======
+                                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                    <p> ${message} </p>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                </div>`
+>>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
         }
 
         $('#createModal').on('hidden.bs.modal', function () {
@@ -317,8 +362,13 @@
 
                         $.each(response.data, function (index, category) {
                             var newDropDownData = `
+<<<<<<< HEAD
                                        <option value = ${category.Id}>${category.CategoryName}</option>
                                     `
+=======
+                                   <option value = ${category.Id}>${category.CategoryName}</option>
+                                `
+>>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
                             dropdown.append(newDropDownData);
                         });
                     }
@@ -335,7 +385,11 @@
 
         function createNewFun() {
             $("#createModal").modal('show')
+<<<<<<< HEAD
             loadCategories();
+=======
+            //loadCategories();
+>>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
         }
 
         function nameValidator(name) {
@@ -433,6 +487,7 @@
                     if (response.IsSuccess == true) {
                         $("#detailsBodyId").empty();
                         const trMake = `
+<<<<<<< HEAD
                                                                     <tr>
                                                                         <td>${response.Details.CreatedBy}</td>
                                                                         <td>${response.Details.CreatedDate}</td>
@@ -440,6 +495,15 @@
                                                                         <td>${response.Details.ModifyDate}</td>
                                                                     </tr>
                                                                 `;
+=======
+                                                                <tr>
+                                                                    <td>${response.Details.CreatedBy}</td>
+                                                                    <td>${response.Details.CreatedDate}</td>
+                                                                    <td>${response.Details.ModifyBy}</td>
+                                                                    <td>${response.Details.ModifyDate}</td>
+                                                                </tr>
+                                                            `;
+>>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
                         $("#detailsBodyId").append(trMake);
                         $('#detailsModal').modal('show');
                     }
@@ -595,6 +659,7 @@
                         "datatype": "json"
                     },
                     "columns": [
+<<<<<<< HEAD
 						{ "data": "ProductImage", "name": "ProductImage" },
                         { "data": "ProductName", "name": "ProductName" },
                         { "data": "Quantity", "name": "Quantity" },
@@ -616,6 +681,26 @@
                                                                     </i>Update</button></a>
 
                                                                     `
+=======
+                        { "data": "ProductName", "name": "ProductName" },
+                        { "data": "Quantity", "name": "Quantity" },
+                        { "data": "Price", "name": "Price" },
+                        { "data": "Description", "name": "Description" },
+                        {
+                            "data": "Id", "render": function (id) {
+                                return `
+                                                                <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "Details(${id})">
+                                                                <i class="fas fa-pencil-alt">
+                                                                </i>Details</button></a>
+                                                                <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "Delete(${id})">
+                                                                <i class="fas fa-pencil-alt">
+                                                                </i>Delete</button></a>
+                                                                <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "Update(${id})">
+                                                                <i class="fas fa-pencil-alt">
+                                                                </i>Update</button></a>
+
+                                                                `
+>>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
                             }
                         },
                     ]

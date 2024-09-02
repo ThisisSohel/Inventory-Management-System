@@ -21621,6 +21621,7 @@ System.Exception: The product SKU is not found
 2024-08-22 15:19:49,707 [5] INFO  NHibernate.Cfg.Configuration - processing filters (second pass)
 2024-08-22 15:19:49,722 [5] INFO  NHibernate.Impl.SessionFactoryImpl - building session factory
 2024-08-22 15:19:49,746 [5] INFO  NHibernate.Impl.SessionFactoryObjectFactory - no name configured
+<<<<<<< HEAD
 2024-08-24 14:42:56,378 [5] INFO  LoggerConfiguration - Index page visited.
 2024-08-24 14:43:12,789 [6] INFO  NHibernate.Cfg.Environment - NHibernate 5.5.1+f25b398d897d937a21eda9ae065638f029256e3b (assembly 5.5.0.0)
 2024-08-24 14:43:12,795 [6] INFO  NHibernate.Cfg.Environment - hibernate-configuration section not found in application configuration file
@@ -27175,3 +27176,5 @@ Invalid column name 'ModifyDate'.
 2024-09-02 12:47:05,266 [36] INFO  NHibernate.Engine.Cascade - cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductCategory.Products
 2024-09-02 12:47:05,266 [36] INFO  NHibernate.Engine.Cascade - done cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for collection: IMS.Entity.Entities.ProductCategory.Products
 2024-09-02 12:47:05,266 [36] INFO  NHibernate.Engine.Cascade - done processing cascade NHibernate.Engine.CascadingAction+SaveUpdateCascadingAction for: IMS.Entity.Entities.ProductCategory
+=======
+>>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
