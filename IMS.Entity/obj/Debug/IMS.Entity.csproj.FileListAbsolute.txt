@@ -22,3 +22,9 @@ F:\Professional Project\New folder\ims-soh\IMS.Entity\obj\Debug\IMS.Entity.cspro
 F:\Professional Project\New folder\ims-soh\IMS.Entity\obj\Debug\IMS.Entity.csproj.CoreCompileInputs.cache
 F:\Professional Project\New folder\ims-soh\IMS.Entity\obj\Debug\IMS.Entity.dll
 F:\Professional Project\New folder\ims-soh\IMS.Entity\obj\Debug\IMS.Entity.pdb
+F:\Professional Project\New folder (8)\Inventory-Management-System\IMS.Entity\bin\Debug\IMS.Entity.dll
+F:\Professional Project\New folder (8)\Inventory-Management-System\IMS.Entity\bin\Debug\IMS.Entity.pdb
+F:\Professional Project\New folder (8)\Inventory-Management-System\IMS.Entity\obj\Debug\IMS.Entity.csproj.AssemblyReference.cache
+F:\Professional Project\New folder (8)\Inventory-Management-System\IMS.Entity\obj\Debug\IMS.Entity.csproj.CoreCompileInputs.cache
+F:\Professional Project\New folder (8)\Inventory-Management-System\IMS.Entity\obj\Debug\IMS.Entity.dll
+F:\Professional Project\New folder (8)\Inventory-Management-System\IMS.Entity\obj\Debug\IMS.Entity.pdb

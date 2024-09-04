@@ -77,6 +77,7 @@
     <Compile Include="NHibernateConfig.cs" />
     <Compile Include="ProductDao\BrandDao.cs" />
     <Compile Include="ProductDao\CategoryDao.cs" />
+    <Compile Include="ProductDao\ProductsDao.cs" />
     <Compile Include="ProductDao\ProductTypeDao.cs" />
     <Compile Include="ProductDao\SKUDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

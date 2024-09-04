@@ -34,6 +34,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,6 +62,8 @@
     <Compile Include="EntityViewModels\ProductTypeUpdateViewModel.cs" />
     <Compile Include="EntityViewModels\ProductTypeViewModel.cs" />
     <Compile Include="EntityViewModels\ProductViewModels\ProductCreateViewModel.cs" />
+    <Compile Include="EntityViewModels\ProductViewModels\ProductUpdateViewModel.cs" />
+    <Compile Include="EntityViewModels\ProductViewModels\ProductViewModel.cs" />
     <Compile Include="EntityViewModels\SkuViewModel.cs" />
     <Compile Include="EntityViewModels\SKUViewModel\SkuCreateViewModel.cs" />
     <Compile Include="EntityViewModels\SKUViewModel\SkuUpdateViewModel.cs" />

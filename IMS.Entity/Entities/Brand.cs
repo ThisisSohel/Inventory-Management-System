@@ -20,7 +20,6 @@ namespace IMS.Entity.Entities
         //public virtual string ModifyBy { get; set; }
         public virtual string ModifyBy { get; set; }
         public virtual DateTime? ModifyDate { get; set; } = DateTime.Now;
-        public virtual Product Product { get; set; }
         public virtual IList<Product> Products { get; set; }
     }
 }

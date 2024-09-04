@@ -14,7 +14,7 @@ namespace IMS.Entity.Entities
         public virtual int Quantity { get; set; }
         public virtual decimal Price { get; set; }
         public virtual string Description { get; set; }
-        public virtual string ProductImage { get; set; }
+        public virtual FileStyleUriParser ProductImage { get; set; }
         public virtual string CreatedBy { get; set; }
         public virtual DateTime? CreatedDate { get; set; }
         public virtual string ModifyBy { get; set; }

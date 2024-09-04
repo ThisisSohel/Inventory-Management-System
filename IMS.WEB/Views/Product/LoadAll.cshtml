@@ -3,51 +3,31 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
 
 <style>
-    body {
-        background-color: white;
-        font-family: Arial;
-    }
+	body {
+		background-color: white;
+		font-family: Arial;
+	}
 </style>
 
 @*DataTable View*@
 <div class="row" style="padding: 3%; border:1px solid">
-    <div id="errorMessageShow">
-        <p></p>
-    </div>
+	<div id="errorMessageShow">
+		<p></p>
+	</div>
 
-    <div id="successMessageShow">
-        <p></p>
-    </div>
+	<div id="successMessageShow">
+		<p></p>
+	</div>
 
-    <div class="container my-3 p-2 text-center" style="background-color: #91c0e3">
-        <h2>List of Products</h2>
-    </div>
+	<div class="container my-3 p-2 text-center" style="background-color: #91c0e3">
+		<h2>List of Products</h2>
+	</div>
 
-    <a href="#" class="btn btn-dark col-sm-2 mb-2" onclick="createNewFun()">Add New</a>
+	<a href="#" class="btn btn-dark col-sm-2 mb-2" onclick="createNewFun()">Add New</a>
 
-    <div style="border:1px solid black; padding:10px; width: 1300px; text-align:center" class="col-lg-4">
-        <table id="InfoTable" class="cell-border" style="width:100%">
-            <thead>
-                <tr>
-<<<<<<< HEAD
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Description</th>
-                    <th>Brand</th>
-                    <th>Category</th>
-=======
-                    <th>Product Name</th>
-                    <th>Product Quantity</th>
-                    <th>Product Price</th>
-                    <th>Product Description</th>
->>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tfoot>
-<<<<<<< HEAD
+	<div style="border:1px solid black; padding:10px; width: 1300px; text-align:center" class="col-lg-4">
+		<table id="InfoTable" class="cell-border" style="width:100%">
+			<thead>
 				<tr>
 					<th>Image</th>
 					<th>Name</th>
@@ -58,654 +38,589 @@
 					<th>Category</th>
 					<th>Actions</th>
 				</tr>
-=======
-                <tr>
-                    <th>Product Name</th>
-                    <th>Product Quantity</th>
-                    <th>Product Price</th>
-                    <th>Product Description</th>
-                    <th>Actions</th>
-                </tr>
->>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
-            </tfoot>
-        </table>
-    </div>
+			</thead>
+			<tfoot>
+				<tr>
+					<th>Image</th>
+					<th>Name</th>
+					<th>Quantity</th>
+					<th>Price</th>
+					<th>Description</th>
+					<th>Brand</th>
+					<th>Category</th>
+					<th>Actions</th>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
 </div>
 
 
 @* Create New Modal *@
 <div class="modal fade" id="createModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-<<<<<<< HEAD
-    <div class="modal-dialog modal-lg">
-=======
-    <div class="modal-dialog modal-xl">
->>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
-        <div class="modal-content">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
 
-            <div class="modal-header" style="background-color: #1d4552">
-                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">Create New Product Type</h1>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+			<div class="modal-header" style="background-color: #1d4552">
+				<h1 class="modal-title fs-5 w-100 text-center" style="color: white">Create New Product Type</h1>
+				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
 
-            <div class="p-4">
-                <div class="row">
-                    <div class="container my-3 p-5 text-center" style="border: 1px solid">
+			<div class="p-4">
+				<div class="row">
+					<div class="container my-3 p-5 text-center" style="border: 1px solid">
 
-                        <div class="container my-3 p-2 text-center" style="background-color: #e9edf5">
-                            <h2>Add basic information of product</h2>
-                        </div>
+						<div class="container my-3 p-2 text-center" style="background-color: #e9edf5">
+							<h2>Add basic information of product</h2>
+						</div>
 
-                        <div class="col p-4" style="border: 1px solid">
-                            <div class="row mb-3 align-items-center">
-                                <div class="col-sm-3 text-start">
-                                    <label for="ProductName" class="form-label fw-bold">Product Name:</label>
-                                </div>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control name" id="ProductName" name="ProductName" placeholder="Enter product name" style="background-color:#f5f5f5">
-                                    <span class="text-danger text-center name_validation" id="name_validation"></span>
-                                </div>
-                            </div>
+						<div class="col p-4" style="border: 1px solid">
+							<div class="row mb-3 align-items-center">
+								<div class="col-sm-3 text-start">
+									<label for="ProductName" class="form-label fw-bold">Product Name:</label>
+								</div>
+								<div class="col-sm-9">
+									<input type="text" class="form-control name" id="ProductName" name="ProductName" placeholder="Enter product name" style="background-color:#f5f5f5">
+									<span class="text-danger text-center name_validation" id="name_validation"></span>
+								</div>
+							</div>
 
-                            <div class="row mb-3 align-items-center">
-                                <div class="col-sm-3 text-start">
-                                    <label for="Quantity" class="form-label fw-bold">Quantity:</label>
-                                </div>
-                                <div class="col-sm-9">
-<<<<<<< HEAD
-                                    <input type="number" class="form-control quantity" id="Quantity" name="Quantity" placeholder="Enter product quantity" style="background-color:#f5f5f5" min="0" step="1">
-=======
-                                    <input type="number" class="form-control quantity" id="Quantity" name="Quantity" placeholder="Enter product quantity" style="background-color:#f5f5f5" min="0" step="1" >
->>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
-                                    <span class="text-danger text-center quantity_validation" id="name_validation"></span>
-                                </div>
-                            </div>
+							<div class="row mb-3 align-items-center">
+								<div class="col-sm-3 text-start">
+									<label for="Quantity" class="form-label fw-bold">Quantity:</label>
+								</div>
+								<div class="col-sm-9">
+									<input type="number" class="form-control quantity" id="Quantity" name="Quantity" placeholder="Enter product quantity" style="background-color:#f5f5f5" min="0" step="1">
+									<span class="text-danger text-center quantity_validation" id="name_validation"></span>
+								</div>
+							</div>
 
-                            <div class="row mb-3 align-items-center">
-                                <div class="col-sm-3 text-start">
-                                    <label for="Price" class="form-label fw-bold">Price:</label>
-                                </div>
-                                <div class="col-sm-9">
-                                    <input type="number" class="form-control price" id="Price" name="Price" placeholder="Enter product price" style="background-color:#f5f5f5" min="0" step="0.01">
-                                    <span class="text-danger text-center price_validation" id="name_validation"></span>
-                                </div>
-                            </div>
+							<div class="row mb-3 align-items-center">
+								<div class="col-sm-3 text-start">
+									<label for="Price" class="form-label fw-bold">Price:</label>
+								</div>
+								<div class="col-sm-9">
+									<input type="number" class="form-control price" id="Price" name="Price" placeholder="Enter product price" style="background-color:#f5f5f5" min="0" step="0.01">
+									<span class="text-danger text-center price_validation" id="name_validation"></span>
+								</div>
+							</div>
 
-                            <div class="row mb-3 align-items-center">
-                                <div class="col-sm-3 text-start">
-                                    <label for="Description" class="form-label fw-bold">Description:</label>
-                                </div>
-                                <div class="col-6">
-                                    <textarea class="form-control description" id="Description" name="Description" placeholder="Enter product description" rows="3" style="background-color:#f5f5f5"></textarea>
-                                    <span class="text-danger text-center description_validation" id="description_validation"></span>
-                                </div>
-                            </div>
-<<<<<<< HEAD
+							<div class="row mb-3 align-items-center">
+								<div class="col-sm-3 text-start">
+									<label for="Description" class="form-label fw-bold">Description:</label>
+								</div>
+								<div class="col-6">
+									<textarea class="form-control description" id="Description" name="Description" placeholder="Enter product description" rows="3" style="background-color:#f5f5f5"></textarea>
+									<span class="text-danger text-center description_validation" id="description_validation"></span>
+								</div>
+							</div>
 
-                            <div class="row mb-3 align-items-center">
-                                <div class="col-sm-3 text-start">
-                                    <label for="ProductImage" class="form-label fw-bold">Product Image:</label>
-                                </div>
-                                <div class="col-sm-9">
-                                    <input type="file" class="form-control" id="ProductImage" name="ProductImage" accept="image/*" style="background-color:#f5f5f5">
-                                    <span class="text-danger text-center image_validation" id="image_validation"></span>
-                                </div>
-                            </div>
-=======
->>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
-                        </div>
+							<div class="row mb-3 align-items-center">
+								<div class="col-sm-3 text-start">
+									<label for="ProductImage" class="form-label fw-bold">Product Image:</label>
+								</div>
+								<div class="col-sm-9">
+									<input type="file" class="form-control" id="ProductImage" name="ProductImage" accept="image/*" style="background-color:#f5f5f5">
+									<span class="text-danger text-center image_validation" id="image_validation"></span>
+								</div>
+							</div>
+						</div>
 
-                        <div class="container my-3 p-2 text-center" style="background-color: #e9edf5">
-                            <h2>Add additional information of product</h2>
-                        </div>
+						<div class="container my-3 p-2 text-center" style="background-color: #e9edf5">
+							<h2>Add additional information of product</h2>
+						</div>
 
-                        <div class="col p-4" style="border: 1px solid">
-                            <div class="row mb-5 align-items-center">
-                                <div class="col-sm-3 text-start">
-                                    <label for="brand_id" class="form-label fw-bold">Brand:</label>
-                                </div>
-                                <div class="col-sm-9">
-                                    <select class="form-select brand_dropdown_name" id="brand_id" name="BrandId" style="background-color: #f5f5f5">
-                                        <option selected disabled value="">Choose a Brand</option>
-                                    </select>
-                                    <span class="text-danger text-center brand_validation"></span>
-                                </div>
-                            </div>
+						<div class="col p-4" style="border: 1px solid">
+							<div class="row mb-5 align-items-center">
+								<div class="col-sm-3 text-start">
+									<label for="brand_id" class="form-label fw-bold">Brand:</label>
+								</div>
+								<div class="col-sm-9">
+									<select class="form-select brand_dropdown_name" id="brand_id" name="BrandId" style="background-color: #f5f5f5">
+										<option selected disabled value="">Choose a Brand</option>
+									</select>
+									<span class="text-danger text-center brand_validation"></span>
+								</div>
+							</div>
 
-                            <div class="row mb-3 align-items-center">
-                                <div class="col-sm-3 text-start">
-                                    <label for="category_id" class="form-label fw-bold">Category:</label>
-                                </div>
-                                <div class="col-sm-9">
-                                    <select class="form-select category_dropdown_name" id="category_id" name="CategoryId" style="background-color: #f5f5f5">
-                                        <option selected disabled value="">Choose a Category</option>
-                                    </select>
-                                    <span class="text-danger text-center category_validation"></span>
-                                </div>
-                            </div>
-                        </div>
+							<div class="row mb-3 align-items-center">
+								<div class="col-sm-3 text-start">
+									<label for="category_id" class="form-label fw-bold">Category:</label>
+								</div>
+								<div class="col-sm-9">
+									<select class="form-select category_dropdown_name" id="category_id" name="CategoryId" style="background-color: #f5f5f5">
+										<option selected disabled value="">Choose a Category</option>
+									</select>
+									<span class="text-danger text-center category_validation"></span>
+								</div>
+							</div>
+						</div>
 
-                        <div class="row mt-3">
-                            <div class="col-12 text-center justify-content-center">
-                                <input type="submit" id="createId" class="btn btn-primary" value="Create" style="background-color: #1d4552">
-                            </div>
-                        </div>
+						<div class="row mt-3">
+							<div class="col-12 text-center justify-content-center">
+								<input type="submit" id="createId" class="btn btn-primary" value="Create" style="background-color: #1d4552">
+							</div>
+						</div>
 
-                    </div>
-                </div>
-            </div>
+					</div>
+				</div>
+			</div>
 
-            <div class="modal-footer" style="background-color: #1d4552;">
-                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" style="background-color:#a9a9a9">Close</button>
-            </div>
-        </div>
-    </div>
+			<div class="modal-footer" style="background-color: #1d4552;">
+				<button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" style="background-color:#a9a9a9">Close</button>
+			</div>
+		</div>
+	</div>
 </div>
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
 @* Details Modal*@
 <div class="modal fade" id="detailsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header" style="background-color: #1d4552">
-                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">--Details about the product type--</h1>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" style="background-color: darkgray">
-                <div class="container my-3 p-2 text-center">
-                    <table class="table">
-                        <thead>
-                            <tr style="color:black;">
-                                <th>CreatedBy</th>
-                                <th>CreatedAt</th>
-                                <th>ModifyBy</th>
-                                <th>ModifyAt</th>
-                            </tr>
-                        </thead>
-                        <tbody id="detailsBodyId">
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="modal-footer" style="background-color: #1d4552;">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color:#a9a9a9">Close</button>
-            </div>
-        </div>
-    </div>
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header" style="background-color: #1d4552">
+				<h1 class="modal-title fs-5 w-100 text-center" style="color: white">--Details about the product type--</h1>
+				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body" style="background-color: darkgray">
+				<div class="container my-3 p-2 text-center">
+					<table class="table">
+						<thead>
+							<tr style="color:black;">
+								<th>CreatedBy</th>
+								<th>CreatedAt</th>
+								<th>ModifyBy</th>
+								<th>ModifyAt</th>
+							</tr>
+						</thead>
+						<tbody id="detailsBodyId">
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="modal-footer" style="background-color: #1d4552;">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color:#a9a9a9">Close</button>
+			</div>
+		</div>
+	</div>
 </div>
 
 
 @*Delete Modal*@
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header" style="background-color: #1d4552">
-                <h5 class="modal-title w-100 text-center" style="color: white">Confirm...</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" style="background-color: darkgray">
-                <h4>Are you sure to delete the product type - <span id="nameId"></span>?</h4>
-                <input type="hidden" value="" id="Id" />
-            </div>
-            <div class="modal-footer" style="background-color: #1d4552">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" style="background-color:#a9a9a9">Close</button>
-                <button type="button" id="btnDelete" class="btn btn-outline-danger">Delete</button>
-            </div>
-        </div>
-    </div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header" style="background-color: #1d4552">
+				<h5 class="modal-title w-100 text-center" style="color: white">Confirm...</h5>
+				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body" style="background-color: darkgray">
+				<h4>Are you sure to delete the product type - <span id="nameId"></span>?</h4>
+				<input type="hidden" value="" id="Id" />
+			</div>
+			<div class="modal-footer" style="background-color: #1d4552">
+				<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" style="background-color:#a9a9a9">Close</button>
+				<button type="button" id="btnDelete" class="btn btn-outline-danger">Delete</button>
+			</div>
+		</div>
+	</div>
 </div>
 
 
 @*Update  Modal*@
 <div class="modal fade" id="updateModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header" style="background-color: #1d4552">
-                <h1 class="modal-title fs-5 w-100 text-center" style="color: white">Update Product Type</h1>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" style="background-color: darkgray">
-                <div class="container my-3 p-2 text-center">
-                    <div class="row mb-3">
-                        <label for="CategoryName" class="col-sm-3 col-form-label text-start" style="color:black;">Type Name</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control name" id="updateNameId" name="TypeName" style="background-color:#f5f5f5">
-                            <span class="text-danger text-center name_validation" id="name_validation"></span>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="CategoryDropdown" class="col-sm-3 col-form-label text-start" style="color:black;">Category</label>
-                        <div class="col-sm-9">
-                            <select class="form-select selected category_dropdown_name" id="CategoryDropdown" name="CategoryId" style="background-color: #f5f5f5">
-                                <option selected disabled>Choose a Category</option>
-                            </select>
-                        </div>
-                        <span class="text-danger text-center category_validation" id="type_validation"></span>
-                    </div>
-                    <div class="row">
-                        <div class="col text-center">
-                            <input type="hidden" id="updateId" name="Id">
-                            <input type="submit" id="updateSaveId" class="btn btn-primary" value="Save" style="background-color: #1d4552">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer" style="background-color: #1d4552">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color:#a9a9a9">Close</button>
-            </div>
-        </div>
-    </div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header" style="background-color: #1d4552">
+				<h1 class="modal-title fs-5 w-100 text-center" style="color: white">Update Product Type</h1>
+				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body" style="background-color: darkgray">
+				<div class="container my-3 p-2 text-center">
+					<div class="row mb-3">
+						<label for="CategoryName" class="col-sm-3 col-form-label text-start" style="color:black;">Type Name</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control name" id="updateNameId" name="TypeName" style="background-color:#f5f5f5">
+							<span class="text-danger text-center name_validation" id="name_validation"></span>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="CategoryDropdown" class="col-sm-3 col-form-label text-start" style="color:black;">Category</label>
+						<div class="col-sm-9">
+							<select class="form-select selected category_dropdown_name" id="CategoryDropdown" name="CategoryId" style="background-color: #f5f5f5">
+								<option selected disabled>Choose a Category</option>
+							</select>
+						</div>
+						<span class="text-danger text-center category_validation" id="type_validation"></span>
+					</div>
+					<div class="row">
+						<div class="col text-center">
+							<input type="hidden" id="updateId" name="Id">
+							<input type="submit" id="updateSaveId" class="btn btn-primary" value="Save" style="background-color: #1d4552">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer" style="background-color: #1d4552">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color:#a9a9a9">Close</button>
+			</div>
+		</div>
+	</div>
 </div>
 
 
 @section scripts{
-    <script src="//cdn.datatables.net/2.0.5/js/dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/2.0.5/js/dataTables.bootstrap5.js"></script>
+	<script src="//cdn.datatables.net/2.0.5/js/dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/2.0.5/js/dataTables.bootstrap5.js"></script>
 
-    <script>
+	<script>
 
-        function showErrorAlertMessage(message) {
-            return `
-<<<<<<< HEAD
-                                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                        <p> ${message} </p>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                    </div>`
-=======
-                                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                    <p> ${message} </p>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                </div>`
->>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
-        }
+		function showErrorAlertMessage(message) {
+			return `
+														<div class="alert alert-danger alert-dismissible fade show" role="alert">
+															<p> ${message} </p>
+															<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+														</div>`
+		}
 
-        function showSuccessAlertMessage(message) {
-            return `
-<<<<<<< HEAD
-                                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                                        <p> ${message} </p>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                    </div>`
-=======
-                                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                                    <p> ${message} </p>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                </div>`
->>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
-        }
+		function showSuccessAlertMessage(message) {
+			return `
+														<div class="alert alert-success alert-dismissible fade show" role="alert">
+															<p> ${message} </p>
+															<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+														</div>`
+		}
 
-        $('#createModal').on('hidden.bs.modal', function () {
-            $(this).find('input[type="text"]').val('');
-            $(this).find('.name_validation').text('');
-            $(this).find('.category_validation').text('');
-        });
+		$('#createModal').on('hidden.bs.modal', function () {
+			$(this).find('input[type="text"]').val('');
+			$(this).find('.name_validation').text('');
+			$(this).find('.category_validation').text('');
+		});
 
-        function loadCategories() {
-            $.ajax({
-                url: "/Category/LoadCategoryData",
-                type: 'GET',
-                dataType: 'json',
-                success: function (response) {
-                    console.log(response)
-                    if (response.data.length == 0) {
-                        $("#createModal").modal('hide');
-                        const msgAlertMake = showErrorAlertMessage(response.Message);
-                        $("#errorMessageShow").html(msgAlertMake);
-                    }
-                    else {
-                        var dropdown = $('.category_dropdown_name');
-                        dropdown.empty();
-                        dropdown.append('<option selected disabled value="">Choose a Category</option>');
+		function loadCategories() {
+			$.ajax({
+				url: "/Category/LoadCategoryData",
+				type: 'GET',
+				dataType: 'json',
+				success: function (response) {
+					console.log(response)
+					if (response.data.length == 0) {
+						$("#createModal").modal('hide');
+						const msgAlertMake = showErrorAlertMessage(response.Message);
+						$("#errorMessageShow").html(msgAlertMake);
+					}
+					else {
+						var dropdown = $('.category_dropdown_name');
+						dropdown.empty();
+						dropdown.append('<option selected disabled value="">Choose a Category</option>');
 
-                        $.each(response.data, function (index, category) {
-                            var newDropDownData = `
-<<<<<<< HEAD
-                                       <option value = ${category.Id}>${category.CategoryName}</option>
-                                    `
-=======
-                                   <option value = ${category.Id}>${category.CategoryName}</option>
-                                `
->>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
-                            dropdown.append(newDropDownData);
-                        });
-                    }
+						$.each(response.data, function (index, category) {
+							var newDropDownData = `
+										   <option value = ${category.Id}>${category.CategoryName}</option>
+										`
+							dropdown.append(newDropDownData);
+						});
+					}
 
-                },
-                error: function (error) {
-                    $("#createModal").modal('hide');
-                    const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
-                    $("#errorMessageShow").html(msgAlertMake);
-                    $("#createModal").modal('hide');
-                }
-            });
-        }
+				},
+				error: function (error) {
+					$("#createModal").modal('hide');
+					const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
+					$("#errorMessageShow").html(msgAlertMake);
+					$("#createModal").modal('hide');
+				}
+			});
+		}
 
-        function createNewFun() {
-            $("#createModal").modal('show')
-<<<<<<< HEAD
-            loadCategories();
-=======
-            //loadCategories();
->>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
-        }
+		function createNewFun() {
+			$("#createModal").modal('show')
+			loadCategories();
+		}
 
-        function nameValidator(name) {
+		function nameValidator(name) {
 
-            const regex = new RegExp("^[a-zA-Z ]+$");
-            isValid = true;
+			const regex = new RegExp("^[a-zA-Z ]+$");
+			isValid = true;
 
-            if (name.trim().length == 0) {
-                $(".name_validation").text("Name can not be empty!");
-                isValid = false;
-            } else if (!regex.test(name)) {
-                $(".name_validation").text("Name contains only alphabetic characters!");
-                isValid = false;
-            } else if (name.trim().length > 30 || name.trim().length < 3) {
-                $(".name_validation").text("Length should be in between 3 to 30!");
-                isValid = false;
-            } else {
-                $(".name_validation").text("");
-            }
+			if (name.trim().length == 0) {
+				$(".name_validation").text("Name can not be empty!");
+				isValid = false;
+			} else if (!regex.test(name)) {
+				$(".name_validation").text("Name contains only alphabetic characters!");
+				isValid = false;
+			} else if (name.trim().length > 30 || name.trim().length < 3) {
+				$(".name_validation").text("Length should be in between 3 to 30!");
+				isValid = false;
+			} else {
+				$(".name_validation").text("");
+			}
 
-            return isValid;
-        }
+			return isValid;
+		}
 
-        function categoryValidator(id) {
+		function categoryValidator(id) {
 
-            isValid = true;
+			isValid = true;
 
-            if (id == "") {
-                $(".category_validation").text("Please select a product type!");
-                isValid = false;
-            } else {
-                $(".category_validation").text("");
-            }
+			if (id == "") {
+				$(".category_validation").text("Please select a product type!");
+				isValid = false;
+			} else {
+				$(".category_validation").text("");
+			}
 
-            return isValid;
-        }
+			return isValid;
+		}
 
-        //$(".name").on('change input propertychange', function () {
-        //    const name = $(this).val();
-        //    nameValidator(name);
-        //});
+		//$(".name").on('change input propertychange', function () {
+		//    const name = $(this).val();
+		//    nameValidator(name);
+		//});
 
-        function DataBinding() {
+		function DataBinding() {
 
-            const name = $("#TypeName").val();
-            const categoryId = $(".category_dropdown_name").find(":selected").val();
+			const name = $("#TypeName").val();
+			const categoryId = $(".category_dropdown_name").find(":selected").val();
 
-            const isNameValid = nameValidator(name);
-            const isTypeValid = categoryValidator(categoryId);
+			const isNameValid = nameValidator(name);
+			const isTypeValid = categoryValidator(categoryId);
 
-            if (isNameValid && isTypeValid) {
-                const obj = {
-                    TypeName: name,
-                    CategoryId: categoryId
-                }
-                submitData(obj);
-            }
-        }
+			if (isNameValid && isTypeValid) {
+				const obj = {
+					TypeName: name,
+					CategoryId: categoryId
+				}
+				submitData(obj);
+			}
+		}
 
-        function submitData(obj) {
-            $.ajax({
-                url: "/ProductType/Create",
-                method: "POST",
-                data: obj,
-                dataType: 'json',
-                success: function (response) {
-                    if (response.IsValid == true) {
-                        const msgAlertMake = showSuccessAlertMessage(response.Message);
-                        $("#successMessageShow").html(msgAlertMake);
-                        $("#createModal").modal('hide');
-                        DataTableLoad();
+		function submitData(obj) {
+			$.ajax({
+				url: "/ProductType/Create",
+				method: "POST",
+				data: obj,
+				dataType: 'json',
+				success: function (response) {
+					if (response.IsValid == true) {
+						const msgAlertMake = showSuccessAlertMessage(response.Message);
+						$("#successMessageShow").html(msgAlertMake);
+						$("#createModal").modal('hide');
+						DataTableLoad();
 
-                    } else {
-                        const msgAlertMake = showErrorAlertMessage(response.Message);
-                        $("#errorMessageShow").html(msgAlertMake);
-                        $("#createModal").modal('hide');
-                    }
-                },
-                error: function (error) {
-                    const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
-                    $("#errorMessageShow").html(msgAlertMake);
-                    $("#createModal").modal('hide');
-                }
-            });
-        }
+					} else {
+						const msgAlertMake = showErrorAlertMessage(response.Message);
+						$("#errorMessageShow").html(msgAlertMake);
+						$("#createModal").modal('hide');
+					}
+				},
+				error: function (error) {
+					const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
+					$("#errorMessageShow").html(msgAlertMake);
+					$("#createModal").modal('hide');
+				}
+			});
+		}
 
-        function Details(id) {
-            $("#detailsModal").modal('show')
-            $.ajax({
-                url: "/ProductType/DetailsAsync",
-                type: 'GET',
-                data: { id: id },
-                dataType: 'json',
-                success: function (response) {
-                    if (response.IsSuccess == true) {
-                        $("#detailsBodyId").empty();
-                        const trMake = `
-<<<<<<< HEAD
-                                                                    <tr>
-                                                                        <td>${response.Details.CreatedBy}</td>
-                                                                        <td>${response.Details.CreatedDate}</td>
-                                                                        <td>${response.Details.ModifyBy}</td>
-                                                                        <td>${response.Details.ModifyDate}</td>
-                                                                    </tr>
-                                                                `;
-=======
-                                                                <tr>
-                                                                    <td>${response.Details.CreatedBy}</td>
-                                                                    <td>${response.Details.CreatedDate}</td>
-                                                                    <td>${response.Details.ModifyBy}</td>
-                                                                    <td>${response.Details.ModifyDate}</td>
-                                                                </tr>
-                                                            `;
->>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
-                        $("#detailsBodyId").append(trMake);
-                        $('#detailsModal').modal('show');
-                    }
-                    else {
-                        const msgAlertMake = showErrorAlertMessage(response.Message);
-                        $("#errorMessageShow").html(msgAlertMake);
-                        $('#detailsModal').modal('hide');
-                    }
-                },
-                error: function (error) {
-                    const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
-                    $("#errorMessageShow").html(msgAlertMake);
-                    $('#detailsModal').modal('hide');
-                }
-            });
-        }
+		function Details(id) {
+			$("#detailsModal").modal('show')
+			$.ajax({
+				url: "/ProductType/DetailsAsync",
+				type: 'GET',
+				data: { id: id },
+				dataType: 'json',
+				success: function (response) {
+					if (response.IsSuccess == true) {
+						$("#detailsBodyId").empty();
+						const trMake = `
+																		<tr>
+																			<td>${response.Details.CreatedBy}</td>
+																			<td>${response.Details.CreatedDate}</td>
+																			<td>${response.Details.ModifyBy}</td>
+																			<td>${response.Details.ModifyDate}</td>
+																		</tr>
+																	`;
+						$("#detailsBodyId").append(trMake);
+						$('#detailsModal').modal('show');
+					}
+					else {
+						const msgAlertMake = showErrorAlertMessage(response.Message);
+						$("#errorMessageShow").html(msgAlertMake);
+						$('#detailsModal').modal('hide');
+					}
+				},
+				error: function (error) {
+					const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
+					$("#errorMessageShow").html(msgAlertMake);
+					$('#detailsModal').modal('hide');
+				}
+			});
+		}
 
-        function Delete(id) {
-            $("#deleteModal").modal("show");
+		function Delete(id) {
+			$("#deleteModal").modal("show");
 
-            $("#btnDelete").click(function () {
-                $.ajax({
-                    url: "/ProductType/DeleteAsync",
-                    type: 'POST',
-                    data: { id: id },
-                    success: function (response) {
-                        if (response.IsSuccess == true) {
+			$("#btnDelete").click(function () {
+				$.ajax({
+					url: "/ProductType/DeleteAsync",
+					type: 'POST',
+					data: { id: id },
+					success: function (response) {
+						if (response.IsSuccess == true) {
 
-                            $("#deleteModal").modal('hide');
-                            const msgAlertMake = showSuccessAlertMessage(response.Message);
-                            $("#successMessageShow").html(msgAlertMake);
-                            $("#deleteModal").modal('hide');
+							$("#deleteModal").modal('hide');
+							const msgAlertMake = showSuccessAlertMessage(response.Message);
+							$("#successMessageShow").html(msgAlertMake);
+							$("#deleteModal").modal('hide');
 
-                            DataTableLoad();
-                        } else {
-                            const msgAlertMake = showErrorAlertMessage(response.Message);
-                            $("#errorMessageShow").html(msgAlertMake);
-                            $("#deleteModal").modal('hide');
-                        }
-                    },
-                    error: function (error) {
-                        const msgAlertMake = showErrorAlertMessage(response.Message);
-                        $("#errorMessageShow").html(msgAlertMake);
-                        $("#deleteBrandModal").modal('hide');
-                    }
+							DataTableLoad();
+						} else {
+							const msgAlertMake = showErrorAlertMessage(response.Message);
+							$("#errorMessageShow").html(msgAlertMake);
+							$("#deleteModal").modal('hide');
+						}
+					},
+					error: function (error) {
+						const msgAlertMake = showErrorAlertMessage(response.Message);
+						$("#errorMessageShow").html(msgAlertMake);
+						$("#deleteBrandModal").modal('hide');
+					}
 
-                })
-            })
+				})
+			})
 
-        }
+		}
 
-        function updateModalValidationMessageReset() {
-            $(".name_validation").empty();
-            $(".category_validation").empty();
-        }
+		function updateModalValidationMessageReset() {
+			$(".name_validation").empty();
+			$(".category_validation").empty();
+		}
 
-        function Update(updateId) {
-            $("#updateModal").modal('show');
+		function Update(updateId) {
+			$("#updateModal").modal('show');
 
-            $.ajax({
-                url: "/ProductType/UpdateAsync",
-                dataType: 'json',
-                type: 'GET',
-                data: { id: updateId },
-                success: function (response) {
-                    updateModalValidationMessageReset();
-                    if (response.IsSuccess == true) {
-                        $("#updateId").val(response.UpdateProductTypeData.Id);
-                        $("#updateNameId").val(response.UpdateProductTypeData.TypeName);
-                        loadCategories();
-                        $("#updateModal").modal('show');
-                    }
-                    else {
-                        const msgAlertMake = showErrorAlertMessage(response.Message);
-                        $("#errorMessageShow").html(msgAlertMake);
-                        $("#updateModal").modal('hide');
-                    }
-                },
-                error: function (error) {
-                    const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
-                    $("#errorMessageShow").html(msgAlertMake);
-                    $("#updateModal").modal('hide');
-                }
-            });
+			$.ajax({
+				url: "/ProductType/UpdateAsync",
+				dataType: 'json',
+				type: 'GET',
+				data: { id: updateId },
+				success: function (response) {
+					updateModalValidationMessageReset();
+					if (response.IsSuccess == true) {
+						$("#updateId").val(response.UpdateProductTypeData.Id);
+						$("#updateNameId").val(response.UpdateProductTypeData.TypeName);
+						loadCategories();
+						$("#updateModal").modal('show');
+					}
+					else {
+						const msgAlertMake = showErrorAlertMessage(response.Message);
+						$("#errorMessageShow").html(msgAlertMake);
+						$("#updateModal").modal('hide');
+					}
+				},
+				error: function (error) {
+					const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
+					$("#errorMessageShow").html(msgAlertMake);
+					$("#updateModal").modal('hide');
+				}
+			});
 
-            $("#updateSaveId").click(function () {
+			$("#updateSaveId").click(function () {
 
-                const id = $("#updateId").val();
-                const name = $("#updateNameId").val();
-                const categoryId = $(".selected").find(":selected").val();
+				const id = $("#updateId").val();
+				const name = $("#updateNameId").val();
+				const categoryId = $(".selected").find(":selected").val();
 
-                const isNameValid = nameValidator(name);
-                const isTypeValid = categoryValidator(categoryId);
+				const isNameValid = nameValidator(name);
+				const isTypeValid = categoryValidator(categoryId);
 
-                if (isNameValid && isTypeValid) {
-                    const formdata = {
-                        Id: id,
-                        TypeName: name,
-                        CategoryId: categoryId
-                    }
+				if (isNameValid && isTypeValid) {
+					const formdata = {
+						Id: id,
+						TypeName: name,
+						CategoryId: categoryId
+					}
 
-                    $.ajax({
-                        url: "/ProductType/UpdateAsync",
-                        dataType: 'json',
-                        type: 'POST',
-                        data: { id: formdata.Id, productTypeUpdateViewModel: formdata },
-                        success: function (response) {
-                            if (response.IsSuccess == true) {
-                                const msgAlertMake = showSuccessAlertMessage(response.Message);
+					$.ajax({
+						url: "/ProductType/UpdateAsync",
+						dataType: 'json',
+						type: 'POST',
+						data: { id: formdata.Id, productTypeUpdateViewModel: formdata },
+						success: function (response) {
+							if (response.IsSuccess == true) {
+								const msgAlertMake = showSuccessAlertMessage(response.Message);
 
-                                $("#successMessageShow").html(msgAlertMake);
-                                $("#updateModal").modal('hide');
+								$("#successMessageShow").html(msgAlertMake);
+								$("#updateModal").modal('hide');
 
-                                DataTableLoad();
-                            } else {
-                                const msgAlertMake = showErrorAlertMessage(response.Message);
-                                $("#errorMessageShow").html(msgAlertMake);
-                                $("#updateModal").modal('hide');
-                            }
-                        },
-                        error: function (error) {
-                            const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
-                            $("#errorMessageShow").html(msgAlertMake);
-                            $("#updateModal").modal('hide');
-                        }
-                    });
-                }
+								DataTableLoad();
+							} else {
+								const msgAlertMake = showErrorAlertMessage(response.Message);
+								$("#errorMessageShow").html(msgAlertMake);
+								$("#updateModal").modal('hide');
+							}
+						},
+						error: function (error) {
+							const msgAlertMake = showErrorAlertMessage(error.status + " Error!");
+							$("#errorMessageShow").html(msgAlertMake);
+							$("#updateModal").modal('hide');
+						}
+					});
+				}
 
-            });
-        }
+			});
+		}
 
 
-        $(document).ready(function () {
+		$(document).ready(function () {
 
 
-            DataTableLoad();
+			DataTableLoad();
 
 
-            $("#submitId").click(function () {
-                DataBinding();
-            });
-        })
+			$("#submitId").click(function () {
+				DataBinding();
+			});
+		})
 
-        function DataTableLoad() {
-            $("#InfoTable").DataTable(
-                {
-                    "processing": true,
-                    "serverSide": true,
-                    "bDestroy": true,
-                    "ajax": {
-                        "url": "",
-                        "type": "GET",
-                        "datatype": "json"
-                    },
-                    "columns": [
-<<<<<<< HEAD
+		function DataTableLoad() {
+			$("#InfoTable").DataTable(
+				{
+					"processing": true,
+					"serverSide": true,
+					"bDestroy": true,
+					"ajax": {
+						"url": "",
+						"type": "GET",
+						"datatype": "json"
+					},
+					"columns": [
 						{ "data": "ProductImage", "name": "ProductImage" },
-                        { "data": "ProductName", "name": "ProductName" },
-                        { "data": "Quantity", "name": "Quantity" },
-                        { "data": "Price", "name": "Price" },
+						{ "data": "ProductName", "name": "ProductName" },
+						{ "data": "Quantity", "name": "Quantity" },
+						{ "data": "Price", "name": "Price" },
 						{ "data": "Description", "name": "Description" },
 						{ "data": "BrandId", "name": "BrandId" },
 						{ "data": "CategoryId", "name": "CategoryId" },
-                        {
-                            "data": "Id", "render": function (id) {
-                                return `
-                                                                    <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "Details(${id})">
-                                                                    <i class="fas fa-pencil-alt">
-                                                                    </i>Details</button></a>
-                                                                    <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "Delete(${id})">
-                                                                    <i class="fas fa-pencil-alt">
-                                                                    </i>Delete</button></a>
-                                                                    <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "Update(${id})">
-                                                                    <i class="fas fa-pencil-alt">
-                                                                    </i>Update</button></a>
+						{
+							"data": "Id", "render": function (id) {
+								return `
+																		<a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "Details(${id})">
+																		<i class="fas fa-pencil-alt">
+																		</i>Details</button></a>
+																		<a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "Delete(${id})">
+																		<i class="fas fa-pencil-alt">
+																		</i>Delete</button></a>
+																		<a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "Update(${id})">
+																		<i class="fas fa-pencil-alt">
+																		</i>Update</button></a>
 
-                                                                    `
-=======
-                        { "data": "ProductName", "name": "ProductName" },
-                        { "data": "Quantity", "name": "Quantity" },
-                        { "data": "Price", "name": "Price" },
-                        { "data": "Description", "name": "Description" },
-                        {
-                            "data": "Id", "render": function (id) {
-                                return `
-                                                                <a> <button type = "submit" class="btn btn-outline-dark btn-sm" onClick = "Details(${id})">
-                                                                <i class="fas fa-pencil-alt">
-                                                                </i>Details</button></a>
-                                                                <a> <button type = "submit" class="btn btn-outline-danger btn-sm" onClick = "Delete(${id})">
-                                                                <i class="fas fa-pencil-alt">
-                                                                </i>Delete</button></a>
-                                                                <a> <button type = "submit" class="btn btn-outline-secondary btn-sm" onClick = "Update(${id})">
-                                                                <i class="fas fa-pencil-alt">
-                                                                </i>Update</button></a>
+																		`
+							}
+						},
+					]
+				});
+		}
 
-                                                                `
->>>>>>> 0aade04b1835f4ceab4c4023260419e1abc03eea
-                            }
-                        },
-                    ]
-                });
-        }
-
-    </script>
+	</script>
 }

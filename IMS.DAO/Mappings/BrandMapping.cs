@@ -20,10 +20,10 @@ namespace IMS.DAO.Mappings
 			Map(x => x.ModifyBy);
 			Map(x => x.ModifyDate);
 
-			HasMany(x => x.Products)
-				.Cascade.All()
-				.Inverse()
-				.KeyColumn("BrandId");
+			//HasMany(x => x.Products)
+			//	.Cascade.All()
+			//	.Inverse()
+			//	.KeyColumn("BrandId");
 		}
 	}
 }
